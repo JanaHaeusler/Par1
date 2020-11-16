@@ -8,5 +8,12 @@ export default createGlobalStyle`
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
+    font-size: 112.5%;
+    color: var(--text-main);
 }
+
+:root {
+    --text-main: #414143;
+}
+
 `
