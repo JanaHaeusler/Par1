@@ -6,42 +6,47 @@ export default function SaveGameForm() {
         <FormWrapper>
             <InputWrapper>
                 <label htmlFor="location">
-                    Location:
+                    Location
                 </label>
                 <input 
                     type="text" 
                     name="location"
+                    id="location"
                     placeholder="Type location ..."
                 />
                 <label htmlFor="date">
-                    Date:
+                    Date
                 </label>
                 <input 
                     type="date" 
                     name="date"
+                    id="date"
                 />
                 <label htmlFor="players">
-                    Player(s):
+                    Player(s)
                 </label>
                 <input 
                     type="text" 
                     name="players"
+                    id="players"
                     placeholder="John, Jane"
                 />
                 <label htmlFor="winner">
-                    Winner(s):
+                    Winner(s)
                 </label>
                 <input 
                     type="text" 
                     name="winner"
+                    id="winner"
                     placeholder="Jane"
                 />
                 <label htmlFor="shots">
-                    Total Shots Winner(s):
+                    Total Shots Winner(s)
                 </label>
                 <input 
                     type="text"
                     name="shots"
+                    id="shots"
                     placeholder="38"
                 />
             </InputWrapper>
@@ -81,4 +86,5 @@ const InputWrapper = styled.fieldset`
         padding: 5px;
        
     }
+
 `

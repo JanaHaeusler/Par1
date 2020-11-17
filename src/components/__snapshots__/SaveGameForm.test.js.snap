@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SaveGameForm renders DOM correctly 1`] = `
+.c2 {
+  padding: 7px;
+  border-style: none;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px lightgrey;
+  background-color: #F5D87A;
+  height: 50px;
+  width: 100px;
+  font-size: 1rem;
+}
+
+.c0 {
+  padding: 0 10px 10px 10px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px lightgrey;
+  font-size: 1rem;
+}
+
+.c0 Button {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: grid;
+  width: 100%;
+}
+
+.c1 label {
+  margin-top: 10px;
+}
+
+.c1 input {
+  border-style: none;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+<form
+  class="c0"
+>
+  <fieldset
+    class="c1"
+  >
+    <label
+      for="location"
+    >
+      Location
+    </label>
+    <input
+      id="location"
+      name="location"
+      placeholder="Type location ..."
+      type="text"
+    />
+    <label
+      for="date"
+    >
+      Date
+    </label>
+    <input
+      id="date"
+      name="date"
+      type="date"
+    />
+    <label
+      for="players"
+    >
+      Player(s)
+    </label>
+    <input
+      id="players"
+      name="players"
+      placeholder="John, Jane"
+      type="text"
+    />
+    <label
+      for="winner"
+    >
+      Winner(s)
+    </label>
+    <input
+      id="winner"
+      name="winner"
+      placeholder="Jane"
+      type="text"
+    />
+    <label
+      for="shots"
+    >
+      Total Shots Winner(s)
+    </label>
+    <input
+      id="shots"
+      name="shots"
+      placeholder="38"
+      type="text"
+    />
+  </fieldset>
+  <button
+    class="c2"
+  >
+    ✓ Save
+  </button>
+</form>
+`;
