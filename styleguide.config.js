@@ -4,5 +4,13 @@ module.exports = {
     defaultExample: true,
     exampleMode: 'expand',
     usageMode: 'expand',
+    // styles: {    
+    //   StyleGuide: {      
+    //     '@global body': {        
+    //       fontFamily: 'Comic',      
+    //     },    
+    //   },  
+    // },
   }
   
+

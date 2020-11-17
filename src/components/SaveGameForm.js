@@ -45,7 +45,7 @@ export default function SaveGameForm() {
                     placeholder="38"
                 />
             </InputWrapper>
-            <Button></Button>
+            <Button>&#10003; Save</Button>
         </FormWrapper>
     )
 }

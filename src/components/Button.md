@@ -1,3 +1,3 @@
 ```js
-<Button />
+<Button>&#10003; Save</Button>
 ```
