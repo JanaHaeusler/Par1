@@ -6,7 +6,7 @@ GameCard.propTypes = {
     date: PropTypes.string.isRequired,
     players: PropTypes.string.isRequired,
     winner: PropTypes.string.isRequired,
-    shots: PropTypes.number.isRequired,
+    shots: PropTypes.string.isRequired,
   }
 
 export default function GameCard({location, date, players, winner, shots}) {
