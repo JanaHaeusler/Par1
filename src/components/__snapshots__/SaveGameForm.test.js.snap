@@ -6,9 +6,7 @@ exports[`SaveGameForm renders DOM correctly 1`] = `
   border-style: none;
   border-radius: 5px;
   box-shadow: 3px 3px 10px lightgrey;
-  background-color: #F5D87A;
-  height: 50px;
-  width: 100px;
+  background-color: var(--primary);
   font-size: 1rem;
 }
 
@@ -40,7 +38,7 @@ exports[`SaveGameForm renders DOM correctly 1`] = `
 
 .c1 input {
   border-style: none;
-  border: 1px solid lightgrey;
+  border: 1px solid var(--primary);
   border-radius: 5px;
   padding: 5px;
 }
@@ -61,6 +59,7 @@ exports[`SaveGameForm renders DOM correctly 1`] = `
       name="location"
       placeholder="Type location ..."
       type="text"
+      value=""
     />
     <label
       for="date"
@@ -71,6 +70,7 @@ exports[`SaveGameForm renders DOM correctly 1`] = `
       id="date"
       name="date"
       type="date"
+      value=""
     />
     <label
       for="players"
@@ -82,6 +82,7 @@ exports[`SaveGameForm renders DOM correctly 1`] = `
       name="players"
       placeholder="John, Jane"
       type="text"
+      value=""
     />
     <label
       for="winner"
@@ -93,6 +94,7 @@ exports[`SaveGameForm renders DOM correctly 1`] = `
       name="winner"
       placeholder="Jane"
       type="text"
+      value=""
     />
     <label
       for="shots"
@@ -104,6 +106,7 @@ exports[`SaveGameForm renders DOM correctly 1`] = `
       name="shots"
       placeholder="38"
       type="text"
+      value=""
     />
   </fieldset>
   <button

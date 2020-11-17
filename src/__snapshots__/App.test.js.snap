@@ -1,9 +1,130 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App renders components 1`] = `
-<div>
-  <h1>
-    Hello World!
-  </h1>
+.c3 {
+  padding: 7px;
+  border-style: none;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px lightgrey;
+  background-color: var(--primary);
+  font-size: 1rem;
+}
+
+.c1 {
+  padding: 0 10px 10px 10px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px lightgrey;
+  font-size: 1rem;
+}
+
+.c1 Button {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.c2 {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: grid;
+  width: 100%;
+}
+
+.c2 label {
+  margin-top: 10px;
+}
+
+.c2 input {
+  border-style: none;
+  border: 1px solid var(--primary);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.c0 {
+  display: grid;
+  grid-gap: 20px;
+}
+
+<div
+  class="c0"
+>
+  <form
+    class="c1"
+  >
+    <fieldset
+      class="c2"
+    >
+      <label
+        for="location"
+      >
+        Location
+      </label>
+      <input
+        id="location"
+        name="location"
+        placeholder="Type location ..."
+        type="text"
+        value=""
+      />
+      <label
+        for="date"
+      >
+        Date
+      </label>
+      <input
+        id="date"
+        name="date"
+        type="date"
+        value=""
+      />
+      <label
+        for="players"
+      >
+        Player(s)
+      </label>
+      <input
+        id="players"
+        name="players"
+        placeholder="John, Jane"
+        type="text"
+        value=""
+      />
+      <label
+        for="winner"
+      >
+        Winner(s)
+      </label>
+      <input
+        id="winner"
+        name="winner"
+        placeholder="Jane"
+        type="text"
+        value=""
+      />
+      <label
+        for="shots"
+      >
+        Total Shots Winner(s)
+      </label>
+      <input
+        id="shots"
+        name="shots"
+        placeholder="38"
+        type="text"
+        value=""
+      />
+    </fieldset>
+    <button
+      class="c3"
+    >
+      ✓ Save
+    </button>
+  </form>
+  <div
+    class="App__GameCardListWrapper-sc-3vbase-1"
+  />
 </div>
 `;

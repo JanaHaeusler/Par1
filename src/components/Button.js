@@ -16,8 +16,6 @@ const ButtonStyled = styled.button`
     border-style: none;
     border-radius: 5px;
     box-shadow: 3px 3px 10px lightgrey;
-    background-color: #F5D87A;
-    height: 50px;
-    width: 100px;
+    background-color: var(--primary);
     font-size: 1rem;
 `

@@ -7,13 +7,17 @@ export default createGlobalStyle`
 
 body {
     margin: 0;
+    padding: 10px;
     font-family: 'Roboto', sans-serif;
     font-size: 112.5%;
-    color: var(--text-main);
+    color: var(--text-dark);
 }
 
 :root {
-    --text-main: #414143;
+    --text-dark: #414143;
+    --text-light: #ffffff;
+    --primary: #D5EBD0;
+    --secondary: purple;
 }
 
 `

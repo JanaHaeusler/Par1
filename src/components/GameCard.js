@@ -31,6 +31,7 @@ export default function GameCard({location, date, players, winner, shots}) {
 }
 
 const CardWrapper = styled.div`
+    padding: 10px;
     display: grid;
     grid-template-rows: 1fr 3fr;
     grid-template-columns: 1fr 1fr 1fr;
@@ -40,7 +41,7 @@ const CardWrapper = styled.div`
     border-radius: 10px;
     box-shadow: 0 0 10px lightgrey;
     font-size: 1rem;
-    padding: 10px;
+    background-color: var(--primary);
 
     h4 {
         margin: 0;
