@@ -1,11 +1,17 @@
-import useFormData from '../hooks/useFormData'
 import styled from 'styled-components/macro'
+import { v4 as uuid } from 'uuid'
 import Button from './Button'
+import PropTypes from 'prop-types'
 
-export default function SaveGameForm() {
+SaveGameForm.propTypes = {
+    gameProfile: PropTypes.object,
+    setGameProfile: PropTypes.func,
+    savedGameProfiles: PropTypes.array,
+    setSavedGameProfiles: PropTypes.func,
+  }
+
+export default function SaveGameForm({gameProfile, setGameProfile, savedGameProfiles, setSavedGameProfiles}) {
    
-    const { gameProfile, setGameProfile, savedGameProfiles, setSavedGameProfiles } = useFormData()
-
     return (
         <FormWrapper onSubmit={handleSubmit}>
             <InputWrapper>
@@ -72,7 +78,8 @@ export default function SaveGameForm() {
     function handleChange(event) {
         setGameProfile({
             ...gameProfile,
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.value,
+            _id: uuid()
         })
     }
 
@@ -100,7 +107,9 @@ const FormWrapper = styled.form`
     display: grid;
     place-items: center;
     border-radius: 10px;
-    box-shadow: 0 0 10px lightgrey;
+    box-shadow: 0 0 10px whitesmoke;
+    background-color: var(--primary-medium);
+    color: var(--text-light);
     font-size: 1rem;
 
     Button {
@@ -117,14 +126,16 @@ const InputWrapper = styled.fieldset`
 
     label {
         margin-top: 10px;
+        margin-bottom: 5px;
+        font-family: 'Raleway', sans-serif;
     }
 
     input {
-        border-style: none;
-        border: 1px solid var(--primary);
-        border-radius: 5px;
         padding: 5px;
-       
+        border-style: none;
+        border-radius: 5px;
+        color: var(--primary-dark);
+        font-family: 'Montserrat', sans-serif;
     }
 
 `

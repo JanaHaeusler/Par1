@@ -1,19 +1,19 @@
+import styled from 'styled-components/macro'
 import useFormData from './hooks/useFormData'
 import SaveGameForm from './components/SaveGameForm'
 import GameCard from './components/GameCard'
-import styled from 'styled-components/macro'
+
 
 function App() {
 
-  const { savedGameProfiles } = useFormData()  
-  
-  
+  const { gameProfile, setGameProfile, savedGameProfiles, setSavedGameProfiles } = useFormData()
+ 
   return (
     <AppWrapper>
-      <SaveGameForm/>
+      <SaveGameForm gameProfile={gameProfile} setGameProfile={setGameProfile} savedGameProfiles={savedGameProfiles} setSavedGameProfiles={setSavedGameProfiles} />
       <GameCardListWrapper>
-        {savedGameProfiles.map(({location, date, players, winner, shots}) => 
-          (<GameCard location={location} date={date} players={players} winner={winner} shots={shots}/>)
+        {savedGameProfiles.map(({location, date, players, winner, shots, _id}) => 
+          <GameCard key={_id} location={location} date={date} players={players} winner={winner} shots={shots}/>
         )}
       </GameCardListWrapper>
 
@@ -29,4 +29,6 @@ const AppWrapper = styled.div`
   grid-gap: 20px;
 `
 const GameCardListWrapper = styled.div`
+  display: grid;
+  gap: 10px;
 `

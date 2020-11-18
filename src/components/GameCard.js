@@ -38,8 +38,8 @@ const CardWrapper = styled.div`
     row-gap: 20px;
     column-gap: 10px;
     justify-items: center;
+    box-shadow: 0 0 10px var(--primary-medium);
     border-radius: 10px;
-    box-shadow: 0 0 10px lightgrey;
     font-size: 1rem;
     background-color: var(--primary);
 

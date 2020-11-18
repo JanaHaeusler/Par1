@@ -15,7 +15,8 @@ const ButtonStyled = styled.button`
     padding: 7px;
     border-style: none;
     border-radius: 5px;
-    box-shadow: 3px 3px 10px lightgrey;
-    background-color: var(--primary);
+    box-shadow: 3px 3px 10px var(--primary-dark);
+    background-color: var(--secondary-dark);
+    color: var(--text-light);
     font-size: 1rem;
 `
