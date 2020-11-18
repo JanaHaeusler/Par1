@@ -107,7 +107,7 @@ const FormWrapper = styled.form`
     display: grid;
     place-items: center;
     border-radius: 10px;
-    box-shadow: 0 0 10px whitesmoke;
+    box-shadow: 0 0 10px var(--primary-medium);
     background-color: var(--primary-medium);
     color: var(--text-light);
     font-size: 1rem;

@@ -14,18 +14,16 @@ export default function GameCard({location, date, players, winner, shots}) {
     <CardWrapper>
         <Location>{location}</Location>
         <Date>{date}</Date>
-        <Players>
-            <h4>Player(s)</h4>
-            <span>{players}</span>
-        </Players>
-        <Winner>
-            <h4>Winner(s)</h4>
-            <span>{winner}</span>
-        </Winner>
-        <Shots>
-            <h4>Total Shots</h4>
-            <span>{shots}</span>
-        </Shots>
+       
+            <HeadlinePlayers>Player(s)</HeadlinePlayers>
+            <DataPlayers>{players}</DataPlayers>
+      
+            <HeadlineWinner>Winner(s)</HeadlineWinner>
+            <DataWinner>{winner}</DataWinner>
+        
+       
+            <HeadlineShots>Total Shots</HeadlineShots>
+            <DataShots>{shots}</DataShots>
     </CardWrapper>
  )
 }
@@ -33,15 +31,17 @@ export default function GameCard({location, date, players, winner, shots}) {
 const CardWrapper = styled.div`
     padding: 10px;
     display: grid;
-    grid-template-rows: 1fr 3fr;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
-    row-gap: 20px;
+    row-gap: 10px;
     column-gap: 10px;
     justify-items: center;
     box-shadow: 0 0 10px var(--primary-medium);
     border-radius: 10px;
-    font-size: 1rem;
     background-color: var(--primary);
+    font-size: 0.9rem;
+    text-align: center;
+    
 
     h4 {
         margin: 0;
@@ -55,15 +55,25 @@ const Location = styled.div`
 const Date = styled.div`
     justify-self: end;
 `
-const Players = styled.div`
-    display: grid;
+const HeadlinePlayers = styled.h4`
     place-items: center;
 `
-const Winner = styled.div`
-    display: grid;
+const DataPlayers = styled.span`
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
     place-items: center;
 `
-const Shots = styled.div`
-    display: grid;
+const HeadlineWinner = styled.h4`
+    place-items: center;
+`
+const DataWinner = styled.span`
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    place-items: center;
+`
+const HeadlineShots = styled.h4`
+    place-items: center;
+`
+const DataShots = styled.span`
     place-items: center;
 `

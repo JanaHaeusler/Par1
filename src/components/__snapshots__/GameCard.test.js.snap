@@ -4,16 +4,17 @@ exports[`GameCard renders correctly 1`] = `
 .c0 {
   padding: 10px;
   display: grid;
-  grid-template-rows: 1fr 3fr;
+  grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
-  row-gap: 20px;
+  row-gap: 10px;
   -webkit-column-gap: 10px;
   column-gap: 10px;
   justify-items: center;
+  box-shadow: 0 0 10px var(--primary-medium);
   border-radius: 10px;
-  box-shadow: 0 0 10px lightgrey;
-  font-size: 1rem;
   background-color: var(--primary);
+  font-size: 0.9rem;
+  text-align: center;
 }
 
 .c0 h4 {
@@ -31,17 +32,30 @@ exports[`GameCard renders correctly 1`] = `
 }
 
 .c3 {
-  display: grid;
   place-items: center;
 }
 
 .c4 {
-  display: grid;
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
   place-items: center;
 }
 
 .c5 {
-  display: grid;
+  place-items: center;
+}
+
+.c6 {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  place-items: center;
+}
+
+.c7 {
+  place-items: center;
+}
+
+.c8 {
   place-items: center;
 }
 
@@ -58,35 +72,35 @@ exports[`GameCard renders correctly 1`] = `
   >
     11/04/2020
   </div>
-  <div
+  <h4
     class="c3"
   >
-    <h4>
-      Player(s)
-    </h4>
-    <span>
-      John, Jane
-    </span>
-  </div>
-  <div
+    Player(s)
+  </h4>
+  <span
     class="c4"
   >
-    <h4>
-      Winner(s)
-    </h4>
-    <span>
-      Jane
-    </span>
-  </div>
-  <div
+    John, Jane
+  </span>
+  <h4
     class="c5"
   >
-    <h4>
-      Total Shots
-    </h4>
-    <span>
-      56
-    </span>
-  </div>
+    Winner(s)
+  </h4>
+  <span
+    class="c6"
+  >
+    Jane
+  </span>
+  <h4
+    class="c7"
+  >
+    Total Shots
+  </h4>
+  <span
+    class="c8"
+  >
+    56
+  </span>
 </div>
 `;
