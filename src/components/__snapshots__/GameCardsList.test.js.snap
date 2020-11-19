@@ -4,22 +4,15 @@ exports[`GameCardsList renders correctly 1`] = `
 .c1 {
   padding: 10px;
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-  row-gap: 10px;
-  -webkit-column-gap: 10px;
-  column-gap: 10px;
+  grid-template-rows: repeat(3,1fr);
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 10px;
   justify-items: center;
   box-shadow: 0 0 10px var(--primary-medium);
   border-radius: 10px;
   background-color: var(--primary);
   font-size: 0.9rem;
   text-align: center;
-}
-
-.c1 h4 {
-  margin: 0;
-  font-weight: 550;
 }
 
 .c2 {
@@ -32,7 +25,9 @@ exports[`GameCardsList renders correctly 1`] = `
 }
 
 .c4 {
+  margin: 0;
   place-items: center;
+  font-weight: 550;
 }
 
 .c5 {
@@ -42,20 +37,12 @@ exports[`GameCardsList renders correctly 1`] = `
 }
 
 .c6 {
-  place-items: center;
-}
-
-.c7 {
   grid-column: 2 / 3;
   grid-row: 3 / 4;
   place-items: center;
 }
 
-.c8 {
-  place-items: center;
-}
-
-.c9 {
+.c7 {
   place-items: center;
 }
 
@@ -67,15 +54,19 @@ exports[`GameCardsList renders correctly 1`] = `
 <div
   class="c0"
 >
-  <div
+  <section
     class="c1"
   >
     <div
       class="c2"
-    />
+    >
+      Horner Racecourse
+    </div>
     <div
       class="c3"
-    />
+    >
+      11/04/2020
+    </div>
     <h4
       class="c4"
     >
@@ -83,33 +74,43 @@ exports[`GameCardsList renders correctly 1`] = `
     </h4>
     <span
       class="c5"
-    />
+    >
+      John, Jane
+    </span>
     <h4
-      class="c6"
+      class="c4"
     >
       Winner(s)
     </h4>
     <span
-      class="c7"
-    />
+      class="c6"
+    >
+      Jane
+    </span>
     <h4
-      class="c8"
+      class="c4"
     >
       Total Shots
     </h4>
     <span
-      class="c9"
-    />
-  </div>
-  <div
+      class="c7"
+    >
+      89
+    </span>
+  </section>
+  <section
     class="c1"
   >
     <div
       class="c2"
-    />
+    >
+      City Park
+    </div>
     <div
       class="c3"
-    />
+    >
+      11/13/2020
+    </div>
     <h4
       class="c4"
     >
@@ -117,23 +118,29 @@ exports[`GameCardsList renders correctly 1`] = `
     </h4>
     <span
       class="c5"
-    />
+    >
+      Fritz, Hanni, Nanni
+    </span>
     <h4
-      class="c6"
+      class="c4"
     >
       Winner(s)
     </h4>
     <span
-      class="c7"
-    />
+      class="c6"
+    >
+      Fritz
+    </span>
     <h4
-      class="c8"
+      class="c4"
     >
       Total Shots
     </h4>
     <span
-      class="c9"
-    />
-  </div>
+      class="c7"
+    >
+      35
+    </span>
+  </section>
 </div>
 `;

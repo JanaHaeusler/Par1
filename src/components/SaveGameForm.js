@@ -1,18 +1,23 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
-import { v4 as uuid } from 'uuid'
+import {useState} from 'react'
 import Button from './Button'
 
 
 SaveGameForm.propTypes = {
-    gameProfile: PropTypes.object,
-    setGameProfile: PropTypes.func,
-    savedGameProfiles: PropTypes.array,
-    setSavedGameProfiles: PropTypes.func,
+    onSubmit: PropTypes.func.isRequired
   }
 
-export default function SaveGameForm({gameProfile, setGameProfile, savedGameProfiles, setSavedGameProfiles}) {
+export default function SaveGameForm({onSubmit}) {
    
+    const [formInput, setFormInput] = useState({
+        location: '',
+        date: '',
+        players: '',
+        winner: '',
+        shots:'',
+    })
+
     return (
         <FormWrapper onSubmit={handleSubmit}>
             <InputWrapper>
@@ -24,7 +29,7 @@ export default function SaveGameForm({gameProfile, setGameProfile, savedGameProf
                     name="location"
                     id="location"
                     placeholder="Type location ..."
-                    value={gameProfile.location}
+                    value={formInput.location}
                     onChange={handleChange}
                 />
                 <label htmlFor="date">
@@ -34,7 +39,7 @@ export default function SaveGameForm({gameProfile, setGameProfile, savedGameProf
                     type="date" 
                     name="date"
                     id="date"
-                    value={gameProfile.date}
+                    value={formInput.date}
                     onChange={handleChange}
                 />
                 <label htmlFor="players">
@@ -45,7 +50,7 @@ export default function SaveGameForm({gameProfile, setGameProfile, savedGameProf
                     name="players"
                     id="players"
                     placeholder="John, Jane"
-                    value={gameProfile.players}
+                    value={formInput.players}
                     onChange={handleChange}
                 />
                 <label htmlFor="winner">
@@ -56,7 +61,7 @@ export default function SaveGameForm({gameProfile, setGameProfile, savedGameProf
                     name="winner"
                     id="winner"
                     placeholder="Jane"
-                    value={gameProfile.winner}
+                    value={formInput.winner}
                     onChange={handleChange}
                 />
                 <label htmlFor="shots">
@@ -67,7 +72,7 @@ export default function SaveGameForm({gameProfile, setGameProfile, savedGameProf
                     name="shots"
                     id="shots"
                     placeholder="38"
-                    value={gameProfile.shots}
+                    value={formInput.shots}
                     onChange={handleChange}
                 />
             </InputWrapper>
@@ -77,27 +82,23 @@ export default function SaveGameForm({gameProfile, setGameProfile, savedGameProf
 
 
     function handleChange(event) {
-        setGameProfile({
-            ...gameProfile,
+        setFormInput({
+            ...formInput,
             [event.target.name]: event.target.value,
-            _id: uuid()
         })
     }
 
     function handleSubmit(event) {
         event.preventDefault()
-        setSavedGameProfiles([
-            gameProfile,
-            ...savedGameProfiles
-        ])
-        const form = event.target
-        setGameProfile({
+        onSubmit(formInput)
+        setFormInput({
             location: '',
             date: '',
             players: '',
             winner: '',
             shots:'',
         })
+        const form = event.target
         form.elements.location.focus()
     }
 

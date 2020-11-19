@@ -6,11 +6,11 @@ import GameCardsList from './components/GameCardsList'
 
 function App() {
 
-  const { gameProfile, setGameProfile, savedGameProfiles, setSavedGameProfiles } = useFormData()
+  const { addGameProfile, savedGameProfiles } = useFormData()
  
   return (
     <AppWrapper>
-      <SaveGameForm gameProfile={gameProfile} setGameProfile={setGameProfile} savedGameProfiles={savedGameProfiles} setSavedGameProfiles={setSavedGameProfiles} />
+      <SaveGameForm onSubmit={addGameProfile} />
       <GameCardsList savedGameProfiles={savedGameProfiles} />
     </AppWrapper>
   );

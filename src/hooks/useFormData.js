@@ -1,21 +1,19 @@
 import {useState} from 'react'
+import { v4 as uuid } from 'uuid'
 
 export default function useFormData() {
     
-    const [gameProfile, setGameProfile] = useState({
-        location: '',
-        date: '',
-        players: '',
-        winner: '',
-        shots:'',
-    })
-
     const [savedGameProfiles, setSavedGameProfiles] = useState([])
-
-    return{
-        gameProfile,
-        setGameProfile,
-        savedGameProfiles,
-        setSavedGameProfiles
+    
+    return {
+        addGameProfile, 
+        savedGameProfiles
     }
+
+    function addGameProfile(gameProfile) {
+        setSavedGameProfiles([
+            {...gameProfile, _id: uuid()},
+            ...savedGameProfiles
+        ])
+    }     
 }
