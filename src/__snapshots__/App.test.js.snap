@@ -49,14 +49,14 @@ exports[`App renders components 1`] = `
   font-family: 'Montserrat',sans-serif;
 }
 
-.c0 {
-  display: grid;
-  grid-gap: 20px;
-}
-
 .c4 {
   display: grid;
   gap: 10px;
+}
+
+.c0 {
+  display: grid;
+  grid-gap: 20px;
 }
 
 <div
