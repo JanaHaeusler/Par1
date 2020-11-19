@@ -1,3 +1,29 @@
 ```js
-<SaveGameForm gameProfile={gameProfile} setGameProfile={setGameProfile} savedGameProfiles={savedGameProfiles} setSavedGameProfiles={setSavedGameProfiles} />)
+<SaveGameForm
+  gameProfile={{
+    location: '',
+    date: '',
+    players: '',
+    winner: '',
+    shots: '',
+  }}
+  setGameProfile={() => {}}
+  savedGameProfiles={[
+    {
+      location: '',
+      date: '',
+      players: '',
+      winner: '',
+      shots: '',
+    },
+    {
+      location: '',
+      date: '',
+      players: '',
+      winner: '',
+      shots: '',
+    },
+  ]}
+  setSavedGameProfiles={() => {}}
+/>
 ```
