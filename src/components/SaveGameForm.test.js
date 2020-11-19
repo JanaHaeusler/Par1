@@ -1,82 +1,35 @@
 import { render } from '@testing-library/react'
+import user from '@testing-library/user-event'
 import SaveGameForm from './SaveGameForm'
 
-
 describe('SaveGameForm', () => {
-  
-  const setGameProfile = jest.fn() 
-  const setSavedGameProfiles = jest.fn()
-  const gameProfile = {
-      location: '',
-      date: '',
-      players: '',
-      winner: '',
-      shots:'',
-    }
-  const savedGameProfiles = [
-      {
-        location: '',
-        date: '',
-        players: '',
-        winner: '',
-        shots:'',
-      },
-      {
-        location: '',
-        date: '',
-        players: '',
-        winner: '',
-        shots:'',
-      },
-    ]
+  const onSubmitMock = jest.fn()
 
-  it('renders labels', () => {
-      
-      const { getByLabelText } = render(<SaveGameForm gameProfile={gameProfile} setGameProfile={setGameProfile} savedGameProfiles={savedGameProfiles} setSavedGameProfiles={setSavedGameProfiles} />)
-  
-      expect(getByLabelText(/location/i)).toBeInTheDocument()
-      expect(getByLabelText(/date/i)).toBeInTheDocument()
-      expect(getByLabelText(/player\(s\)/i)).toBeInTheDocument()
-      expect(getByLabelText('Winner(s)')).toBeInTheDocument()
-      expect(getByLabelText('Total Shots Winner(s)')).toBeInTheDocument()
-  })
+  it('calls onSubmit with correct data and resets', () => {
+    const { getByLabelText, getByRole } = render(
+      <SaveGameForm onSubmit={onSubmitMock} />
+    )
 
+    user.type(getByLabelText('Location'), 'foo')
+    user.type(getByLabelText('Date'), '2020-11-21')
+    user.type(getByLabelText('Player(s)'), 'John, Jane')
+    user.type(getByLabelText('Winner(s)'), 'Jane')
+    user.type(getByLabelText('Total Shots Winner(s)'), '42')
 
-  it('renders placeholders', () => {
-    
-    const { getByPlaceholderText } = render(<SaveGameForm gameProfile={gameProfile} setGameProfile={setGameProfile} savedGameProfiles={savedGameProfiles} setSavedGameProfiles={setSavedGameProfiles} />)
-  
+    user.click(getByRole('button'))
 
-    expect(getByPlaceholderText(/type location/i)).toBeInTheDocument()
-    expect(getByPlaceholderText(/john, jane/i)).toBeInTheDocument()
-    expect(getByPlaceholderText('Jane')).toBeInTheDocument()
-    expect(getByPlaceholderText(/38/i)).toBeInTheDocument()
-  })
+    expect(onSubmitMock).toHaveBeenCalledWith({
+      location: 'foo',
+      date: '2020-11-21',
+      players: 'John, Jane',
+      winner: 'Jane',
+      shots: '42',
+    })
 
-  it('renders button', () => {
-    
-    const { getByRole } = render(<SaveGameForm gameProfile={gameProfile} setGameProfile={setGameProfile} savedGameProfiles={savedGameProfiles} setSavedGameProfiles={setSavedGameProfiles} />)
-  
-    const button = getByRole('button')
-    expect(button).toBeInTheDocument() 
-   
-  })
-
-  it('resets form', () => {
-
-    const { getByLabelText } = render(<SaveGameForm gameProfile={gameProfile} setGameProfile={setGameProfile} savedGameProfiles={savedGameProfiles} setSavedGameProfiles={setSavedGameProfiles} />)
-    
-    const locationInput = getByLabelText(/location/i)
-    const dateInput =  getByLabelText(/date/i)
-    const playersInput =  getByLabelText (/player\(s\)/i)
-    const winnerInput =  getByLabelText('Winner(s)')
-    const shotsInput =  getByLabelText('Total Shots Winner(s)')
-
-    expect(locationInput).toHaveValue('') 
-    expect(dateInput).toHaveValue('') 
-    expect(playersInput).toHaveValue('') 
-    expect(winnerInput).toHaveValue('') 
-    expect(shotsInput).toHaveValue('') 
-
+    expect(getByLabelText('Location')).toHaveValue('')
+    expect(getByLabelText('Date')).toHaveValue('')
+    expect(getByLabelText('Player(s)')).toHaveValue('')
+    expect(getByLabelText('Winner(s)')).toHaveValue('')
+    expect(getByLabelText('Total Shots Winner(s)')).toHaveValue('')
   })
 })
