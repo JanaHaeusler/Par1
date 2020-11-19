@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+import user from '@testing-library/user-event'
 import SaveGameForm from './SaveGameForm'
 
 
@@ -64,13 +65,16 @@ describe('SaveGameForm', () => {
 
   it('resets form', () => {
 
-    const { getByLabelText } = render(<SaveGameForm gameProfile={gameProfile} setGameProfile={setGameProfile} savedGameProfiles={savedGameProfiles} setSavedGameProfiles={setSavedGameProfiles} />)
+    const { getByLabelText, getByRole } = render(<SaveGameForm gameProfile={gameProfile} setGameProfile={setGameProfile} savedGameProfiles={savedGameProfiles} setSavedGameProfiles={setSavedGameProfiles} />)
     
     const locationInput = getByLabelText(/location/i)
     const dateInput =  getByLabelText(/date/i)
     const playersInput =  getByLabelText (/player\(s\)/i)
     const winnerInput =  getByLabelText('Winner(s)')
     const shotsInput =  getByLabelText('Total Shots Winner(s)')
+    const button = getByRole('button')   
+
+    user.click(button)  
 
     expect(locationInput).toHaveValue('') 
     expect(dateInput).toHaveValue('') 
