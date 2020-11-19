@@ -7,7 +7,7 @@ describe('SaveGameForm', () => {
   
   const onSubmitMock = jest.fn() 
 
-  it('calls saveFormInput with correct data', () => {
+  it('calls onSubmit with correct data', () => {
       
       const { getByLabelText, getByRole } = render(<SaveGameForm onSubmit={onSubmitMock} />)
 
