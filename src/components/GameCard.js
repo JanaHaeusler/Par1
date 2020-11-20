@@ -7,7 +7,7 @@ GameCard.propTypes = {
     players: PropTypes.string.isRequired,
     winner: PropTypes.string.isRequired,
     shots: PropTypes.string.isRequired,
-  }
+}
 
 export default function GameCard({location, date, players, winner, shots}) {
  return(
@@ -40,7 +40,6 @@ const Card = styled.section`
     background-color: var(--primary);
     font-size: 0.9rem;
     text-align: center;
-    
 `
 const Location = styled.div`
     grid-column: 1 / 3;
@@ -53,7 +52,6 @@ const Headline = styled.h4`
     margin: 0;
     place-items: center;
     font-weight: 550;
-   
 `
 const DataPlayers = styled.span`
     grid-column: 1 / 2;

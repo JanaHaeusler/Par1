@@ -22,7 +22,6 @@ describe('GameCardsList', () => {
         },
       ]
   
-  
     it('renders correctly', () => {
         const { container, getByText } = render(<GameCardsList savedGameProfiles={savedGameProfiles}/>)
         
@@ -39,7 +38,5 @@ describe('GameCardsList', () => {
         expect(getByText('Fritz, Hanni, Nanni')).toBeInTheDocument()
         expect(getByText('Fritz')).toBeInTheDocument()
         expect(getByText('35')).toBeInTheDocument()
-
     })
-
 })

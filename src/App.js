@@ -3,7 +3,6 @@ import useFormData from './hooks/useFormData'
 import SaveGameForm from './components/SaveGameForm'
 import GameCardsList from './components/GameCardsList'
 
-
 function App() {
 
   const { addGameProfile, savedGameProfiles } = useFormData()
