@@ -10,6 +10,7 @@ describe('GameCardsList', () => {
           players: 'John, Jane',
           winner: 'Jane',
           shots: '89',
+          _id: '1',
         },
         {
           location: 'City Park',
@@ -17,6 +18,7 @@ describe('GameCardsList', () => {
           players: 'Fritz, Hanni, Nanni',
           winner: 'Fritz',
           shots: '35',
+          _id: '2',
         },
       ]
   
