@@ -80,6 +80,7 @@ export default function SaveGameForm({onSubmit}) {
                 />
             </InputWrapper>
             <Button>&#10003; Save</Button>
+            <span>*Please do not clear your browsers cache, in order to permanently save your game details</span>
         </FormWrapper>
     )
 
@@ -118,6 +119,12 @@ const FormWrapper = styled.form`
     Button {
         margin-top: 15px;
         margin-bottom: 5px;
+    }
+    
+    span {
+        margin-top: 5px;
+        font-size: 0.7rem;
+        color: var(--text-dark);
     }
 `
 const InputWrapper = styled.fieldset`
