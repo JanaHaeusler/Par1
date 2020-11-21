@@ -29,5 +29,4 @@ describe('GameCard', () => {
     expect(getByText('Jane')).toBeInTheDocument()
     expect(getByText('56')).toBeInTheDocument()
   })
-
 })

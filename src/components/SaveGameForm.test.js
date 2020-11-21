@@ -2,7 +2,6 @@ import { render } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import SaveGameForm from './SaveGameForm'
 
-
 describe('SaveGameForm', () => {
   
   const onSubmitMock = jest.fn() 
@@ -32,6 +31,5 @@ describe('SaveGameForm', () => {
       expect(getByLabelText('Player(s)')).toHaveValue('')
       expect(getByLabelText('Winner(s)')).toHaveValue('')
       expect(getByLabelText('Total Shots Winner(s)')).toHaveValue('')
-
   })
 })

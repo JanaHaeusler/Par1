@@ -2,6 +2,8 @@ import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import {useState} from 'react'
 import {useForm} from 'react-hook-form'
+import saveLocally from '../lib/saveLocally'
+import loadlocally from '../lib/loadLocally'
 import Button from './Button'
 
 SaveGameForm.propTypes = {
@@ -15,13 +17,15 @@ export default function SaveGameForm({onSave}) {
         shouldFocusError: true,
       })
       
-    const [formInput, setFormInput] = useState({
+    const [formInput, setFormInput] = useState(loadlocally('formInput') ?? {
         location: '',
         date: '',
         players: '',
         winner: '',
         shots:'',
     })
+
+    saveLocally('formInput', formInput)
 
     return (
         <FormWrapper noValidate onSubmit={handleSubmit(onSubmit)}>
