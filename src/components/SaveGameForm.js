@@ -1,15 +1,20 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import {useState} from 'react'
+import {useForm} from 'react-hook-form'
 import Button from './Button'
 
-
 SaveGameForm.propTypes = {
-    onSubmit: PropTypes.func.isRequired
-  }
+    onSave: PropTypes.func.isRequired
+}
 
-export default function SaveGameForm({onSubmit}) {
+export default function SaveGameForm({onSave}) {
    
+    const {register, handleSubmit, errors} = useForm({
+        mode: "onChange",
+        shouldFocusError: true,
+      })
+      
     const [formInput, setFormInput] = useState({
         location: '',
         date: '',
@@ -19,7 +24,7 @@ export default function SaveGameForm({onSubmit}) {
     })
 
     return (
-        <FormWrapper onSubmit={handleSubmit}>
+        <FormWrapper noValidate onSubmit={handleSubmit(onSubmit)}>
             <InputWrapper>
                 <label htmlFor="location">
                     Location
@@ -31,7 +36,9 @@ export default function SaveGameForm({onSubmit}) {
                     placeholder="Type location ..."
                     value={formInput.location}
                     onChange={handleChange}
+                    ref={register({required: "Location is required", minLenght: 1})}
                 />
+                {errors.location && <span>{errors.location.message}</span>}
                 <label htmlFor="date">
                     Date
                 </label>
@@ -41,7 +48,9 @@ export default function SaveGameForm({onSubmit}) {
                     id="date"
                     value={formInput.date}
                     onChange={handleChange}
+                    ref={register({required: "Date is required"})}
                 />
+                {errors.date && <span>{errors.date.message}</span>}
                 <label htmlFor="players">
                     Player(s)
                 </label>
@@ -52,7 +61,9 @@ export default function SaveGameForm({onSubmit}) {
                     placeholder="John, Jane"
                     value={formInput.players}
                     onChange={handleChange}
+                    ref={register({required: "At least one player is required", minLenght: 1})}
                 />
+                {errors.players && <span>{errors.players.message}</span>}
                 <label htmlFor="winner">
                     Winner(s)
                 </label>
@@ -63,23 +74,32 @@ export default function SaveGameForm({onSubmit}) {
                     placeholder="Jane"
                     value={formInput.winner}
                     onChange={handleChange}
+                    ref={register({required: "Winner is required", minLenght: 1})}
                 />
+                {errors.winner && <span>{errors.winner.message}</span>}
                 <label htmlFor="shots">
                     Total Shots Winner(s)
                 </label>
                 <input 
-                    type="text"
+                    type="number"
                     name="shots"
                     id="shots"
                     placeholder="38"
                     value={formInput.shots}
                     onChange={handleChange}
+                    ref={register(
+                        {required: "Pleaser insert a number", 
+                        min: {value: 18, message: "Pleaser insert a number greater than 17"}, 
+                        max:{value: 126, message: "Pleaser insert a number lower than 127"}
+                        }
+                    )}
                 />
+                {errors.shots && <span>{errors.shots.message}</span>}
             </InputWrapper>
             <Button>&#10003; Save</Button>
+            <span>*Please do not clear your browsers cache, in order to permanently save your game details</span>
         </FormWrapper>
     )
-
 
     function handleChange(event) {
         setFormInput({
@@ -88,20 +108,16 @@ export default function SaveGameForm({onSubmit}) {
         })
     }
 
-    function handleSubmit(event) {
-        event.preventDefault()
-        onSubmit(formInput)
+    function onSubmit(formData) {
+        onSave(formData)
         setFormInput({
-            location: '',
-            date: '',
-            players: '',
-            winner: '',
-            shots:'',
+                location: '',
+                date: '',
+                players: '',
+                winner: '',
+                shots:'',
         })
-        const form = event.target
-        form.elements.location.focus()
     }
-
 }
 
 const FormWrapper = styled.form`
@@ -117,6 +133,12 @@ const FormWrapper = styled.form`
     Button {
         margin-top: 15px;
         margin-bottom: 5px;
+    }
+
+    span {
+        margin-top: 5px;
+        font-size: 0.7rem;
+        color: var(--text-dark);
     }
 `
 const InputWrapper = styled.fieldset`
@@ -138,6 +160,12 @@ const InputWrapper = styled.fieldset`
         border-radius: 5px;
         color: var(--primary-dark);
         font-family: 'Montserrat', sans-serif;
+    }
+
+    span {
+        margin-top: 5px;
+        font-size: 0.7rem;
+        color: var(--text-dark);
     }
 
 `
