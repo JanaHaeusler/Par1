@@ -1,12 +1,11 @@
 import styled from 'styled-components/macro'
-import useFormData from './hooks/useFormData'
+import useGameData from './hooks/useGameData'
 import SaveGameForm from './components/SaveGameForm'
 import GameCardsList from './components/GameCardsList'
 
-
 function App() {
 
-  const { addGameProfile, savedGameProfiles } = useFormData()
+  const { addGameProfile, savedGameProfiles } = useGameData()
  
   return (
     <AppWrapper>

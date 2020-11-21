@@ -1,8 +1,9 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import {useState} from 'react'
+import saveLocally from '../lib/saveLocally'
+import loadlocally from '../lib/loadLocally'
 import Button from './Button'
-
 
 SaveGameForm.propTypes = {
     onSubmit: PropTypes.func.isRequired
@@ -10,13 +11,15 @@ SaveGameForm.propTypes = {
 
 export default function SaveGameForm({onSubmit}) {
    
-    const [formInput, setFormInput] = useState({
+    const [formInput, setFormInput] = useState(loadlocally('formInput') ?? {
         location: '',
         date: '',
         players: '',
         winner: '',
         shots:'',
     })
+
+    saveLocally('formInput', formInput)
 
     return (
         <FormWrapper onSubmit={handleSubmit}>
@@ -77,9 +80,9 @@ export default function SaveGameForm({onSubmit}) {
                 />
             </InputWrapper>
             <Button>&#10003; Save</Button>
+            <span>*Please do not clear your browsers cache, in order to permanently save your game details</span>
         </FormWrapper>
     )
-
 
     function handleChange(event) {
         setFormInput({
@@ -101,7 +104,6 @@ export default function SaveGameForm({onSubmit}) {
         const form = event.target
         form.elements.location.focus()
     }
-
 }
 
 const FormWrapper = styled.form`
@@ -117,6 +119,12 @@ const FormWrapper = styled.form`
     Button {
         margin-top: 15px;
         margin-bottom: 5px;
+    }
+    
+    span {
+        margin-top: 5px;
+        font-size: 0.7rem;
+        color: var(--text-dark);
     }
 `
 const InputWrapper = styled.fieldset`
@@ -139,5 +147,4 @@ const InputWrapper = styled.fieldset`
         color: var(--primary-dark);
         font-family: 'Montserrat', sans-serif;
     }
-
 `
