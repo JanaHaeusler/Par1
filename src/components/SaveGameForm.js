@@ -6,10 +6,10 @@ import loadlocally from '../lib/loadLocally'
 import Button from './Button'
 
 SaveGameForm.propTypes = {
-    onSave: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired
 }
 
-export default function SaveGameForm({onSave}) {
+export default function SaveGameForm({onSubmit}) {
    
     const [formInput, setFormInput] = useState(loadlocally('formInput') ?? {
         location: '',
@@ -98,7 +98,7 @@ export default function SaveGameForm({onSave}) {
         const validation = validateForm(formInput)
         if (validation.result) {
             trimInputs(formInput)
-            onSave(formInput)
+            onSubmit(formInput)
             setFormInput({
                 location: '',
                 date: '',

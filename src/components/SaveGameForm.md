@@ -1,3 +1,3 @@
 ```js
-<SaveGameForm onSave={() => {}} />
+<SaveGameForm onSubmit={() => {}} />
 ```

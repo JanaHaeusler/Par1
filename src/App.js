@@ -9,7 +9,7 @@ function App() {
  
   return (
     <AppWrapper>
-      <SaveGameForm onSave={addGameProfile} />
+      <SaveGameForm onSubmit={addGameProfile} />
       <GameCardsList savedGameProfiles={savedGameProfiles} />
     </AppWrapper>
   );
