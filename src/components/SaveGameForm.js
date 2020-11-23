@@ -1,7 +1,6 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import {useState} from 'react'
-import {useForm} from 'react-hook-form'
 import saveLocally from '../lib/saveLocally'
 import loadlocally from '../lib/loadLocally'
 import Button from './Button'
@@ -12,11 +11,6 @@ SaveGameForm.propTypes = {
 
 export default function SaveGameForm({onSave}) {
    
-    const {register, handleSubmit, errors} = useForm({
-        mode: "onChange",
-        shouldFocusError: true,
-      })
-      
     const [formInput, setFormInput] = useState(loadlocally('formInput') ?? {
         location: '',
         date: '',
@@ -24,11 +18,12 @@ export default function SaveGameForm({onSave}) {
         winner: '',
         shots:'',
     })
+    const [errorMessage, setErrorMessage] = useState('')
 
     saveLocally('formInput', formInput)
 
     return (
-        <FormWrapper noValidate onSubmit={handleSubmit(onSubmit)}>
+        <FormWrapper noValidate onSubmit={handleSubmit}>
             <InputWrapper>
                 <label htmlFor="location">
                     Location
@@ -40,9 +35,7 @@ export default function SaveGameForm({onSave}) {
                     placeholder="Type location ..."
                     value={formInput.location}
                     onChange={handleChange}
-                    ref={register({required: "Location is required", minLenght: 1})}
                 />
-                {errors.location && <span>{errors.location.message}</span>}
                 <label htmlFor="date">
                     Date
                 </label>
@@ -52,9 +45,7 @@ export default function SaveGameForm({onSave}) {
                     id="date"
                     value={formInput.date}
                     onChange={handleChange}
-                    ref={register({required: "Date is required"})}
                 />
-                {errors.date && <span>{errors.date.message}</span>}
                 <label htmlFor="players">
                     Player(s)
                 </label>
@@ -65,9 +56,7 @@ export default function SaveGameForm({onSave}) {
                     placeholder="John, Jane"
                     value={formInput.players}
                     onChange={handleChange}
-                    ref={register({required: "At least one player is required", minLenght: 1})}
                 />
-                {errors.players && <span>{errors.players.message}</span>}
                 <label htmlFor="winner">
                     Winner(s)
                 </label>
@@ -78,9 +67,7 @@ export default function SaveGameForm({onSave}) {
                     placeholder="Jane"
                     value={formInput.winner}
                     onChange={handleChange}
-                    ref={register({required: "Winner is required", minLenght: 1})}
                 />
-                {errors.winner && <span>{errors.winner.message}</span>}
                 <label htmlFor="shots">
                     Total Shots Winner(s)
                 </label>
@@ -91,15 +78,9 @@ export default function SaveGameForm({onSave}) {
                     placeholder="38"
                     value={formInput.shots}
                     onChange={handleChange}
-                    ref={register(
-                        {required: "Pleaser insert a number", 
-                        min: {value: 18, message: "Pleaser insert a number greater than 17"}, 
-                        max:{value: 126, message: "Pleaser insert a number lower than 127"}
-                        }
-                    )}
                 />
-                {errors.shots && <span>{errors.shots.message}</span>}
             </InputWrapper>
+            <ErrorMessage>{errorMessage}</ErrorMessage>
             <Button>&#10003; Save</Button>
             <span>*Please do not clear your browsers cache, in order to permanently save your game details</span>
         </FormWrapper>
@@ -108,18 +89,69 @@ export default function SaveGameForm({onSave}) {
     function handleChange(event) {
         setFormInput({
             ...formInput,
-            [event.target.name]: event.target.value,
+            [event.target.name]: event.target.value
         })
     }
 
-    function onSubmit(formData) {
-        onSave(formData)
-        setFormInput({
+    function handleSubmit(event) {
+        event.preventDefault()
+        const validation = validateForm(formInput)
+        if (validation.result) {
+            trimInputs(formInput)
+            onSave(formInput)
+            setFormInput({
                 location: '',
                 date: '',
                 players: '',
                 winner: '',
                 shots:'',
+            })
+            setErrorMessage('')
+        } else {
+           setErrorMessage(validation.message)
+        }
+    }
+
+    function validateForm(formInput) {
+       const filledInputs = validateNotEmpty(formInput)
+       const validNumber = validateShots(formInput)
+
+       if (filledInputs.result) {
+           if (validNumber.result) {
+                return {result: true}
+           } else {
+               return validNumber
+           }
+       } else {
+           return filledInputs
+       }
+    }
+
+    function validateNotEmpty({location, date, players, winner, shots}) {
+       const allInputsFilled = location.trim().length > 0 && date.trim().length > 0 && players.trim().length > 0 && winner.trim().length > 0 && shots.trim() > 0
+       if (allInputsFilled) {
+            return {result: true}
+        } else {
+            return {result: false, message: 'Please fill out all input fields. Just whitespace is not valid.'}
+        }
+    }
+
+    function validateShots({shots}) {
+        const number = shots > 17 && shots < 127
+        if (number) {
+            return {result: true}
+        } else {
+            return {result: false, message: 'Shots must be a number between 18 and 127'}
+        }
+    }
+
+    function trimInputs() {
+        setFormInput({
+            ...formInput,
+            location: formInput.location.trim(),
+            players: formInput.players.trim(),
+            winner: formInput.winner.trim(),
+            shots: formInput.shots.trim(),
         })
     }
 }
@@ -144,6 +176,11 @@ const FormWrapper = styled.form`
         font-size: 0.7rem;
         color: var(--text-dark);
     }
+`
+const ErrorMessage = styled.span`
+    margin-top: 5px;
+    font-size: 0.7rem;
+    color: var(--warning);
 `
 const InputWrapper = styled.fieldset`
     margin: 0;
@@ -171,5 +208,4 @@ const InputWrapper = styled.fieldset`
         font-size: 0.7rem;
         color: var(--text-dark);
     }
-
 `

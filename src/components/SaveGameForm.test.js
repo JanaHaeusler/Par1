@@ -4,11 +4,11 @@ import SaveGameForm from './SaveGameForm'
 
 describe('SaveGameForm', () => {
   
-  const onSubmitMock = jest.fn() 
+  const onSaveMock = jest.fn()
 
   it('calls onSubmit with correct data and resets form', () => {
       
-      const { getByLabelText, getByRole } = render(<SaveGameForm onSubmit={onSubmitMock} />)
+      const { getByLabelText, getByRole } = render(<SaveGameForm onSave={onSaveMock} />)
 
       user.type(getByLabelText('Location'), 'Horner Racecourse') 
       user.type(getByLabelText('Date'), '2020-11-21') 
@@ -18,7 +18,9 @@ describe('SaveGameForm', () => {
 
       user.click(getByRole('button'))
 
-      expect(onSubmitMock).toHaveBeenCalledWith({
+      // expect(onSaveMock).toHaveBeenCalled()
+
+      expect(onSaveMock).toHaveBeenCalledWith({
         location:'Horner Racecourse',
         date:'2020-11-21',
         players:'John, Jane',
