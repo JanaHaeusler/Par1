@@ -33,7 +33,7 @@ describe('SaveGameForm', () => {
       expect(getByLabelText('Total Shots Winner(s)')).toHaveValue(null)
   })
 
-  it('checks for filled inputs', () => {
+  it('checks if form does not submit when input fields are empty', () => {
       
     const { getByLabelText, getByRole, getByText } = render(<SaveGameForm onSubmit={onSubmitMock} />)
 
@@ -46,7 +46,7 @@ describe('SaveGameForm', () => {
     user.click(getByRole('button'))
 
     expect(onSubmitMock).not.toHaveBeenCalled()
-    expect(getByText('Please fill out all input fields. Just whitespace is not valid.')).toBeInTheDocument()
+    expect(getByText('Please fill out all input fields.')).toBeInTheDocument()
   })
 
   it('checks that inputs not just consist of whitespace', () => {
@@ -62,7 +62,7 @@ describe('SaveGameForm', () => {
     user.click(getByRole('button'))
 
     expect(onSubmitMock).not.toHaveBeenCalled()
-    expect(getByText('Please fill out all input fields. Just whitespace is not valid.')).toBeInTheDocument()
+    expect(getByText('Please fill out all input fields.')).toBeInTheDocument()
   })
 
   it('checks if shots input is a number greater than 18', () => {
