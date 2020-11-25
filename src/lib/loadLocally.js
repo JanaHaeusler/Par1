@@ -1,5 +1,5 @@
 
-export default function loadLocally(key) {
+export default function LoadLocally(key) {
     const jsonString = localStorage.getItem(key)
     try {
         return JSON.parse(jsonString)

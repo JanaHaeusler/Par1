@@ -1,8 +1,8 @@
     import styled from 'styled-components/macro'
     import PropTypes from 'prop-types'
     import {useState, useEffect} from 'react'
-    import saveLocally from '../lib/saveLocally'
-    import loadlocally from '../lib/loadLocally'
+    import SaveLocally from '../lib/SaveLocally'
+    import Loadlocally from '../lib/LoadLocally'
     import Button from './Button'
     
     SaveGameForm.propTypes = {
@@ -11,7 +11,7 @@
     
     export default function SaveGameForm({onSubmit}) {
        
-        const [formInputs, setFormInput] = useState(loadlocally('formInput') ?? {
+        const [formInputs, setFormInput] = useState(Loadlocally('formInput') ?? {
             location: '',
             date: '',
             players: '',
@@ -31,7 +31,7 @@
 
         useEffect(() => setFormIsValid(validateForm(formInputs)), [formInputs])
             
-        saveLocally('formInput', formInputs)
+        SaveLocally('formInput', formInputs)
     
         return (
             <FormWrapper noValidate onSubmit={handleSubmit}>
@@ -137,17 +137,11 @@
         }
 
         function validateForm(formInputs) {
-            if (
-                validateLocation(formInputs.location) &&
+            return validateLocation(formInputs.location) &&
                 validateDate(formInputs.date) &&
                 validatePlayers(formInputs.Players) &&
                 validateWinner(formInputs.Winner) &&
                 validateShots(formInputs.shots)
-            ) {
-                return true
-            } else {
-                return false
-            }
         }
     
         function validateLocation(location) {
@@ -166,8 +160,7 @@
                 return true
             }
         }
-        // ^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$
-
+        
         function validateDate(date) {
             const regEx = /^\d{4}-\d{2}-\d{2}$/;
             if (date?.trim() === '') {
@@ -183,7 +176,7 @@
                     ...inputErrors,
                     date: error,
                 })
-                return true
+                return false
             } else {
                 setInputErrors({
                     ...inputErrors,
