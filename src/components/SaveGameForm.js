@@ -1,7 +1,6 @@
-
     import styled from 'styled-components/macro'
     import PropTypes from 'prop-types'
-    import {useState} from 'react'
+    import {useState, useEffect} from 'react'
     import saveLocally from '../lib/saveLocally'
     import loadlocally from '../lib/loadLocally'
     import Button from './Button'
@@ -12,12 +11,12 @@
     
     export default function SaveGameForm({onSubmit}) {
        
-        const [formInput, setFormInput] = useState(loadlocally('formInput') ?? {
+        const [formInputs, setFormInput] = useState(loadlocally('formInput') ?? {
             location: '',
             date: '',
             players: '',
             winner: '',
-            shots:'',
+            shots: '',
         })
     
         const [inputErrors, setInputErrors] = useState({
@@ -25,12 +24,14 @@
             date: '',
             players: '',
             winner: '',
-            shots:'',
+            shots: '',
         })
-    
-        const [errorMessage, setErrorMessage] = useState('')
-    
-        saveLocally('formInput', formInput)
+
+        const [formIsValid, setFormIsValid] = useState(false)
+
+        useEffect(() => setFormIsValid(validateForm(formInputs)), [formInputs])
+            
+        saveLocally('formInput', formInputs)
     
         return (
             <FormWrapper noValidate onSubmit={handleSubmit}>
@@ -43,9 +44,9 @@
                         name="location"
                         id="location"
                         placeholder="Type location ..."
-                        value={formInput.location}
+                        value={formInputs.location}
                         onChange={handleChange}
-                        onBlur={(event) => validateInputsNotEmpty(event)}
+                        onBlur={() => validateLocation(formInputs.location)}
                     />
                     <span>{inputErrors.location}</span>
                     <label htmlFor="date">
@@ -55,9 +56,9 @@
                         type="date" 
                         name="date"
                         id="date"
-                        value={formInput.date}
+                        value={formInputs.date}
                         onChange={handleChange}
-                        onBlur={(event) => validateInputsNotEmpty(event)}
+                        onBlur={() => validateDate(formInputs.date)}
                     />
                      <span>{inputErrors.date}</span>
                     <label htmlFor="players">
@@ -68,9 +69,9 @@
                         name="players"
                         id="players"
                         placeholder="John, Jane"
-                        value={formInput.players}
+                        value={formInputs.players}
                         onChange={handleChange}
-                        onBlur={(event) => validateInputsNotEmpty(event)}
+                        onBlur={() => validatePlayers(formInputs.players)}
                     />
                      <span>{inputErrors.players}</span>
                     <label htmlFor="winner">
@@ -81,9 +82,9 @@
                         name="winner"
                         id="winner"
                         placeholder="Jane"
-                        value={formInput.winner}
+                        value={formInputs.winner}
                         onChange={handleChange}
-                        onBlur={(event) => validateInputsNotEmpty(event)}
+                        onBlur={() => validateWinner(formInputs.winner)}
                     />
                      <span>{inputErrors.winner}</span>
                     <label htmlFor="shots">
@@ -94,70 +95,139 @@
                         name="shots"
                         id="shots"
                         placeholder="38"
-                        value={formInput.shots}
+                        value={formInputs.shots}
                         onChange={handleChange}
-                        onBlur={(event) => validateIsInNumberRange(event.target.value)}
+                        onBlur={(event) => validateShots(event.target.value)}
                     />
                      <span>{inputErrors.shots}</span>
                 </InputWrapper>
-                <ErrorMessage>{errorMessage}</ErrorMessage>
-                <Button>&#10003; Save</Button>
+                <Button disabled={!formIsValid}>&#10003; Save</Button>
                 <span>*Please do not clear your browsers cache, in order to permanently save your game details</span>
             </FormWrapper>
         )
     
         function handleChange(event) {
             setFormInput({
-                ...formInput,
+                ...formInputs,
                 [event.target.name]: event.target.value
             })
         }
        
         function handleSubmit(event) {
             event.preventDefault()
-            const validation = validateFormOnSubmit(formInput)
-            if (validation.isValid) {
-                trimInputs(formInput)
-                onSubmit(formInput)
-                setFormInput({
-                    location: '',
-                    date: '',
-                    players: '',
-                    winner: '',
-                    shots:'',
-                })
-                setErrorMessage('')
-            } 
-            else {
-                setInputErrors({
-                    location: '',
-                    date: '',
-                    players: '',
-                    winner: '',
-                    shots:'',
-                })
-                setErrorMessage(validation.message)
+            trimInputs(formInputs)
+            onSubmit(formInputs)
+            setFormInput({
+                location: '',
+                date: '',
+                players: '',
+                winner: '',
+                shots:'',
+            })
+        }
+
+        function trimInputs() {
+            setFormInput({
+                ...formInputs,
+                location: formInputs.location.trim(),
+                players: formInputs.players.trim(),
+                winner: formInputs.winner.trim(),
+                shots: formInputs.shots.trim(),
+            })
+        }
+
+        function validateForm(formInputs) {
+            if (
+                validateLocation(formInputs.location) &&
+                validateDate(formInputs.date) &&
+                validatePlayers(formInputs.Players) &&
+                validateWinner(formInputs.Winner) &&
+                validateShots(formInputs.shots)
+            ) {
+                return true
+            } else {
+                return false
             }
         }
     
-        function validateInputsNotEmpty(event) {
-            if (event.target.value.trim() === '') {
-                const error = `Please fill in ${event.target.name}`
+        function validateLocation(location) {
+            if (location?.trim() === '') {
+                const error = `Please fill in location`
                 setInputErrors({
                     ...inputErrors,
-                    [event.target.name]: error,
+                    location: error,
                 })
                 return false
             } else {
                 setInputErrors({
                     ...inputErrors,
-                    [event.target.name]: ''
+                    location: ''
+                })
+                return true
+            }
+        }
+        // ^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$
+
+        function validateDate(date) {
+            const regEx = /^\d{4}-\d{2}-\d{2}$/;
+            if (date?.trim() === '') {
+                const error = `Please choose a date`
+                setInputErrors({
+                    ...inputErrors,
+                    date: error,
+                })
+                return false
+            } else if (!date.match(regEx)) {
+                const error = `Please fill in date in the correct format`
+                setInputErrors({
+                    ...inputErrors,
+                    date: error,
+                })
+                return true
+            } else {
+                setInputErrors({
+                    ...inputErrors,
+                    date: ''
                 })
                 return true
             }
         }
 
-        function validateIsInNumberRange(shotInput) {
+        function validatePlayers(players) {
+            if (players?.trim() === '') {
+                const error = `Please fill in at least one player`
+                setInputErrors({
+                    ...inputErrors,
+                    players: error,
+                })
+                return false
+            } else {
+                setInputErrors({
+                    ...inputErrors,
+                    players: ''
+                })
+                return true
+            }
+        }
+
+        function validateWinner(winner) {
+            if (winner?.trim() === '') {
+                const error = `Please fill in at least one winner`
+                setInputErrors({
+                    ...inputErrors,
+                    winner: error,
+                })
+                return false
+            } else {
+                setInputErrors({
+                    ...inputErrors,
+                    winner: ''
+                })
+                return true
+            }
+        }
+        
+        function validateShots(shotInput) {
             if (shotInput < 18) {
                 const error = `Please fill in a number greater than 17`
                 setInputErrors({
@@ -179,41 +249,6 @@
                 })
                 return true
             }
-        }
-
-        function validateFormOnSubmit(formInput) {
-            const filledInputs = validateInputsOnSubmit(formInput)
-            const validNumber = validateShotsOnSubmit(formInput)
-            const errorMessage = filledInputs.isValid ? (validNumber.isValid ? {isValid: true} : validNumber) : filledInputs
-            return  errorMessage
-        }
-        
-        function validateInputsOnSubmit({location, date, players, winner, shots}) {
-           const allInputsFilled = location.trim().length > 0 && date.trim().length > 0 && players.trim().length > 0 && winner.trim().length > 0 && shots.trim() > 0
-           if (allInputsFilled) {
-                return {isValid: true}
-            } else {
-                return {isValid: false, message: 'Please fill out all input fields.'}
-            }
-        }
-
-        function validateShotsOnSubmit({shots}) {
-            const number = shots > 17 && shots < 127
-            if (number) {
-                return {isValid: true}
-            } else {
-                return {isValid: false, message: 'Shots must be a number between 18 and 127'}
-            }
-        }
-
-        function trimInputs() {
-            setFormInput({
-                ...formInput,
-                location: formInput.location.trim(),
-                players: formInput.players.trim(),
-                winner: formInput.winner.trim(),
-                shots: formInput.shots.trim(),
-            })
         }
     }
     
@@ -238,11 +273,7 @@
             color: var(--text-dark);
         }
     `
-    const ErrorMessage = styled.span`
-        margin-top: 5px;
-        font-size: 0.7rem;
-        color: var(--warning);
-    `
+
     const InputWrapper = styled.fieldset`
         margin: 0;
         padding: 0;

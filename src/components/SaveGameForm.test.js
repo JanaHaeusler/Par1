@@ -4,10 +4,9 @@ import SaveGameForm from './SaveGameForm'
 
 describe('SaveGameForm', () => {
   
-  const onSubmitMock = jest.fn()
 
   it('calls onSubmit with correct data and resets form', () => {
-      
+    const onSubmitMock = jest.fn()
       const { getByLabelText, getByRole } = render(<SaveGameForm onSubmit={onSubmitMock} />)
 
       user.type(getByLabelText('Location'), 'Horner Racecourse') 
@@ -33,61 +32,83 @@ describe('SaveGameForm', () => {
       expect(getByLabelText('Total Shots Winner(s)')).toHaveValue(null)
   })
 
-  it('checks if form does not submit when input fields are empty', () => {
-      
-    const { getByLabelText, getByRole, getByText } = render(<SaveGameForm onSubmit={onSubmitMock} />)
-
-    user.type(getByLabelText('Location'), '') 
+  it('checks if submit button is disabled when input fields are not valid', () => {
+    const onSubmitMock = jest.fn()
+    const { getByLabelText, getByRole} = render(<SaveGameForm onSubmit={onSubmitMock} />)
     user.type(getByLabelText('Date'), '') 
-    user.type(getByLabelText('Player(s)'), '') 
+    user.type(getByLabelText('Location'), '   ') 
+    user.type(getByLabelText('Player(s)'), '  ') 
     user.type(getByLabelText('Winner(s)'), '') 
-    user.type(getByLabelText('Total Shots Winner(s)'), '') 
+    user.type(getByLabelText('Total Shots Winner(s)'), '5') 
+    
+    const button = getByRole('button')
 
-    user.click(getByRole('button'))
+    expect(button).toBeDisabled()
 
-    expect(onSubmitMock).not.toHaveBeenCalled()
-    expect(getByText('Please fill out all input fields.')).toBeInTheDocument()
   })
 
-  it('checks that inputs not just consist of whitespace', () => {
-      
-    const { getByLabelText, getByRole, getByText } = render(<SaveGameForm onSubmit={onSubmitMock} />)
-
-    user.type(getByLabelText('Location'), '                        ') 
-    user.type(getByLabelText('Date'), '                   ') 
-    user.type(getByLabelText('Player(s)'), '     ') 
-    user.type(getByLabelText('Winner(s)'), '        ') 
-    user.type(getByLabelText('Total Shots Winner(s)'), '         ') 
-
-    user.click(getByRole('button'))
-
-    expect(onSubmitMock).not.toHaveBeenCalled()
-    expect(getByText('Please fill out all input fields.')).toBeInTheDocument()
+  it('checks if date input has the correct format', () => {
+    const onSubmitMock = jest.fn()
+    const { container, getByLabelText, getByRole, debug} = render(<SaveGameForm onSubmit={onSubmitMock} />)
+    
+    user.type(getByLabelText('Location'), 'Horner Racecourse') 
+     
+    user.type(getByLabelText('Player(s)'), 'John, Jane') 
+    user.type(getByLabelText('Winner(s)'), 'Jane') 
+    user.type(getByLabelText('Date'), '2020-11-21')
+    user.type(getByLabelText('Total Shots Winner(s)'), '78') 
+    const button = getByRole('button')
+   debug(container.firstChild)
+    expect(button).toBeDisabled()
   })
 
   it('checks if shots input is a number greater than 18', () => {
-      
-    const { getByLabelText, getByRole, getByText } = render(<SaveGameForm onSubmit={onSubmitMock} />)
+    const onSubmitMock = jest.fn()
+    const { getByLabelText, getByRole} = render(<SaveGameForm onSubmit={onSubmitMock} />)
+    
     user.type(getByLabelText('Location'), 'Horner Racecourse') 
     user.type(getByLabelText('Date'), '2020-11-21') 
     user.type(getByLabelText('Player(s)'), 'John, Jane') 
     user.type(getByLabelText('Winner(s)'), 'Jane') 
     user.type(getByLabelText('Total Shots Winner(s)'), '4') 
-    user.click(getByRole('button'))
-    expect(onSubmitMock).not.toHaveBeenCalled()
-    expect(getByText('Shots must be a number between 18 and 127')).toBeInTheDocument()
+    
+    const button = getByRole('button')
+
+    expect(button).toHaveAttribute('disabled')
   })
 
   it('checks if shots input is a number less than 127', () => {
-      
-    const { getByLabelText, getByRole, getByText } = render(<SaveGameForm onSubmit={onSubmitMock} />)
+    const onSubmitMock = jest.fn()
+    const { getByLabelText, getByRole} = render(<SaveGameForm onSubmit={onSubmitMock} />)
+    
     user.type(getByLabelText('Location'), 'Horner Racecourse') 
     user.type(getByLabelText('Date'), '2020-11-21') 
     user.type(getByLabelText('Player(s)'), 'John, Jane') 
     user.type(getByLabelText('Winner(s)'), 'Jane') 
     user.type(getByLabelText('Total Shots Winner(s)'), '130') 
     user.click(getByRole('button'))
+    
+    const button = getByRole('button')
+
+    expect(button).toHaveAttribute('disabled')
+  })
+
+  it('checks if onSubmit is called by cklicking on disabled submit button', () => {
+    const onSubmitMock = jest.fn()
+    const { getByLabelText, getByRole} = render(<SaveGameForm onSubmit={onSubmitMock} />)
+
+    user.type(getByLabelText('Location'), '   ') 
+    user.type(getByLabelText('Date'), '') 
+    user.type(getByLabelText('Player(s)'), '') 
+    user.type(getByLabelText('Winner(s)'), '   ') 
+    user.type(getByLabelText('Total Shots Winner(s)'), '') 
+
+    const button = getByRole('button')
+
+    expect(button).toHaveAttribute('disabled')
+
+    user.click(getByRole('button'))
+
     expect(onSubmitMock).not.toHaveBeenCalled()
-    expect(getByText('Shots must be a number between 18 and 127')).toBeInTheDocument()
   })
 })

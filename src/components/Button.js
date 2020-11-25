@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 
 Button.propTypes = {
     children: PropTypes.string.isRequired,
+    disabled: PropTypes.bool.isRequired,
   }
 
-export default function Button({children}) {
+export default function Button({children, disabled}) {
     return (
-        <ButtonStyled>{children}</ButtonStyled>
+        <ButtonStyled disabled={disabled}>{children}</ButtonStyled>
     )
 }
 
@@ -19,4 +20,8 @@ const ButtonStyled = styled.button`
     background-color: var(--secondary-dark);
     color: var(--text-light);
     font-size: 1rem;
+
+    &:disabled {
+        opacity: 50%;
+    }
 `

@@ -25,6 +25,5 @@ export default createGlobalStyle`
         --secondary-light: #51A1D1;
         --secondary-medium: #0173A0;
         --secondary-dark: #004871;
-        --warning: #E41919;
     }
 `
