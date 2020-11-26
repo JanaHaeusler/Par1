@@ -3,7 +3,7 @@
     import {useState, useEffect} from 'react'
     import saveLocally from '../lib/saveLocally'
     import loadLocally from '../lib/loadLocally'
-    import Button from './Button'
+    import ButtonPrimary from './ButtonPrimary'
     
     SaveGameForm.propTypes = {
         onSubmit: PropTypes.func.isRequired
@@ -101,7 +101,7 @@
                     />
                      <span>{inputErrors.shots}</span>
                 </InputWrapper>
-                <Button disabled={!formIsValid}>&#10003; Save</Button>
+                <ButtonPrimary disabled={!formIsValid}>&#10003; Save</ButtonPrimary>
                 <span>*Please do not clear your browsers cache, in order to permanently save your game details</span>
             </FormWrapper>
         )

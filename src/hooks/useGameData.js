@@ -11,7 +11,8 @@ export default function useGameData() {
 
     return {
         addGameProfile, 
-        savedGameProfiles
+        savedGameProfiles,
+        deleteGameProfile,
     }
 
     function addGameProfile(gameProfile) {
@@ -19,5 +20,10 @@ export default function useGameData() {
             {...gameProfile, _id: uuid()},
             ...savedGameProfiles
         ])
+    }
+
+    function deleteGameProfile(id){
+        const updatedSavedGameProfiles = savedGameProfiles.filter(savedGameProfile => savedGameProfile._id !== id)
+        setSavedGameProfiles(updatedSavedGameProfiles)
     }
 }

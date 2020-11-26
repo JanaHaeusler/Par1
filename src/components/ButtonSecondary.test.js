@@ -1,15 +1,15 @@
 import { render } from '@testing-library/react'
 
-import Button from './Button'
+import ButtonSecondary from './ButtonPrimary'
 
-describe('Button', () => {
+describe('ButtonSecondary', () => {
     it('shows the right text', () => {
-        const { getByText } = render(<Button>Test Text</Button>)
+        const { getByText } = render(<ButtonSecondary>Test Text</ButtonSecondary>)
         expect(getByText('Test Text')).toBeInTheDocument()
     })
 
     it('is disabled', () => {
-        const { getByRole} = render(<Button disabled>Test Text</Button>)
+        const { getByRole} = render(<ButtonSecondary disabled>Test Text</ButtonSecondary>)
         const button = getByRole('button')
         expect(button).toBeDisabled()
     })

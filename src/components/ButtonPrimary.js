@@ -14,11 +14,12 @@ const ButtonStyled = styled.button`
         opacity: 50%;
     }
 `
-const Button = (props) => <ButtonStyled {...props} />
+const ButtonPrimary = (props) => <ButtonStyled {...props} />
 
-Button.propTypes = {
+ButtonPrimary.propTypes = {
     children: PropTypes.string.isRequired,
     disabled: PropTypes.bool,
+    onClick: PropTypes.func,
 }
 
-export default Button
+export default ButtonPrimary
