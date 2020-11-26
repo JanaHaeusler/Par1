@@ -1,13 +1,13 @@
 import {useState} from 'react'
 import { v4 as uuid } from 'uuid'
-import SaveLocally from '../lib/SaveLocally'
-import Loadlocally from '../lib/LoadLocally'
+import saveLocally from '../lib/saveLocally'
+import loadLocally from '../lib/loadLocally'
 
 export default function useGameData() {
 
-    const [savedGameProfiles, setSavedGameProfiles] = useState(Loadlocally('gameProfiles') ?? [])
+    const [savedGameProfiles, setSavedGameProfiles] = useState(loadLocally('gameProfiles') ?? [])
     
-    SaveLocally('gameProfiles', savedGameProfiles)
+    saveLocally('gameProfiles', savedGameProfiles)
 
     return {
         addGameProfile, 

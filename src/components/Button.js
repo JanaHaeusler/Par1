@@ -1,17 +1,6 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 
-Button.propTypes = {
-    children: PropTypes.string.isRequired,
-    disabled: PropTypes.bool.isRequired,
-  }
-
-export default function Button({children, disabled}) {
-    return (
-        <ButtonStyled disabled={disabled}>{children}</ButtonStyled>
-    )
-}
-
 const ButtonStyled = styled.button`
     padding: 7px;
     border-style: none;
@@ -25,3 +14,11 @@ const ButtonStyled = styled.button`
         opacity: 50%;
     }
 `
+const Button = (props) => <ButtonStyled {...props} />
+
+Button.propTypes = {
+    children: PropTypes.string.isRequired,
+    disabled: PropTypes.bool,
+}
+
+export default Button

@@ -1,8 +1,8 @@
     import styled from 'styled-components/macro'
     import PropTypes from 'prop-types'
     import {useState, useEffect} from 'react'
-    import SaveLocally from '../lib/SaveLocally'
-    import Loadlocally from '../lib/LoadLocally'
+    import saveLocally from '../lib/saveLocally'
+    import loadLocally from '../lib/loadLocally'
     import Button from './Button'
     
     SaveGameForm.propTypes = {
@@ -11,7 +11,7 @@
     
     export default function SaveGameForm({onSubmit}) {
        
-        const [formInputs, setFormInput] = useState(Loadlocally('formInput') ?? {
+        const [formInputs, setFormInput] = useState(loadLocally('formInput') ?? {
             location: '',
             date: '',
             players: '',
@@ -31,7 +31,7 @@
 
         useEffect(() => setFormIsValid(validateForm(formInputs)), [formInputs])
             
-        SaveLocally('formInput', formInputs)
+        saveLocally('formInput', formInputs)
     
         return (
             <FormWrapper noValidate onSubmit={handleSubmit}>
@@ -294,4 +294,3 @@
             color: var(--text-dark);
         }
     `
-    

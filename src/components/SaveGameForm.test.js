@@ -15,17 +15,14 @@ describe('SaveGameForm', () => {
   })
 
   it('calls onSubmit with correct data and resets form', () => {
-    const onSubmitMock = jest.fn()
+      const onSubmitMock = jest.fn()
       const { getByLabelText, getByRole } = render(<SaveGameForm onSubmit={onSubmitMock} />)
-
       user.type(getByLabelText('Location'), 'Horner Racecourse') 
       user.type(getByLabelText('Date'), '2020-11-21') 
       user.type(getByLabelText('Player(s)'), 'John, Jane') 
       user.type(getByLabelText('Winner(s)'), 'Jane') 
       user.type(getByLabelText('Total Shots Winner(s)'), '42') 
-
       user.click(getByRole('button'))
-
       expect(onSubmitMock).toHaveBeenCalledWith({
         location:'Horner Racecourse',
         date:'2020-11-21',
@@ -33,7 +30,6 @@ describe('SaveGameForm', () => {
         winner:'Jane',
         shots:'42',
       })
-
       expect(getByLabelText('Location')).toHaveValue('')
       expect(getByLabelText('Date')).toHaveValue('')
       expect(getByLabelText('Player(s)')).toHaveValue('')
@@ -44,79 +40,86 @@ describe('SaveGameForm', () => {
   it('checks if submit button is disabled when input fields are not valid', () => {
     const onSubmitMock = jest.fn()
     const { getByLabelText, getByRole} = render(<SaveGameForm onSubmit={onSubmitMock} />)
-    
     user.type(getByLabelText('Location'), '    ') 
     user.type(getByLabelText('Date'), '') 
     user.type(getByLabelText('Player(s)'), ' ') 
     user.type(getByLabelText('Winner(s)'), '  ') 
     user.type(getByLabelText('Total Shots Winner(s)'), '5') 
-
     const button = getByRole('button')
-
     expect(button).toBeDisabled()
-
   })
 
   it('checks if date input has the correct format', () => {
     const onSubmitMock = jest.fn()
     const { getByLabelText, getByRole} = render(<SaveGameForm onSubmit={onSubmitMock} />)
-    
     user.type(getByLabelText('Location'), 'Horner Racecourse') 
     user.type(getByLabelText('Date'), '2020.11.21') // WRONG DATE FORMAT, SHOULD BE 2020-11-21
     user.type(getByLabelText('Player(s)'), 'John, Jane') 
     user.type(getByLabelText('Winner(s)'), 'Jane') 
     user.type(getByLabelText('Total Shots Winner(s)'), '78') // not working, because input is type = number
-
     const button = getByRole('button')
     expect(button).toBeDisabled()
   })
 
-  it('checks if shots input is a number greater than 18', () => {
+  it('checks if shots input is invalid for numbers less than 18', () => {
     const onSubmitMock = jest.fn()
     const { getByLabelText, getByRole} = render(<SaveGameForm onSubmit={onSubmitMock} />)
-    
     user.type(getByLabelText('Location'), 'Horner Racecourse') 
     user.type(getByLabelText('Date'), '2020-11-21') 
     user.type(getByLabelText('Player(s)'), 'John, Jane') 
     user.type(getByLabelText('Winner(s)'), 'Jane') 
-    user.type(getByLabelText('Total Shots Winner(s)'), '4') 
-    
+    user.type(getByLabelText('Total Shots Winner(s)'), '17') 
     const button = getByRole('button')
-
     expect(button).toBeDisabled()
   })
 
-  it('checks if shots input is a number less than 127', () => {
+  it('checks if shots input is valid for numbers greater than 17', () => {
     const onSubmitMock = jest.fn()
     const { getByLabelText, getByRole} = render(<SaveGameForm onSubmit={onSubmitMock} />)
-    
     user.type(getByLabelText('Location'), 'Horner Racecourse') 
     user.type(getByLabelText('Date'), '2020-11-21') 
     user.type(getByLabelText('Player(s)'), 'John, Jane') 
     user.type(getByLabelText('Winner(s)'), 'Jane') 
-    user.type(getByLabelText('Total Shots Winner(s)'), '140') 
-    
+    user.type(getByLabelText('Total Shots Winner(s)'), '18') 
     const button = getByRole('button')
+    expect(button).toBeEnabled()
+  })
 
+  it('checks if shots input is invalid for numbers greater than 126', () => {
+    const onSubmitMock = jest.fn()
+    const { getByLabelText, getByRole} = render(<SaveGameForm onSubmit={onSubmitMock} />)
+    user.type(getByLabelText('Location'), 'Horner Racecourse') 
+    user.type(getByLabelText('Date'), '2020-11-21') 
+    user.type(getByLabelText('Player(s)'), 'John, Jane') 
+    user.type(getByLabelText('Winner(s)'), 'Jane') 
+    user.type(getByLabelText('Total Shots Winner(s)'), '127') 
+    const button = getByRole('button')
     expect(button).toBeDisabled()
+  })
+
+  it('checks if shots input is valid for numbers less than 127', () => {
+    const onSubmitMock = jest.fn()
+    const { getByLabelText, getByRole} = render(<SaveGameForm onSubmit={onSubmitMock} />)
+    user.type(getByLabelText('Location'), 'Horner Racecourse') 
+    user.type(getByLabelText('Date'), '2020-11-21') 
+    user.type(getByLabelText('Player(s)'), 'John, Jane') 
+    user.type(getByLabelText('Winner(s)'), 'Jane') 
+    user.type(getByLabelText('Total Shots Winner(s)'), '126') 
+    const button = getByRole('button')
+    expect(button).toBeEnabled()
   })
 
   it('checks if onSubmit is called by clicking on disabled submit button', () => {
     const onSubmitMock = jest.fn()
     const { getByLabelText, getByRole} = render(<SaveGameForm onSubmit={onSubmitMock} />)
-
     user.type(getByLabelText('Location'), '   ') 
     user.type(getByLabelText('Date'), '') 
     user.type(getByLabelText('Player(s)'), '') 
     user.type(getByLabelText('Winner(s)'), '   ') 
     user.type(getByLabelText('Total Shots Winner(s)'), '') 
-
     const button = getByRole('button')
-
     expect(button).toBeDisabled()
-
-    user.click(getByRole('button'))
-
+    user.click(button)
     expect(onSubmitMock).not.toHaveBeenCalled()
   })
 })
