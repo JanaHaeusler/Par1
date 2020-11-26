@@ -4,7 +4,7 @@ import GameCard from './GameCard'
 
 GameCardsList.propTypes = {
     savedGameProfiles: PropTypes.array,
-  }
+}
 
 export default function GameCardsList({savedGameProfiles}) {
 
