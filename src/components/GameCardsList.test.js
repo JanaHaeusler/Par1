@@ -23,7 +23,8 @@ describe('GameCardsList', () => {
       ]
   
     it('renders correctly', () => {
-        const { container, getByText } = render(<GameCardsList savedGameProfiles={savedGameProfiles}/>)
+        const onDeleteMock = jest.fn()
+        const { container, getByText } = render(<GameCardsList savedGameProfiles={savedGameProfiles} onDelete={onDeleteMock}/>)
         
         expect(container.firstChild).toMatchSnapshot()
 
