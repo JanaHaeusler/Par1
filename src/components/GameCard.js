@@ -43,7 +43,7 @@ export default function GameCard({location, date, players, winner, shots, id, on
             {isSetToDelete && (
                 <DeleteField>
                     <span>Do you want to delete this gamecard?</span>
-                    <ButtonDelete onClick={() => onDelete(id)}><BinIcons/>Delete</ButtonDelete>
+                    <ButtonDelete onClick={() => onDelete(id)}><BinIcon/>Delete</ButtonDelete>
                     <ButtonCancel onClick={() => setIsSetToDelete(false)}> &times; Cancel</ButtonCancel>
                 </DeleteField>
             )}
@@ -120,7 +120,4 @@ const ButtonDelete = styled(ButtonSecondary)`
 const ButtonCancel = styled(ButtonPrimary)`
     grid-column: 2;
     grid-row: 2;
-`
-const BinIcons = styled(BinIcon)`
-    margin-right: 10px;
 `

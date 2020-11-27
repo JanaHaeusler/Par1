@@ -9,7 +9,7 @@ describe('GameCard', () => {
     const { container } = render(
         <GameCard 
             location="Horner Racecourse" 
-            date="11/04/2020"
+            date="2020-12-24"
             players="John, Jane"
             winner="Jane"
             shots="56"
@@ -24,7 +24,7 @@ describe('GameCard', () => {
     const { getByText } = render(
         <GameCard 
             location="Horner Racecourse" 
-            date="11/04/2020"
+            date="2020-12-24"
             players="John, Jane"
             winner="Jane"
             shots="56"
@@ -32,7 +32,7 @@ describe('GameCard', () => {
             onDelete={onDeleteMock}
         />)
     expect(getByText('Horner Racecourse')).toBeInTheDocument()
-    expect(getByText('11/04/2020')).toBeInTheDocument()
+    expect(getByText('2020-12-24')).toBeInTheDocument()
     expect(getByText('John, Jane')).toBeInTheDocument()
     expect(getByText('Jane')).toBeInTheDocument()
     expect(getByText('56')).toBeInTheDocument()
@@ -43,7 +43,7 @@ describe('GameCard', () => {
     const { getByText, getByTitle } = render(
         <GameCard 
             location="Horner Racecourse" 
-            date="11/04/2020"
+            date="2020-12-24"
             players="John, Jane"
             winner="Jane"
             shots="56"
@@ -51,7 +51,7 @@ describe('GameCard', () => {
             onDelete={onDeleteMock}
         />)
     expect(getByText('Horner Racecourse')).toBeInTheDocument()
-    expect(getByText('11/04/2020')).toBeInTheDocument()
+    expect(getByText('2020-12-24')).toBeInTheDocument()
     expect(getByText('John, Jane')).toBeInTheDocument()
     expect(getByText('Jane')).toBeInTheDocument()
     expect(getByText('56')).toBeInTheDocument()
@@ -64,7 +64,7 @@ describe('GameCard', () => {
     const { getByText, getByTitle } = render(
         <GameCard 
             location="Horner Racecourse" 
-            date="11/04/2020"
+            date="2020-12-24"
             players="John, Jane"
             winner="Jane"
             shots="56"
@@ -72,7 +72,7 @@ describe('GameCard', () => {
             onDelete={onDeleteMock}
         />)
     expect(getByText('Horner Racecourse')).toBeInTheDocument()
-    expect(getByText('11/04/2020')).toBeInTheDocument()
+    expect(getByText('2020-12-24')).toBeInTheDocument()
     expect(getByText('John, Jane')).toBeInTheDocument()
     expect(getByText('Jane')).toBeInTheDocument()
     expect(getByText('56')).toBeInTheDocument()
@@ -91,7 +91,7 @@ describe('GameCard', () => {
     const { getByText, getByTitle } = render(
         <GameCard 
             location="Horner Racecourse" 
-            date="11/04/2020"
+            date="2020-12-24"
             players="John, Jane"
             winner="Jane"
             shots="56"
@@ -99,7 +99,7 @@ describe('GameCard', () => {
             onDelete={onDeleteMock}
         />)
     expect(getByText('Horner Racecourse')).toBeInTheDocument()
-    expect(getByText('11/04/2020')).toBeInTheDocument()
+    expect(getByText('2020-12-24')).toBeInTheDocument()
     expect(getByText('John, Jane')).toBeInTheDocument()
     expect(getByText('Jane')).toBeInTheDocument()
     expect(getByText('56')).toBeInTheDocument()
@@ -117,7 +117,7 @@ describe('GameCard', () => {
     expect(onDeleteMock).toHaveBeenCalled()
     
     expect(getByText('Horner Racecourse')).not.toBeInTheDocument()
-    expect(getByText('11/04/2020')).not.toBeInTheDocument()
+    expect(getByText('2020-12-24')).not.toBeInTheDocument()
     expect(getByText('John, Jane')).not.toBeInTheDocument()
     expect(getByText('Jane')).not.toBeInTheDocument()
     expect(getByText('56')).not.toBeInTheDocument()
@@ -125,6 +125,5 @@ describe('GameCard', () => {
     expect(getByText('Do you want to delete this gamecard?')).not.toBeInTheDocument()
     expect(getByText('Delete')).not.toBeInTheDocument()
     expect(getByText(' &times; Cancel')).not.toBeInTheDocument()
-    
   })
 })

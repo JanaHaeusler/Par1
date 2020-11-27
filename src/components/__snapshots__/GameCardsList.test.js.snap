@@ -58,6 +58,11 @@ exports[`GameCardsList renders correctly 1`] = `
   align-self: start;
 }
 
+.c9svg {
+  width: 5px;
+  margin-right: 10px;
+}
+
 .c0 {
   display: grid;
   gap: 10px;
