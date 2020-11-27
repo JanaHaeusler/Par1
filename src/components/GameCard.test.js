@@ -40,7 +40,7 @@ describe('GameCard', () => {
 
   it('has delete button', () => {
     const onDeleteMock = jest.fn()
-    const { getByText, getByTitle } = render(
+    const { getByRole} = render(
         <GameCard 
             location="Horner Racecourse" 
             date="2020-12-24"
@@ -50,18 +50,13 @@ describe('GameCard', () => {
             id="1"
             onDelete={onDeleteMock}
         />)
-    expect(getByText('Horner Racecourse')).toBeInTheDocument()
-    expect(getByText('2020-12-24')).toBeInTheDocument()
-    expect(getByText('John, Jane')).toBeInTheDocument()
-    expect(getByText('Jane')).toBeInTheDocument()
-    expect(getByText('56')).toBeInTheDocument()
-    const deleteButton = getByTitle('Bin-icon.svg')
+    const deleteButton = getByRole('button')
     expect(deleteButton).toBeInTheDocument()
   })
 
   it('renders delete field', () => {
     const onDeleteMock = jest.fn()
-    const { getByText, getByTitle } = render(
+    const { getByText, getByRole } = render(
         <GameCard 
             location="Horner Racecourse" 
             date="2020-12-24"
@@ -71,24 +66,16 @@ describe('GameCard', () => {
             id="1"
             onDelete={onDeleteMock}
         />)
-    expect(getByText('Horner Racecourse')).toBeInTheDocument()
-    expect(getByText('2020-12-24')).toBeInTheDocument()
-    expect(getByText('John, Jane')).toBeInTheDocument()
-    expect(getByText('Jane')).toBeInTheDocument()
-    expect(getByText('56')).toBeInTheDocument()
-    
-    const deleteButton = getByTitle('Bin-icon.svg')
-
+    const deleteButton = getByRole('button')
     user.click(deleteButton)
-
     expect(getByText('Do you want to delete this gamecard?')).toBeInTheDocument()
     expect(getByText('Delete')).toBeInTheDocument()
-    expect(getByText(' &times; Cancel')).toBeInTheDocument()
+    expect(getByText('X Cancel')).toBeInTheDocument()
   })
 
-  it('calls onDeleteMock by clicking delete button and removes gamecard', () => {
+  it('calls onDeleteMock by clicking delete button', () => {
     const onDeleteMock = jest.fn()
-    const { getByText, getByTitle } = render(
+    const { getByText, getByRole } = render(
         <GameCard 
             location="Horner Racecourse" 
             date="2020-12-24"
@@ -98,32 +85,33 @@ describe('GameCard', () => {
             id="1"
             onDelete={onDeleteMock}
         />)
+    const deleteButton = getByRole('button')
+    user.click(deleteButton)
+    user.click(getByText('Delete'))
+    expect(onDeleteMock).toHaveBeenCalled()
+  })
+
+  it('shows the gamecard after clicking the delete-cancel button', () => {
+    const onDeleteMock = jest.fn()
+    const { getByText, getByRole } = render(
+        <GameCard 
+            location="Horner Racecourse" 
+            date="2020-12-24"
+            players="John, Jane"
+            winner="Jane"
+            shots="56"
+            id="1"
+            onDelete={onDeleteMock}
+        />)
+    const deleteButton = getByRole('button')
+    user.click(deleteButton)
+    const cancelButton = getByText('X Cancel')
+    user.click(cancelButton)
     expect(getByText('Horner Racecourse')).toBeInTheDocument()
     expect(getByText('2020-12-24')).toBeInTheDocument()
     expect(getByText('John, Jane')).toBeInTheDocument()
     expect(getByText('Jane')).toBeInTheDocument()
     expect(getByText('56')).toBeInTheDocument()
-
-    const deleteButton = getByTitle('Bin-icon.svg')
-    
-    user.click(deleteButton)
-
-    expect(getByText('Do you want to delete this gamecard?')).toBeInTheDocument()
-    expect(getByText('Delete')).toBeInTheDocument()
-    expect(getByText(' &times; Cancel')).toBeInTheDocument()
-
-    user.click(getByText('Delete'))
-
-    expect(onDeleteMock).toHaveBeenCalled()
-    
-    expect(getByText('Horner Racecourse')).not.toBeInTheDocument()
-    expect(getByText('2020-12-24')).not.toBeInTheDocument()
-    expect(getByText('John, Jane')).not.toBeInTheDocument()
-    expect(getByText('Jane')).not.toBeInTheDocument()
-    expect(getByText('56')).not.toBeInTheDocument()
-    expect(deleteButton).not.toBeInTheDocument()
-    expect(getByText('Do you want to delete this gamecard?')).not.toBeInTheDocument()
-    expect(getByText('Delete')).not.toBeInTheDocument()
-    expect(getByText(' &times; Cancel')).not.toBeInTheDocument()
+    expect(getByRole('button')).toBeInTheDocument()
   })
 })

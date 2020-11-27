@@ -3,23 +3,25 @@ import PropTypes from 'prop-types'
 
 const ButtonStyled = styled.button`
     padding: 7px;
+    width: 80px;
+    height: 34px;
     border-style: none;
     border-radius: 5px;
     box-shadow: 3px 3px 10px var(--primary-dark);
-    background-color: var(--text-light);
-    color: var(--secondary-dark);
+    background-color: var(--secondary-dark);
+    color: var(--text-light);
     font-size: 1rem;
 
     &:disabled {
         opacity: 50%;
     }
 `
-const ButtonSecondary = (props) => <ButtonStyled {...props} />
+const ButtonPrimary = (props) => <ButtonStyled {...props} />
 
-ButtonSecondary.propTypes = {
+ButtonPrimary.propTypes = {
     children: PropTypes.string.isRequired,
     disabled: PropTypes.bool,
     onClick: PropTypes.func,
 }
 
-export default ButtonSecondary
+export default ButtonPrimary

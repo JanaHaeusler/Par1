@@ -3,7 +3,7 @@
     import {useState, useEffect} from 'react'
     import saveLocally from '../lib/saveLocally'
     import loadLocally from '../lib/loadLocally'
-    import ButtonPrimary from './ButtonPrimary'
+    import ButtonPrimary from './Buttons/ButtonPrimary'
     
     SaveGameForm.propTypes = {
         onSubmit: PropTypes.func.isRequired

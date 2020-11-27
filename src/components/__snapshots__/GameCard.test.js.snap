@@ -49,18 +49,26 @@ exports[`GameCard renders correctly 1`] = `
 }
 
 .c8 {
-  margin: 5px;
   grid-column: 3;
   grid-row: 1/3;
   justify-self: end;
-  -webkit-align-self: start;
-  -ms-flex-item-align: start;
-  align-self: start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 5px;
+  padding: 0;
+  width: 25px;
+  border: none;
+  background: none;
 }
 
-.c8svg {
-  width: 5px;
-  margin-right: 10px;
+.c9 {
+  margin-right: 3px;
 }
 
 <section
@@ -115,11 +123,15 @@ exports[`GameCard renders correctly 1`] = `
         56
       </span>
     </div>
-    <svg
+    <button
       class="c8"
     >
-      bin-icon.svg
-    </svg>
+      <svg
+        class="c9"
+      >
+        bin-icon.svg
+      </svg>
+    </button>
   </div>
 </section>
 `;

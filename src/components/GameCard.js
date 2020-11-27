@@ -1,9 +1,9 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import {useState} from 'react'
-import {ReactComponent as BinIcon} from '../assets/bin-icon.svg'
-import ButtonPrimary from './ButtonPrimary'
-import ButtonSecondary from './ButtonSecondary'
+import {ReactComponent as Bin} from '../assets/bin-icon.svg'
+import ButtonPrimary from './Buttons/ButtonPrimary'
+import ButtonSecondary from './Buttons/ButtonSecondary'
 
 GameCard.propTypes = {
     location: PropTypes.string.isRequired,
@@ -21,7 +21,7 @@ export default function GameCard({location, date, players, winner, shots, id, on
 
     return(
         <Card>
-            {isSetToDelete === false && (
+            {!isSetToDelete && (
                 <SavedGameContent>
                     <Location>{location}</Location>
                     <Date>{date}</Date>
@@ -37,14 +37,14 @@ export default function GameCard({location, date, players, winner, shots, id, on
                         <Headline>Total Shots</Headline>
                         <span>{shots}</span>
                     </ShotsWrapper>
-                    <ButtonDeleteBin onClick={() => setIsSetToDelete(true)}/>
+                    <ButtonDeleteFirst onClick={() => setIsSetToDelete(true)}><BinIcon/></ButtonDeleteFirst>
                 </SavedGameContent>
             )}
             {isSetToDelete && (
                 <DeleteField>
                     <span>Do you want to delete this gamecard?</span>
-                    <ButtonDelete onClick={() => onDelete(id)}><BinIcon/>Delete</ButtonDelete>
-                    <ButtonCancel onClick={() => setIsSetToDelete(false)}> &times; Cancel</ButtonCancel>
+                    <ButtonDeleteSecond onClick={() => onDelete(id)}><BinIcon/>Delete</ButtonDeleteSecond>
+                    <ButtonCancel onClick={() => setIsSetToDelete(false)}> X Cancel</ButtonCancel>
                 </DeleteField>
             )}
         </Card>
@@ -64,20 +64,6 @@ const SavedGameContent = styled.div`
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
     justify-items: left;
-`
-const DeleteField = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 10px 20px;
-    place-items: center;
-    
-    span{
-        grid-column: 1/3;
-        text-align: center;
-        color: var(--secondary-dark);
-        font-weight: 800; 
-    }
 `
 const Date = styled.div`
     grid-column: 1;
@@ -104,18 +90,41 @@ const Headline = styled.h4`
     margin: 0;
     font-weight: 550;
 `
-const ButtonDeleteBin = styled(BinIcon)`
-    margin: 5px;
+const DeleteField = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px 20px;
+    place-items: center;
+    
+    span{
+        grid-column: 1/3;
+        text-align: center;
+        color: var(--secondary-dark);
+        font-weight: 800; 
+    }
+`
+const ButtonDeleteFirst = styled.button`
     grid-column: 3;
     grid-row: 1/3;
     justify-self: end;
-    align-self: start;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+    padding: 0;
+    width: 25px;
+    border: none;
+    background: none;
 `
-const ButtonDelete = styled(ButtonSecondary)`
+const BinIcon = styled(Bin)`
+    margin-right: 3px;
+`
+const ButtonDeleteSecond = styled(ButtonSecondary)`
     grid-column: 1;
     grid-row: 2;
     display: flex;
     align-items: center;
+    justify-content: center;
 `
 const ButtonCancel = styled(ButtonPrimary)`
     grid-column: 2;

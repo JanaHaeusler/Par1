@@ -109,7 +109,7 @@ describe('SaveGameForm', () => {
     expect(button).toBeEnabled()
   })
 
-  it('checks if onSubmit is called by clicking on disabled submit button', () => {
+  it('checks that onSubmit is not called by clicking on disabled submit button', () => {
     const onSubmitMock = jest.fn()
     const { getByLabelText, getByRole} = render(<SaveGameForm onSubmit={onSubmitMock} />)
     user.type(getByLabelText('Location'), '   ') 
