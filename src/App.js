@@ -5,12 +5,23 @@ import GameCardsList from './components/GameCardsList'
 
 function App() {
 
-  const { addGameProfile, savedGameProfiles, deleteGameProfile } = useGameData()
- 
+
+  const { addGameProfile, savedGameProfiles, deleteGameProfile, prepareEditModus, targetProfile, editGameProfile, isEditFormShown, cancelEditModus } = useGameData()
+  
+
   return (
     <AppWrapper>
-      <SaveGameForm onSubmit={addGameProfile} />
-      <GameCardsList savedGameProfiles={savedGameProfiles} onDelete={deleteGameProfile}/>
+      {isEditFormShown ? 
+      <EditFormWrapper>
+        <SaveGameForm onSubmit={addGameProfile} isEditFormShown={isEditFormShown} targetProfile={targetProfile} editGameProfile={editGameProfile} cancelEditModus={cancelEditModus}/>
+      </EditFormWrapper>
+      : 
+      <MainWrapper>
+        <SaveGameForm onSubmit={addGameProfile} />
+        <GameCardsList savedGameProfiles={savedGameProfiles} onDelete={deleteGameProfile} onEdit={prepareEditModus}/>
+      </MainWrapper>
+      }
+      
     </AppWrapper>
   );
 }
@@ -18,6 +29,15 @@ function App() {
 export default App;
 
 const AppWrapper = styled.div`
+  padding: 10px;
+`
+const MainWrapper = styled.div`
   display: grid;
   grid-gap: 20px;
 `
+const EditFormWrapper = styled.div`
+display: grid;
+justify-items: center;
+`
+
+

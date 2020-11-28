@@ -11,15 +11,29 @@
 
     const STORAGE_KEY = 'formInputs'
     
-    export default function SaveGameForm({onSubmit}) {
+    export default function SaveGameForm({onSubmit, isEditFormShown, targetProfile, editGameProfile, cancelEditModus}) {
+console.log('isEditFormShown', isEditFormShown)
        
-        const [formInputs, setFormInput] = useState(loadLocally(STORAGE_KEY) ?? {
+console.log('targetProfile form', targetProfile)
+        const [formInputs, setFormInputs] = useState(isEditFormShown ? {
+            location: targetProfile.location,
+            date: targetProfile.date,
+            players: targetProfile.players,
+            winner: targetProfile.winner,
+            shots: targetProfile.shots,
+            _id: targetProfile._id
+        } 
+        : 
+        (loadLocally(STORAGE_KEY) ?? {
             location: '',
             date: '',
             players: '',
             winner: '',
             shots: '',
         })
+        )
+
+console.log('formInputs', formInputs)
 
         useEffect(() => saveLocally(STORAGE_KEY, formInputs), [formInputs])
 
@@ -129,22 +143,47 @@
                     {dirtyInputs.shots && !validInputs.shots && <span>Please fill in a number between 18 and 126</span>}
                 </InputWrapper>
                 <ButtonPrimary disabled={!showSaveButton}>&#10003; Save</ButtonPrimary>
+                {isEditFormShown && <ButtonCancel onClick={handleCancel}>Cancel</ButtonCancel>}
+
                 <span>*Please do not clear your browsers cache, in order to permanently save your game details</span>
             </FormWrapper>
         )
     
         function handleChange(event) {
-            setFormInput({
+            setFormInputs({
                 ...formInputs,
                 [event.target.name]: event.target.value
+            })
+        }
+
+        function handleCancel() {
+            cancelEditModus()
+            setFormInputs({
+                location: '',
+                date: '',
+                players: '',
+                winner: '',
+                shots:'',
+            })
+        }
+
+        function onSubmitEditModus(formInputs){
+            editGameProfile(formInputs)
+            cancelEditModus(false)
+            setFormInputs({
+                location: '',
+                date: '',
+                players: '',
+                winner: '',
+                shots:'',
             })
         }
        
         function handleSubmit(event) {
             event.preventDefault()
             trimInputs(formInputs)
-            onSubmit(formInputs)
-            setFormInput({
+            isEditFormShown ? onSubmitEditModus(formInputs) : onSubmit(formInputs)
+            setFormInputs({
                 location: '',
                 date: '',
                 players: '',
@@ -161,7 +200,7 @@
         }
 
         function trimInputs() {
-            setFormInput({
+            setFormInputs({
                 ...formInputs,
                 location: formInputs.location.trim(),
                 players: formInputs.players.trim(),
@@ -205,6 +244,11 @@
             color: var(--text-dark);
         }
     `
+    const ButtonCancel = styled.button`
+        width:75px;
+        height: 35px;
+        margin-top: 10px;
+  `
 
     const InputWrapper = styled.fieldset`
         margin: 0;
