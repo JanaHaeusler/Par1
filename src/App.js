@@ -5,12 +5,12 @@ import GameCardsList from './components/GameCardsList'
 
 function App() {
 
-  const { addGameProfile, savedGameProfiles } = useGameData()
+  const { addGameProfile, savedGameProfiles, deleteGameProfile } = useGameData()
  
   return (
     <AppWrapper>
       <SaveGameForm onSubmit={addGameProfile} />
-      <GameCardsList savedGameProfiles={savedGameProfiles} />
+      <GameCardsList savedGameProfiles={savedGameProfiles} onDelete={deleteGameProfile}/>
     </AppWrapper>
   );
 }

@@ -6,12 +6,12 @@ GameCardsList.propTypes = {
     savedGameProfiles: PropTypes.array,
 }
 
-export default function GameCardsList({savedGameProfiles}) {
+export default function GameCardsList({savedGameProfiles, onDelete}) {
 
     return(
     <GameCardsWrapper>
         {savedGameProfiles.map(({location, date, players, winner, shots, _id}) => 
-          <GameCard key={_id} location={location} date={date} players={players} winner={winner} shots={shots}/>
+          <GameCard key={_id} id={_id} onDelete={onDelete} location={location} date={date} players={players} winner={winner} shots={shots}/>
         )}
     </GameCardsWrapper>
     )

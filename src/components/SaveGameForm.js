@@ -3,23 +3,17 @@
     import {useState, useEffect} from 'react'
     import saveLocally from '../lib/saveLocally'
     import loadLocally from '../lib/loadLocally'
-    import Button from './Button'
+    import ButtonPrimary from './Buttons/ButtonPrimary'
     
     SaveGameForm.propTypes = {
         onSubmit: PropTypes.func.isRequired
     }
+
+    const STORAGE_KEY = 'formInputs'
     
     export default function SaveGameForm({onSubmit}) {
        
-        const [formInputs, setFormInput] = useState(loadLocally('formInput') ?? {
-            location: '',
-            date: '',
-            players: '',
-            winner: '',
-            shots: '',
-        })
-    
-        const [inputErrors, setInputErrors] = useState({
+        const [formInputs, setFormInput] = useState(loadLocally(STORAGE_KEY) ?? {
             location: '',
             date: '',
             players: '',
@@ -27,18 +21,31 @@
             shots: '',
         })
 
-        const [formIsValid, setFormIsValid] = useState(false)
+        useEffect(() => saveLocally(STORAGE_KEY, formInputs), [formInputs])
 
-        useEffect(() => setFormIsValid(validateForm(formInputs)), [formInputs])
-            
-        saveLocally('formInput', formInputs)
+        const validInputs = {
+            location: validateIsNotEmpty(formInputs.location),
+            date: validateIsCorrectDate(formInputs.date),
+            players: validateIsNotEmpty(formInputs.players),
+            winner: validateIsNotEmpty(formInputs.winner),
+            shots: validateShotsIsInRange(formInputs.shots),
+        }
+        
+        const showSaveButton = Object.values(validInputs).every(isValid => isValid)
+
+        const [dirtyInputs, setDirtyInputs] = useState({
+            location: false,
+            date: false,
+            players: false,
+            winner: false,
+            shots: false,
+        })
     
         return (
             <FormWrapper noValidate onSubmit={handleSubmit}>
                 <InputWrapper>
-                    <label htmlFor="location">
+                    <label>
                         Location
-                    </label>
                     <input 
                         type="text" 
                         name="location"
@@ -46,24 +53,32 @@
                         placeholder="Type location ..."
                         value={formInputs.location}
                         onChange={handleChange}
-                        onBlur={() => validateLocation(formInputs.location)}
+                        onBlur={() => setDirtyInputs({
+                            ...dirtyInputs,
+                            location: true
+                        })}
                     />
-                    <span>{inputErrors.location}</span>
-                    <label htmlFor="date">
-                        Date
                     </label>
+                    {dirtyInputs.location && !validInputs.location && <span>Please fill in location</span>}
+                    
+                    <label>
+                        Date
                     <input 
                         type="date" 
                         name="date"
                         id="date"
                         value={formInputs.date}
                         onChange={handleChange}
-                        onBlur={() => validateDate(formInputs.date)}
+                        onBlur={() => setDirtyInputs({
+                            ...dirtyInputs,
+                            date: true
+                        })}
                     />
-                     <span>{inputErrors.date}</span>
-                    <label htmlFor="players">
-                        Player(s)
                     </label>
+                    {dirtyInputs.date && !validInputs.date && <span>Please choose a date</span>}
+
+                    <label>
+                        Player(s)
                     <input 
                         type="text" 
                         name="players"
@@ -71,12 +86,16 @@
                         placeholder="John, Jane"
                         value={formInputs.players}
                         onChange={handleChange}
-                        onBlur={() => validatePlayers(formInputs.players)}
+                        onBlur={() => setDirtyInputs({
+                            ...dirtyInputs,
+                            players: true
+                        })}
                     />
-                     <span>{inputErrors.players}</span>
-                    <label htmlFor="winner">
-                        Winner(s)
                     </label>
+                     {dirtyInputs.players && !validInputs.players && <span>Please fill in at least one player</span>}
+                    
+                    <label>
+                        Winner(s)
                     <input 
                         type="text" 
                         name="winner"
@@ -84,12 +103,16 @@
                         placeholder="Jane"
                         value={formInputs.winner}
                         onChange={handleChange}
-                        onBlur={() => validateWinner(formInputs.winner)}
+                        onBlur={() => setDirtyInputs({
+                            ...dirtyInputs,
+                            winner: true
+                        })}
                     />
-                     <span>{inputErrors.winner}</span>
-                    <label htmlFor="shots">
-                        Total Shots Winner(s)
                     </label>
+                    {dirtyInputs.winner && !validInputs.winner && <span>Please fill in at least one winner</span>}
+                    
+                    <label>
+                        Total Shots Winner(s)
                     <input 
                         type="number"
                         name="shots"
@@ -97,11 +120,15 @@
                         placeholder="38"
                         value={formInputs.shots}
                         onChange={handleChange}
-                        onBlur={(event) => validateShots(event.target.value)}
+                        onBlur={() => setDirtyInputs({
+                            ...dirtyInputs,
+                            shots: true
+                        })}
                     />
-                     <span>{inputErrors.shots}</span>
+                    </label>
+                    {dirtyInputs.shots && !validInputs.shots && <span>Please fill in a number between 18 and 126</span>}
                 </InputWrapper>
-                <Button disabled={!formIsValid}>&#10003; Save</Button>
+                <ButtonPrimary disabled={!showSaveButton}>&#10003; Save</ButtonPrimary>
                 <span>*Please do not clear your browsers cache, in order to permanently save your game details</span>
             </FormWrapper>
         )
@@ -124,6 +151,13 @@
                 winner: '',
                 shots:'',
             })
+            setDirtyInputs({
+                location: false,
+                date: false,
+                players: false,
+                winner: false,
+                shots: false,  
+            })
         }
 
         function trimInputs() {
@@ -136,112 +170,17 @@
             })
         }
 
-        function validateForm(formInputs) {
-            return validateLocation(formInputs.location) &&
-                validateDate(formInputs.date) &&
-                validatePlayers(formInputs.Players) &&
-                validateWinner(formInputs.Winner) &&
-                validateShots(formInputs.shots)
-        }
-    
-        function validateLocation(location) {
-            if (location?.trim() === '') {
-                const error = `Please fill in location`
-                setInputErrors({
-                    ...inputErrors,
-                    location: error,
-                })
-                return false
-            } else {
-                setInputErrors({
-                    ...inputErrors,
-                    location: ''
-                })
-                return true
-            }
+        function validateIsNotEmpty(input) {
+           return  (input?.trim() !== '')
         }
         
-        function validateDate(date) {
+        function validateIsCorrectDate(date) {
             const regEx = /^\d{4}-\d{2}-\d{2}$/;
-            if (date?.trim() === '') {
-                const error = `Please choose a date`
-                setInputErrors({
-                    ...inputErrors,
-                    date: error,
-                })
-                return false
-            } else if (!date.match(regEx)) {
-                const error = `Please fill in date in the correct format`
-                setInputErrors({
-                    ...inputErrors,
-                    date: error,
-                })
-                return false
-            } else {
-                setInputErrors({
-                    ...inputErrors,
-                    date: ''
-                })
-                return true
-            }
-        }
-
-        function validatePlayers(players) {
-            if (players?.trim() === '') {
-                const error = `Please fill in at least one player`
-                setInputErrors({
-                    ...inputErrors,
-                    players: error,
-                })
-                return false
-            } else {
-                setInputErrors({
-                    ...inputErrors,
-                    players: ''
-                })
-                return true
-            }
-        }
-
-        function validateWinner(winner) {
-            if (winner?.trim() === '') {
-                const error = `Please fill in at least one winner`
-                setInputErrors({
-                    ...inputErrors,
-                    winner: error,
-                })
-                return false
-            } else {
-                setInputErrors({
-                    ...inputErrors,
-                    winner: ''
-                })
-                return true
-            }
+            return (date?.trim() !== '' && date.match(regEx))
         }
         
-        function validateShots(shotInput) {
-            if (shotInput < 18) {
-                const error = `Please fill in a number greater than 17`
-                setInputErrors({
-                    ...inputErrors,
-                    shots: error,
-                })
-                return false
-            } else if (shotInput > 126) {
-                const error = `Please fill in a number less than 127`
-                setInputErrors({
-                    ...inputErrors,
-                    shots: error,
-                })
-                return false
-            } else {
-                setInputErrors({
-                    ...inputErrors,
-                    shots: ''
-                })
-                return true
-            }
+        function validateShotsIsInRange(shots) {
+            return validateIsNotEmpty(shots) && shots >= 18 && shots <= 126
         }
     }
     
@@ -281,7 +220,10 @@
         }
     
         input {
+            display: block;
+            margin-top: 3px;
             padding: 5px;
+            width: 100%;
             border-style: none;
             border-radius: 5px;
             color: var(--primary-dark);
