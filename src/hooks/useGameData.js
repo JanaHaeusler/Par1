@@ -10,37 +10,22 @@ export default function useGameData() {
     const [savedGameProfiles, setSavedGameProfiles] = useState(loadLocally(STORAGE_KEY) ?? {
         byId: {},
         allIds: [],
-      })
+    })
     
     saveLocally(STORAGE_KEY, savedGameProfiles)
 
-
-  const [isEditFormShown, setIsEditFormShown] = useState(false)
-
+    const [isEditFormShown, setIsEditFormShown] = useState(false)
     const [targetProfile, setTargetProfile] = useState({})
     
-    console.log('targetProfile', targetProfile)
-    console.log({isEditFormShown})
-    
-    function prepareEditModus(targetId){
-        setIsEditFormShown(true)
-        setTargetProfile(savedGameProfiles.byId[targetId])
-    }
-
-    function cancelEditModus(){
-        setIsEditFormShown(false)
-    }
-
-    
     return {
+        targetProfile, 
+        savedGameProfiles, 
+        isEditFormShown, 
         addGameProfile, 
-        savedGameProfiles,
-        deleteGameProfile,
-        prepareEditModus,
-        editGameProfile,
-        targetProfile,
-        isEditFormShown,
-        cancelEditModus
+        deleteGameProfile, 
+        editGameProfile, 
+        prepareEditModus, 
+        cancelEditModus 
     }
     
     function addGameProfile(gameProfile) {
@@ -62,8 +47,7 @@ export default function useGameData() {
             allIds: savedGameProfiles.allIds.filter(id => id !== targetId),
         })
     }
-
-
+    
     function editGameProfile(gameProfile){
         const targetId = gameProfile._id
         setSavedGameProfiles({
@@ -73,5 +57,14 @@ export default function useGameData() {
             },
             allIds: [...savedGameProfiles.allIds],
         })
+    }
+    
+    function prepareEditModus(targetId){
+        setIsEditFormShown(true)
+        setTargetProfile(savedGameProfiles.byId[targetId])
+    }
+    
+    function cancelEditModus(){
+        setIsEditFormShown(false)
     }
 }

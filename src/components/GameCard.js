@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {useState} from 'react'
 import {ReactComponent as Bin} from '../assets/bin-icon.svg'
 import {ReactComponent as Pen} from '../assets/pencil-icon.svg'
+import {ReactComponent as Cancel} from '../assets/cancel-icon.svg'
 import ButtonPrimary from './Buttons/ButtonPrimary'
 import ButtonSecondary from './Buttons/ButtonSecondary'
 
@@ -14,6 +15,7 @@ GameCard.propTypes = {
     shots: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     onDelete: PropTypes.func.isRequired,
+    onEdit: PropTypes.func.isRequired,
 }
 
 export default function GameCard({location, date, players, winner, shots, id, onDelete, onEdit}) {
@@ -27,28 +29,28 @@ export default function GameCard({location, date, players, winner, shots, id, on
                     <Location>{location}</Location>
                     <Date>{date}</Date>
                     <PlayerWrapper>
-                        <Headline>Player(s)</Headline>
+                        <h4>Player(s)</h4>
                         <span>{players}</span>
                     </PlayerWrapper>
                     <WinnerWrapper>
-                        <Headline>Winner(s)</Headline>
+                        <h4>Winner(s)</h4>
                         <span>{winner}</span>
                     </WinnerWrapper>
                     <ShotsWrapper>
-                        <Headline>Total Shots</Headline>
+                        <h4>Total Shots</h4>
                         <span>{shots}</span>
                     </ShotsWrapper>
                     <ButtonWrapper>
-                        <ButtonDeleteFirst onClick={() => setIsSetToDelete(true)}><BinIcon/></ButtonDeleteFirst>
-                        <ButtonEdit onClick={() => onEdit(id)}><PenIcon/></ButtonEdit>
+                        <ButtonDeleteIcon onClick={() => setIsSetToDelete(true)}><BinIcon/></ButtonDeleteIcon>
+                        <ButtonEditIcon onClick={() => onEdit(id)}><PenIcon/></ButtonEditIcon>
                     </ButtonWrapper>
                 </SavedGameContent>
             )}
             {isSetToDelete && (
                 <DeleteField>
                     <span>Do you want to delete this gamecard?</span>
-                    <ButtonDeleteSecond onClick={() => onDelete(id)}><BinIcon/>Delete</ButtonDeleteSecond>
-                    <ButtonCancel onClick={() => setIsSetToDelete(false)}> X Cancel</ButtonCancel>
+                    <ButtonDelete onClick={() => onDelete(id)}><BinIcon/>Delete</ButtonDelete>
+                    <ButtonCancel onClick={() => setIsSetToDelete(false)}><CancelIcon/>Cancel</ButtonCancel>
                 </DeleteField>
             )}
         </Card>
@@ -89,16 +91,12 @@ const ShotsWrapper = styled.div`
     grid-column-start: 2;
     grid-row-start: 4;
 `
-const Headline = styled.h4`
-    margin: 0;
-    font-weight: 550;
-`
 const ButtonWrapper = styled.div`
     grid-column-start: 3;
     grid-row: 1 / 5;
     justify-self: end;
 `
-const ButtonDeleteFirst = styled.button`
+const ButtonDeleteIcon = styled.button`
     display: flex;
     margin: 5px;
     padding: 0;
@@ -109,7 +107,7 @@ const ButtonDeleteFirst = styled.button`
 const BinIcon = styled(Bin)`
     margin-right: 3px;
 `
-const ButtonEdit = styled.button`
+const ButtonEditIcon = styled.button`
     display: flex;
     margin: 20px 5px 5px 5px;
     padding: 0;
@@ -134,14 +132,20 @@ const DeleteField = styled.div`
         font-weight: 800; 
     }
 `
-const ButtonDeleteSecond = styled(ButtonSecondary)`
+const ButtonDelete = styled(ButtonSecondary)`
     grid-column-start: 1;
     grid-row-start: 2;
     display: flex;
     align-items: center;
-    justify-content: center;
 `
 const ButtonCancel = styled(ButtonPrimary)`
     grid-column-start: 2;
     grid-row-start: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+`
+const CancelIcon = styled(Cancel)`
+    margin-right: 3px;
+    background-color: var(--text-light);
 `

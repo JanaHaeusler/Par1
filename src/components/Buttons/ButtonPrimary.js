@@ -19,7 +19,7 @@ const ButtonStyled = styled.button`
 const ButtonPrimary = (props) => <ButtonStyled {...props} />
 
 ButtonPrimary.propTypes = {
-    children: PropTypes.string.isRequired,
+    children: PropTypes.array.isRequired,
     disabled: PropTypes.bool,
     onClick: PropTypes.func,
 }

@@ -5,23 +5,35 @@ import GameCardsList from './components/GameCardsList'
 
 function App() {
 
-
-  const { addGameProfile, savedGameProfiles, deleteGameProfile, prepareEditModus, targetProfile, editGameProfile, isEditFormShown, cancelEditModus } = useGameData()
+  const { 
+    targetProfile, 
+    savedGameProfiles, 
+    isEditFormShown, 
+    addGameProfile, 
+    deleteGameProfile, 
+    editGameProfile, 
+    prepareEditModus, 
+    cancelEditModus } = useGameData()
   
 
   return (
     <AppWrapper>
       {isEditFormShown ? 
-      <EditFormWrapper>
-        <SaveGameForm onSubmit={addGameProfile} isEditFormShown={isEditFormShown} targetProfile={targetProfile} editGameProfile={editGameProfile} cancelEditModus={cancelEditModus}/>
-      </EditFormWrapper>
+        <SaveGameForm 
+            onSubmit={addGameProfile} 
+            isEditFormShown={isEditFormShown} 
+            targetProfile={targetProfile} 
+            editGameProfile={editGameProfile}
+            cancelEditModus={cancelEditModus}/>
       : 
-      <MainWrapper>
+      <SaveGameFormWrapper>
         <SaveGameForm onSubmit={addGameProfile} />
-        <GameCardsList savedGameProfiles={savedGameProfiles} onDelete={deleteGameProfile} onEdit={prepareEditModus}/>
-      </MainWrapper>
+        <GameCardsList 
+            savedGameProfiles={savedGameProfiles} 
+            onDelete={deleteGameProfile} 
+            onEdit={prepareEditModus}/>
+      </SaveGameFormWrapper>
       }
-      
     </AppWrapper>
   );
 }
@@ -31,13 +43,7 @@ export default App;
 const AppWrapper = styled.div`
   padding: 10px;
 `
-const MainWrapper = styled.div`
+const SaveGameFormWrapper = styled.div`
   display: grid;
   grid-gap: 20px;
 `
-const EditFormWrapper = styled.div`
-display: grid;
-justify-items: center;
-`
-
-
