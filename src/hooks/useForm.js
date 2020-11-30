@@ -100,6 +100,15 @@ export default function useForm({
         event.preventDefault()
         trimInputs(formInputs)
         isEditFormShown ? onSubmitEditModus(formInputs) : onSubmit(formInputs)
+        const emptyInputs = {
+            location: '',
+            date: '',
+            players: '',
+            winner: '',
+            shots: '',
+            _id: '',
+        } 
+        isEditFormShown && saveLocally(STORAGE_KEY, emptyInputs)
         setFormInputs({
             location: '',
             date: '',
@@ -129,24 +138,18 @@ export default function useForm({
     function onSubmitEditModus(formInputs){
         editGameProfile(formInputs)
         cancelEditModus(false)
-        setFormInputs({
-            location: '',
-            date: '',
-            players: '',
-            winner: '',
-            shots:'',
-        })
-        saveLocally(STORAGE_KEY, formInputs)
     }
 
     function handleCancelEditModus() {
-        cancelEditModus(false)
-        setFormInputs({
+        const emptyInputs = {
             location: '',
             date: '',
             players: '',
             winner: '',
-            shots:'',
-        })
+            shots: '',
+            _id: '',
+        } 
+        saveLocally(STORAGE_KEY, emptyInputs)
+        cancelEditModus(false)
     }
 }

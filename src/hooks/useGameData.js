@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import { v4 as uuid } from 'uuid'
 import saveLocally from '../lib/saveLocally'
 import loadLocally from '../lib/loadLocally'
@@ -12,7 +12,7 @@ export default function useGameData() {
         allIds: [],
     })
     
-    saveLocally(STORAGE_KEY, savedGameProfiles)
+    useEffect(() => saveLocally(STORAGE_KEY, savedGameProfiles), [savedGameProfiles])
 
     const [isEditFormShown, setIsEditFormShown] = useState(false)
     const [targetProfile, setTargetProfile] = useState({})

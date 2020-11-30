@@ -8,7 +8,7 @@ import ButtonSecondary from './Buttons/ButtonSecondary'
 
 SaveGameForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
-    isEditFormShown: PropTypes.bool.isRequired,
+    isEditFormShown: PropTypes.bool,
     targetProfile: PropTypes.object,
     editGameProfile: PropTypes.func,
     cancelEditModus: PropTypes.func
