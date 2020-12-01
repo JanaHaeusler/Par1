@@ -42,6 +42,8 @@ export default App;
 
 const AppWrapper = styled.div`
   padding: 10px;
+  margin: 5px auto;
+  max-width: 600px;
 `
 const SaveGameFormWrapper = styled.div`
   display: grid;

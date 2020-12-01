@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {useState} from 'react'
 import {ReactComponent as Bin} from '../assets/bin-icon.svg'
 import {ReactComponent as Pen} from '../assets/pencil-icon.svg'
-import {ReactComponent as Cancel} from '../assets/cancel-icon.svg'
+import {ReactComponent as Cancel} from '../assets/cancel-icon-white.svg'
 import ButtonPrimary from './Buttons/ButtonPrimary'
 import ButtonSecondary from './Buttons/ButtonSecondary'
 
@@ -41,16 +41,16 @@ export default function GameCard({location, date, players, winner, shots, id, on
                         <span>{shots}</span>
                     </ShotsWrapper>
                     <ButtonWrapper>
-                        <ButtonDeleteIcon onClick={() => setIsSetToDelete(true)}><BinIcon/></ButtonDeleteIcon>
-                        <ButtonEditIcon onClick={() => onEdit(id)}><PenIcon/></ButtonEditIcon>
+                        <ButtonDeleteIcon onClick={() => setIsSetToDelete(true)} data-testid="button-delete-icon"><BinIcon/></ButtonDeleteIcon>
+                        <ButtonEditIcon onClick={() => onEdit(id)} data-testid="button-edit-icon"><PenIcon/></ButtonEditIcon>
                     </ButtonWrapper>
                 </SavedGameContent>
             )}
             {isSetToDelete && (
                 <DeleteField>
                     <span>Do you want to delete this gamecard?</span>
-                    <ButtonDelete onClick={() => onDelete(id)}><BinIcon/>Delete</ButtonDelete>
-                    <ButtonCancel onClick={() => setIsSetToDelete(false)}><CancelIcon/>Cancel</ButtonCancel>
+                    <ButtonDelete onClick={() => onDelete(id)} data-testid="button-delete"><BinIcon/>Delete</ButtonDelete>
+                    <ButtonCancel onClick={() => setIsSetToDelete(false)} data-testid="button-cancel"><CancelIcon/>Cancel</ButtonCancel>
                 </DeleteField>
             )}
         </Card>
@@ -135,17 +135,11 @@ const DeleteField = styled.div`
 const ButtonDelete = styled(ButtonSecondary)`
     grid-column-start: 1;
     grid-row-start: 2;
-    display: flex;
-    align-items: center;
 `
 const ButtonCancel = styled(ButtonPrimary)`
     grid-column-start: 2;
     grid-row-start: 2;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
 `
 const CancelIcon = styled(Cancel)`
     margin-right: 3px;
-    background-color: var(--text-light);
 `

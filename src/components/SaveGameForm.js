@@ -1,8 +1,8 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import useForm from '../hooks/useForm'
-import {ReactComponent as Check} from '../assets/check-icon.svg'
-import {ReactComponent as Cancel} from '../assets/cancel-icon.svg'
+import {ReactComponent as Check} from '../assets/check-icon-white.svg'
+import {ReactComponent as Cancel} from '../assets/cancel-icon-blue.svg'
 import ButtonPrimary from './Buttons/ButtonPrimary'
 import ButtonSecondary from './Buttons/ButtonSecondary'
 
@@ -109,8 +109,8 @@ export default function SaveGameForm({
 
             </InputWrapper>
             <ButtonWrapper>
-                <ButtonSave disabled={!showSaveButton}><CheckIcon/>Save</ButtonSave>
-                {isEditFormShown && <ButtonCancel onClick={handleCancelEditModus}><CancelIcon/>Cancel</ButtonCancel>}
+                <ButtonPrimary disabled={!showSaveButton} data-testid="button-save"><CheckIcon/>Save</ButtonPrimary>
+                {isEditFormShown && <ButtonCancel onClick={handleCancelEditModus} data-testid="button-cancel"><CancelIcon/>Cancel</ButtonCancel>}
             </ButtonWrapper>
             <span>*Please do not clear your browsers cache, in order to permanently save your game details</span>
         </FormWrapper>
@@ -171,19 +171,12 @@ const InputWrapper = styled.fieldset`
 const ButtonWrapper = styled.div`
     display: flex;
 `
-const ButtonSave = styled(ButtonPrimary)`
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-`
 const CheckIcon = styled(Check)`
     margin-right: 3px;
     width: 24%;
 `
 const ButtonCancel = styled(ButtonSecondary)`
     margin-left: 20px;
-    display: flex;
-    align-items: center;
 `
 const CancelIcon = styled(Cancel)`
     margin-right: 3px;

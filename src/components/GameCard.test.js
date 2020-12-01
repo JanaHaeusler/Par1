@@ -1,11 +1,12 @@
 import GameCard from './GameCard'
-import { render } from '@testing-library/react'
+import { getByTestId, render } from '@testing-library/react'
 import user from '@testing-library/user-event'
 
 describe('GameCard', () => {
   
   it('renders correctly', () => {
     const onDeleteMock = jest.fn()
+    const onEditMock = jest.fn()
     const { container } = render(
         <GameCard 
             location="Horner Racecourse" 
@@ -15,12 +16,14 @@ describe('GameCard', () => {
             shots="56"
             id="1"
             onDelete={onDeleteMock}
+            onEdit={onEditMock}
         />)
     expect(container.firstChild).toMatchSnapshot()
   })
 
   it('shows all texts', () => {
     const onDeleteMock = jest.fn()
+    const onEditMock = jest.fn()
     const { getByText } = render(
         <GameCard 
             location="Horner Racecourse" 
@@ -29,7 +32,8 @@ describe('GameCard', () => {
             winner="Jane"
             shots="56"
             id="1"
-            onDelete={onDeleteMock}
+            onDelete={onDeleteMock} 
+            onEdit={onEditMock}
         />)
     expect(getByText('Horner Racecourse')).toBeInTheDocument()
     expect(getByText('2020-12-24')).toBeInTheDocument()
@@ -40,7 +44,8 @@ describe('GameCard', () => {
 
   it('has delete button', () => {
     const onDeleteMock = jest.fn()
-    const { getByRole} = render(
+    const onEditMock = jest.fn()
+    const { getByTestId } = render(
         <GameCard 
             location="Horner Racecourse" 
             date="2020-12-24"
@@ -49,14 +54,32 @@ describe('GameCard', () => {
             shots="56"
             id="1"
             onDelete={onDeleteMock}
+            onEdit={onEditMock}
         />)
-    const deleteButton = getByRole('button')
-    expect(deleteButton).toBeInTheDocument()
+    expect(getByTestId('button-delete-icon')).toBeInTheDocument()
+  })
+
+  it('has edit button', () => {
+    const onDeleteMock = jest.fn()
+    const onEditMock = jest.fn()
+    const { getByTestId } = render(
+        <GameCard 
+            location="Horner Racecourse" 
+            date="2020-12-24"
+            players="John, Jane"
+            winner="Jane"
+            shots="56"
+            id="1"
+            onDelete={onDeleteMock}
+            onEdit={onEditMock}
+        />)
+    expect(getByTestId('button-edit-icon')).toBeInTheDocument()
   })
 
   it('renders delete field', () => {
     const onDeleteMock = jest.fn()
-    const { getByText, getByRole } = render(
+    const onEditMock = jest.fn()
+    const { getByText, getByTestId } = render(
         <GameCard 
             location="Horner Racecourse" 
             date="2020-12-24"
@@ -65,17 +88,18 @@ describe('GameCard', () => {
             shots="56"
             id="1"
             onDelete={onDeleteMock}
+            onEdit={onEditMock}
         />)
-    const deleteButton = getByRole('button')
-    user.click(deleteButton)
+    user.click(getByTestId('button-delete-icon'))
     expect(getByText('Do you want to delete this gamecard?')).toBeInTheDocument()
-    expect(getByText('Delete')).toBeInTheDocument()
-    expect(getByText('X Cancel')).toBeInTheDocument()
+    expect(getByTestId('button-delete')).toBeInTheDocument()
+    expect(getByTestId('button-cancel')).toBeInTheDocument()
   })
 
-  it('calls onDeleteMock by clicking delete button', () => {
+  it('calls onDeleteMock by clicking second delete button', () => {
     const onDeleteMock = jest.fn()
-    const { getByText, getByRole } = render(
+    const onEditMock = jest.fn()
+    const { getByTestId } = render(
         <GameCard 
             location="Horner Racecourse" 
             date="2020-12-24"
@@ -84,16 +108,17 @@ describe('GameCard', () => {
             shots="56"
             id="1"
             onDelete={onDeleteMock}
+            onEdit={onEditMock}
         />)
-    const deleteButton = getByRole('button')
-    user.click(deleteButton)
-    user.click(getByText('Delete'))
-    expect(onDeleteMock).toHaveBeenCalled()
+    user.click(getByTestId('button-delete-icon'))
+    user.click(getByTestId('button-delete'))
+    expect(onDeleteMock).toHaveBeenCalledTimes(1)
   })
 
-  it('shows the gamecard after clicking the delete-cancel button', () => {
+  it('shows the gamecard after clicking the cancel button in delete field', () => {
     const onDeleteMock = jest.fn()
-    const { getByText, getByRole } = render(
+    const onEditMock = jest.fn()
+    const { getByText, getByTestId } = render(
         <GameCard 
             location="Horner Racecourse" 
             date="2020-12-24"
@@ -102,16 +127,16 @@ describe('GameCard', () => {
             shots="56"
             id="1"
             onDelete={onDeleteMock}
+            onEdit={onEditMock}
         />)
-    const deleteButton = getByRole('button')
-    user.click(deleteButton)
-    const cancelButton = getByText('X Cancel')
-    user.click(cancelButton)
+    user.click(getByTestId('button-delete-icon'))
+    user.click(getByTestId('button-cancel'))
     expect(getByText('Horner Racecourse')).toBeInTheDocument()
     expect(getByText('2020-12-24')).toBeInTheDocument()
     expect(getByText('John, Jane')).toBeInTheDocument()
     expect(getByText('Jane')).toBeInTheDocument()
     expect(getByText('56')).toBeInTheDocument()
-    expect(getByRole('button')).toBeInTheDocument()
+    expect(getByTestId('button-delete-icon')).toBeInTheDocument()
+    expect(getByTestId('button-edit-icon')).toBeInTheDocument()
   })
 })

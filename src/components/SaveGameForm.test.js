@@ -39,7 +39,7 @@ describe('SaveGameForm', () => {
 
   it('checks if submit button is disabled when input fields are not valid', () => {
     const onSubmitMock = jest.fn()
-    const { getByLabelText, getByRole} = render(<SaveGameForm onSubmit={onSubmitMock} />)
+    const { getByLabelText, getByRole } = render(<SaveGameForm onSubmit={onSubmitMock} />)
     user.type(getByLabelText('Location'), '    ') 
     user.type(getByLabelText('Date'), '') 
     user.type(getByLabelText('Player(s)'), ' ') 
@@ -51,7 +51,7 @@ describe('SaveGameForm', () => {
 
   it('checks if date input has the correct format', () => {
     const onSubmitMock = jest.fn()
-    const { getByLabelText, getByRole} = render(<SaveGameForm onSubmit={onSubmitMock} />)
+    const { getByLabelText, getByRole } = render(<SaveGameForm onSubmit={onSubmitMock} />)
     user.type(getByLabelText('Location'), 'Horner Racecourse') 
     user.type(getByLabelText('Date'), '2020.11.21') // WRONG DATE FORMAT, SHOULD BE 2020-11-21
     user.type(getByLabelText('Player(s)'), 'John, Jane') 
@@ -63,7 +63,7 @@ describe('SaveGameForm', () => {
 
   it('checks if shots input is invalid for numbers less than 18', () => {
     const onSubmitMock = jest.fn()
-    const { getByLabelText, getByRole} = render(<SaveGameForm onSubmit={onSubmitMock} />)
+    const { getByLabelText, getByRole } = render(<SaveGameForm onSubmit={onSubmitMock} />)
     user.type(getByLabelText('Location'), 'Horner Racecourse') 
     user.type(getByLabelText('Date'), '2020-11-21') 
     user.type(getByLabelText('Player(s)'), 'John, Jane') 
@@ -75,7 +75,7 @@ describe('SaveGameForm', () => {
 
   it('checks if shots input is valid for numbers greater than 17', () => {
     const onSubmitMock = jest.fn()
-    const { getByLabelText, getByRole} = render(<SaveGameForm onSubmit={onSubmitMock} />)
+    const { getByLabelText, getByRole } = render(<SaveGameForm onSubmit={onSubmitMock} />)
     user.type(getByLabelText('Location'), 'Horner Racecourse') 
     user.type(getByLabelText('Date'), '2020-11-21') 
     user.type(getByLabelText('Player(s)'), 'John, Jane') 
@@ -87,7 +87,7 @@ describe('SaveGameForm', () => {
 
   it('checks if shots input is invalid for numbers greater than 126', () => {
     const onSubmitMock = jest.fn()
-    const { getByLabelText, getByRole} = render(<SaveGameForm onSubmit={onSubmitMock} />)
+    const { getByLabelText, getByRole } = render(<SaveGameForm onSubmit={onSubmitMock} />)
     user.type(getByLabelText('Location'), 'Horner Racecourse') 
     user.type(getByLabelText('Date'), '2020-11-21') 
     user.type(getByLabelText('Player(s)'), 'John, Jane') 
@@ -99,7 +99,7 @@ describe('SaveGameForm', () => {
 
   it('checks if shots input is valid for numbers less than 127', () => {
     const onSubmitMock = jest.fn()
-    const { getByLabelText, getByRole} = render(<SaveGameForm onSubmit={onSubmitMock} />)
+    const { getByLabelText, getByRole } = render(<SaveGameForm onSubmit={onSubmitMock} />)
     user.type(getByLabelText('Location'), 'Horner Racecourse') 
     user.type(getByLabelText('Date'), '2020-11-21') 
     user.type(getByLabelText('Player(s)'), 'John, Jane') 
@@ -111,7 +111,7 @@ describe('SaveGameForm', () => {
 
   it('checks that onSubmit is not called by clicking on disabled submit button', () => {
     const onSubmitMock = jest.fn()
-    const { getByLabelText, getByRole} = render(<SaveGameForm onSubmit={onSubmitMock} />)
+    const { getByLabelText, getByRole } = render(<SaveGameForm onSubmit={onSubmitMock} />)
     user.type(getByLabelText('Location'), '   ') 
     user.type(getByLabelText('Date'), '') 
     user.type(getByLabelText('Player(s)'), '') 
@@ -121,5 +121,44 @@ describe('SaveGameForm', () => {
     expect(button).toBeDisabled()
     user.click(button)
     expect(onSubmitMock).not.toHaveBeenCalled()
+  })
+  
+  it('checks if inputs are filled with values of the gamecard to be edited', () => {
+    const onSubmitMock = jest.fn()
+    const { getByLabelText } = render(<SaveGameForm 
+      onSubmit={onSubmitMock} 
+      isEditFormShown={true} 
+      targetProfile={{
+        location: 'City Park',
+        date: '2020-01-01',
+        players: 'Fritz, Hanni, Nanni',
+        winner: 'Fritz',
+        shots: '35',
+        _id: '2',
+      }}
+    />)
+    expect(getByLabelText('Location')).toHaveValue('City Park')
+    expect(getByLabelText('Date')).toHaveValue('2020-01-01')
+    expect(getByLabelText('Player(s)')).toHaveValue('Fritz, Hanni, Nanni')
+    expect(getByLabelText('Winner(s)')).toHaveValue('Fritz')
+    expect(getByLabelText('Total Shots Winner(s)')).toHaveValue(35)
+  })
+
+  it('checks if cancel button exists in edit modus', () => {
+    const onSubmitMock = jest.fn()
+    const { getByTestId } = render(<SaveGameForm 
+      onSubmit={onSubmitMock} 
+      isEditFormShown={true} 
+      targetProfile={{
+        location: 'City Park',
+        date: '2020-01-01',
+        players: 'Fritz, Hanni, Nanni',
+        winner: 'Fritz',
+        shots: '35',
+        _id: '2',
+      }}
+    />)
+    const ButtonCancel = getByTestId('button-cancel')
+    expect(ButtonCancel).toBeInTheDocument()
   })
 })

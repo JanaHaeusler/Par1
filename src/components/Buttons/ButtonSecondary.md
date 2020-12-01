@@ -2,10 +2,7 @@ Regular Button
 
 ```jsx
 <ButtonSecondary onClick={() => {}}>
-  <svg
-    src={'./src/assets/check-icon.svg'}
-    style={{ width: '20px', height: '20px', backgroundColor: 'blue' }}
-  />
+  <img src={'./src/assets/check-icon-blue.svg'} style={{ width: '24%' }} />
   Save
 </ButtonSecondary>
 ```
@@ -14,10 +11,7 @@ Disabled Button
 
 ```jsx
 <ButtonSecondary onClick={() => {}} disabled>
-  <svg
-    src={'./src/assets/check-icon.svg'}
-    style={{ width: '20px', height: '20px', backgroundColor: 'blue' }}
-  />
+  <img src={'./src/assets/check-icon-blue.svg'} style={{ width: '24%' }} />
   Save
 </ButtonSecondary>
 ```
