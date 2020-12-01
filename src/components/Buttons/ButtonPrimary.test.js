@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import ButtonPrimary from './ButtonPrimary'
-import {ReactComponent as TestIcon} from '../../assets/pencil-icon.svg'
+import {ReactComponent as TestIcon} from '../../assets/pencil.svg'
 
 
 describe('ButtonPrimary', () => {

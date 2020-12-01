@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import ButtonSecondary from './ButtonSecondary'
-import {ReactComponent as TestIcon} from '../../assets/bin-icon.svg'
+import {ReactComponent as TestIcon} from '../../assets/bin.svg'
 
 describe('ButtonSecondary', () => {
     it('shows the right text', () => {

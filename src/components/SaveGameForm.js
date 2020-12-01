@@ -1,8 +1,7 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import useForm from '../hooks/useForm'
-import {ReactComponent as Check} from '../assets/check-icon-white.svg'
-import {ReactComponent as Cancel} from '../assets/cancel-icon-blue.svg'
+import {Check, Cross} from './Icons'
 import ButtonPrimary from './Buttons/ButtonPrimary'
 import ButtonSecondary from './Buttons/ButtonSecondary'
 
@@ -174,10 +173,12 @@ const ButtonWrapper = styled.div`
 const CheckIcon = styled(Check)`
     margin-right: 3px;
     width: 24%;
+    fill: var(--text-light);
 `
 const ButtonCancel = styled(ButtonSecondary)`
     margin-left: 20px;
 `
-const CancelIcon = styled(Cancel)`
+const CancelIcon = styled(Cross)`
     margin-right: 3px;
+    fill: var(--secondary-dark);
 `

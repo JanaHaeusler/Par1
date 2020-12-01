@@ -1,9 +1,7 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import {useState} from 'react'
-import {ReactComponent as Bin} from '../assets/bin-icon.svg'
-import {ReactComponent as Pen} from '../assets/pencil-icon.svg'
-import {ReactComponent as Cancel} from '../assets/cancel-icon-white.svg'
+import {Bin, Pencil, Cross} from './Icons'
 import ButtonPrimary from './Buttons/ButtonPrimary'
 import ButtonSecondary from './Buttons/ButtonSecondary'
 
@@ -106,6 +104,7 @@ const ButtonDeleteIcon = styled.button`
 `
 const BinIcon = styled(Bin)`
     margin-right: 3px;
+    fill: var(--secondary-dark);
 `
 const ButtonEditIcon = styled.button`
     display: flex;
@@ -115,8 +114,9 @@ const ButtonEditIcon = styled.button`
     border: none;
     background: none;
 `
-const PenIcon = styled(Pen)`
+const PenIcon = styled(Pencil)`
     margin-right: 3px;
+    fill: var(--secondary-dark);
 `
 const DeleteField = styled.div`
     display: grid;
@@ -140,6 +140,7 @@ const ButtonCancel = styled(ButtonPrimary)`
     grid-column-start: 2;
     grid-row-start: 2;
 `
-const CancelIcon = styled(Cancel)`
+const CancelIcon = styled(Cross)`
     margin-right: 3px;
+    fill: var(--text-light);
 `

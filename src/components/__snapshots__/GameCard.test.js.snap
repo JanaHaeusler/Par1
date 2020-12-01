@@ -62,6 +62,7 @@ exports[`GameCard renders correctly 1`] = `
 
 .c9 {
   margin-right: 3px;
+  fill: var(--secondary-dark);
 }
 
 .c10 {
@@ -78,6 +79,7 @@ exports[`GameCard renders correctly 1`] = `
 
 .c11 {
   margin-right: 3px;
+  fill: var(--secondary-dark);
 }
 
 <section
@@ -136,7 +138,7 @@ exports[`GameCard renders correctly 1`] = `
         <svg
           class="c9"
         >
-          bin-icon.svg
+          bin.svg
         </svg>
       </button>
       <button
@@ -146,7 +148,7 @@ exports[`GameCard renders correctly 1`] = `
         <svg
           class="c11"
         >
-          pencil-icon.svg
+          pencil.svg
         </svg>
       </button>
     </div>
