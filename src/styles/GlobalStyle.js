@@ -7,7 +7,7 @@ export default createGlobalStyle`
 
     body {
         margin: 0;
-        padding: 10px;
+        padding: 0;
         height: 100vh;
         width: 100vw;
         background-color: var(--primary-light);
@@ -25,5 +25,10 @@ export default createGlobalStyle`
         --secondary-light: #51A1D1;
         --secondary-medium: #0173A0;
         --secondary-dark: #004871;
+    }
+
+    h4 {
+        margin: 0;
+        font-weight: 550;
     }
 `

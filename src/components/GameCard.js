@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import {useState} from 'react'
-import {ReactComponent as Bin} from '../assets/bin-icon.svg'
+import {Bin, Pencil, Cross} from './Icons'
 import ButtonPrimary from './Buttons/ButtonPrimary'
 import ButtonSecondary from './Buttons/ButtonSecondary'
 
@@ -13,38 +13,42 @@ GameCard.propTypes = {
     shots: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     onDelete: PropTypes.func.isRequired,
+    onEdit: PropTypes.func.isRequired,
 }
 
-export default function GameCard({location, date, players, winner, shots, id, onDelete}) {
+export default function GameCard({location, date, players, winner, shots, id, onDelete, onEdit}) {
  
     const [isSetToDelete, setIsSetToDelete] = useState(false)
 
     return(
         <Card>
-            {!isSetToDelete && (
+            {isSetToDelete || (
                 <SavedGameContent>
                     <Location>{location}</Location>
                     <Date>{date}</Date>
                     <PlayerWrapper>
-                        <Headline>Player(s)</Headline>
+                        <h4>Player(s)</h4>
                         <span>{players}</span>
                     </PlayerWrapper>
                     <WinnerWrapper>
-                        <Headline>Winner(s)</Headline>
+                        <h4>Winner(s)</h4>
                         <span>{winner}</span>
                     </WinnerWrapper>
                     <ShotsWrapper>
-                        <Headline>Total Shots</Headline>
+                        <h4>Total Shots</h4>
                         <span>{shots}</span>
                     </ShotsWrapper>
-                    <ButtonDeleteFirst onClick={() => setIsSetToDelete(true)}><BinIcon/></ButtonDeleteFirst>
+                    <ButtonWrapper>
+                        <ButtonDeleteIcon onClick={() => setIsSetToDelete(true)} data-testid="button-delete-icon"><BinIcon/></ButtonDeleteIcon>
+                        <ButtonEditIcon onClick={() => onEdit(id)} data-testid="button-edit-icon"><PenIcon/></ButtonEditIcon>
+                    </ButtonWrapper>
                 </SavedGameContent>
             )}
             {isSetToDelete && (
                 <DeleteField>
                     <span>Do you want to delete this gamecard?</span>
-                    <ButtonDeleteSecond onClick={() => onDelete(id)}><BinIcon/>Delete</ButtonDeleteSecond>
-                    <ButtonCancel onClick={() => setIsSetToDelete(false)}> X Cancel</ButtonCancel>
+                    <ButtonDelete onClick={() => onDelete(id)} data-testid="button-delete"><BinIcon/>Delete</ButtonDelete>
+                    <ButtonCancel onClick={() => setIsSetToDelete(false)} data-testid="button-cancel"><CancelIcon/>Cancel</ButtonCancel>
                 </DeleteField>
             )}
         </Card>
@@ -63,10 +67,9 @@ const SavedGameContent = styled.div`
     grid-template-rows: repeat(4, auto);
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
-    justify-items: left;
 `
 const Date = styled.div`
-    grid-column: 1;
+    grid-column-start: 1;
     grid-row-start: 1;
 `
 const Location = styled.div`
@@ -75,20 +78,45 @@ const Location = styled.div`
     text-transform: uppercase;
 `
 const PlayerWrapper = styled.div`
-    grid-column: 1/4;
+    grid-column: 1 / 4;
     grid-row-start: 3;
 `
 const WinnerWrapper = styled.div`
-    grid-column: 1;
+    grid-column-start: 1;
     grid-row-start: 4;
 `
 const ShotsWrapper = styled.div`
-    grid-column: 2;
+    grid-column-start: 2;
     grid-row-start: 4;
 `
-const Headline = styled.h4`
-    margin: 0;
-    font-weight: 550;
+const ButtonWrapper = styled.div`
+    grid-column-start: 3;
+    grid-row: 1 / 5;
+    justify-self: end;
+`
+const ButtonDeleteIcon = styled.button`
+    display: flex;
+    margin: 5px;
+    padding: 0;
+    width: 30px;
+    border: none;
+    background: none;
+`
+const BinIcon = styled(Bin)`
+    margin-right: 3px;
+    fill: var(--secondary-dark);
+`
+const ButtonEditIcon = styled.button`
+    display: flex;
+    margin: 20px 5px 5px 5px;
+    padding: 0;
+    width: 30px;
+    border: none;
+    background: none;
+`
+const PenIcon = styled(Pencil)`
+    margin-right: 3px;
+    fill: var(--secondary-dark);
 `
 const DeleteField = styled.div`
     display: grid;
@@ -96,37 +124,23 @@ const DeleteField = styled.div`
     grid-template-rows: 1fr 1fr;
     gap: 10px 20px;
     place-items: center;
-    
+        
     span{
-        grid-column: 1/3;
+        grid-column: 1 / 3;
         text-align: center;
         color: var(--secondary-dark);
         font-weight: 800; 
     }
 `
-const ButtonDeleteFirst = styled.button`
-    grid-column: 3;
-    grid-row: 1/3;
-    justify-self: end;
-    display: flex;
-    justify-content: center;
-    margin: 5px;
-    padding: 0;
-    width: 25px;
-    border: none;
-    background: none;
-`
-const BinIcon = styled(Bin)`
-    margin-right: 3px;
-`
-const ButtonDeleteSecond = styled(ButtonSecondary)`
-    grid-column: 1;
-    grid-row: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+const ButtonDelete = styled(ButtonSecondary)`
+    grid-column-start: 1;
+    grid-row-start: 2;
 `
 const ButtonCancel = styled(ButtonPrimary)`
-    grid-column: 2;
-    grid-row: 2;
+    grid-column-start: 2;
+    grid-row-start: 2;
+`
+const CancelIcon = styled(Cross)`
+    margin-right: 3px;
+    fill: var(--text-light);
 `

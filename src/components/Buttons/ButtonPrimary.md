@@ -1,13 +1,23 @@
 Regular Button
 
-```js
-<ButtonPrimary onClick={() => {}}>&#10003; Save</ButtonPrimary>
+```jsx
+<ButtonPrimary onClick={() => {}}>
+  <img
+    src={'./src/assets/styleguidist/check-icon-white.svg'}
+    style={{ width: '24%' }}
+  />
+  Save
+</ButtonPrimary>
 ```
 
 Disabled Button
 
-```js
-<ButtonPrimary disabled onClick={() => {}}>
-  &#10003; Save
+```jsx
+<ButtonPrimary onClick={() => {}} disabled>
+  <img
+    src={'./src/assets/styleguidist/check-icon-white.svg'}
+    style={{ width: '24%' }}
+  />
+  Save
 </ButtonPrimary>
 ```

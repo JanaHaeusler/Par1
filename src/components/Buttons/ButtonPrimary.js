@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 
 const ButtonStyled = styled.button`
     padding: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     width: 80px;
     height: 34px;
     border-style: none;
@@ -19,7 +22,7 @@ const ButtonStyled = styled.button`
 const ButtonPrimary = (props) => <ButtonStyled {...props} />
 
 ButtonPrimary.propTypes = {
-    children: PropTypes.string.isRequired,
+    children: PropTypes.array.isRequired,
     disabled: PropTypes.bool,
     onClick: PropTypes.func,
 }
