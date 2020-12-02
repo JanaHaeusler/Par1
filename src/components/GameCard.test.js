@@ -1,5 +1,5 @@
 import GameCard from './GameCard'
-import { getByTestId, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import user from '@testing-library/user-event'
 
 describe('GameCard', () => {

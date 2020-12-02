@@ -22,7 +22,7 @@ export default function GameCard({location, date, players, winner, shots, id, on
 
     return(
         <Card>
-            {!isSetToDelete && (
+            {isSetToDelete || (
                 <SavedGameContent>
                     <Location>{location}</Location>
                     <Date>{date}</Date>
