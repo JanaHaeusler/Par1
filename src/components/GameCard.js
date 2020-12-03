@@ -2,8 +2,8 @@ import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import {useState} from 'react'
 import {Bin, Pencil, Cross} from './Icons'
-import ButtonPrimary from './Buttons/ButtonPrimary'
-import ButtonSecondary from './Buttons/ButtonSecondary'
+import ButtonPrimary from './buttons/ButtonPrimary'
+import ButtonSecondary from './buttons/ButtonSecondary'
 
 GameCard.propTypes = {
     location: PropTypes.string.isRequired,

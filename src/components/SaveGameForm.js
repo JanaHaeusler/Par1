@@ -2,8 +2,8 @@ import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import useForm from '../hooks/useForm'
 import {Check, Cross} from './Icons'
-import ButtonPrimary from './Buttons/ButtonPrimary'
-import ButtonSecondary from './Buttons/ButtonSecondary'
+import ButtonPrimary from './buttons/ButtonPrimary'
+import ButtonSecondary from './buttons/ButtonSecondary'
 
 SaveGameForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,

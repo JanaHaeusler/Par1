@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import grasBackground from '../assets/gras-background.jpg'
 
 export default createGlobalStyle`
     * {
@@ -10,7 +11,12 @@ export default createGlobalStyle`
         padding: 0;
         height: 100vh;
         width: 100vw;
-        background-color: var(--primary-light);
+        background: url(${grasBackground}) no-repeat center center fixed;
+        background-color: var(--text-light);
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
         font-family: 'Montserrat', sans-serif;
         font-size: 112.5%;
         color: var(--text-dark);
