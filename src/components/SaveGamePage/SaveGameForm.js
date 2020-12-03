@@ -1,16 +1,17 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
-import useForm from '../hooks/useForm'
-import {Check, Cross} from './Icons'
-import ButtonPrimary from './buttons/ButtonPrimary'
-import ButtonSecondary from './buttons/ButtonSecondary'
+import useForm from './hooks/useForm'
+import {Check, Cross} from '../Icons'
+import ButtonPrimary from '../buttons/ButtonPrimary'
+import ButtonSecondary from '../buttons/ButtonSecondary'
 
 SaveGameForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
     isEditFormShown: PropTypes.bool,
     targetProfile: PropTypes.object,
     editGameProfile: PropTypes.func,
-    cancelEditModus: PropTypes.func
+    cancelEditModus: PropTypes.func,
+    switchToGameCardsPage: PropTypes.func.isRequired,
 }
 
 export default function SaveGameForm({
@@ -18,7 +19,8 @@ export default function SaveGameForm({
     isEditFormShown, 
     targetProfile, 
     editGameProfile, 
-    cancelEditModus}) {
+    cancelEditModus,
+    switchToGameCardsPage}) {
 
     const {
         formInputs, 
@@ -32,7 +34,8 @@ export default function SaveGameForm({
             isEditFormShown,
             targetProfile,
             editGameProfile,
-            cancelEditModus})
+            cancelEditModus,
+            switchToGameCardsPage})
 
     return (
         <FormWrapper noValidate onSubmit={handleSubmit}>
@@ -122,8 +125,8 @@ const FormWrapper = styled.form`
     place-items: center;
     border-radius: 10px;
     box-shadow: 0 0 10px var(--primary-medium);
-    background-color: var(--primary-medium);
-    color: var(--text-light);
+    background-color: var(--text-light);
+    color: var(--text-dark);
     font-size: 1rem;
 
     Button {
@@ -156,7 +159,7 @@ const InputWrapper = styled.fieldset`
         padding: 5px;
         width: 100%;
         border-style: none;
-        border-radius: 5px;
+        border-bottom: 1px solid var(--primary-dark);
         color: var(--primary-dark);
         font-family: 'Montserrat', sans-serif;
     }

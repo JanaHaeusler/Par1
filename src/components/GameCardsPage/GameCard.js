@@ -1,9 +1,9 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import {useState} from 'react'
-import {Bin, Pencil, Cross} from './Icons'
-import ButtonPrimary from './buttons/ButtonPrimary'
-import ButtonSecondary from './buttons/ButtonSecondary'
+import {Bin, Pencil, Cross} from '../Icons'
+import ButtonPrimary from '../buttons/ButtonPrimary'
+import ButtonSecondary from '../buttons/ButtonSecondary'
 
 GameCard.propTypes = {
     location: PropTypes.string.isRequired,
@@ -14,9 +14,10 @@ GameCard.propTypes = {
     id: PropTypes.string.isRequired,
     onDelete: PropTypes.func.isRequired,
     onEdit: PropTypes.func.isRequired,
+    switchToSavedGamePage: PropTypes.func.isRequired,
 }
 
-export default function GameCard({location, date, players, winner, shots, id, onDelete, onEdit}) {
+export default function GameCard({location, date, players, winner, shots, id, onDelete, onEdit, switchToSavedGamePage}) {
  
     const [isSetToDelete, setIsSetToDelete] = useState(false)
 
@@ -40,7 +41,7 @@ export default function GameCard({location, date, players, winner, shots, id, on
                     </ShotsWrapper>
                     <ButtonWrapper>
                         <ButtonDeleteIcon onClick={() => setIsSetToDelete(true)} data-testid="button-delete-icon"><BinIcon/></ButtonDeleteIcon>
-                        <ButtonEditIcon onClick={() => onEdit(id)} data-testid="button-edit-icon"><PenIcon/></ButtonEditIcon>
+                        <ButtonEditIcon onClick={() => handleEditClick(id)} data-testid="button-edit-icon"><PenIcon/></ButtonEditIcon>
                     </ButtonWrapper>
                 </SavedGameContent>
             )}
@@ -53,13 +54,18 @@ export default function GameCard({location, date, players, winner, shots, id, on
             )}
         </Card>
     )
+
+    function handleEditClick(id) {
+        onEdit(id)
+        switchToSavedGamePage()
+    }
 }
 
 const Card = styled.section`
     padding: 10px;
     box-shadow: 0 0 10px var(--primary-medium);
     border-radius: 10px;
-    background-color: var(--primary-medium);
+    background-color: var(--text-light);
     font-size: 0.9rem;
 `
 const SavedGameContent = styled.div`

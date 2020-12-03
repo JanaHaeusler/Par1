@@ -39,7 +39,7 @@ export default function useGameData() {
         })
     }
     
-    function deleteGameProfile(targetId){
+    function deleteGameProfile(targetId) {
         const copyOfById = {...savedGameProfiles.byId}
         delete copyOfById[targetId]
         setSavedGameProfiles({
@@ -48,7 +48,7 @@ export default function useGameData() {
         })
     }
     
-    function editGameProfile(gameProfile){
+    function editGameProfile(gameProfile) {
         const targetId = gameProfile._id
         setSavedGameProfiles({
             byId: {
@@ -59,12 +59,12 @@ export default function useGameData() {
         })
     }
     
-    function prepareEditModus(targetId){
+    function prepareEditModus(targetId) {
         setIsEditFormShown(true)
         setTargetProfile(savedGameProfiles.byId[targetId])
     }
     
-    function cancelEditModus(){
+    function cancelEditModus() {
         setIsEditFormShown(false)
     }
 }

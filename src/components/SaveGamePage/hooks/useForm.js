@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
-import saveLocally from '../lib/saveLocally'
-import loadLocally from '../lib/loadLocally'
+import saveLocally from '../../../lib/saveLocally'
+import loadLocally from '../../../lib/loadLocally'
 import validateIsNotEmpty from '../services/validateIsNotEmpty'
 import validateIsCorrectDate from '../services/validateIsCorrectDate'
 import validateShotsIsInRange from '../services/validateShotsIsInRange'
@@ -12,7 +12,8 @@ export default function useForm({
     onSubmit, 
     isEditFormShown, 
     editGameProfile, 
-    cancelEditModus}) {
+    cancelEditModus,
+    switchToGameCardsPage}) {
 
     const [formInputs, setFormInputs] = useState(isEditFormShown ? {
         location: targetProfile.location,
@@ -123,6 +124,7 @@ export default function useForm({
             winner: false,
             shots: false,  
         })
+        switchToGameCardsPage()
     }
 
     function trimInputs() {

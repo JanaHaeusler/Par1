@@ -23,5 +23,6 @@
   }}
   onDelete={() => {}}
   onEdit={() => {}}
+  switchToGameCardsPage={() => {})}
 />
 ```

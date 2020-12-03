@@ -1,10 +1,12 @@
 import styled from 'styled-components/macro'
+import {Switch, Route, useHistory} from 'react-router-dom'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
+import Navigation from './components/layout/Navigation'
 import useGameData from './hooks/useGameData'
-import SaveGameForm from './components/SaveGameForm'
-import GameCardsList from './components/GameCardsList'
-import {Plus, Home} from './components/Icons'
+import SaveGamePage from './components/SaveGamePage/SaveGamePage'
+import GameCardsPage from './components/GameCardsPage/GameCardsPage'
+
 
 function App() {
 
@@ -17,7 +19,8 @@ function App() {
     editGameProfile, 
     prepareEditModus, 
     cancelEditModus } = useGameData()
-  
+
+  const history = useHistory()
 
   return (
     <AppWrapper>
@@ -25,29 +28,48 @@ function App() {
         <Header/>
       </HeaderWrapper>
       <MainWrapper>
-        {isEditFormShown ? 
-          <SaveGameForm 
-              onSubmit={addGameProfile} 
-              isEditFormShown={isEditFormShown} 
-              targetProfile={targetProfile} 
-              editGameProfile={editGameProfile}
-              cancelEditModus={cancelEditModus}/>
-        : 
-        <SaveGameFormWrapper>
-          <SaveGameForm onSubmit={addGameProfile} />
-          <GameCardsList 
-              savedGameProfiles={savedGameProfiles} 
-              onDelete={deleteGameProfile} 
-              onEdit={prepareEditModus}/>
-        </SaveGameFormWrapper>
-        }
+        <Switch>  
+          <Route exact path="/">
+            <GameCardsPage 
+                savedGameProfiles={savedGameProfiles} 
+                deleteGameProfile={deleteGameProfile} 
+                prepareEditModus={prepareEditModus}
+                switchToSavedGamePage={switchToSavedGamePage}
+            />
+          </Route>
+          <Route path="/saveGame">
+            <SaveGamePage 
+                addGameProfile={addGameProfile} 
+                isEditFormShown={isEditFormShown} 
+                targetProfile={targetProfile} 
+                editGameProfile={editGameProfile}
+                cancelEditModus={cancelEditModus}
+                switchToGameCardsPage={switchToGameCardsPage}
+            />
+          </Route>
+          <Route path="/*">
+            <GameCardsPage 
+                savedGameProfiles={savedGameProfiles} 
+                deleteGameProfile={deleteGameProfile} 
+                prepareEditModus={prepareEditModus}
+                switchToSavedGamePage={switchToSavedGamePage}
+            />
+          </Route>
+        </Switch> 
       </MainWrapper>
       <FooterWrapper>
-        <PlusIcon/>
-        <HomeIcon/>
+        <Navigation/>
       </FooterWrapper>
     </AppWrapper>
-  );
+  )
+
+  function switchToGameCardsPage() {
+    history.push('/')
+  }
+
+  function switchToSavedGamePage() {
+    history.push('/saveGame')
+  }
 }
 
 export default App;
@@ -76,10 +98,6 @@ const MainWrapper = styled.main`
     display: none;
   }
 `
-const SaveGameFormWrapper = styled.div`
-  display: grid;
-  grid-gap: 20px;
-`
 const FooterWrapper = styled(Footer)`
   position: fixed;
   bottom: 0;
@@ -91,10 +109,4 @@ const FooterWrapper = styled(Footer)`
   align-items: center;
   width: 100vw;
   max-width: 1240px;
-`
-const PlusIcon = styled(Plus)`
-  stroke: var(--text-light);
-`
-const HomeIcon = styled(Home)`
-  fill: var(--text-light);
 `

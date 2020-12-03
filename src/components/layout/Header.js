@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
 import { Logo } from '../Icons'
 
-export default function Header () {
+export default function Header() {
 
   return (
     <HeaderStyled>
