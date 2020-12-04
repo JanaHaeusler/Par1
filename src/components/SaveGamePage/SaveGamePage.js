@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types'
+import { useEffect } from 'react'
 import SaveGameForm from './SaveGameForm'
+import setContentToViewPortTop from '../../lib/setContentToViewPortTop'
 
 SaveGamePage.propTypes = {
     addGameProfile: PropTypes.func.isRequired,
@@ -7,7 +9,7 @@ SaveGamePage.propTypes = {
     targetProfile: PropTypes.object,
     editGameProfile: PropTypes.func,
     cancelEditModus: PropTypes.func,
-    switchToGameCardsPage: PropTypes.func.isRequired,
+    showGameCardsPage: PropTypes.func.isRequired,
 }
 
 export default function SaveGamePage({
@@ -16,9 +18,11 @@ export default function SaveGamePage({
     targetProfile, 
     editGameProfile, 
     cancelEditModus,
-    switchToGameCardsPage}) {
+    showGameCardsPage}) {
    
-    return(
+    useEffect(() => setContentToViewPortTop(), [])
+
+    return (
         isEditFormShown ? 
             <SaveGameForm 
                 onSubmit={addGameProfile} 
@@ -26,10 +30,10 @@ export default function SaveGamePage({
                 targetProfile={targetProfile} 
                 editGameProfile={editGameProfile}
                 cancelEditModus={cancelEditModus}
-                switchToGameCardsPage={switchToGameCardsPage}/>
+                showGameCardsPage={showGameCardsPage}/>
         : 
             <SaveGameForm 
                 onSubmit={addGameProfile} 
-                switchToGameCardsPage={switchToGameCardsPage}/>
+                showGameCardsPage={showGameCardsPage}/>
     )
 }

@@ -34,7 +34,7 @@ function App() {
                 savedGameProfiles={savedGameProfiles} 
                 deleteGameProfile={deleteGameProfile} 
                 prepareEditModus={prepareEditModus}
-                switchToSavedGamePage={switchToSavedGamePage}
+                showSaveGamePage={showSaveGamePage}
             />
           </Route>
           <Route path="/saveGame">
@@ -44,7 +44,7 @@ function App() {
                 targetProfile={targetProfile} 
                 editGameProfile={editGameProfile}
                 cancelEditModus={cancelEditModus}
-                switchToGameCardsPage={switchToGameCardsPage}
+                showGameCardsPage={showGameCardsPage}
             />
           </Route>
           <Route path="/*">
@@ -52,7 +52,7 @@ function App() {
                 savedGameProfiles={savedGameProfiles} 
                 deleteGameProfile={deleteGameProfile} 
                 prepareEditModus={prepareEditModus}
-                switchToSavedGamePage={switchToSavedGamePage}
+                showSaveGamePage={showSaveGamePage}
             />
           </Route>
         </Switch> 
@@ -63,11 +63,11 @@ function App() {
     </AppWrapper>
   )
 
-  function switchToGameCardsPage() {
+  function showGameCardsPage() {
     history.push('/')
   }
 
-  function switchToSavedGamePage() {
+  function showSaveGamePage() {
     history.push('/saveGame')
   }
 }
@@ -91,8 +91,7 @@ const HeaderWrapper = styled.div`
   z-index: 10;
 `
 const MainWrapper = styled.main`
-  padding: 10px;
-  margin: 60px auto;
+  padding: 65px 10px 60px 10px;
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;

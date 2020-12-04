@@ -6,10 +6,10 @@ GameCardsList.propTypes = {
     savedGameProfiles: PropTypes.object.isRequired,
     onDelete: PropTypes.func.isRequired,
     onEdit: PropTypes.func.isRequired,
-    switchToSavedGamePage: PropTypes.func.isRequired,
+    showSaveGamePage: PropTypes.func.isRequired,
 }
 
-export default function GameCardsList({savedGameProfiles, onDelete, onEdit, switchToSavedGamePage}) {
+export default function GameCardsList({savedGameProfiles, onDelete, onEdit, showSaveGamePage}) {
 
   return(
     <GameCardsWrapper>
@@ -25,7 +25,7 @@ export default function GameCardsList({savedGameProfiles, onDelete, onEdit, swit
                     players={players} 
                     winner={winner} 
                     shots={shots}
-                    switchToSavedGamePage={switchToSavedGamePage}/>
+                    showSaveGamePage={showSaveGamePage}/>
         })}
     </GameCardsWrapper>
   )

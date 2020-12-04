@@ -11,7 +11,7 @@ SaveGameForm.propTypes = {
     targetProfile: PropTypes.object,
     editGameProfile: PropTypes.func,
     cancelEditModus: PropTypes.func,
-    switchToGameCardsPage: PropTypes.func.isRequired,
+    showGameCardsPage: PropTypes.func.isRequired,
 }
 
 export default function SaveGameForm({
@@ -20,7 +20,7 @@ export default function SaveGameForm({
     targetProfile, 
     editGameProfile, 
     cancelEditModus,
-    switchToGameCardsPage}) {
+    showGameCardsPage}) {
 
     const {
         formInputs, 
@@ -35,7 +35,7 @@ export default function SaveGameForm({
             targetProfile,
             editGameProfile,
             cancelEditModus,
-            switchToGameCardsPage})
+            showGameCardsPage})
 
     return (
         <FormWrapper noValidate onSubmit={handleSubmit}>

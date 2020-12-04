@@ -33,6 +33,10 @@ export default createGlobalStyle`
         --secondary-dark: #004871;
     }
 
+    h1 {
+        font-size: 2rem;
+    }
+
     h4 {
         margin: 0;
         font-weight: 550;

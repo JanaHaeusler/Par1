@@ -13,7 +13,7 @@ export default function useForm({
     isEditFormShown, 
     editGameProfile, 
     cancelEditModus,
-    switchToGameCardsPage}) {
+    showGameCardsPage}) {
 
     const [formInputs, setFormInputs] = useState(isEditFormShown ? {
         location: targetProfile.location,
@@ -124,7 +124,7 @@ export default function useForm({
             winner: false,
             shots: false,  
         })
-        switchToGameCardsPage()
+        showGameCardsPage()
     }
 
     function trimInputs() {
@@ -152,6 +152,7 @@ export default function useForm({
             _id: '',
         } 
         saveLocally(STORAGE_KEY, emptyInputs)
+        showGameCardsPage()
         cancelEditModus(false)
     }
 }

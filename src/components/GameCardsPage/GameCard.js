@@ -14,10 +14,10 @@ GameCard.propTypes = {
     id: PropTypes.string.isRequired,
     onDelete: PropTypes.func.isRequired,
     onEdit: PropTypes.func.isRequired,
-    switchToSavedGamePage: PropTypes.func.isRequired,
+    showSaveGamePage: PropTypes.func.isRequired,
 }
 
-export default function GameCard({location, date, players, winner, shots, id, onDelete, onEdit, switchToSavedGamePage}) {
+export default function GameCard({location, date, players, winner, shots, id, onDelete, onEdit, showSaveGamePage}) {
  
     const [isSetToDelete, setIsSetToDelete] = useState(false)
 
@@ -41,7 +41,7 @@ export default function GameCard({location, date, players, winner, shots, id, on
                     </ShotsWrapper>
                     <ButtonWrapper>
                         <ButtonDeleteIcon onClick={() => setIsSetToDelete(true)} data-testid="button-delete-icon"><BinIcon/></ButtonDeleteIcon>
-                        <ButtonEditIcon onClick={() => handleEditClick(id)} data-testid="button-edit-icon"><PenIcon/></ButtonEditIcon>
+                        <ButtonEditIcon onClick={() => handleEdit(id)} data-testid="button-edit-icon"><PenIcon/></ButtonEditIcon>
                     </ButtonWrapper>
                 </SavedGameContent>
             )}
@@ -55,9 +55,9 @@ export default function GameCard({location, date, players, winner, shots, id, on
         </Card>
     )
 
-    function handleEditClick(id) {
+    function handleEdit(id) {
         onEdit(id)
-        switchToSavedGamePage()
+        showSaveGamePage()
     }
 }
 

@@ -1,20 +1,7 @@
 Normal Form
 
 ```jsx
-<SaveGameForm
-  onSubmit={() => {}}
-  isEditFormShown={false}
-  targetProfile={{
-    location: 'City Park',
-    date: '2020-01-01',
-    players: 'Fritz, Hanni, Nanni',
-    winner: 'Fritz',
-    shots: '35',
-    _id: '2',
-  }}
-  editGameProfile={() => {}}
-  cancelEditModus={() => {}}
-/>
+<SaveGameForm onSubmit={() => {}} showGameCardsPage={() => {}} />
 ```
 
 Form in Edit Modus
@@ -33,5 +20,6 @@ Form in Edit Modus
   }}
   editGameProfile={() => {}}
   cancelEditModus={() => {}}
+  showGameCardsPage={() => {}}
 />
 ```

@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 import { NavLink } from 'react-router-dom';
 import {Plus, Home} from '../Icons'
 
-export default function Navigation() {
+export default function Navigation(handleClick) {
     return (
             <NavBar>
                 <NavLink exact to="/">
