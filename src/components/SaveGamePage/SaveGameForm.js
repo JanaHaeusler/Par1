@@ -112,7 +112,7 @@ export default function SaveGameForm({
             </InputWrapper>
             <ButtonWrapper>
                 <ButtonPrimary disabled={!showSaveButton} data-testid="button-save"><CheckIcon/>Save</ButtonPrimary>
-                {isEditFormShown && <ButtonCancel onClick={handleCancelEditModus} data-testid="button-cancel"><CancelIcon/>Cancel</ButtonCancel>}
+                {isEditFormShown && <ButtonCancel type="button" onClick={handleCancelEditModus} data-testid="button-cancel"><CancelIcon/>Cancel</ButtonCancel>}
             </ButtonWrapper>
             <span>*Please do not clear your browsers cache, in order to permanently save your game details</span>
         </FormWrapper>
@@ -120,6 +120,7 @@ export default function SaveGameForm({
 }
 
 const FormWrapper = styled.form`
+    margin: 10px 20px;
     padding: 0 10px 10px 10px;
     display: grid;
     place-items: center;

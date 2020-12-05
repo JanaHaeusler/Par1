@@ -107,16 +107,16 @@ export default function useForm({
             players: '',
             winner: '',
             shots: '',
-            _id: '',
         } 
-        isEditFormShown && saveLocally(STORAGE_KEY, emptyInputs)
-        setFormInputs({
-            location: '',
-            date: '',
-            players: '',
-            winner: '',
-            shots:'',
-        })
+        // isEditFormShown && 
+        saveLocally(STORAGE_KEY, emptyInputs)
+        // setFormInputs({
+        //     location: '',
+        //     date: '',
+        //     players: '',
+        //     winner: '',
+        //     shots:'',
+        // })
         setDirtyInputs({
             location: false,
             date: false,
@@ -149,7 +149,6 @@ export default function useForm({
             players: '',
             winner: '',
             shots: '',
-            _id: '',
         } 
         saveLocally(STORAGE_KEY, emptyInputs)
         showGameCardsPage()

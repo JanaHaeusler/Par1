@@ -33,5 +33,5 @@ export default function GameCardsList({savedGameProfiles, onDelete, onEdit, show
 
 const GameCardsWrapper = styled.div`
   display: grid;
-  gap: 10px;
+  gap: 20px;
 `

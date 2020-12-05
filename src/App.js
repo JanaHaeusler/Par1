@@ -85,13 +85,12 @@ const HeaderWrapper = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  margin: 0 auto;
   width: 100vw;
   max-width: 1240px;
   z-index: 10;
 `
 const MainWrapper = styled.main`
-  padding: 65px 10px 60px 10px;
+  padding: 70px 10px 60px 10px;
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;

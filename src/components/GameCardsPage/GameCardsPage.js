@@ -24,9 +24,19 @@ export default function GameCardsPage({savedGameProfiles, deleteGameProfile, pre
 }
 
 const Headline = styled.h1`
-    margin:10px 0;
+    margin: 0 0 15px 0;
     text-align: center;
     text-transform: uppercase;
     color: var(--text-light);
+
+    &::after {
+        margin: 8px auto 30px; 
+        display: block;
+        width: 120px;
+        height: 2px;
+        content: '';
+        background-color: var(--text-light);
+        align-content: center;
+    }
 `
 
