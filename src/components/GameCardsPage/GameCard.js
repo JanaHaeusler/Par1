@@ -58,8 +58,8 @@ export default function GameCard({location, date, players, winner, shots, id, on
     )
 
     function handleEdit(id) {
-        onEdit(id)
         showSaveGamePage()
+        onEdit(id)
     }
 }
 

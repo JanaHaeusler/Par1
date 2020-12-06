@@ -1,39 +1,31 @@
 import {useState, useEffect} from 'react'
-import saveLocally from '../../../lib/saveLocally'
-import loadLocally from '../../../lib/loadLocally'
-import validateIsNotEmpty from '../services/validateIsNotEmpty'
-import validateIsCorrectDate from '../services/validateIsCorrectDate'
-import validateShotsIsInRange from '../services/validateShotsIsInRange'
+import saveLocally from '../lib/saveLocally'
+import loadLocally from '../lib/loadLocally'
+import validateIsNotEmpty from '../components/SaveGamePage/services/validateIsNotEmpty'
+import validateIsCorrectDate from '../components/SaveGamePage/services/validateIsCorrectDate'
+import validateShotsIsInRange from '../components/SaveGamePage/services/validateShotsIsInRange'
 
 const STORAGE_KEY = 'formInputs'
 
 export default function useForm({
-    targetProfile, 
-    onSubmit, 
     isEditFormShown, 
+    targetProfile, 
+    addGameProfile, 
     editGameProfile, 
     cancelEditModus,
     showGameCardsPage}) {
 
-    const [formInputs, setFormInputs] = useState(isEditFormShown ? {
-        location: targetProfile.location,
-        date: targetProfile.date,
-        players: targetProfile.players,
-        winner: targetProfile.winner,
-        shots: targetProfile.shots,
-        _id: targetProfile._id
-    } 
-    : 
-    (loadLocally(STORAGE_KEY) ?? {
+    const [formInputs, setFormInputs] = useState(loadLocally(STORAGE_KEY) ?? {
         location: '',
         date: '',
         players: '',
         winner: '',
         shots: '',
     })
-    )
 
     useEffect(() => saveLocally(STORAGE_KEY, formInputs), [formInputs])
+
+    useEffect(() => setInitialEditInputValues(), [isEditFormShown])
 
     const validInputs = {
         location: validateIsNotEmpty(formInputs.location),
@@ -60,7 +52,8 @@ export default function useForm({
         handleChange,
         showErrorMessage,
         handleSubmit,
-        handleCancelEditModus
+        handleCancelEditModus,
+        resetForm,
     }
 
     function handleChange(event) {
@@ -100,30 +93,8 @@ export default function useForm({
     function handleSubmit(event) {
         event.preventDefault()
         trimInputs(formInputs)
-        isEditFormShown ? onSubmitEditModus(formInputs) : onSubmit(formInputs)
-        const emptyInputs = {
-            location: '',
-            date: '',
-            players: '',
-            winner: '',
-            shots: '',
-        } 
-        // isEditFormShown && 
-        saveLocally(STORAGE_KEY, emptyInputs)
-        // setFormInputs({
-        //     location: '',
-        //     date: '',
-        //     players: '',
-        //     winner: '',
-        //     shots:'',
-        // })
-        setDirtyInputs({
-            location: false,
-            date: false,
-            players: false,
-            winner: false,
-            shots: false,  
-        })
+        isEditFormShown ? editGameProfile(formInputs) : addGameProfile(formInputs)
+        resetForm()
         showGameCardsPage()
     }
 
@@ -137,21 +108,38 @@ export default function useForm({
         })
     }
 
-    function onSubmitEditModus(formInputs){
-        editGameProfile(formInputs)
-        cancelEditModus(false)
+    function setInitialEditInputValues() {
+        isEditFormShown &&
+        setFormInputs({
+            location: targetProfile.location,
+            date: targetProfile.date,
+            players: targetProfile.players,
+            winner: targetProfile.winner,
+            shots: targetProfile.shots,
+            _id: targetProfile._id,
+        }) 
     }
 
     function handleCancelEditModus() {
-        const emptyInputs = {
+        resetForm()
+        showGameCardsPage()
+    }
+
+    function resetForm() {
+        setFormInputs({
             location: '',
             date: '',
             players: '',
             winner: '',
-            shots: '',
-        } 
-        saveLocally(STORAGE_KEY, emptyInputs)
-        showGameCardsPage()
-        cancelEditModus(false)
+            shots:'',
+        })
+        setDirtyInputs({
+            location: false,
+            date: false,
+            players: false,
+            winner: false,
+            shots: false,  
+        })
+        isEditFormShown && cancelEditModus()
     }
 }

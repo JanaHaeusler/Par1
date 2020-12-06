@@ -1,25 +1,39 @@
 Normal Form
 
 ```jsx
-<SaveGameForm onSubmit={() => {}} showGameCardsPage={() => {}} />
+<SaveGameForm
+  formInputs={{
+    location: '',
+    date: '',
+    players: '',
+    winner: '',
+    shots: '',
+  }}
+  showSaveButton={false}
+  updateDirtyInputs={() => {}}
+  handleChange={() => {}}
+  showErrorMessage={() => {}}
+  handleSubmit={() => {}}
+/>
 ```
 
 Form in Edit Modus
 
 ```jsx
 <SaveGameForm
-  onSubmit={() => {}}
-  isEditFormShown={true}
-  targetProfile={{
-    location: 'Horner Racecourse',
-    date: '2020-12-24',
-    players: 'John, Jane',
-    winner: 'Jane',
-    shots: '89',
-    _id: '1',
+  formInputs={{
+    location: '',
+    date: '',
+    players: '',
+    winner: '',
+    shots: '',
   }}
-  editGameProfile={() => {}}
-  cancelEditModus={() => {}}
-  showGameCardsPage={() => {}}
+  showSaveButton={false}
+  isEditFormShown={true}
+  updateDirtyInputs={() => {}}
+  handleChange={() => {}}
+  showErrorMessage={() => {}}
+  handleSubmit={() => {}}
+  handleCancelEditModus={() => {}}
 />
 ```

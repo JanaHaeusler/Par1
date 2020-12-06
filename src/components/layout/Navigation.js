@@ -1,14 +1,19 @@
 import styled from 'styled-components/macro';
+import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom';
 import {Plus, Home} from '../Icons'
 
-export default function Navigation(handleClick) {
+Navigation.propTypes = {
+    handleClick: PropTypes.func.isRequired
+}
+
+export default function Navigation({handleClick}) {
     return (
             <NavBar>
-                <NavLink exact to="/">
+                <NavLink exact to="/" onClick={handleClick}>
                     <HomeIcon />
                 </NavLink>
-                <NavLink to="/saveGame">
+                <NavLink to="/saveGame" onClick={handleClick}>
                     <PlusIcon />
                 </NavLink>
             </NavBar>

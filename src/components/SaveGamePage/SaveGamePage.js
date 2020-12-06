@@ -4,36 +4,46 @@ import SaveGameForm from './SaveGameForm'
 import setContentToViewPortTop from '../../lib/setContentToViewPortTop'
 
 SaveGamePage.propTypes = {
-    addGameProfile: PropTypes.func.isRequired,
+    formInputs: PropTypes.object.isRequired,
+    showSaveButton: PropTypes.bool.isRequired,
     isEditFormShown: PropTypes.bool,
-    targetProfile: PropTypes.object,
-    editGameProfile: PropTypes.func,
-    cancelEditModus: PropTypes.func,
-    showGameCardsPage: PropTypes.func.isRequired,
+    updateDirtyInputs: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    showErrorMessage: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    handleCancelEditModus: PropTypes.func,
 }
 
 export default function SaveGamePage({
-    addGameProfile, 
-    isEditFormShown, 
-    targetProfile, 
-    editGameProfile, 
-    cancelEditModus,
-    showGameCardsPage}) {
+    formInputs, 
+    showSaveButton,
+    isEditFormShown,
+    updateDirtyInputs,
+    handleChange,
+    showErrorMessage,
+    handleSubmit,
+    handleCancelEditModus}) {
    
     useEffect(() => setContentToViewPortTop(), [])
 
     return (
         isEditFormShown ? 
             <SaveGameForm 
-                onSubmit={addGameProfile} 
-                isEditFormShown={isEditFormShown} 
-                targetProfile={targetProfile} 
-                editGameProfile={editGameProfile}
-                cancelEditModus={cancelEditModus}
-                showGameCardsPage={showGameCardsPage}/>
+                formInputs={formInputs}
+                showSaveButton={showSaveButton}
+                isEditFormShown={isEditFormShown}
+                updateDirtyInputs={updateDirtyInputs}
+                handleChange={handleChange}
+                showErrorMessage={showErrorMessage}
+                handleSubmit={handleSubmit}
+                handleCancelEditModus={handleCancelEditModus}/>
         : 
             <SaveGameForm 
-                onSubmit={addGameProfile} 
-                showGameCardsPage={showGameCardsPage}/>
+                formInputs={formInputs}
+                showSaveButton={showSaveButton}
+                updateDirtyInputs={updateDirtyInputs}
+                handleChange={handleChange}
+                showErrorMessage={showErrorMessage}
+                handleSubmit={handleSubmit}/>
     )
 }
