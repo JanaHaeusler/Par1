@@ -1,6 +1,6 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
 import {Plus, Home} from '../Icons'
 
 Navigation.propTypes = {
@@ -10,12 +10,12 @@ Navigation.propTypes = {
 export default function Navigation({handleClick}) {
     return (
             <NavBar>
-                <NavLink exact to="/" onClick={handleClick}>
-                    <HomeIcon />
-                </NavLink>
-                <NavLink to="/saveGame" onClick={handleClick}>
-                    <PlusIcon />
-                </NavLink>
+                <NavLinkStyled exact to="/" onClick={handleClick}>
+                    <Home />
+                </NavLinkStyled>
+                <NavLinkStyled to="/saveGame" onClick={handleClick}>
+                    <Plus />
+                </NavLinkStyled>
             </NavBar>
     )
 }
@@ -25,14 +25,13 @@ const NavBar = styled.nav`
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
-
-    .active {
-        stroke: red;
-    }
 `
-const PlusIcon = styled(Plus)`
-    stroke: var(--text-light);
-`
-const HomeIcon = styled(Home)`
+const NavLinkStyled = styled(NavLink)`
+    width: 25px;
     fill: var(--text-light);
+    opacity: 40%;
+    
+    &.active {
+        opacity: 100%;
+    }
 `

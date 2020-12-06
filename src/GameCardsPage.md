@@ -1,5 +1,7 @@
+Game Cards Page
+
 ```jsx
-<GameCardsList
+<GameCardsPage
   savedGameProfiles={{
     byId: {
       1: {
@@ -21,8 +23,8 @@
     },
     allIds: [1, 2],
   }}
-  onDelete={() => {}}
-  onEdit={() => {}}
+  deleteGameProfile={() => {}}
+  prepareEditModus={() => {}}
   showSaveGamePage={() => {}}
 />
 ```

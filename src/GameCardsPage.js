@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
-import GameCardsList from './GameCardsList'
+import GameCardsList from './components/GameCardsPage/GameCardsList'
 
 GameCardsPage.propTypes = {
     savedGameProfiles: PropTypes.object.isRequired,

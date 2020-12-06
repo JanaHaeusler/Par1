@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import GrasBackground from '../assets/gras-background.jpg'
+import Background from '../assets/background.jpg'
 
 export default createGlobalStyle`
     * {
@@ -11,7 +11,7 @@ export default createGlobalStyle`
         padding: 0;
         height: 100vh;
         width: 100vw;
-        background: url(${GrasBackground}) no-repeat center center fixed;
+        background: url(${Background}) no-repeat center center fixed;
         background-color: var(--text-light);
         -webkit-background-size: cover;
         -moz-background-size: cover;

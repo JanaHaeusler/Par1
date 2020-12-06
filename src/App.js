@@ -4,10 +4,8 @@ import useGameData from './hooks/useGameData'
 import useForm from './hooks/useForm'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
-import Navigation from './components/layout/Navigation'
-import SaveGamePage from './components/SaveGamePage/SaveGamePage'
-import GameCardsPage from './components/GameCardsPage/GameCardsPage'
-
+import SaveGamePage from './SaveGamePage'
+import GameCardsPage from './GameCardsPage'
 
 function App() {
 
@@ -77,7 +75,7 @@ function App() {
         </Switch> 
       </MainWrapper>
       <FooterWrapper>
-        <Navigation handleClick={resetForm}/>
+        <Footer handleClick={resetForm}/>
       </FooterWrapper>
     </AppWrapper>
   )
@@ -104,8 +102,6 @@ const HeaderWrapper = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  width: 100vw;
-  max-width: 1240px;
   z-index: 10;
 `
 const MainWrapper = styled.main`
@@ -115,14 +111,9 @@ const MainWrapper = styled.main`
     display: none;
   }
 `
-const FooterWrapper = styled(Footer)`
+const FooterWrapper = styled.div`
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 100vw;
-  max-width: 1240px;
 `
