@@ -56,10 +56,10 @@ export default function useForm({
         resetForm,
     }
 
-    function handleChange(event) {
+    function handleChange(inputName, inputValue) {
         setFormInputs({
             ...formInputs,
-            [event.target.name]: event.target.value
+            [inputName]: inputValue
         })
     }
 

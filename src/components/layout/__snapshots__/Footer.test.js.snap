@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders correctly 1`] = `
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.c2 {
+  width: 25px;
+  fill: var(--text-light);
+  opacity: 40%;
+}
+
+.c2.active {
+  opacity: 100%;
+}
+
+.c0 {
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 50px;
+  max-width: 1240px;
+  box-shadow: 0 0 10px var(--primary-dark);
+  border-radius: 25px 25px 0 0;
+  background: var(--secondary-dark);
+}
+
+<footer
+  class="c0"
+>
+  <nav
+    class="c1"
+  >
+    <a
+      aria-current="page"
+      class="c2 active"
+      data-testid="button-home-page"
+      href="/"
+    >
+      <svg>
+        home.svg
+      </svg>
+    </a>
+    <a
+      class="c2"
+      data-testid="button-form-page"
+      href="/saveGame"
+    >
+      <svg>
+        plus.svg
+      </svg>
+    </a>
+  </nav>
+</footer>
+`;

@@ -6,7 +6,7 @@ import ButtonSecondary from '../buttons/ButtonSecondary'
 
 SaveGameForm.propTypes = {
     formInputs: PropTypes.object.isRequired,
-    showSaveButton: PropTypes.bool.isRequired,
+    showSaveButton: PropTypes.bool,
     isEditFormShown: PropTypes.bool,
     updateDirtyInputs: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
@@ -26,7 +26,7 @@ export default function SaveGameForm({
     handleCancelEditModus}) {
 
     return (
-        <FormWrapper noValidate onSubmit={handleSubmit}>
+        <FormWrapper noValidate onSubmit={handleSubmit} data-testid="form">
             <InputWrapper>
                 <label>
                     Location
@@ -36,7 +36,7 @@ export default function SaveGameForm({
                     id="location"
                     placeholder="Type location ..."
                     value={formInputs.location}
-                    onChange={(event)=> handleChange(event)}
+                    onChange={handleInputChange}
                     onBlur={() => updateDirtyInputs('location')}
                 />
                 </label>
@@ -49,7 +49,7 @@ export default function SaveGameForm({
                     name="date"
                     id="date"
                     value={formInputs.date}
-                    onChange={(event)=> handleChange(event)}
+                    onChange={handleInputChange}
                     onBlur={() => updateDirtyInputs('date')}
                 />
                 </label>
@@ -63,7 +63,7 @@ export default function SaveGameForm({
                     id="players"
                     placeholder="John, Jane"
                     value={formInputs.players}
-                    onChange={(event)=> handleChange(event)}
+                    onChange={handleInputChange}
                     onBlur={() => updateDirtyInputs('players')}
                 />
                 </label>
@@ -77,7 +77,7 @@ export default function SaveGameForm({
                     id="winner"
                     placeholder="Jane"
                     value={formInputs.winner}
-                    onChange={(event)=> handleChange(event)}
+                    onChange={handleInputChange}
                     onBlur={() => updateDirtyInputs('winner')}
                 />
                 </label>
@@ -91,7 +91,7 @@ export default function SaveGameForm({
                     id="shots"
                     placeholder="38"
                     value={formInputs.shots}
-                    onChange={(event)=> handleChange(event)}
+                    onChange={handleInputChange}
                     onBlur={() => updateDirtyInputs('shots')}
                 />
                 </label>
@@ -105,6 +105,12 @@ export default function SaveGameForm({
             <span>*Please do not clear your browsers cache, in order to permanently save your game details</span>
         </FormWrapper>
     )
+
+    function handleInputChange(event) {
+        const inputName = event.target.name
+        const inputValue = event.target.value
+        handleChange(inputName, inputValue )
+    }
 }
 
 const FormWrapper = styled.form`

@@ -42,8 +42,8 @@ export default function GameCard({location, date, players, winner, shots, id, on
                         </ShotsWrapper>
                     </SavedGameContent>
                     <ButtonWrapper>
-                            <ButtonDeleteIcon onClick={() => setIsSetToDelete(true)} data-testid="button-delete-icon"><BinIcon/></ButtonDeleteIcon>
-                            <ButtonEditIcon onClick={() => handleEdit(id)} data-testid="button-edit-icon"><PenIcon/></ButtonEditIcon>
+                            <ButtonDeleteIcon onClick={() => setIsSetToDelete(true)} data-testid="button-set-delete"><BinIcon/></ButtonDeleteIcon>
+                            <ButtonEditIcon onClick={() => handleEdit(id)} data-testid="button-edit"><PenIcon/></ButtonEditIcon>
                     </ButtonWrapper>
                 </>
             )}

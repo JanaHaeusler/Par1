@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation renders correctly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.c1 {
+  width: 25px;
+  fill: var(--text-light);
+  opacity: 40%;
+}
+
+.c1.active {
+  opacity: 100%;
+}
+
+<nav
+  class="c0"
+>
+  <a
+    aria-current="page"
+    class="c1 active"
+    data-testid="button-home-page"
+    href="/"
+  >
+    <svg>
+      home.svg
+    </svg>
+  </a>
+  <a
+    class="c1"
+    data-testid="button-form-page"
+    href="/saveGame"
+  >
+    <svg>
+      plus.svg
+    </svg>
+  </a>
+</nav>
+`;

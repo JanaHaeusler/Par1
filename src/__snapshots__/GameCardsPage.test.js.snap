@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GameCardsPage renders correctly 1`] = `
+.c0 {
+  margin: 0 0 15px 0;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+.c0::after {
+  margin: 8px auto 30px;
+  display: block;
+  width: 120px;
+  height: 2px;
+  content: '';
+  background-color: var(--text-light);
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+}
+
+<h1
+  class="c0"
+>
+  Your Games
+</h1>
+`;

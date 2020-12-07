@@ -10,10 +10,10 @@ Navigation.propTypes = {
 export default function Navigation({handleClick}) {
     return (
             <NavBar>
-                <NavLinkStyled exact to="/" onClick={handleClick}>
+                <NavLinkStyled exact to="/" onClick={handleClick} data-testid="button-home-page">
                     <Home />
                 </NavLinkStyled>
-                <NavLinkStyled to="/saveGame" onClick={handleClick}>
+                <NavLinkStyled to="/saveGame" onClick={handleClick} data-testid="button-form-page">
                     <Plus />
                 </NavLinkStyled>
             </NavBar>

@@ -1,34 +1,37 @@
 import GameCardsList from './GameCardsList'
 import { render } from '@testing-library/react'
 
+const testProps = {
+  savedGameProfiles: {
+    byId: {
+      1: {
+        location: 'Horner Racecourse',
+        date: '2020-12-24',
+        players: 'John, Jane',
+        winner: 'Jane',
+        shots: '89',
+        _id: '1',
+      },
+      2: {
+        location: 'City Park',
+        date: '2020-01-01',
+        players: 'Fritz, Hanni, Nanni',
+        winner: 'Fritz',
+        shots: '35',
+        _id: '2',
+      },
+    },
+    allIds: [1, 2],
+  }, 
+  onDelete: jest.fn(),
+  onEdit: jest.fn(),
+  showSaveGamePage: jest.fn(),
+}
+
 describe('GameCardsList', () => {
   
-    const savedGameProfiles = {
-      byId: {
-        1: {
-          location: 'Horner Racecourse',
-          date: '2020-12-24',
-          players: 'John, Jane',
-          winner: 'Jane',
-          shots: '89',
-          _id: '1',
-        },
-        2: {
-          location: 'City Park',
-          date: '2020-01-01',
-          players: 'Fritz, Hanni, Nanni',
-          winner: 'Fritz',
-          shots: '35',
-          _id: '2',
-        },
-      },
-      allIds: [1, 2],
-    }
-  
     it('renders correctly', () => {
-        const onDeleteMock = jest.fn()
-        const onEditMock = jest.fn()
-        const { container, getByText, getAllByTestId } = render(<GameCardsList savedGameProfiles={savedGameProfiles} onDelete={onDeleteMock} onEdit={onEditMock}/>)
+        const { container, getByText, getAllByTestId } = render(<GameCardsList {...testProps}/>)
         
         expect(container.firstChild).toMatchSnapshot()
 
@@ -44,9 +47,9 @@ describe('GameCardsList', () => {
         expect(getByText('Fritz')).toBeInTheDocument()
         expect(getByText('35')).toBeInTheDocument()
 
-        const ButtonDelete = getAllByTestId('button-delete-icon')
+        const ButtonDelete = getAllByTestId('button-set-delete')
         expect(ButtonDelete).toHaveLength(2)
-        const ButtonEdit = getAllByTestId('button-edit-icon')
+        const ButtonEdit = getAllByTestId('button-edit')
         expect(ButtonEdit).toHaveLength(2)
       })
 })

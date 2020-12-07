@@ -1,9 +1,9 @@
-import Header from './Header'
+import Pennant from './Pennant'
 import { render } from '@testing-library/react'
 
-describe('Header', () => {
+describe('Pennant', () => {
     it('renders correctly', () => {
-        const { container } = render(<Header/>)
+        const { container } = render(<Pennant/>)
         expect(container.firstChild).toMatchSnapshot()
     })
 })

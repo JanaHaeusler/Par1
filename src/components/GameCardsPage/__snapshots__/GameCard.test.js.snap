@@ -2,23 +2,25 @@
 
 exports[`GameCard renders correctly 1`] = `
 .c0 {
+  margin: 0 20px;
   padding: 10px;
   box-shadow: 0 0 10px var(--primary-medium);
   border-radius: 10px;
-  background-color: var(--primary-medium);
+  background-color: var(--text-light);
   font-size: 0.9rem;
 }
 
 .c1 {
   display: grid;
   grid-template-rows: repeat(4,auto);
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
 }
 
 .c3 {
-  grid-column-start: 1;
+  grid-column-start: 2;
   grid-row-start: 1;
+  justify-self: end;
 }
 
 .c2 {
@@ -43,9 +45,19 @@ exports[`GameCard renders correctly 1`] = `
 }
 
 .c7 {
-  grid-column-start: 3;
-  grid-row: 1 / 5;
-  justify-self: end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  width: 100%;
 }
 
 .c8 {
@@ -128,30 +140,30 @@ exports[`GameCard renders correctly 1`] = `
         56
       </span>
     </div>
-    <div
-      class="c7"
+  </div>
+  <div
+    class="c7"
+  >
+    <button
+      class="c8"
+      data-testid="button-set-delete"
     >
-      <button
-        class="c8"
-        data-testid="button-delete-icon"
+      <svg
+        class="c9"
       >
-        <svg
-          class="c9"
-        >
-          bin.svg
-        </svg>
-      </button>
-      <button
-        class="c10"
-        data-testid="button-edit-icon"
+        bin.svg
+      </svg>
+    </button>
+    <button
+      class="c10"
+      data-testid="button-edit"
+    >
+      <svg
+        class="c11"
       >
-        <svg
-          class="c11"
-        >
-          pencil.svg
-        </svg>
-      </button>
-    </div>
+        pencil.svg
+      </svg>
+    </button>
   </div>
 </section>
 `;
