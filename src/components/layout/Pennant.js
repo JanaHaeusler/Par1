@@ -1,11 +1,11 @@
 import styled from 'styled-components/macro'
-import { Logo } from '../Icons'
+import { LogoIcon } from '../Icons'
 
 export default function Pennant() {
 
   return (
       <PennantStyled>
-        <LogoStyled/>
+        <LogoIconStyled/>
       </PennantStyled>
   )
 }
@@ -19,7 +19,7 @@ const PennantStyled = styled.div`
   border-radius: 0 0 50px 50px;
   background-color: var(--text-light);
 `
-const LogoStyled = styled(Logo)`
+const LogoIconStyled = styled(LogoIcon)`
   margin-top: 10px;
   width: 30px;
   fill: var(--secondary-dark);

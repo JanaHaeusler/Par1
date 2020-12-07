@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
-import {Check, Cross} from '../Icons'
+import {CheckIcon, CrossIcon} from '../Icons'
 import ButtonPrimary from '../buttons/ButtonPrimary'
 import ButtonSecondary from '../buttons/ButtonSecondary'
 
@@ -36,7 +36,7 @@ export default function SaveGameForm({
                     id="location"
                     placeholder="Type location ..."
                     value={formInputs.location}
-                    onChange={handleInputChange}
+                    onChange={(event) => handleChange(event.target.name, event.target.value)}
                     onBlur={() => updateDirtyInputs('location')}
                 />
                 </label>
@@ -49,7 +49,7 @@ export default function SaveGameForm({
                     name="date"
                     id="date"
                     value={formInputs.date}
-                    onChange={handleInputChange}
+                    onChange={(event) => handleChange(event.target.name, event.target.value)}
                     onBlur={() => updateDirtyInputs('date')}
                 />
                 </label>
@@ -63,7 +63,7 @@ export default function SaveGameForm({
                     id="players"
                     placeholder="John, Jane"
                     value={formInputs.players}
-                    onChange={handleInputChange}
+                    onChange={(event) => handleChange(event.target.name, event.target.value)}
                     onBlur={() => updateDirtyInputs('players')}
                 />
                 </label>
@@ -77,7 +77,7 @@ export default function SaveGameForm({
                     id="winner"
                     placeholder="Jane"
                     value={formInputs.winner}
-                    onChange={handleInputChange}
+                    onChange={(event) => handleChange(event.target.name, event.target.value)}
                     onBlur={() => updateDirtyInputs('winner')}
                 />
                 </label>
@@ -91,7 +91,7 @@ export default function SaveGameForm({
                     id="shots"
                     placeholder="38"
                     value={formInputs.shots}
-                    onChange={handleInputChange}
+                    onChange={(event) => handleChange(event.target.name, event.target.value)}
                     onBlur={() => updateDirtyInputs('shots')}
                 />
                 </label>
@@ -99,18 +99,12 @@ export default function SaveGameForm({
 
             </InputWrapper>
             <ButtonWrapper>
-                <ButtonPrimary disabled={!showSaveButton} data-testid="button-save"><CheckIcon/>Save</ButtonPrimary>
-                {isEditFormShown && <ButtonCancel type="button" onClick={handleCancelEditModus} data-testid="button-cancel"><CancelIcon/>Cancel</ButtonCancel>}
+                <ButtonPrimary disabled={!showSaveButton} data-testid="button-save"><CheckIconStyled/>Save</ButtonPrimary>
+                {isEditFormShown && <ButtonCancel type="button" onClick={handleCancelEditModus} data-testid="button-cancel"><CancelIconStyled/>Cancel</ButtonCancel>}
             </ButtonWrapper>
             <span>*Please do not clear your browsers cache, in order to permanently save your game details</span>
         </FormWrapper>
     )
-
-    function handleInputChange(event) {
-        const inputName = event.target.name
-        const inputValue = event.target.value
-        handleChange(inputName, inputValue )
-    }
 }
 
 const FormWrapper = styled.form`
@@ -168,7 +162,7 @@ const InputWrapper = styled.fieldset`
 const ButtonWrapper = styled.div`
     display: flex;
 `
-const CheckIcon = styled(Check)`
+const CheckIconStyled = styled(CheckIcon)`
     margin-right: 3px;
     width: 24%;
     fill: var(--text-light);
@@ -176,7 +170,7 @@ const CheckIcon = styled(Check)`
 const ButtonCancel = styled(ButtonSecondary)`
     margin-left: 20px;
 `
-const CancelIcon = styled(Cross)`
+const CancelIconStyled = styled(CrossIcon)`
     margin-right: 3px;
     fill: var(--secondary-dark);
 `

@@ -98,10 +98,10 @@ describe('SaveGameForm', () => {
     const handleChangeMock = jest.fn()
     const props = {...testProps, handleChange: handleChangeMock}
     const { getByLabelText } = render(<SaveGameForm {...props} />)
-    const InputLocation = getByLabelText('Location')
-    fireEvent.change(InputLocation, { target: { value: 'test' } })
+    const InputPlayers = getByLabelText('Player(s)')
+    fireEvent.change(InputPlayers, { target: { value: 'test' } })
     expect(handleChangeMock).toHaveBeenCalledTimes(1)
-    expect(handleChangeMock).toHaveBeenCalledWith('location', 'test')
+    expect(handleChangeMock).toHaveBeenCalledWith('players', 'test')
   })
 
 })

@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import {useState} from 'react'
-import {Bin, Pencil, Cross} from '../Icons'
+import {BinIcon, PencilIcon, CrossIcon} from '../Icons'
 import ButtonPrimary from '../buttons/ButtonPrimary'
 import ButtonSecondary from '../buttons/ButtonSecondary'
 
@@ -42,16 +42,16 @@ export default function GameCard({location, date, players, winner, shots, id, on
                         </ShotsWrapper>
                     </SavedGameContent>
                     <ButtonWrapper>
-                            <ButtonDeleteIcon onClick={() => setIsSetToDelete(true)} data-testid="button-set-delete"><BinIcon/></ButtonDeleteIcon>
-                            <ButtonEditIcon onClick={() => handleEdit(id)} data-testid="button-edit"><PenIcon/></ButtonEditIcon>
+                            <ButtonDeleteIcon onClick={() => setIsSetToDelete(true)} data-testid="button-set-delete"><BinIconStyled/></ButtonDeleteIcon>
+                            <ButtonEditIcon onClick={() => handleEdit(id)} data-testid="button-edit"><PencilIconStyled/></ButtonEditIcon>
                     </ButtonWrapper>
                 </>
             )}
             {isSetToDelete && (
                 <DeleteField>
                     <span>Do you want to delete this gamecard?</span>
-                    <ButtonDelete onClick={() => onDelete(id)} data-testid="button-delete"><BinIcon/>Delete</ButtonDelete>
-                    <ButtonCancel onClick={() => setIsSetToDelete(false)} data-testid="button-cancel"><CancelIcon/>Cancel</ButtonCancel>
+                    <ButtonDelete onClick={() => onDelete(id)} data-testid="button-delete"><BinIconStyled/>Delete</ButtonDelete>
+                    <ButtonCancel onClick={() => setIsSetToDelete(false)} data-testid="button-cancel"><CancelIconStyled/>Cancel</ButtonCancel>
                 </DeleteField>
             )}
         </Card>
@@ -113,7 +113,7 @@ const ButtonDeleteIcon = styled.button`
     border: none;
     background: none;
 `
-const BinIcon = styled(Bin)`
+const BinIconStyled = styled(BinIcon)`
     margin-right: 3px;
     fill: var(--secondary-dark);
 `
@@ -125,7 +125,7 @@ const ButtonEditIcon = styled.button`
     border: none;
     background: none;
 `
-const PenIcon = styled(Pencil)`
+const PencilIconStyled = styled(PencilIcon)`
     margin-right: 3px;
     fill: var(--secondary-dark);
 `
@@ -151,7 +151,7 @@ const ButtonCancel = styled(ButtonPrimary)`
     grid-column-start: 2;
     grid-row-start: 2;
 `
-const CancelIcon = styled(Cross)`
+const CancelIconStyled = styled(CrossIcon)`
     margin-right: 3px;
     fill: var(--text-light);
 `
