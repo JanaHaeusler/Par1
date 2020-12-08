@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SaveGamePage renders correctly edit form modus 1`] = `
+exports[`SaveGamePage renders edit form modus correctly 1`] = `
 .c3 {
   padding: 7px;
   display: -webkit-box;
@@ -230,7 +230,7 @@ exports[`SaveGamePage renders correctly edit form modus 1`] = `
 </form>
 `;
 
-exports[`SaveGamePage renders correctly normal form modus 1`] = `
+exports[`SaveGamePage renders normal form modus correctly 1`] = `
 .c3 {
   padding: 7px;
   display: -webkit-box;

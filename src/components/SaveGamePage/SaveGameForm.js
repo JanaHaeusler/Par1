@@ -27,7 +27,7 @@ export default function SaveGameForm({
 
     return (
         <FormWrapper noValidate onSubmit={handleSubmit} data-testid="form">
-            <InputWrapper>
+            <Fieldset>
                 <label>
                     Location
                 <input 
@@ -97,7 +97,7 @@ export default function SaveGameForm({
                 </label>
                 <span>{showErrorMessage('shots')}</span>
 
-            </InputWrapper>
+            </Fieldset>
             <ButtonWrapper>
                 <ButtonPrimary disabled={!showSaveButton} data-testid="button-save"><CheckIconStyled/>Save</ButtonPrimary>
                 {isEditFormShown && <ButtonCancel type="button" onClick={handleCancelEditModus} data-testid="button-cancel"><CancelIconStyled/>Cancel</ButtonCancel>}
@@ -129,7 +129,7 @@ const FormWrapper = styled.form`
         color: var(--text-dark);
     }
 `
-const InputWrapper = styled.fieldset`
+const Fieldset = styled.fieldset`
     margin: 0;
     padding: 0;
     border: none;

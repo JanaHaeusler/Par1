@@ -19,12 +19,12 @@ const testProps = {
   }
 
 describe('SaveGamePage', () => {
-    it('renders correctly normal form modus', () => {
+    it('renders normal form modus correctly', () => {
         const { container } = render(<SaveGamePage {...testProps}/>)
         expect(container.firstChild).toMatchSnapshot()
     })
 
-    it('renders correctly edit form modus', () => {
+    it('renders edit form modus correctly', () => {
       const props = {...testProps, isEditFormShown: true}
       const { container } = render(<SaveGamePage {...props}/>)
       expect(container.firstChild).toMatchSnapshot()
