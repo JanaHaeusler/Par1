@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import Background from '../assets/background.jpg'
+import Background from './background.jpg'
 
 export default createGlobalStyle`
     * {

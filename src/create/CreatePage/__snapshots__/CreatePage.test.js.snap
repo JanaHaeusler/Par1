@@ -1,0 +1,412 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreatePage renders edit form modus correctly 1`] = `
+.c3 {
+  padding: 7px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  width: 80px;
+  height: 34px;
+  border-style: none;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px var(--primary-dark);
+  background-color: var(--secondary-dark);
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+.c3:disabled {
+  opacity: 50%;
+}
+
+.c5 {
+  padding: 7px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  width: 80px;
+  height: 34px;
+  border-style: none;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px var(--primary-dark);
+  background-color: var(--text-light);
+  color: var(--secondary-dark);
+  font-size: 1rem;
+}
+
+.c5:disabled {
+  opacity: 50%;
+}
+
+.c0 {
+  margin: 10px 20px;
+  padding: 0 10px 10px 10px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--primary-medium);
+  background-color: var(--text-light);
+  color: var(--text-dark);
+  font-size: 1rem;
+}
+
+.c0 Button {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.c0 span {
+  margin-top: 5px;
+  font-size: 0.7rem;
+  color: var(--text-dark);
+}
+
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: grid;
+  width: 100%;
+}
+
+.c1 label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-family: 'Raleway',sans-serif;
+}
+
+.c1 input {
+  display: block;
+  margin-top: 3px;
+  padding: 5px;
+  width: 100%;
+  border-style: none;
+  border-bottom: 1px solid var(--primary-dark);
+  color: var(--primary-dark);
+  font-family: 'Montserrat',sans-serif;
+}
+
+.c1 span {
+  margin-top: 5px;
+  font-size: 0.7rem;
+  color: var(--text-dark);
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
+  margin-right: 3px;
+  width: 24%;
+  fill: var(--text-light);
+}
+
+.c6 {
+  margin-left: 20px;
+}
+
+.c7 {
+  margin-right: 3px;
+  fill: var(--secondary-dark);
+}
+
+<form
+  class="c0"
+  data-testid="form"
+  novalidate=""
+>
+  <fieldset
+    class="c1"
+  >
+    <label>
+      Location
+      <input
+        id="location"
+        name="location"
+        placeholder="Type location ..."
+        type="text"
+        value=""
+      />
+    </label>
+    <span />
+    <label>
+      Date
+      <input
+        id="date"
+        name="date"
+        type="date"
+        value=""
+      />
+    </label>
+    <span />
+    <label>
+      Player(s)
+      <input
+        id="players"
+        name="players"
+        placeholder="John, Jane"
+        type="text"
+        value=""
+      />
+    </label>
+    <span />
+    <label>
+      Winner(s)
+      <input
+        id="winner"
+        name="winner"
+        placeholder="Jane"
+        type="text"
+        value=""
+      />
+    </label>
+    <span />
+    <label>
+      Total Shots Winner(s)
+      <input
+        id="shots"
+        name="shots"
+        placeholder="38"
+        type="number"
+        value=""
+      />
+    </label>
+    <span />
+  </fieldset>
+  <div
+    class="c2"
+  >
+    <button
+      class="c3"
+      data-testid="button-save"
+      disabled=""
+    >
+      <svg
+        class="c4"
+      >
+        check.svg
+      </svg>
+      Save
+    </button>
+    <button
+      class="c5 c6"
+      data-testid="button-cancel"
+      type="button"
+    >
+      <svg
+        class="c7"
+      >
+        cross.svg
+      </svg>
+      Cancel
+    </button>
+  </div>
+  <span>
+    *Please do not clear your browsers cache, in order to permanently save your game details
+  </span>
+</form>
+`;
+
+exports[`CreatePage renders normal form modus correctly 1`] = `
+.c3 {
+  padding: 7px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  width: 80px;
+  height: 34px;
+  border-style: none;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px var(--primary-dark);
+  background-color: var(--secondary-dark);
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+.c3:disabled {
+  opacity: 50%;
+}
+
+.c0 {
+  margin: 10px 20px;
+  padding: 0 10px 10px 10px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--primary-medium);
+  background-color: var(--text-light);
+  color: var(--text-dark);
+  font-size: 1rem;
+}
+
+.c0 Button {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.c0 span {
+  margin-top: 5px;
+  font-size: 0.7rem;
+  color: var(--text-dark);
+}
+
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: grid;
+  width: 100%;
+}
+
+.c1 label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-family: 'Raleway',sans-serif;
+}
+
+.c1 input {
+  display: block;
+  margin-top: 3px;
+  padding: 5px;
+  width: 100%;
+  border-style: none;
+  border-bottom: 1px solid var(--primary-dark);
+  color: var(--primary-dark);
+  font-family: 'Montserrat',sans-serif;
+}
+
+.c1 span {
+  margin-top: 5px;
+  font-size: 0.7rem;
+  color: var(--text-dark);
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
+  margin-right: 3px;
+  width: 24%;
+  fill: var(--text-light);
+}
+
+<form
+  class="c0"
+  data-testid="form"
+  novalidate=""
+>
+  <fieldset
+    class="c1"
+  >
+    <label>
+      Location
+      <input
+        id="location"
+        name="location"
+        placeholder="Type location ..."
+        type="text"
+        value=""
+      />
+    </label>
+    <span />
+    <label>
+      Date
+      <input
+        id="date"
+        name="date"
+        type="date"
+        value=""
+      />
+    </label>
+    <span />
+    <label>
+      Player(s)
+      <input
+        id="players"
+        name="players"
+        placeholder="John, Jane"
+        type="text"
+        value=""
+      />
+    </label>
+    <span />
+    <label>
+      Winner(s)
+      <input
+        id="winner"
+        name="winner"
+        placeholder="Jane"
+        type="text"
+        value=""
+      />
+    </label>
+    <span />
+    <label>
+      Total Shots Winner(s)
+      <input
+        id="shots"
+        name="shots"
+        placeholder="38"
+        type="number"
+        value=""
+      />
+    </label>
+    <span />
+  </fieldset>
+  <div
+    class="c2"
+  >
+    <button
+      class="c3"
+      data-testid="button-save"
+      disabled=""
+    >
+      <svg
+        class="c4"
+      >
+        check.svg
+      </svg>
+      Save
+    </button>
+  </div>
+  <span>
+    *Please do not clear your browsers cache, in order to permanently save your game details
+  </span>
+</form>
+`;

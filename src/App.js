@@ -1,11 +1,11 @@
 import styled from 'styled-components/macro'
 import {Switch, Route, useHistory} from 'react-router-dom'
-import useGameData from './hooks/useGameData'
-import useForm from './hooks/useForm'
-import Header from './components/layout/Header'
-import Footer from './components/layout/Footer'
-import SaveGamePage from './SaveGamePage'
-import GameCardsPage from './GameCardsPage'
+import useGameData from './create/useGameData'
+import useForm from './create/useForm'
+import AppHeader from './app/AppHeader'
+import AppFooter from './app/AppFooter'
+import CreatePage from './create/CreatePage'
+import OverviewPage from './overview/OverviewPage'
 
 function App() {
 
@@ -33,27 +33,27 @@ function App() {
                               addGameProfile,
                               editGameProfile,
                               cancelEditModus,
-                              showGameCardsPage})
+                              showOverviewPage})
 
   const history = useHistory()
 
   return (
     <AppWrapper>
       <HeaderWrapper>
-        <Header/>
+        <AppHeader/>
       </HeaderWrapper>
       <MainWrapper>
         <Switch>  
           <Route exact path="/">
-            <GameCardsPage 
+            <OverviewPage 
                 savedGameProfiles={savedGameProfiles} 
                 deleteGameProfile={deleteGameProfile} 
                 prepareEditModus={prepareEditModus}
-                showSaveGamePage={showSaveGamePage}
+                showCreatePage={showCreatePage}
             />
           </Route>
-          <Route path="/saveGame">
-            <SaveGamePage 
+          <Route path="/create">
+            <CreatePage 
                 formInputs={formInputs}
                 showSaveButton={showSaveButton}
                 isEditFormShown={isEditFormShown}
@@ -65,27 +65,27 @@ function App() {
             />
           </Route>
           <Route path="/*">
-            <GameCardsPage 
+            <OverviewPage 
                 savedGameProfiles={savedGameProfiles} 
                 deleteGameProfile={deleteGameProfile} 
                 prepareEditModus={prepareEditModus}
-                showSaveGamePage={showSaveGamePage}
+                showCreatePage={showCreatePage}
             />
           </Route>
         </Switch> 
       </MainWrapper>
       <FooterWrapper>
-        <Footer handleClick={resetForm}/>
+        <AppFooter handleClick={resetForm}/>
       </FooterWrapper>
     </AppWrapper>
   )
 
-  function showGameCardsPage() {
+  function showOverviewPage() {
     history.push('/')
   }
 
-  function showSaveGamePage() {
-    history.push('/saveGame')
+  function showCreatePage() {
+    history.push('/create')
   }
 }
 
