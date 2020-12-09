@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import {useState} from 'react'
-import {BinIcon, PencilIcon, CrossIcon} from '../../app/Icons/Icons'
+import {BinIconDark, PencilIconDark, CancelIconLight} from '../../app/Icons/Icons'
 import Button from '../../app/Button'
 
 Game.propTypes = {
@@ -41,16 +41,16 @@ export default function Game({location, date, players, winner, shots, id, onDele
                         </ShotsWrapper>
                     </SavedGameContent>
                     <ButtonWrapper>
-                            <ButtonDeleteIcon onClick={() => setIsSetToDelete(true)} data-testid="button-set-delete"><BinIconStyled/></ButtonDeleteIcon>
-                            <ButtonEditIcon onClick={() => handleEdit(id)} data-testid="button-edit"><PencilIconStyled/></ButtonEditIcon>
+                            <ButtonDeleteIcon onClick={() => setIsSetToDelete(true)} data-testid="button-set-delete"><BinIconDark/></ButtonDeleteIcon>
+                            <ButtonEditIcon onClick={() => handleEdit(id)} data-testid="button-edit"><PencilIconDark/></ButtonEditIcon>
                     </ButtonWrapper>
                 </>
             )}
             {isSetToDelete && (
                 <DeleteField>
                     <span>Do you want to delete this game?</span>
-                    <ButtonDelete onClick={() => onDelete(id)} iconComponent={<BinIconStyled/>} text="Delete" data-testid="button-delete"/>
-                    <ButtonCancel main onClick={() => setIsSetToDelete(false)} iconComponent={<CancelIconStyled/>} text="Cancel" data-testid="button-cancel"/>
+                    <ButtonDelete onClick={() => onDelete(id)} iconComponent={<BinIconDark/>} text="Delete" data-testid="button-delete"/>
+                    <ButtonCancel main onClick={() => setIsSetToDelete(false)} iconComponent={<CancelIconLight/>} text="Cancel" data-testid="button-cancel"/>
                 </DeleteField>
             )}
         </Card>
@@ -112,10 +112,6 @@ const ButtonDeleteIcon = styled.button`
     border: none;
     background: none;
 `
-const BinIconStyled = styled(BinIcon)`
-    margin-right: 3px;
-    fill: var(--secondary-dark);
-`
 const ButtonEditIcon = styled.button`
     display: flex;
     margin: 20px 5px 5px 5px;
@@ -123,10 +119,6 @@ const ButtonEditIcon = styled.button`
     width: 30px;
     border: none;
     background: none;
-`
-const PencilIconStyled = styled(PencilIcon)`
-    margin-right: 3px;
-    fill: var(--secondary-dark);
 `
 const DeleteField = styled.div`
     display: grid;
@@ -149,8 +141,4 @@ const ButtonDelete = styled(Button)`
 const ButtonCancel = styled(Button)`
     grid-column-start: 2;
     grid-row-start: 2;
-`
-const CancelIconStyled = styled(CrossIcon)`
-    margin-right: 3px;
-    fill: var(--text-light);
 `

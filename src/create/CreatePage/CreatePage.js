@@ -5,7 +5,7 @@ import scrollUp from '../../lib/scrollUp'
 
 CreatePage.propTypes = {
     formInputs: PropTypes.object.isRequired,
-    showSaveButton: PropTypes.bool.isRequired,
+    isSaveButtonShown: PropTypes.bool.isRequired,
     isEditFormShown: PropTypes.bool.isRequired,
     updateDirtyInputs: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
@@ -16,7 +16,7 @@ CreatePage.propTypes = {
 
 export default function CreatePage({
     formInputs, 
-    showSaveButton,
+    isSaveButtonShown,
     isEditFormShown,
     updateDirtyInputs,
     handleChange,
@@ -30,7 +30,7 @@ export default function CreatePage({
         isEditFormShown ? 
             <CreateForm 
                 formInputs={formInputs}
-                showSaveButton={showSaveButton}
+                isSaveButtonShown={isSaveButtonShown}
                 isEditFormShown={isEditFormShown}
                 updateDirtyInputs={updateDirtyInputs}
                 handleChange={handleChange}
@@ -40,7 +40,7 @@ export default function CreatePage({
         : 
             <CreateForm 
                 formInputs={formInputs}
-                showSaveButton={showSaveButton}
+                isSaveButtonShown={isSaveButtonShown}
                 updateDirtyInputs={updateDirtyInputs}
                 handleChange={handleChange}
                 showErrorMessage={showErrorMessage}

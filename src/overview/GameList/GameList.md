@@ -23,6 +23,6 @@
   }}
   onDelete={() => {}}
   onEdit={() => {}}
-  showSaveGamePage={() => {}}
+  showCreatePage={() => {}}
 />
 ```

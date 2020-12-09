@@ -9,7 +9,7 @@ const testProps = {
     winner: '',
     shots: '',
   },
-  showSaveButton: false,
+  isSaveButtonShown: false,
   isEditFormShown: false,
   updateDirtyInputs: jest.fn(),
   handleChange: jest.fn(),

@@ -1,13 +1,13 @@
 import { render } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import Button from './Button'
-import { PencilIcon } from '../Icons/Icons'
+import { CheckIconWhite } from '../Icons/Icons'
 
 const testProps = {
     main: true,
     disabled: false,
     onClick: jest.fn(),
-    iconComponent: <PencilIcon/>,
+    iconComponent: CheckIconWhite,
     text: 'Test Text',
 }
 

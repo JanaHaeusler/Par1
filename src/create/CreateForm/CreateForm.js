@@ -1,11 +1,11 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
-import {CheckIcon, CrossIcon} from '../../app/Icons/Icons'
+import {CheckIconLight, CancelIconDark} from '../../app/Icons/Icons'
 import Button from '../../app/Button'
 
 CreateForm.propTypes = {
     formInputs: PropTypes.object.isRequired,
-    showSaveButton: PropTypes.bool,
+    isSaveButtonShown: PropTypes.bool,
     isEditFormShown: PropTypes.bool,
     updateDirtyInputs: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
@@ -16,7 +16,7 @@ CreateForm.propTypes = {
 
 export default function CreateForm({
     formInputs, 
-    showSaveButton,
+    isSaveButtonShown,
     isEditFormShown,
     updateDirtyInputs,
     handleChange,
@@ -98,8 +98,8 @@ export default function CreateForm({
 
             </Fieldset>
             <ButtonWrapper>
-                <Button main disabled={!showSaveButton} iconComponent={<CheckIconStyled/>} text="Save" data-testid="button-save"/>
-                {isEditFormShown && <ButtonCancel type="button" onClick={handleCancelEditModus} iconComponent={<CancelIconStyled/>} text="Cancel" data-testid="button-cancel"/>}
+                <Button main disabled={!isSaveButtonShown} iconComponent={<CheckIconLight/>} text="Save" data-testid="button-save"/>
+                {isEditFormShown && <ButtonCancel type="button" onClick={handleCancelEditModus} iconComponent={<CancelIconDark/>} text="Cancel" data-testid="button-cancel"/>}
             </ButtonWrapper>
             <span>*Please do not clear your browsers cache, in order to permanently save your game details</span>
         </FormWrapper>
@@ -161,15 +161,6 @@ const Fieldset = styled.fieldset`
 const ButtonWrapper = styled.div`
     display: flex;
 `
-const CheckIconStyled = styled(CheckIcon)`
-    margin-right: 3px;
-    width: 24%;
-    fill: var(--text-light);
-`
 const ButtonCancel = styled(Button)`
     margin-left: 20px;
-`
-const CancelIconStyled = styled(CrossIcon)`
-    margin-right: 3px;
-    fill: var(--secondary-dark);
 `

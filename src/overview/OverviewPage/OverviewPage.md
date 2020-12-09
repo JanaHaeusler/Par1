@@ -25,6 +25,6 @@ Game Cards Page
   }}
   deleteGameProfile={() => {}}
   prepareEditModus={() => {}}
-  showSaveGamePage={() => {}}
+  showCreatePage={() => {}}
 />
 ```

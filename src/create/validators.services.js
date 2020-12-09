@@ -11,4 +11,4 @@ function validateShotsIsInRange(shots) {
     return validateIsNotEmpty(shots) && shots >= 18 && shots <= 126
 }
 
-export { validateIsNotEmpty, validateIsCorrectDate,validateShotsIsInRange }
+export { validateIsNotEmpty, validateIsCorrectDate, validateShotsIsInRange }

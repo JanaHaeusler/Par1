@@ -6,10 +6,10 @@ AppFooter.propTypes = {
   handleClick: PropTypes.func.isRequired
 }
 
-export default function AppFooter({handleClick}) {
+export default function AppFooter({handleClick, className}) {
 
   return (
-    <FooterStyled>
+    <FooterStyled className={className}>
       <Navigation handleClick={handleClick}/>
     </FooterStyled>
   )

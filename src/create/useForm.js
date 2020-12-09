@@ -23,6 +23,7 @@ export default function useForm({
 
     useEffect(() => saveLocally(STORAGE_KEY, formInputs), [formInputs])
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => setInitialEditInputValues(), [isEditFormShown])
 
     const validInputs = {
@@ -33,7 +34,7 @@ export default function useForm({
         shots: validateShotsIsInRange(formInputs.shots),
     }
 
-    const showSaveButton = Object.values(validInputs).every(isValid => isValid)
+    const isSaveButtonShown = Object.values(validInputs).every(isValid => isValid)
 
     const [dirtyInputs, setDirtyInputs] = useState({
         location: false,
@@ -45,7 +46,7 @@ export default function useForm({
 
     return {
         formInputs, 
-        showSaveButton,
+        isSaveButtonShown,
         updateDirtyInputs,
         handleChange,
         showErrorMessage,

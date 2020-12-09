@@ -1,10 +1,10 @@
 import styled from 'styled-components/macro'
 import Pennant from './Pennant'
 
-export default function AppHeader() {
+export default function AppHeader({className}) {
 
   return (
-    <HeaderStyled>
+    <HeaderStyled className={className}>
       <PennantStyled>
         <Pennant/>
       </PennantStyled>

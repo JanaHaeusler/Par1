@@ -9,7 +9,7 @@ Save Game Page
     winner: '',
     shots: '',
   }}
-  showSaveButton={false}
+  isSaveButtonShown={false}
   isEditFormShown={true}
   updateDirtyInputs={() => {}}
   handleChange={() => {}}

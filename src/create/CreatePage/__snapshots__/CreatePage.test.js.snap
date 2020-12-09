@@ -1,6 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CreatePage renders edit form modus correctly 1`] = `
+.c4 {
+  margin-right: 3px;
+  width: 24%;
+  fill: var(--text-light);
+}
+
+.c7 {
+  margin-right: 3px;
+  fill: var(--secondary-dark);
+}
+
 .c3 {
   padding: 7px;
   display: -webkit-box;
@@ -118,19 +129,8 @@ exports[`CreatePage renders edit form modus correctly 1`] = `
   display: flex;
 }
 
-.c4 {
-  margin-right: 3px;
-  width: 24%;
-  fill: var(--text-light);
-}
-
 .c6 {
   margin-left: 20px;
-}
-
-.c7 {
-  margin-right: 3px;
-  fill: var(--secondary-dark);
 }
 
 <form
@@ -231,6 +231,12 @@ exports[`CreatePage renders edit form modus correctly 1`] = `
 `;
 
 exports[`CreatePage renders normal form modus correctly 1`] = `
+.c4 {
+  margin-right: 3px;
+  width: 24%;
+  fill: var(--text-light);
+}
+
 .c3 {
   padding: 7px;
   display: -webkit-box;
@@ -318,12 +324,6 @@ exports[`CreatePage renders normal form modus correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c4 {
-  margin-right: 3px;
-  width: 24%;
-  fill: var(--text-light);
 }
 
 <form

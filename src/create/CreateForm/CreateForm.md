@@ -9,7 +9,7 @@ Normal Form
     winner: '',
     shots: '',
   }}
-  showSaveButton={false}
+  isSaveButtonShown={false}
   updateDirtyInputs={() => {}}
   handleChange={() => {}}
   showErrorMessage={() => {}}
@@ -28,7 +28,7 @@ Form in Edit Modus
     winner: '',
     shots: '',
   }}
-  showSaveButton={false}
+  isSaveButtonShown={false}
   isEditFormShown={true}
   updateDirtyInputs={() => {}}
   handleChange={() => {}}

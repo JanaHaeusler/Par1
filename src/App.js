@@ -21,7 +21,7 @@ function App() {
   
     const {
         formInputs, 
-        showSaveButton,
+        isSaveButtonShown,
         updateDirtyInputs,
         handleChange,
         showErrorMessage,
@@ -39,9 +39,7 @@ function App() {
 
   return (
     <AppWrapper>
-      <HeaderWrapper>
-        <AppHeader/>
-      </HeaderWrapper>
+      <HeaderStyled/>
       <MainWrapper>
         <Switch>  
           <Route exact path="/">
@@ -55,7 +53,7 @@ function App() {
           <Route path="/create">
             <CreatePage 
                 formInputs={formInputs}
-                showSaveButton={showSaveButton}
+                isSaveButtonShown={isSaveButtonShown}
                 isEditFormShown={isEditFormShown}
                 updateDirtyInputs={updateDirtyInputs}
                 handleChange={handleChange}
@@ -74,9 +72,7 @@ function App() {
           </Route>
         </Switch> 
       </MainWrapper>
-      <FooterWrapper>
-        <AppFooter handleClick={resetForm}/>
-      </FooterWrapper>
+      <FooterStyled handleClick={resetForm}/>
     </AppWrapper>
   )
 
@@ -97,7 +93,7 @@ const AppWrapper = styled.div`
   width: 100vw;
   max-width: 600px;
 `
-const HeaderWrapper = styled.div`
+const HeaderStyled = styled(AppHeader)`
   position: fixed;
   top: 0;
   left: 0;
@@ -111,7 +107,7 @@ const MainWrapper = styled.main`
     display: none;
   }
 `
-const FooterWrapper = styled.div`
+const FooterStyled = styled(AppFooter)`
   position: fixed;
   bottom: 0;
   left: 0;

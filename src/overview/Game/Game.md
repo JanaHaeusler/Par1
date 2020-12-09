@@ -8,6 +8,6 @@
   id="1"
   onDelete={() => {}}
   onEdit={() => {}}
-  showSaveGamePage={() => {}}
+  showCreatePage={() => {}}
 />
 ```

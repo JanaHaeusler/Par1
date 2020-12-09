@@ -10,7 +10,7 @@ const testProps = {
     winner: '',
     shots: '',
   },
-  showSaveButton: false,
+  isSaveButtonShown: false,
   isEditFormShown: false,
   updateDirtyInputs: jest.fn(),
   handleChange: jest.fn(),
@@ -49,7 +49,7 @@ describe('CreateForm', () => {
   })
 
   it('has enabled save button', () => {
-    const props = {...testProps, showSaveButton: true}
+    const props = {...testProps, isSaveButtonShown: true}
     const { getByTestId} = render(<CreateForm {...props} />)
     expect(getByTestId('button-save')).toBeEnabled()
   })
@@ -69,7 +69,7 @@ describe('CreateForm', () => {
 
   it('calls handleSubmitMock on submitting the form', () => {
     const handleSubmitMock = jest.fn()
-    const props = {...testProps, showSaveButton: true, handleSubmit: handleSubmitMock}
+    const props = {...testProps, isSaveButtonShown: true, handleSubmit: handleSubmitMock}
     const {getByTestId} = render(<CreateForm {...props} />)
     const Form = getByTestId("form")
     fireEvent.submit(Form)
