@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pennant renders correctly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0 0 10px var(--primary-dark);
+  border-radius: 0 0 50px 50px;
+  background-color: var(--text-light);
+}
+
+.c1 {
+  margin-top: 10px;
+  width: 30px;
+  fill: var(--secondary-dark);
+}
+
+<div
+  class="c0"
+>
+  <svg
+    class="c1"
+  >
+    golf-logo.svg
+  </svg>
+</div>
+`;
