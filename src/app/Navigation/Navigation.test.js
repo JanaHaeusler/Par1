@@ -38,7 +38,7 @@ describe('Navigation', () => {
                 <Navigation {...props}/>
             </Router> 
         )
-        const FormLink = getByTestId('button-form-page')
+        const FormLink = getByTestId('button-create-page')
         user.click(FormLink)
         expect(handleClickMock).toHaveBeenCalled()
     })

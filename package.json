@@ -20,7 +20,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "styleguide": "FAST_REFRESH=false styleguidist server",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test:e2e": "start-server-and-test start http://localhost:3000 cy:run",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open"
   },
   "eslintConfig": {
     "extends": [
@@ -41,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "cypress": "^6.1.0",
     "react-styleguidist": "^11.1.2"
   }
 }

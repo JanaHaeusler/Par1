@@ -13,7 +13,7 @@ export default function Navigation({handleClick}) {
                 <NavLinkStyled exact to="/" onClick={handleClick} data-testid="button-home-page">
                     <HomeIcon />
                 </NavLinkStyled>
-                <NavLinkStyled to="/create" onClick={handleClick} data-testid="button-form-page">
+                <NavLinkStyled to="/create" onClick={handleClick} data-testid="button-create-page">
                     <PlusIcon />
                 </NavLinkStyled>
             </NavBar>
