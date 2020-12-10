@@ -25,16 +25,20 @@ export default createGlobalStyle`
     :root {
         --text-dark: #414143;
         --text-light: #ffffff;
-        --primary-light: #C1D5E0;
+        --text-light-transparent: #ffffffBF;
         --primary-medium: #90A4AE;
         --primary-dark: #62757F;
-        --secondary-light: #51A1D1;
-        --secondary-medium: #0173A0;
         --secondary-dark: #004871;
+        --gradient-dark: linear-gradient(90deg, #000428 0%, #004871 100%);
     }
 
     h1 {
         font-size: 2rem;
+    }
+
+    h3 {
+        margin: 10px;
+        font-weight: 550;
     }
 
     h4 {

@@ -1,5 +1,4 @@
 import styled from 'styled-components/macro'
-
 import { ReactComponent as BinIcon } from './assets/bin.svg'
 import { ReactComponent as CheckIcon } from './assets/check.svg'
 import { ReactComponent as CrossIcon } from './assets/cross.svg'
@@ -10,29 +9,37 @@ import { ReactComponent as PlusIcon } from './assets/plus.svg'
 
 const BinIconDark = styled(BinIcon)`
     margin-right: 3px;
-    fill: var(--secondary-dark);
+    stroke: var(--secondary-dark);
+`
+const BinIconLight = styled(BinIcon)`
+    margin-right: 3px;
+    stroke: var(--text-light);
 `
 const CheckIconDark = styled(CheckIcon)`
     margin-right: 3px;
-    width: 24%;
-    fill: var(--secondary-dark);
+    width: 30%;
+    stroke: var(--secondary-dark);
 `
 const CheckIconLight = styled(CheckIcon)`
     margin-right: 3px;
-    width: 24%;
-    fill: var(--text-light);
+    width: 30%;
+    stroke: var(--text-light);
 `
 const CancelIconDark = styled(CrossIcon)`
     margin-right: 3px;
-    fill: var(--secondary-dark);
+    stroke: var(--secondary-dark);
 `
 const CancelIconLight = styled(CrossIcon)`
     margin-right: 3px;
-    fill: var(--text-light);
+    stroke: var(--text-light);
 `
 const PencilIconDark = styled(PencilIcon)`
     margin-right: 3px;
-    fill: var(--secondary-dark);
+    stroke: var(--secondary-dark);
+`
+const PencilIconLight = styled(PencilIcon)`
+    margin-right: 3px;
+    stroke: var(--text-light);
 `
 
-export { BinIconDark, CheckIconDark, CheckIconLight, CancelIconDark, CancelIconLight, PencilIconDark, HomeIcon, PlusIcon, LogoIcon }
+export { BinIconDark, BinIconLight, CheckIconDark, CheckIconLight, CancelIconDark, CancelIconLight, PencilIconDark, PencilIconLight, HomeIcon, PlusIcon, LogoIcon }

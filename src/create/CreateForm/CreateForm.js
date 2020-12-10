@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
+import ScoreCard from '../ScoreCard'
 import {CheckIconLight, CancelIconDark} from '../../app/Icons/Icons'
 import Button from '../../app/Button'
 
@@ -26,6 +27,7 @@ export default function CreateForm({
 
     return (
         <FormWrapper noValidate onSubmit={handleSubmit} data-testid="form">
+            <Headline>Info</Headline>
             <Fieldset>
                 <label>
                     Location
@@ -95,8 +97,13 @@ export default function CreateForm({
                 />
                 </label>
                 <span>{showErrorMessage('shots')}</span>
-
             </Fieldset>
+            <ScoreCard
+                formInputs={formInputs}
+                updateDirtyInputs={updateDirtyInputs}
+                handleChange={handleChange}
+                showErrorMessage={showErrorMessage}
+            />
             <ButtonWrapper>
                 <Button main disabled={!isSaveButtonShown} iconComponent={<CheckIconLight/>} text="Save" data-testid="button-save"/>
                 {isEditFormShown && <ButtonCancel type="button" onClick={handleCancelEditModus} iconComponent={<CancelIconDark/>} text="Cancel" data-testid="button-cancel"/>}
@@ -127,6 +134,20 @@ const FormWrapper = styled.form`
         font-size: 0.7rem;
         color: var(--text-dark);
     }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+`
+const Headline = styled.h3`
+   text-align: center;
+   text-transform: uppercase;
 `
 const Fieldset = styled.fieldset`
     margin: 0;
