@@ -41,7 +41,7 @@ export default function CreateForm({
                     onBlur={() => updateDirtyInputs('location')}
                 />
                 </label>
-                <span>{showErrorMessage('location')}</span>
+                <Note>{showErrorMessage('location')}</Note>
                 
                 <label>
                     Date
@@ -54,7 +54,7 @@ export default function CreateForm({
                     onBlur={() => updateDirtyInputs('date')}
                 />
                 </label>
-                <span>{showErrorMessage('date')}</span>
+                <Note>{showErrorMessage('date')}</Note>
 
                 <label>
                     Player(s)
@@ -68,7 +68,7 @@ export default function CreateForm({
                     onBlur={() => updateDirtyInputs('players')}
                 />
                 </label>
-                <span>{showErrorMessage('players')}</span>
+                <Note>{showErrorMessage('players')}</Note>
                 
                 <label>
                     Winner(s)
@@ -82,7 +82,7 @@ export default function CreateForm({
                     onBlur={() => updateDirtyInputs('winner')}
                 />
                 </label>
-                <span>{showErrorMessage('winner')}</span>
+                <Note>{showErrorMessage('winner')}</Note>
 
                 <label>
                     Total Shots Winner(s)
@@ -96,19 +96,18 @@ export default function CreateForm({
                     onBlur={() => updateDirtyInputs('shots')}
                 />
                 </label>
-                <span>{showErrorMessage('shots')}</span>
+                <Note>{showErrorMessage('shots')}</Note>
             </Fieldset>
             <ScoreCard
                 formInputs={formInputs}
                 updateDirtyInputs={updateDirtyInputs}
                 handleChange={handleChange}
-                showErrorMessage={showErrorMessage}
             />
             <ButtonWrapper>
                 <Button main disabled={!isSaveButtonShown} iconComponent={<CheckIconLight/>} text="Save" data-testid="button-save"/>
                 {isEditFormShown && <ButtonCancel type="button" onClick={handleCancelEditModus} iconComponent={<CancelIconDark/>} text="Cancel" data-testid="button-cancel"/>}
             </ButtonWrapper>
-            <span>*Please do not clear your browsers cache, in order to permanently save your game details</span>
+            <Note>*Please do not clear your browsers cache, in order to permanently save your game details</Note>
         </FormWrapper>
     )
 }
@@ -128,13 +127,7 @@ const FormWrapper = styled.form`
         margin-top: 15px;
         margin-bottom: 5px;
     }
-
-    span {
-        margin-top: 5px;
-        font-size: 0.7rem;
-        color: var(--text-dark);
-    }
-
+    
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
         -webkit-appearance: none;
@@ -172,16 +165,15 @@ const Fieldset = styled.fieldset`
         color: var(--primary-dark);
         font-family: 'Montserrat', sans-serif;
     }
-
-    span {
-        margin-top: 5px;
-        font-size: 0.7rem;
-        color: var(--text-dark);
-    }
 `
 const ButtonWrapper = styled.div`
     display: flex;
 `
 const ButtonCancel = styled(Button)`
     margin-left: 20px;
+`
+const Note = styled.span`
+    margin-top: 5px;
+    font-size: 0.7rem;
+    color: var(--text-dark);
 `

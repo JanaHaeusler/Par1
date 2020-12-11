@@ -6,7 +6,6 @@ ScoreCard.propTypes = {
     formInputs: PropTypes.object.isRequired,
     updateDirtyInputs: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
-    showErrorMessage: PropTypes.func.isRequired,
 }
 
 export default function ScoreCard({
@@ -21,150 +20,118 @@ export default function ScoreCard({
     return (
         <ScoreCardWrapper>
             <Headline>Score</Headline>
-                <TableWrapper>
-                    
-                
-                    
-                    <TableLegend>
+                <ScoreOverview>
+                    <LegendHoles>
                         <span>Holes</span>
-                        <HoleLegendWrapper>
-                            {new Array(18).fill().map(() => {
-                                    const newId = uuid()
-                                    incrementNumber(holeNumber)
-                                    return <span key={newId}>{holeNumber}</span>
-                                })
-                            }
-                        </HoleLegendWrapper>
-                    </TableLegend> 
-                    <PlayerWrapper>
+                        {new Array(18).fill().map(() => {
+                            const newId = uuid()
+                            incrementNumber(holeNumber)
+                            return <span key={newId}>{holeNumber}</span>
+                            })
+                        }
+                    </LegendHoles> 
+                    <PlayerScores>
                         {players.map((player) => {
                             const newId = uuid()
                             const playerName = player
-                            incrementNumber(inputNumber)
-
-                            return (
-                                <Player  key={newId} >
-                                    <span>{playerName}</span>
-                                    <HoleWrapperAll>
+                                return (
+                                    <PlayerColumn key={newId}>
+                                        <span>{playerName}</span>
                                         {new Array(18).fill().map(() => {
-                                        const newId = uuid()
-                                        
-                                        return <HoleWrapper key={newId} >
-                                                <label>
-                                                <input 
-                                                type="number" 
-                                                name={'hole' + inputNumber + playerName}
-                                                id={'hole' + inputNumber + playerName}
-                                                value={formInputs.location}
-                                                onChange={(event) => handleChange(event.target.name, event.target.value)}
-                                                onBlur={() => updateDirtyInputs('location')}
-                                                />
-                                                </label>
-                                            </HoleWrapper>
-                                        })
+                                            const newId = uuid()
+                                            incrementNumber(inputNumber)
+                                            return <PlayerScoreInput key={newId} >
+                                                    <label>
+                                                        <input 
+                                                        type="number" 
+                                                        name={'hole' + inputNumber + playerName}
+                                                        id={'hole' + inputNumber + playerName}
+                                                        value={formInputs.location}
+                                                        onChange={(event) => handleChange(event.target.name, event.target.value)}
+                                                        onBlur={() => updateDirtyInputs('location')}
+                                                        />
+                                                    </label>
+                                                </PlayerScoreInput>
+                                            })
                                         }
-                                    </HoleWrapperAll>
-                                </Player>
-                            )
+                                    </PlayerColumn>
+                                )
                             })
                         }
-                        
-                    </PlayerWrapper> 
-                    </TableWrapper> 
+                    </PlayerScores> 
+                </ScoreOverview> 
         </ScoreCardWrapper>
     )
 
     function incrementNumber(variable) {
-        console.log(variable)
-        variable < 18 && variable === holeNumber ? holeNumber++ : inputNumber++
+        if (variable === 18) {
+            inputNumber = 0
+            variable === holeNumber ? holeNumber++ : inputNumber++
+        }
+        variable === holeNumber ? holeNumber++ : inputNumber++
     }
 }
 
-
 const ScoreCardWrapper = styled.div`
-    
-    /* margin: 0;
-    padding: 0;
-    display: grid;
-    width: 100%;
-    border: none; */
-   
-
+    span {
+        font-family: 'Raleway', sans-serif;
+    }
 `
 const Headline = styled.h3`
    text-align: center;
    text-transform: uppercase;
 `
-
-
-
-
-const TableWrapper = styled.div`
+const ScoreOverview = styled.section`
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr;
+    gap: 20px;
+    width: 90%;
 `
-const TableLegend = styled.div`
+const LegendHoles = styled.div`
+    padding-right: 20px;
     display: grid;
-    grid-template-rows: 1fr 18fr;
-    
-
-
-    
-`
-const HoleLegendWrapper = styled.div`
-    display: grid;
-    gap: 10px;
-`
-
-const PlayerWrapper= styled.div`
-    display: flex;
-    /* grid-template-columns: 2fr;
-    grid-auto-columns: 1fr; */
-    overflow-y: auto;
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-    display: none;
-    }
-`
-const Player = styled.div`
-    display: grid;
-    min-width: 80px;
-`
-
-
-
-
-
-
-const HoleWrapperAll = styled.div`
-    display: grid;
-    gap: 10px;
-`
-
-
-const HoleWrapper = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
-    grid-template-rows: 1fr;
-    gap: 3px;
-    border-bottom: 1px solid var(--primary-dark);
+    grid-template-rows: repeat(19, 35px);
+    align-items: center;
+    border-right: 1px solid var(--separator);
 
     span {
-        /* margin-top: 5px; */
+        width: 100%;
         text-align: center;
-        /* font-size: 0.7rem; */
-        /* color: var(--text-dark); */
     }
-
-    label {
-        width: 300%;
+`
+const PlayerScores = styled.div`
+    display: flex;
+    overflow-y: auto;
+    scrollbar-width: none;
+    
+    &::-webkit-scrollbar {
+        display: none;
     }
-
+`
+const PlayerColumn = styled.div`
+    margin: 0 2px;
+    padding-left: 1px;
+    display: grid;
+    grid-template-rows: repeat(19, 35px);
+    align-items: center;
+    min-width: 80px;
+`
+const PlayerScoreInput = styled.div`
+    display: grid;
+    gap: 10px;
+    
     input {
         padding: 0;
         width: 100%;
+        height: 100%;
         border-style: none;
+        border-radius: 3px;
         color: var(--primary-dark);
         font-family: 'Montserrat', sans-serif;
+    }
+
+    input:nth-of-type(6n+1) {
+        background-color: var(--separator);
     }
 `

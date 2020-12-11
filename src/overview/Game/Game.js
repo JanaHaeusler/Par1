@@ -71,7 +71,7 @@ const SavedGameContent = styled.div`
     grid-template-rows: repeat(4, auto);
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
-    box-shadow: 0 0 10px var(--primary-medium);
+    box-shadow: 0 0 10px var(--box-shadow-green);
     border-radius: 25px 25px 0 0;
     background-color: var(--text-light);
     font-size: 0.9rem;
@@ -111,14 +111,12 @@ const ButtonDeleteIcon = styled.button`
     margin: 5px;
     padding: 0;
     display: flex;
-    width: 25px;
     border: none;
     background: none;
 `
 const ButtonEditIcon = styled.button`
     padding: 0;
     display: flex;
-    width: 30px;
     border: none;
     background: none;
 `

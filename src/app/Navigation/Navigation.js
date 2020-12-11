@@ -27,7 +27,8 @@ const NavBar = styled.nav`
     width: 100%;
 `
 const NavLinkStyled = styled(NavLink)`
-    width: 25px;
+    width: 28px;
+    height: 28px;
     fill: var(--text-light);
     opacity: 40%;
     

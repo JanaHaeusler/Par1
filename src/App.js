@@ -103,6 +103,7 @@ const HeaderStyled = styled(AppHeader)`
 const MainWrapper = styled.main`
   padding: 70px 10px 60px 10px;
   scrollbar-width: none;
+  
   &::-webkit-scrollbar {
     display: none;
   }

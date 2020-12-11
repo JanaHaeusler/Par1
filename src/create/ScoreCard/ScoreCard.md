@@ -11,6 +11,5 @@ Score Card
   }}
   updateDirtyInputs={() => {}}
   handleChange={() => {}}
-  showErrorMessage={() => {}}
 />
 ```
