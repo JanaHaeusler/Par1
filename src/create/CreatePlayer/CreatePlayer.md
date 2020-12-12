@@ -1,0 +1,5 @@
+Create Player
+
+```jsx
+<CreatePlayer />
+```

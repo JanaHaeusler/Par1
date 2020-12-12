@@ -29,11 +29,18 @@ export default function useGameData() {
     }
     
     function addGameProfile(gameProfile) {
+        const playersArray = gameProfile.players.split(',').map((player) => player.trim()).filter(player => player)
+        const playersObject = playersArray.reduce((acc, cur) => ({ ...acc, [cur]: {} }), {})
         const newId = uuid()
         setSavedGameProfiles({
             byId: {
                 ...savedGameProfiles.byId,
-                [newId]: {...gameProfile, _id: newId},
+                [newId]: {...gameProfile, 
+                    players: {
+                        byName: playersObject,
+                        allNames: playersArray
+                    },
+                    _id: newId},
             },
             allIds: [newId, ...savedGameProfiles.allIds],
         })

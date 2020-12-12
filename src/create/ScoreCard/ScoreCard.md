@@ -1,4 +1,4 @@
-Score Card
+Scorecard
 
 ```jsx
 <ScoreCard

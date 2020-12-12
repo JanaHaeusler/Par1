@@ -9,8 +9,10 @@ CreatePage.propTypes = {
     isEditFormShown: PropTypes.bool.isRequired,
     updateDirtyInputs: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
+    handleChangeScoreInputs: PropTypes.func.isRequired,
     showErrorMessage: PropTypes.func.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
+    handleGameInfoSubmit: PropTypes.func.isRequired,
+    handleScoreCardSubmit: PropTypes.func.isRequired,
     handleCancelEditModus: PropTypes.func.isRequired,
 }
 
@@ -20,8 +22,10 @@ export default function CreatePage({
     isEditFormShown,
     updateDirtyInputs,
     handleChange,
+    handleChangeScoreInputs,
     showErrorMessage,
-    handleSubmit,
+    handleGameInfoSubmit,
+    handleScoreCardSubmit,
     handleCancelEditModus}) {
    
     useEffect(() => scrollUp(), [])
@@ -34,8 +38,10 @@ export default function CreatePage({
                 isEditFormShown={isEditFormShown}
                 updateDirtyInputs={updateDirtyInputs}
                 handleChange={handleChange}
+                handleChangeScoreInputs={handleChangeScoreInputs}
                 showErrorMessage={showErrorMessage}
-                handleSubmit={handleSubmit}
+                handleGameInfoSubmit={handleGameInfoSubmit}
+                handleScoreCardSubmit={handleScoreCardSubmit}
                 handleCancelEditModus={handleCancelEditModus}/>
         : 
             <CreateForm 
@@ -43,7 +49,9 @@ export default function CreatePage({
                 isSaveButtonShown={isSaveButtonShown}
                 updateDirtyInputs={updateDirtyInputs}
                 handleChange={handleChange}
+                handleChangeScoreInputs={handleChangeScoreInputs}
                 showErrorMessage={showErrorMessage}
-                handleSubmit={handleSubmit}/>
+                handleGameInfoSubmit={handleGameInfoSubmit}
+                handleScoreCardSubmit={handleScoreCardSubmit}/>
     )
 }

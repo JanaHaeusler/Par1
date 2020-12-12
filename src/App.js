@@ -24,8 +24,10 @@ function App() {
         isSaveButtonShown,
         updateDirtyInputs,
         handleChange,
+        handleChangeScoreInputs,
         showErrorMessage,
-        handleSubmit,
+        handleGameInfoSubmit,
+        handleScoreCardSubmit,
         handleCancelEditModus,
         resetForm } = useForm({
                               targetProfile,
@@ -57,8 +59,10 @@ function App() {
                 isEditFormShown={isEditFormShown}
                 updateDirtyInputs={updateDirtyInputs}
                 handleChange={handleChange}
+                handleChangeScoreInputs={handleChangeScoreInputs}
                 showErrorMessage={showErrorMessage}
-                handleSubmit={handleSubmit}
+                handleGameInfoSubmit={handleGameInfoSubmit}
+                handleScoreCardSubmit={handleScoreCardSubmit}
                 handleCancelEditModus={handleCancelEditModus}
             />
           </Route>
