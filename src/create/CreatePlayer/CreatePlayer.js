@@ -14,7 +14,7 @@ CreatePlayer.propTypes = {
 export default function CreatePlayer({formInputs, updateDirtyInputs, handleChange, changeStatus}) {
 
     const [numberPlayers, setNumberPlayers] = useState(['player1'])
-console.log(numberPlayers)
+    
     return ( 
         <CreatePlayerWrapper>
             <span>Who is playing?</span>

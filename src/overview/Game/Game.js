@@ -29,7 +29,7 @@ export default function Game({location, date, players, winner, shots, id, onDele
                         <Date>{date}</Date>
                         <PlayerWrapper>
                             <h4>Player(s)</h4>
-                            <span>{players.allNames}</span>
+                            <span>{players}</span>
                         </PlayerWrapper>
                         <WinnerWrapper>
                             <h4>Winner(s)</h4>

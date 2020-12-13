@@ -6,17 +6,15 @@ SinglePlayerScore.propTypes = {
     playerName: PropTypes.string.isRequired,
     formInputs: PropTypes.object.isRequired, 
     scoreCardInputs: PropTypes.object.isRequired, 
+    newGameProfile: PropTypes.object.isRequired,
     targetProfile: PropTypes.object.isRequired, 
-    handleChangeScoreCard: PropTypes.object.isRequired, 
     updateDirtyInputs: PropTypes.func.isRequired,
     handleChangeScoreInputs: PropTypes.func.isRequired,
 }
 
-export default function SinglePlayerScore({playerName, formInputs, scoreCardInputs, targetProfile, updateDirtyInputs, handleChangeScoreCard, handleChangeScoreInputs}) {
-console.log('FORMINPUTS SINGLE PLAYER SCORE ankommend', formInputs)
+export default function SinglePlayerScore({playerName, formInputs, scoreCardInputs, newGameProfile, targetProfile, updateDirtyInputs, handleChangeScoreInputs}) {
 
-const gameProfileId = targetProfile._id
-
+console.log('single player', {scoreCardInputs})
     return (
         <ScoreColumn>
             <span>{playerName}</span>
@@ -31,15 +29,8 @@ const gameProfileId = targetProfile._id
                             type="number" 
                             name={holeName + playerName}
                             id={holeName + playerName}
-                            placeholder="38"
-                            value={formInputs[playerName][holeName]}
-                            onChange={(event) => {   
-                                handleChangeScoreCard(event.target.name, event.target.value)
-                                // console.log(' EVENT TARGET NAME', event.target.name)     
-                                // console.log(' EVENT TARGET VALUE', event.target.value)     
-                                // handleChangeScoreInputs(event.target.name, event.target.value)
-                            }
-                            }
+                            value={scoreCardInputs?.scores[playerName][holeName]}
+                            onChange={(event) => {handleChangeScoreInputs(event.target.name, event.target.value)}}
                             // onBlur={() => updateDirtyInputs('location')}
                             />
                         </label>

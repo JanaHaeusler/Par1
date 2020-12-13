@@ -15,6 +15,7 @@ export default function GameList({savedGameProfiles, onDelete, onEdit, showCreat
     <GameListWrapper>
         {savedGameProfiles.allIds.map((id) => {
           const {location, date, players, winner, shots, _id} = savedGameProfiles.byId[id]
+          const playersString = players.join(', ')
           return <Game 
                     key={_id} 
                     id={_id} 
@@ -22,7 +23,7 @@ export default function GameList({savedGameProfiles, onDelete, onEdit, showCreat
                     onEdit={onEdit} 
                     location={location} 
                     date={date} 
-                    players={players} 
+                    players={playersString} 
                     winner={winner} 
                     shots={shots}
                     showCreatePage={showCreatePage}/>

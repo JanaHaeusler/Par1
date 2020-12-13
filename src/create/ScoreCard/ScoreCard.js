@@ -6,42 +6,28 @@ import SinglePlayerScore from '../SinglePlayerScore'
 
 ScoreCard.propTypes = {
     formInputs: PropTypes.object.isRequired,
+    scoreCardInputs: PropTypes.object.isRequired,
     targetProfile: PropTypes.object.isRequired,
+    newGameProfile: PropTypes.object.isRequired,
     savedGameProfiles: PropTypes.object.isRequired,
     updateDirtyInputs: PropTypes.func.isRequired,
     handleChangeScoreInputs: PropTypes.func.isRequired,
+    handleScoreCardSubmit: PropTypes.func.isRequired,
 }
 
 export default function ScoreCard({
     formInputs, 
+    scoreCardInputs,
     savedGameProfiles,
+    newGameProfile,
     targetProfile,
     updateDirtyInputs,
     handleChangeScoreInputs, 
+    handleScoreCardSubmit,
     className}) {
 
-        const players = targetProfile.players.allNames
-    
-
-        console.log({targetProfile})
-
-        const [scoreCardInputs, setScoreCardInputs] = useState({})
-
-        function handleChangeScoreCard(inputName, inputValue) {
-            const inputNameSplitted = inputName.split(/(\d+)/)
-            const holeName =  inputNameSplitted[0] + inputNameSplitted[1]
-            const playerName = inputNameSplitted[2]
-            
-            setScoreCardInputs({
-                ...scoreCardInputs,
-                [playerName]: { ...scoreCardInputs[playerName], [holeName]: inputValue }
-            })
-        
-
-        }
-
     return (
-        <FormScoreCard className={className}>
+        <FormScoreCard className={className} onSubmit={handleScoreCardSubmit}>
             <Headline>Score</Headline>
                 <ScoreOverview>
                     <LegendHoles>
@@ -53,18 +39,16 @@ export default function ScoreCard({
                         }
                     </LegendHoles> 
                     <AllPlayerScores>
-                        {players.map((player) => {
+                        {newGameProfile.players.map((player) => {
                             const newId = uuid()
-                            console.log(player)
                             const playerName = player      //brauchen wir toString() oder join() hier, um es in einen string zu verwandeln?
-                            console.log({playerName})
                                 return <SinglePlayerScore 
                                             key={newId} 
                                             playerName={playerName}
                                             scoreCardInputs={scoreCardInputs}
+                                            newGameProfile={newGameProfile}
                                             targetProfile={targetProfile}
                                             formInputs={formInputs}
-                                            handleChangeScoreCard={handleChangeScoreCard}
                                             updateDirtyInputs={updateDirtyInputs}
                                             handleChangeScoreInputs={handleChangeScoreInputs}
                                             />
@@ -76,7 +60,7 @@ export default function ScoreCard({
     )
 }
 
-const FormScoreCard = styled.form`
+const FormScoreCard = styled.div`
     span {
         font-family: 'Raleway', sans-serif;
     }

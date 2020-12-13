@@ -8,6 +8,8 @@ const STORAGE_KEY = 'formInputs'
 export default function useForm({
     isEditFormShown, 
     targetProfile, 
+    newGameProfile,
+    createGameProfile,
     addGameProfile, 
     editGameProfile, 
     cancelEditModus,
@@ -21,9 +23,21 @@ export default function useForm({
         players: '',
         winner: '',
         shots: '',
-        scores: {},
     })
+
+    console.log('useForm', {newGameProfile})
     
+   
+    
+    const [scoreCardInputs, setScoreCardInputs] = useState({})
+
+console.log('useForm scoreCardInputs', {scoreCardInputs})
+    
+useEffect(() => {
+        setScoreCardInputs({...newGameProfile})
+    }, [newGameProfile])
+
+
 
     // useEffect(() => saveLocally(STORAGE_KEY, formInputs), [formInputs])
 
@@ -51,6 +65,7 @@ export default function useForm({
 
     return {
         formInputs, 
+        scoreCardInputs,
         isSaveButtonShown,
         isScoreCardShown,
         updateDirtyInputs,
@@ -76,26 +91,16 @@ export default function useForm({
         const holeName =  inputNameSplitted[0] + inputNameSplitted[1]
         const playerName = inputNameSplitted[2]
         
-        
-        console.log('HANDLE CHANGE SCORE INPUTS - NAME', inputName)
-        console.log('HANDLE CHANGE SCORE INPUTS - VALUE', inputValue)
-        console.log('INPUT NAME SPLITTED', inputNameSplitted)
-        console.log('HOLE NAME', holeName)
-        console.log('PLAYER NAME', playerName)
-        
-
-        // setScoreCardInputs(
-
-        // )
-
-
-        // setFormInputs({
-        //     ...formInputs,
-        //     scores: {
-        //         ...formInputs.scores,
-        //         [playerName]: { ...formInputs.scores[playerName], [holeName]: inputValue }
-        //     }
-        // })
+        setScoreCardInputs({
+            ...scoreCardInputs,
+            scores: {
+                ...scoreCardInputs.scores, 
+                [playerName]: {
+                    ...scoreCardInputs.scores[playerName], 
+                    [holeName]: inputValue
+                }
+            }
+        })
     }
 
     function updateDirtyInputs(input) {
@@ -132,16 +137,20 @@ export default function useForm({
     function handleGameInfoSubmit(event) {
         event.preventDefault()
         trimInputs(formInputs)
-        isEditFormShown ? editGameProfile(formInputs) : addGameProfile(formInputs)
+        isEditFormShown ? editGameProfile(formInputs) : createGameProfile(formInputs)
+        resetForm()
         setIsScoreCardShown(true)
     }
 
     function handleScoreCardSubmit(event) {
+        console.log('ScoreCardSubmit')
         event.preventDefault()
         trimInputs(formInputs)
-        isEditFormShown ? editGameProfile(formInputs) : addGameProfile(formInputs)
+        // isEditFormShown ? editGameProfile(formInputs) : addGameProfile(formInputs)
         resetForm()
+        setIsScoreCardShown(false)
         showOverviewPage()
+        addGameProfile(scoreCardInputs)
     }
 
     function trimInputs() {

@@ -5,7 +5,9 @@ import scrollUp from '../../lib/scrollUp'
 
 CreatePage.propTypes = {
     formInputs: PropTypes.object.isRequired,
+    scoreCardInputs: PropTypes.object.isRequired,
     targetProfile: PropTypes.object.isRequired,
+    newGameProfile: PropTypes.object.isRequired,
     savedGameProfiles:PropTypes.object.isRequired, 
     isSaveButtonShown: PropTypes.bool.isRequired,
     isEditFormShown: PropTypes.bool.isRequired,
@@ -22,7 +24,9 @@ CreatePage.propTypes = {
 
 export default function CreatePage({
     formInputs, 
+    scoreCardInputs,
     targetProfile,
+    newGameProfile,
     savedGameProfiles,
     isSaveButtonShown,
     isEditFormShown,
@@ -37,12 +41,13 @@ export default function CreatePage({
     handleCancelEditModus}) {
    
     useEffect(() => scrollUp(), [])
-
     return (
         isEditFormShown ? 
             <CreateForm 
                 formInputs={formInputs}
+                scoreCardInputs={scoreCardInputs}
                 targetProfile={targetProfile}
+                newGameProfile={newGameProfile}
                 savedGameProfiles={savedGameProfiles}
                 isSaveButtonShown={isSaveButtonShown}
                 isEditFormShown={isEditFormShown}
@@ -58,7 +63,9 @@ export default function CreatePage({
         : 
             <CreateForm 
                 formInputs={formInputs}
+                scoreCardInputs={scoreCardInputs}
                 targetProfile={targetProfile}
+                newGameProfile={newGameProfile}
                 savedGameProfiles={savedGameProfiles}
                 isSaveButtonShown={isSaveButtonShown}
                 isScoreCardShown={isScoreCardShown}

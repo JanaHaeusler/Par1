@@ -6,7 +6,9 @@ import {CheckIconLight, CancelIconDark} from '../../app/Icons/Icons'
 
 CreateForm.propTypes = {
     formInputs: PropTypes.object.isRequired,
+    scoreCardInputs: PropTypes.object.isRequired,
     targetProfile: PropTypes.object.isRequired,
+    newGameProfile: PropTypes.object.isRequired,
     savedGameProfiles: PropTypes.object.isRequired,
     isSaveButtonShown: PropTypes.bool,
     isEditFormShown: PropTypes.bool,
@@ -23,7 +25,9 @@ CreateForm.propTypes = {
 
 export default function CreateForm({
     formInputs, 
+    scoreCardInputs,
     targetProfile,
+    newGameProfile,
     savedGameProfiles,
     isSaveButtonShown,
     isEditFormShown,
@@ -39,6 +43,7 @@ export default function CreateForm({
 
     return (
         <FormsWrapper>
+            {!isScoreCardShown ?
             <FormGameInfos noValidate onSubmit={handleGameInfoSubmit} data-testid="form">
                 <Headline>Info</Headline>
                 <Fieldset>
@@ -112,25 +117,27 @@ export default function CreateForm({
                     <Note>{showErrorMessage('shots')}</Note>
                 </Fieldset>
                 <ButtonWrapper>
-                    <Button type="button" onClick={createScoreCard} main disabled={!isSaveButtonShown} iconComponent={<CheckIconLight/>} text="Save" data-testid="button-save"/>
+                    <Button main disabled={!isSaveButtonShown} iconComponent={<CheckIconLight/>} text="Save" data-testid="button-save"/>
                     {isEditFormShown && <ButtonCancel type="button" onClick={handleCancelEditModus} iconComponent={<CancelIconDark/>} text="Cancel" data-testid="button-cancel"/>}
                 </ButtonWrapper>
                 <Note>*Please do not clear your browsers cache, in order to permanently save your game details</Note>
             </FormGameInfos>
 
-
-            {isScoreCardShown && 
-                <FormScoreCard>
-                    <ScoreCard 
-                        onSubmit={handleScoreCardSubmit}
-                        targetProfile={targetProfile}
-                        savedGameProfiles={savedGameProfiles}
-                        formInputs={formInputs}
-                        updateDirtyInputs={updateDirtyInputs}
-                        handleChangeScoreInputs={handleChangeScoreInputs}
-                    />
-                    <Button main disabled={!isSaveButtonShown} iconComponent={<CheckIconLight/>} text="Save" data-testid="button-save"/>
-                </FormScoreCard>
+            : scoreCardInputs.location &&
+            
+            <FormScoreCard onSubmit={handleScoreCardSubmit}>
+                <ScoreCard 
+                    handleScoreCardSubmit={handleScoreCardSubmit}
+                    scoreCardInputs={scoreCardInputs}
+                    targetProfile={targetProfile}
+                    newGameProfile={newGameProfile}
+                    savedGameProfiles={savedGameProfiles}
+                    formInputs={formInputs}
+                    updateDirtyInputs={updateDirtyInputs}
+                    handleChangeScoreInputs={handleChangeScoreInputs}
+                />
+                <Button main iconComponent={<CheckIconLight/>} text="Save" data-testid="button-save"/>
+            </FormScoreCard>
             }
         </FormsWrapper>
     )
@@ -203,7 +210,7 @@ const Note = styled.span`
     font-size: 0.7rem;
     color: var(--text-dark);
 `
-const FormScoreCard = styled.div`
+const FormScoreCard = styled.form`
     margin: 40px 0 10px;
     display: grid;
     place-items: center;

@@ -13,6 +13,8 @@ function App() {
       targetProfile, 
       savedGameProfiles, 
       isEditFormShown, 
+      newGameProfile,
+      createGameProfile,
       addGameProfile, 
       deleteGameProfile, 
       editGameProfile, 
@@ -21,6 +23,7 @@ function App() {
   
     const {
         formInputs, 
+        scoreCardInputs,
         isSaveButtonShown,
         isScoreCardShown,
         updateDirtyInputs,
@@ -34,6 +37,8 @@ function App() {
         resetForm } = useForm({
                               targetProfile,
                               isEditFormShown,
+                              newGameProfile,
+                              createGameProfile,
                               addGameProfile,
                               editGameProfile,
                               cancelEditModus,
@@ -57,7 +62,9 @@ function App() {
           <Route path="/create">
             <CreatePage 
                 formInputs={formInputs}
+                scoreCardInputs={scoreCardInputs}
                 targetProfile={targetProfile}
+                newGameProfile={newGameProfile}
                 savedGameProfiles={savedGameProfiles} 
                 isSaveButtonShown={isSaveButtonShown}
                 isEditFormShown={isEditFormShown}

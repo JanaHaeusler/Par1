@@ -11,54 +11,81 @@ export default function useGameData() {
         byId: {},
         allIds: [],
     })
-    console.log('savedGameProfiles', savedGameProfiles)
+
     useEffect(() => saveLocally(STORAGE_KEY, savedGameProfiles), [savedGameProfiles])
 
+    const [newGameProfile, setNewGameProfile] = useState({})
+
+
+
+    
     const [isEditFormShown, setIsEditFormShown] = useState(false)
     const [targetProfile, setTargetProfile] = useState({})
-    
+console.log({newGameProfile})
     return {
         targetProfile, 
         savedGameProfiles, 
         isEditFormShown, 
-        addGameProfile, 
+        newGameProfile,
+        addGameProfile,
+        createGameProfile, 
         deleteGameProfile, 
         editGameProfile, 
         prepareEditModus, 
         cancelEditModus 
     }
     
-    function addGameProfile(gameProfile) {
-        console.log('ADD GAME PROFILE - GAME PROFILE', gameProfile)
-        const playersArray = gameProfile.players.split(',').map((player) => player.trim()).filter(player => player)
-        
-        console.log('ADD GAME PROFILE - playersArray', playersArray)
-        
-        
-        const playersObject = playersArray.reduce((acc, cur) => ({ ...acc, [cur]: {} }), {})
-        console.log('ADD GAME PROFILE - playersObject', playersObject)
-
+    function createGameProfile(gameInfo) {
+        const playersArray = gameInfo.players.split(',').map((player) => player.trim()).filter(player => player)
+        const playerScores = playersArray.reduce((acc, cur) => (
+                { ...acc, [cur]: { 
+                                    hole1: '',
+                                    hole2: '',
+                                    hole3: '',
+                                    hole4: '',
+                                    hole5: '',
+                                    hole6: '',
+                                    hole7: '',
+                                    hole8: '',
+                                    hole9: '',
+                                    hole10: '',
+                                    hole11: '',
+                                    hole12: '',
+                                    hole13: '',
+                                    hole14: '',
+                                    hole15: '',
+                                    hole16: '',
+                                    hole17: '',
+                                    hole18: '',
+                                } 
+                }), 
+            {})
         const newId = uuid()
+        setNewGameProfile({
+            ...gameInfo,
+            players: playersArray,
+            scores: playerScores,
+            _id: newId
+        })
+        
+    }
+
+    function addGameProfile(scoreCardInfo) {
         setSavedGameProfiles({
             byId: {
                 ...savedGameProfiles.byId,
-                [newId]: {...gameProfile, 
-                    players: {
-                        byName: playersObject,
-                        allNames: playersArray
-                    },
-                    _id: newId},
+                [scoreCardInfo._id]: {...scoreCardInfo},
             },
-            allIds: [newId, ...savedGameProfiles.allIds],
+            allIds: [scoreCardInfo._id, ...savedGameProfiles.allIds],
         })
-        setTargetProfile({
-            ...gameProfile, 
-            players: {
-                byName: playersObject,
-                allNames: playersArray
-            },
-            _id: newId})
     }
+
+
+
+
+
+
+
     
     function deleteGameProfile(targetId) {
         const copyOfById = {...savedGameProfiles.byId}
