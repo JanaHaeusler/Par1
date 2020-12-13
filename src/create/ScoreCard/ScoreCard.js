@@ -1,22 +1,45 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
+import { useState } from 'react'
 import { v4 as uuid } from 'uuid'
 import SinglePlayerScore from '../SinglePlayerScore'
 
 ScoreCard.propTypes = {
     formInputs: PropTypes.object.isRequired,
+    targetProfile: PropTypes.object.isRequired,
+    savedGameProfiles: PropTypes.object.isRequired,
     updateDirtyInputs: PropTypes.func.isRequired,
     handleChangeScoreInputs: PropTypes.func.isRequired,
 }
 
 export default function ScoreCard({
     formInputs, 
+    savedGameProfiles,
+    targetProfile,
     updateDirtyInputs,
     handleChangeScoreInputs, 
     className}) {
 
-    const players = formInputs.players.split(',').map((player) => player.trim()).filter(player => player)
-console.log('players Array', players)
+        const players = targetProfile.players.allNames
+    
+
+        console.log({targetProfile})
+
+        const [scoreCardInputs, setScoreCardInputs] = useState({})
+
+        function handleChangeScoreCard(inputName, inputValue) {
+            const inputNameSplitted = inputName.split(/(\d+)/)
+            const holeName =  inputNameSplitted[0] + inputNameSplitted[1]
+            const playerName = inputNameSplitted[2]
+            
+            setScoreCardInputs({
+                ...scoreCardInputs,
+                [playerName]: { ...scoreCardInputs[playerName], [holeName]: inputValue }
+            })
+        
+
+        }
+
     return (
         <FormScoreCard className={className}>
             <Headline>Score</Headline>
@@ -38,7 +61,10 @@ console.log('players Array', players)
                                 return <SinglePlayerScore 
                                             key={newId} 
                                             playerName={playerName}
+                                            scoreCardInputs={scoreCardInputs}
+                                            targetProfile={targetProfile}
                                             formInputs={formInputs}
+                                            handleChangeScoreCard={handleChangeScoreCard}
                                             updateDirtyInputs={updateDirtyInputs}
                                             handleChangeScoreInputs={handleChangeScoreInputs}
                                             />

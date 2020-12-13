@@ -22,10 +22,12 @@ function App() {
     const {
         formInputs, 
         isSaveButtonShown,
+        isScoreCardShown,
         updateDirtyInputs,
         handleChange,
         handleChangeScoreInputs,
         showErrorMessage,
+        createScoreCard,
         handleGameInfoSubmit,
         handleScoreCardSubmit,
         handleCancelEditModus,
@@ -55,12 +57,16 @@ function App() {
           <Route path="/create">
             <CreatePage 
                 formInputs={formInputs}
+                targetProfile={targetProfile}
+                savedGameProfiles={savedGameProfiles} 
                 isSaveButtonShown={isSaveButtonShown}
                 isEditFormShown={isEditFormShown}
+                isScoreCardShown={isScoreCardShown}
                 updateDirtyInputs={updateDirtyInputs}
                 handleChange={handleChange}
                 handleChangeScoreInputs={handleChangeScoreInputs}
                 showErrorMessage={showErrorMessage}
+                createScoreCard={createScoreCard}
                 handleGameInfoSubmit={handleGameInfoSubmit}
                 handleScoreCardSubmit={handleScoreCardSubmit}
                 handleCancelEditModus={handleCancelEditModus}

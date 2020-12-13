@@ -23,33 +23,7 @@ export default function useForm({
         shots: '',
         scores: {},
     })
-
-
-
-
-
-    // const players = formInputs.players.split(',').map((player) => player.trim()).filter(player => player)
-
-    // const playersArray = gameProfile.players.split(',').map((player) => player.trim()).filter(player => player)
-    // const playersObject = playersArray.reduce((acc, cur) => ({ ...acc, [cur]: {} }), {})
-    // const newId = uuid()
-    // setSavedGameProfiles({
-    //     byId: {
-    //         ...savedGameProfiles.byId,
-    //         [newId]: {...gameProfile, 
-    //             players: {
-    //                 byName: playersObject,
-    //                 allNames: playersArray
-    //             },
-    //             _id: newId},
-    //     },
-    //     allIds: [newId, ...savedGameProfiles.allIds],
-    // })
-
-
-
-
-
+    
 
     // useEffect(() => saveLocally(STORAGE_KEY, formInputs), [formInputs])
 
@@ -65,6 +39,7 @@ export default function useForm({
     }
 
     const isSaveButtonShown = Object.values(validInputs).every(isValid => isValid)
+    const [isScoreCardShown, setIsScoreCardShown] = useState(false)
 
     const [dirtyInputs, setDirtyInputs] = useState({
         location: false,
@@ -77,10 +52,12 @@ export default function useForm({
     return {
         formInputs, 
         isSaveButtonShown,
+        isScoreCardShown,
         updateDirtyInputs,
         handleChange,
         handleChangeScoreInputs,
         showErrorMessage,
+        createScoreCard,
         handleGameInfoSubmit,
         handleScoreCardSubmit,
         handleCancelEditModus,
@@ -95,24 +72,30 @@ export default function useForm({
     }
 
     function handleChangeScoreInputs(inputName, inputValue) {
+        const inputNameSplitted = inputName.split(/(\d+)/)
+        const holeName =  inputNameSplitted[0] + inputNameSplitted[1]
+        const playerName = inputNameSplitted[2]
+        
+        
         console.log('HANDLE CHANGE SCORE INPUTS - NAME', inputName)
         console.log('HANDLE CHANGE SCORE INPUTS - VALUE', inputValue)
-        
-        const inputNameSplitted = inputName.split(/(\d+)/)
         console.log('INPUT NAME SPLITTED', inputNameSplitted)
-        const holeName =  inputNameSplitted[0] + inputNameSplitted[1]
         console.log('HOLE NAME', holeName)
-
-        const playerName = inputNameSplitted[2]
         console.log('PLAYER NAME', playerName)
+        
 
-        setFormInputs({
-            ...formInputs,
-            scores: {
-                ...formInputs.scores,
-                [playerName]: { ...formInputs.scores[playerName], [holeName]: inputValue }
-            }
-        })
+        // setScoreCardInputs(
+
+        // )
+
+
+        // setFormInputs({
+        //     ...formInputs,
+        //     scores: {
+        //         ...formInputs.scores,
+        //         [playerName]: { ...formInputs.scores[playerName], [holeName]: inputValue }
+        //     }
+        // })
     }
 
     function updateDirtyInputs(input) {
@@ -141,11 +124,16 @@ export default function useForm({
             return dirtyInputs[inputField] && !validInputs[inputField] && errorMessageShots
         }
     }
-    
+
+    function createScoreCard() {
+        setIsScoreCardShown(true)
+    }
+     
     function handleGameInfoSubmit(event) {
         event.preventDefault()
         trimInputs(formInputs)
         isEditFormShown ? editGameProfile(formInputs) : addGameProfile(formInputs)
+        setIsScoreCardShown(true)
     }
 
     function handleScoreCardSubmit(event) {

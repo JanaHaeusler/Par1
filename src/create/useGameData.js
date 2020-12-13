@@ -11,7 +11,7 @@ export default function useGameData() {
         byId: {},
         allIds: [],
     })
-    
+    console.log('savedGameProfiles', savedGameProfiles)
     useEffect(() => saveLocally(STORAGE_KEY, savedGameProfiles), [savedGameProfiles])
 
     const [isEditFormShown, setIsEditFormShown] = useState(false)
@@ -29,8 +29,15 @@ export default function useGameData() {
     }
     
     function addGameProfile(gameProfile) {
+        console.log('ADD GAME PROFILE - GAME PROFILE', gameProfile)
         const playersArray = gameProfile.players.split(',').map((player) => player.trim()).filter(player => player)
+        
+        console.log('ADD GAME PROFILE - playersArray', playersArray)
+        
+        
         const playersObject = playersArray.reduce((acc, cur) => ({ ...acc, [cur]: {} }), {})
+        console.log('ADD GAME PROFILE - playersObject', playersObject)
+
         const newId = uuid()
         setSavedGameProfiles({
             byId: {
@@ -44,6 +51,13 @@ export default function useGameData() {
             },
             allIds: [newId, ...savedGameProfiles.allIds],
         })
+        setTargetProfile({
+            ...gameProfile, 
+            players: {
+                byName: playersObject,
+                allNames: playersArray
+            },
+            _id: newId})
     }
     
     function deleteGameProfile(targetId) {
