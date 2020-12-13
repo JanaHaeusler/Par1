@@ -6,10 +6,11 @@ GameList.propTypes = {
     savedGameProfiles: PropTypes.object.isRequired,
     onDelete: PropTypes.func.isRequired,
     onEdit: PropTypes.func.isRequired,
+    onDetails: PropTypes.func.isRequired,
     showCreatePage: PropTypes.func.isRequired,
 }
 
-export default function GameList({savedGameProfiles, onDelete, onEdit, showCreatePage}) {
+export default function GameList({savedGameProfiles, onDelete, onEdit, onDetails, showCreatePage}) {
 
   return(
     <GameListWrapper>
@@ -26,7 +27,8 @@ export default function GameList({savedGameProfiles, onDelete, onEdit, showCreat
                     players={playersString} 
                     winner={winner} 
                     shots={shots}
-                    showCreatePage={showCreatePage}/>
+                    showCreatePage={showCreatePage}
+                    onDetails={onDetails}/>
         })}
     </GameListWrapper>
   )

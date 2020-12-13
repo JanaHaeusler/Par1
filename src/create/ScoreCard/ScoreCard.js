@@ -41,7 +41,7 @@ export default function ScoreCard({
                     <AllPlayerScores>
                         {newGameProfile.players.map((player) => {
                             const newId = uuid()
-                            const playerName = player      //brauchen wir toString() oder join() hier, um es in einen string zu verwandeln?
+                            const playerName = player    
                                 return <SinglePlayerScore 
                                             key={newId} 
                                             playerName={playerName}
@@ -82,10 +82,6 @@ const LegendHoles = styled.div`
     grid-template-rows: repeat(19, 35px);
     align-items: center;
     border-right: 1px solid var(--separator);
-
-    /* span:nth-child(1) {
-        align-items: end;
-    } */
 
     span {
         width: 100%;

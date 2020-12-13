@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import {useState} from 'react'
-import {BinIconDark, PencilIconDark, CancelIconLight} from '../../app/Icons/Icons'
+import {BinIconDark, CancelIconLight, DetailsIconDark, PencilIconDark} from '../../app/Icons/Icons'
 import Button from '../../app/Button'
 
 Game.propTypes = {
@@ -13,10 +13,11 @@ Game.propTypes = {
     id: PropTypes.string.isRequired,
     onDelete: PropTypes.func.isRequired,
     onEdit: PropTypes.func.isRequired,
+    onDetails: PropTypes.func.isRequired,
     showCreatePage: PropTypes.func.isRequired,
 }
 
-export default function Game({location, date, players, winner, shots, id, onDelete, onEdit, showCreatePage}) {
+export default function Game({location, date, players, winner, shots, id, onDelete, onEdit, onDetails, showCreatePage}) {
  
     const [isSetToDelete, setIsSetToDelete] = useState(false)
 
@@ -43,6 +44,7 @@ export default function Game({location, date, players, winner, shots, id, onDele
                     <ButtonWrapper>
                             <ButtonDeleteIcon onClick={() => setIsSetToDelete(true)} data-testid="button-set-delete"><BinIconDark/></ButtonDeleteIcon>
                             <ButtonEditIcon onClick={() => handleEdit(id)} data-testid="button-edit"><PencilIconDark/></ButtonEditIcon>
+                            <ButtonDetailsIcon onClick={() => onDetails(id)} data-testid="button-info"><DetailsIconDark/></ButtonDetailsIcon>
                     </ButtonWrapper>
                 </>
             )}
@@ -60,6 +62,7 @@ export default function Game({location, date, players, winner, shots, id, onDele
         showCreatePage()
         onEdit(id)
     }
+
 }
 
 const Card = styled.section`
@@ -115,6 +118,14 @@ const ButtonDeleteIcon = styled.button`
     background: none;
 `
 const ButtonEditIcon = styled.button`
+    margin: 5px;
+    padding: 0;
+    display: flex;
+    border: none;
+    background: none;
+`
+const ButtonDetailsIcon = styled.button`
+    margin: 5px;
     padding: 0;
     display: flex;
     border: none;

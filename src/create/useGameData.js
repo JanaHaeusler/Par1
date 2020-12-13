@@ -32,7 +32,8 @@ console.log({newGameProfile})
         deleteGameProfile, 
         editGameProfile, 
         prepareEditModus, 
-        cancelEditModus 
+        cancelEditModus,
+        prepareGameDetails 
     }
     
     function createGameProfile(gameInfo) {
@@ -114,5 +115,9 @@ console.log({newGameProfile})
     
     function cancelEditModus() {
         setIsEditFormShown(false)
+    }
+
+    function prepareGameDetails(targetId) {
+        setTargetProfile(savedGameProfiles.byId[targetId])
     }
 }

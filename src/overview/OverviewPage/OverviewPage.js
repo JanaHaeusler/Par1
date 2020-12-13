@@ -1,26 +1,47 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
+import { useState } from 'react'
 import GameList from '../GameList'
+import GameDetails from '../GameDetails'
 
 OverviewPage.propTypes = {
     savedGameProfiles: PropTypes.object.isRequired,
+    targetProfile: PropTypes.object.isRequired,
     deleteGameProfile: PropTypes.func.isRequired,
     prepareEditModus: PropTypes.func.isRequired,
+    prepareGameDetails: PropTypes.func.isRequired,
     showCreatePage: PropTypes.func.isRequired,
+    showOverviewPage: PropTypes.func.isRequired,
 }
 
-export default function OverviewPage({savedGameProfiles, deleteGameProfile, prepareEditModus, showCreatePage}) {
+export default function OverviewPage({savedGameProfiles, targetProfile, deleteGameProfile, prepareEditModus, prepareGameDetails, showCreatePage, showOverviewPage}) {
+
+const [isGameDetailsShown, setIsGameDetailsShown] = useState(false)
 
     return (
-        <>
-            <Headline>Your Games</Headline>
-            <GameList 
-                savedGameProfiles={savedGameProfiles} 
-                onDelete={deleteGameProfile} 
-                onEdit={prepareEditModus}
-                showCreatePage={showCreatePage}/>
-        </>
+        
+        !isGameDetailsShown ? 
+            <>
+                <Headline>Your Games</Headline>
+                <GameList 
+                    savedGameProfiles={savedGameProfiles} 
+                    onDelete={deleteGameProfile} 
+                    onEdit={prepareEditModus}
+                    onDetails={onDetails}
+                    showCreatePage={showCreatePage}/>
+            </>
+            :
+            <GameDetails
+                targetProfile={targetProfile}
+                showOverviewPage={showOverviewPage}
+            />
+        
     )
+
+    function onDetails(targetId) {
+        setIsGameDetailsShown(true)
+        prepareGameDetails(targetId)
+    }
 }
 
 const Headline = styled.h1`

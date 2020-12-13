@@ -19,7 +19,8 @@ function App() {
       deleteGameProfile, 
       editGameProfile, 
       prepareEditModus, 
-      cancelEditModus } = useGameData()
+      cancelEditModus,
+      prepareGameDetails } = useGameData()
   
     const {
         formInputs, 
@@ -54,9 +55,13 @@ function App() {
           <Route exact path="/">
             <OverviewPage 
                 savedGameProfiles={savedGameProfiles} 
+                targetProfile={targetProfile}
                 deleteGameProfile={deleteGameProfile} 
                 prepareEditModus={prepareEditModus}
+                prepareGameDetails={prepareGameDetails}
                 showCreatePage={showCreatePage}
+                showOverviewPage={showOverviewPage}
+
             />
           </Route>
           <Route path="/create">
@@ -85,6 +90,7 @@ function App() {
                 deleteGameProfile={deleteGameProfile} 
                 prepareEditModus={prepareEditModus}
                 showCreatePage={showCreatePage}
+                showOverviewPage={showOverviewPage}
             />
           </Route>
         </Switch> 
