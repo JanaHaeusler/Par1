@@ -6,6 +6,7 @@ import AppHeader from './app/AppHeader'
 import AppFooter from './app/AppFooter'
 import CreatePage from './create/CreatePage'
 import OverviewPage from './overview/OverviewPage'
+import DetailsPage from './details/DetailsPage'
 
 function App() {
 
@@ -61,7 +62,7 @@ function App() {
                 prepareGameDetails={prepareGameDetails}
                 showCreatePage={showCreatePage}
                 showOverviewPage={showOverviewPage}
-
+                showDetailsPage={showDetailsPage}
             />
           </Route>
           <Route path="/create">
@@ -84,6 +85,12 @@ function App() {
                 handleCancelEditModus={handleCancelEditModus}
             />
           </Route>
+          <Route path="/details">
+            <DetailsPage 
+                targetProfile={targetProfile}
+                showOverviewPage={showOverviewPage}
+            />
+          </Route>
           <Route path="/*">
             <OverviewPage 
                 savedGameProfiles={savedGameProfiles} 
@@ -91,6 +98,7 @@ function App() {
                 prepareEditModus={prepareEditModus}
                 showCreatePage={showCreatePage}
                 showOverviewPage={showOverviewPage}
+                showDetailsPage={showDetailsPage}
             />
           </Route>
         </Switch> 
@@ -105,6 +113,10 @@ function App() {
 
   function showCreatePage() {
     history.push('/create')
+  }
+
+  function showDetailsPage() {
+    history.push('/details')
   }
 }
 

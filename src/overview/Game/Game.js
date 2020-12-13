@@ -15,9 +15,10 @@ Game.propTypes = {
     onEdit: PropTypes.func.isRequired,
     onDetails: PropTypes.func.isRequired,
     showCreatePage: PropTypes.func.isRequired,
+    showDetailsPage: PropTypes.func.isRequired,
 }
 
-export default function Game({location, date, players, winner, shots, id, onDelete, onEdit, onDetails, showCreatePage}) {
+export default function Game({location, date, players, winner, shots, id, onDelete, onEdit, onDetails, showCreatePage, showDetailsPage}) {
  
     const [isSetToDelete, setIsSetToDelete] = useState(false)
 
@@ -44,7 +45,7 @@ export default function Game({location, date, players, winner, shots, id, onDele
                     <ButtonWrapper>
                             <ButtonDeleteIcon onClick={() => setIsSetToDelete(true)} data-testid="button-set-delete"><BinIconDark/></ButtonDeleteIcon>
                             <ButtonEditIcon onClick={() => handleEdit(id)} data-testid="button-edit"><PencilIconDark/></ButtonEditIcon>
-                            <ButtonDetailsIcon onClick={() => onDetails(id)} data-testid="button-info"><DetailsIconDark/></ButtonDetailsIcon>
+                            <ButtonDetailsIcon onClick={() => handleDetails(id)} data-testid="button-info"><DetailsIconDark/></ButtonDetailsIcon>
                     </ButtonWrapper>
                 </>
             )}
@@ -61,6 +62,11 @@ export default function Game({location, date, players, winner, shots, id, onDele
     function handleEdit(id) {
         showCreatePage()
         onEdit(id)
+    }
+
+    function handleDetails(id) {
+        showDetailsPage()
+        onDetails(id)
     }
 
 }
