@@ -115,7 +115,9 @@ export default function CreateForm({
                 <Note>*Please do not clear your browsers cache, in order to permanently save your game details</Note>
             </FormGameInfos>
 
-            : Object.keys(scoreCardInputs).length !== 0 &&
+            : 
+
+            Object.keys(scoreCardInputs).length !== 0 &&
             
             <FormScoreCard onSubmit={handleScoreCardSubmit}>
                 <ScoreCard 

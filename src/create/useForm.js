@@ -23,7 +23,6 @@ export default function useForm({
             winner: '',
             shots: '',
     })
-    console.log({formInputs})
     const [scoreCardInputs, setScoreCardInputs] = useState({})
     
     const validInputs = {
@@ -76,7 +75,6 @@ export default function useForm({
         const inputNameSplitted = inputName.split('-')
         const holeName =  inputNameSplitted[0]
         const playerName = inputNameSplitted[1]
-        console.log()
         setScoreCardInputs({
             ...scoreCardInputs,
             scores: {
@@ -125,7 +123,6 @@ export default function useForm({
     }
 
     function handleScoreCardSubmit(event) {
-        console.log('ScoreCardSubmit')
         event.preventDefault()
         trimInputs(formInputs)
         resetForm()

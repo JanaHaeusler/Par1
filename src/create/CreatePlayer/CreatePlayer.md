@@ -1,5 +1,0 @@
-Create Player
-
-```jsx
-<CreatePlayer />
-```

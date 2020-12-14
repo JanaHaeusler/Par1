@@ -15,7 +15,6 @@ export default function SinglePlayerScore({
     updateDirtyInputs, 
     handleChangeScoreInputs}) {
 
-console.log('single player', {scoreCardInputs})
     return (
         <ScoreColumn>
             <span>{playerName}</span>
@@ -32,7 +31,7 @@ console.log('single player', {scoreCardInputs})
                             id={holeName + '-' + playerName}
                             value={scoreCardInputs.scores[playerName][holeName]}
                             onChange={(event) => {handleChangeScoreInputs(event.target.name, event.target.value)}}
-                            // onBlur={() => updateDirtyInputs('location')}
+                            onBlur={() => updateDirtyInputs()}
                             />
                         </label>
                     </SingleScoreInput>
