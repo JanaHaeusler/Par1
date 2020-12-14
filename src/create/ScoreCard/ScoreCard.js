@@ -1,28 +1,19 @@
-import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
-import { useState } from 'react'
+import styled from 'styled-components/macro'
 import { v4 as uuid } from 'uuid'
 import SinglePlayerScore from '../SinglePlayerScore'
 
 ScoreCard.propTypes = {
-    formInputs: PropTypes.object.isRequired,
     scoreCardInputs: PropTypes.object.isRequired,
-    targetProfile: PropTypes.object.isRequired,
-    newGameProfile: PropTypes.object.isRequired,
-    savedGameProfiles: PropTypes.object.isRequired,
-    updateDirtyInputs: PropTypes.func.isRequired,
     handleChangeScoreInputs: PropTypes.func.isRequired,
+    updateDirtyInputs: PropTypes.func.isRequired,
     handleScoreCardSubmit: PropTypes.func.isRequired,
 }
 
 export default function ScoreCard({
-    formInputs, 
     scoreCardInputs,
-    savedGameProfiles,
-    newGameProfile,
-    targetProfile,
-    updateDirtyInputs,
     handleChangeScoreInputs, 
+    updateDirtyInputs,
     handleScoreCardSubmit,
     className}) {
 
@@ -39,16 +30,13 @@ export default function ScoreCard({
                         }
                     </LegendHoles> 
                     <AllPlayerScores>
-                        {newGameProfile.players.map((player) => {
+                        {scoreCardInputs.players.map((player) => {
                             const newId = uuid()
                             const playerName = player    
                                 return <SinglePlayerScore 
                                             key={newId} 
                                             playerName={playerName}
                                             scoreCardInputs={scoreCardInputs}
-                                            newGameProfile={newGameProfile}
-                                            targetProfile={targetProfile}
-                                            formInputs={formInputs}
                                             updateDirtyInputs={updateDirtyInputs}
                                             handleChangeScoreInputs={handleChangeScoreInputs}
                                             />

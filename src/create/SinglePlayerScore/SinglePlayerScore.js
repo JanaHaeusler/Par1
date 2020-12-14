@@ -1,18 +1,19 @@
-import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
+import styled from 'styled-components/macro'
 import { v4 as uuid } from 'uuid'
 
 SinglePlayerScore.propTypes = {
     playerName: PropTypes.string.isRequired,
-    formInputs: PropTypes.object.isRequired, 
     scoreCardInputs: PropTypes.object.isRequired, 
-    newGameProfile: PropTypes.object.isRequired,
-    targetProfile: PropTypes.object.isRequired, 
     updateDirtyInputs: PropTypes.func.isRequired,
     handleChangeScoreInputs: PropTypes.func.isRequired,
 }
 
-export default function SinglePlayerScore({playerName, formInputs, scoreCardInputs, newGameProfile, targetProfile, updateDirtyInputs, handleChangeScoreInputs}) {
+export default function SinglePlayerScore({
+    playerName, 
+    scoreCardInputs, 
+    updateDirtyInputs, 
+    handleChangeScoreInputs}) {
 
 console.log('single player', {scoreCardInputs})
     return (
@@ -27,9 +28,9 @@ console.log('single player', {scoreCardInputs})
                         <label>
                             <input 
                             type="number" 
-                            name={holeName + playerName}
-                            id={holeName + playerName}
-                            value={scoreCardInputs?.scores[playerName][holeName]}
+                            name={holeName + '-' + playerName}
+                            id={holeName + '-' + playerName}
+                            value={scoreCardInputs.scores[playerName][holeName]}
                             onChange={(event) => {handleChangeScoreInputs(event.target.name, event.target.value)}}
                             // onBlur={() => updateDirtyInputs('location')}
                             />

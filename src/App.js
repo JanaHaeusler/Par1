@@ -1,12 +1,12 @@
+import { Route, Switch, useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import {Switch, Route, useHistory} from 'react-router-dom'
-import useGameData from './create/useGameData'
-import useForm from './create/useForm'
-import AppHeader from './app/AppHeader'
 import AppFooter from './app/AppFooter'
+import AppHeader from './app/AppHeader'
 import CreatePage from './create/CreatePage'
-import OverviewPage from './overview/OverviewPage'
+import useForm from './create/useForm'
+import useGameData from './create/useGameData'
 import DetailsPage from './details/DetailsPage'
+import OverviewPage from './overview/OverviewPage'
 
 function App() {
 
@@ -21,30 +21,29 @@ function App() {
       editGameProfile, 
       prepareEditModus, 
       cancelEditModus,
-      prepareGameDetails } = useGameData()
+      prepareDetailsPage } = useGameData()
   
-    const {
-        formInputs, 
-        scoreCardInputs,
-        isSaveButtonShown,
-        isScoreCardShown,
-        updateDirtyInputs,
-        handleChange,
-        handleChangeScoreInputs,
-        showErrorMessage,
-        createScoreCard,
-        handleGameInfoSubmit,
-        handleScoreCardSubmit,
-        handleCancelEditModus,
-        resetForm } = useForm({
-                              targetProfile,
-                              isEditFormShown,
-                              newGameProfile,
-                              createGameProfile,
-                              addGameProfile,
-                              editGameProfile,
-                              cancelEditModus,
-                              showOverviewPage})
+  const {
+      formInputs, 
+      scoreCardInputs,
+      isSaveButtonShown,
+      isScoreCardShown,
+      updateDirtyInputs,
+      handleChange,
+      handleChangeScoreInputs,
+      showErrorMessage,
+      handleGameInfoSubmit,
+      handleScoreCardSubmit,
+      handleCancelEditModus,
+      resetForm } = useForm({
+                            targetProfile,
+                            isEditFormShown,
+                            newGameProfile,
+                            createGameProfile,
+                            addGameProfile,
+                            editGameProfile,
+                            cancelEditModus,
+                            showOverviewPage})
 
   const history = useHistory()
 
@@ -56,12 +55,10 @@ function App() {
           <Route exact path="/">
             <OverviewPage 
                 savedGameProfiles={savedGameProfiles} 
-                targetProfile={targetProfile}
                 deleteGameProfile={deleteGameProfile} 
                 prepareEditModus={prepareEditModus}
-                prepareGameDetails={prepareGameDetails}
+                prepareDetailsPage={prepareDetailsPage}
                 showCreatePage={showCreatePage}
-                showOverviewPage={showOverviewPage}
                 showDetailsPage={showDetailsPage}
             />
           </Route>
@@ -69,9 +66,6 @@ function App() {
             <CreatePage 
                 formInputs={formInputs}
                 scoreCardInputs={scoreCardInputs}
-                targetProfile={targetProfile}
-                newGameProfile={newGameProfile}
-                savedGameProfiles={savedGameProfiles} 
                 isSaveButtonShown={isSaveButtonShown}
                 isEditFormShown={isEditFormShown}
                 isScoreCardShown={isScoreCardShown}
@@ -79,7 +73,6 @@ function App() {
                 handleChange={handleChange}
                 handleChangeScoreInputs={handleChangeScoreInputs}
                 showErrorMessage={showErrorMessage}
-                createScoreCard={createScoreCard}
                 handleGameInfoSubmit={handleGameInfoSubmit}
                 handleScoreCardSubmit={handleScoreCardSubmit}
                 handleCancelEditModus={handleCancelEditModus}

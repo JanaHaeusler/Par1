@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
-import saveLocally from '../lib/saveLocally'
+import { useEffect, useState } from 'react'
 import loadLocally from '../lib/loadLocally'
-import { validateIsNotEmpty, validateIsCorrectDate, validateShotsIsInRange } from './validators.services'
+import saveLocally from '../lib/saveLocally'
+import { validateIsCorrectDate, validateIsNotEmpty, validateShotsIsInRange } from './validators.services'
 
 const STORAGE_KEY = 'formInputs'
 
@@ -15,35 +15,17 @@ export default function useForm({
     cancelEditModus,
     showOverviewPage}) {
 
-    const [formInputs, setFormInputs] = useState(
-        // loadLocally(STORAGE_KEY) ?? 
-    {
-        location: '',
-        date: '',
-        players: '',
-        winner: '',
-        shots: '',
+    const [formInputs, setFormInputs] = useState(loadLocally(STORAGE_KEY) ?? 
+        {
+            location: '',
+            date: '',
+            players: '',
+            winner: '',
+            shots: '',
     })
-
-    console.log('useForm', {newGameProfile})
-    
-   
-    
+    console.log({formInputs})
     const [scoreCardInputs, setScoreCardInputs] = useState({})
-
-console.log('useForm scoreCardInputs', {scoreCardInputs})
     
-useEffect(() => {
-        setScoreCardInputs({...newGameProfile})
-    }, [newGameProfile])
-
-
-
-    // useEffect(() => saveLocally(STORAGE_KEY, formInputs), [formInputs])
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => setInitialEditInputValues(), [isEditFormShown])
-
     const validInputs = {
         location: validateIsNotEmpty(formInputs.location),
         date: validateIsCorrectDate(formInputs.date),
@@ -51,10 +33,10 @@ useEffect(() => {
         winner: validateIsNotEmpty(formInputs.winner),
         shots: validateShotsIsInRange(formInputs.shots),
     }
-
     const isSaveButtonShown = Object.values(validInputs).every(isValid => isValid)
+    
     const [isScoreCardShown, setIsScoreCardShown] = useState(false)
-
+    
     const [dirtyInputs, setDirtyInputs] = useState({
         location: false,
         date: false,
@@ -62,6 +44,11 @@ useEffect(() => {
         winner: false,
         shots: false,
     })
+
+    useEffect(() => saveLocally(STORAGE_KEY, formInputs), [formInputs])
+    useEffect(() => setScoreCardInputs({...newGameProfile}), [newGameProfile])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => setInitialEditInputValues(), [isEditFormShown])
 
     return {
         formInputs, 
@@ -72,7 +59,6 @@ useEffect(() => {
         handleChange,
         handleChangeScoreInputs,
         showErrorMessage,
-        createScoreCard,
         handleGameInfoSubmit,
         handleScoreCardSubmit,
         handleCancelEditModus,
@@ -87,10 +73,10 @@ useEffect(() => {
     }
 
     function handleChangeScoreInputs(inputName, inputValue) {
-        const inputNameSplitted = inputName.split(/(\d+)/)
-        const holeName =  inputNameSplitted[0] + inputNameSplitted[1]
-        const playerName = inputNameSplitted[2]
-        
+        const inputNameSplitted = inputName.split('-')
+        const holeName =  inputNameSplitted[0]
+        const playerName = inputNameSplitted[1]
+        console.log()
         setScoreCardInputs({
             ...scoreCardInputs,
             scores: {
@@ -130,10 +116,6 @@ useEffect(() => {
         }
     }
 
-    function createScoreCard() {
-        setIsScoreCardShown(true)
-    }
-     
     function handleGameInfoSubmit(event) {
         event.preventDefault()
         trimInputs(formInputs)
@@ -146,7 +128,6 @@ useEffect(() => {
         console.log('ScoreCardSubmit')
         event.preventDefault()
         trimInputs(formInputs)
-        // isEditFormShown ? editGameProfile(formInputs) : addGameProfile(formInputs)
         resetForm()
         setIsScoreCardShown(false)
         showOverviewPage()

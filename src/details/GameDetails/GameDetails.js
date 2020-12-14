@@ -1,9 +1,7 @@
-import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
-import {useState} from 'react'
+import styled from 'styled-components/macro'
 import { v4 as uuid } from 'uuid'
-import {BackIconDark} from '../../app/Icons/Icons'
-import Button from '../../app/Button'
+import { BackIconDark } from '../../app/Icons/Icons'
 
 GameDetails.propTypes = {
     targetProfile: PropTypes.object.isRequired,

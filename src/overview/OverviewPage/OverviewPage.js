@@ -1,21 +1,23 @@
-import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
-import { useState } from 'react'
+import styled from 'styled-components/macro'
 import GameList from '../GameList'
-import GameDetails from '../../details/GameDetails'
 
 OverviewPage.propTypes = {
     savedGameProfiles: PropTypes.object.isRequired,
-    targetProfile: PropTypes.object.isRequired,
     deleteGameProfile: PropTypes.func.isRequired,
     prepareEditModus: PropTypes.func.isRequired,
-    prepareGameDetails: PropTypes.func.isRequired,
+    prepareDetailsPage: PropTypes.func.isRequired,
     showCreatePage: PropTypes.func.isRequired,
-    showOverviewPage: PropTypes.func.isRequired,
     showDetailsPage: PropTypes.func.isRequired,
 }
 
-export default function OverviewPage({savedGameProfiles, targetProfile, deleteGameProfile, prepareEditModus, prepareGameDetails, showCreatePage, showOverviewPage, showDetailsPage}) {
+export default function OverviewPage({
+    savedGameProfiles, 
+    deleteGameProfile, 
+    prepareEditModus, 
+    prepareDetailsPage, 
+    showCreatePage, 
+    showDetailsPage}) {
 
     return (
         <>
@@ -24,7 +26,7 @@ export default function OverviewPage({savedGameProfiles, targetProfile, deleteGa
                 savedGameProfiles={savedGameProfiles} 
                 onDelete={deleteGameProfile} 
                 onEdit={prepareEditModus}
-                onDetails={prepareGameDetails}
+                onDetails={prepareDetailsPage}
                 showCreatePage={showCreatePage}
                 showDetailsPage={showDetailsPage}/>
         </>

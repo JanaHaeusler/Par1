@@ -1,14 +1,11 @@
 import PropTypes from 'prop-types'
 import { useEffect } from 'react'
-import CreateForm from '../CreateForm'
 import scrollUp from '../../lib/scrollUp'
+import CreateForm from '../CreateForm'
 
 CreatePage.propTypes = {
     formInputs: PropTypes.object.isRequired,
     scoreCardInputs: PropTypes.object.isRequired,
-    targetProfile: PropTypes.object.isRequired,
-    newGameProfile: PropTypes.object.isRequired,
-    savedGameProfiles:PropTypes.object.isRequired, 
     isSaveButtonShown: PropTypes.bool.isRequired,
     isEditFormShown: PropTypes.bool.isRequired,
     isScoreCardShown: PropTypes.bool.isRequired,
@@ -16,7 +13,6 @@ CreatePage.propTypes = {
     handleChange: PropTypes.func.isRequired,
     handleChangeScoreInputs: PropTypes.func.isRequired,
     showErrorMessage: PropTypes.func.isRequired,
-    createScoreCard: PropTypes.func.isRequired,
     handleGameInfoSubmit: PropTypes.func.isRequired,
     handleScoreCardSubmit: PropTypes.func.isRequired,
     handleCancelEditModus: PropTypes.func.isRequired,
@@ -25,9 +21,6 @@ CreatePage.propTypes = {
 export default function CreatePage({
     formInputs, 
     scoreCardInputs,
-    targetProfile,
-    newGameProfile,
-    savedGameProfiles,
     isSaveButtonShown,
     isEditFormShown,
     isScoreCardShown,
@@ -35,20 +28,17 @@ export default function CreatePage({
     handleChange,
     handleChangeScoreInputs,
     showErrorMessage,
-    createScoreCard,
     handleGameInfoSubmit,
     handleScoreCardSubmit,
     handleCancelEditModus}) {
    
     useEffect(() => scrollUp(), [])
+    
     return (
         isEditFormShown ? 
             <CreateForm 
                 formInputs={formInputs}
                 scoreCardInputs={scoreCardInputs}
-                targetProfile={targetProfile}
-                newGameProfile={newGameProfile}
-                savedGameProfiles={savedGameProfiles}
                 isSaveButtonShown={isSaveButtonShown}
                 isEditFormShown={isEditFormShown}
                 isScoreCardShown={isScoreCardShown}
@@ -56,7 +46,6 @@ export default function CreatePage({
                 handleChange={handleChange}
                 handleChangeScoreInputs={handleChangeScoreInputs}
                 showErrorMessage={showErrorMessage}
-                createScoreCard={createScoreCard}
                 handleGameInfoSubmit={handleGameInfoSubmit}
                 handleScoreCardSubmit={handleScoreCardSubmit}
                 handleCancelEditModus={handleCancelEditModus}/>
@@ -64,17 +53,15 @@ export default function CreatePage({
             <CreateForm 
                 formInputs={formInputs}
                 scoreCardInputs={scoreCardInputs}
-                targetProfile={targetProfile}
-                newGameProfile={newGameProfile}
-                savedGameProfiles={savedGameProfiles}
                 isSaveButtonShown={isSaveButtonShown}
+                isEditFormShown={isEditFormShown}
                 isScoreCardShown={isScoreCardShown}
                 updateDirtyInputs={updateDirtyInputs}
                 handleChange={handleChange}
                 handleChangeScoreInputs={handleChangeScoreInputs}
                 showErrorMessage={showErrorMessage}
-                createScoreCard={createScoreCard}
                 handleGameInfoSubmit={handleGameInfoSubmit}
-                handleScoreCardSubmit={handleScoreCardSubmit}/>
+                handleScoreCardSubmit={handleScoreCardSubmit}
+                handleCancelEditModus={handleCancelEditModus}/>
     )
 }

@@ -1,39 +1,34 @@
-import {useState, useEffect} from 'react'
+import { useEffect, useState } from 'react'
 import { v4 as uuid } from 'uuid'
-import saveLocally from '../lib/saveLocally'
 import loadLocally from '../lib/loadLocally'
+import saveLocally from '../lib/saveLocally'
 
 const STORAGE_KEY = 'gameProfiles'
 
 export default function useGameData() {
 
+    const [newGameProfile, setNewGameProfile] = useState({})
     const [savedGameProfiles, setSavedGameProfiles] = useState(loadLocally(STORAGE_KEY) ?? {
         byId: {},
         allIds: [],
     })
-
+    const [targetProfile, setTargetProfile] = useState({})
+    const [isEditFormShown, setIsEditFormShown] = useState(false)
+    
     useEffect(() => saveLocally(STORAGE_KEY, savedGameProfiles), [savedGameProfiles])
 
-    const [newGameProfile, setNewGameProfile] = useState({})
-
-
-
-    
-    const [isEditFormShown, setIsEditFormShown] = useState(false)
-    const [targetProfile, setTargetProfile] = useState({})
-console.log({newGameProfile})
     return {
         targetProfile, 
         savedGameProfiles, 
         isEditFormShown, 
         newGameProfile,
-        addGameProfile,
         createGameProfile, 
+        addGameProfile,
         deleteGameProfile, 
         editGameProfile, 
         prepareEditModus, 
         cancelEditModus,
-        prepareGameDetails 
+        prepareDetailsPage,
     }
     
     function createGameProfile(gameInfo) {
@@ -68,7 +63,6 @@ console.log({newGameProfile})
             scores: playerScores,
             _id: newId
         })
-        
     }
 
     function addGameProfile(scoreCardInfo) {
@@ -80,13 +74,6 @@ console.log({newGameProfile})
             allIds: [scoreCardInfo._id, ...savedGameProfiles.allIds],
         })
     }
-
-
-
-
-
-
-
     
     function deleteGameProfile(targetId) {
         const copyOfById = {...savedGameProfiles.byId}
@@ -117,7 +104,7 @@ console.log({newGameProfile})
         setIsEditFormShown(false)
     }
 
-    function prepareGameDetails(targetId) {
+    function prepareDetailsPage(targetId) {
         setTargetProfile(savedGameProfiles.byId[targetId])
     }
 }

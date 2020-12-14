@@ -1,5 +1,5 @@
-import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
+import styled from 'styled-components/macro'
 import Game from '../Game'
 
 GameList.propTypes = {
@@ -11,26 +11,27 @@ GameList.propTypes = {
     showDetailsPage: PropTypes.func.isRequired,
 }
 
-export default function GameList({savedGameProfiles, onDelete, onEdit, onDetails, showCreatePage, showDetailsPage}) {
+export default function GameList({
+  savedGameProfiles, 
+  onDelete, 
+  onEdit, 
+  onDetails, 
+  showCreatePage,
+  showDetailsPage}) {
 
   return(
     <GameListWrapper>
         {savedGameProfiles.allIds.map((id) => {
-          const {location, date, players, winner, shots, _id} = savedGameProfiles.byId[id]
-          const playersString = players.join(', ')
+          const savedGameProfile = savedGameProfiles.byId[id]
+          const _id = savedGameProfile._id
           return <Game 
                     key={_id} 
-                    id={_id} 
+                    savedGameProfile={savedGameProfile}
                     onDelete={onDelete} 
                     onEdit={onEdit} 
-                    location={location} 
-                    date={date} 
-                    players={playersString} 
-                    winner={winner} 
-                    shots={shots}
+                    onDetails={onDetails}
                     showCreatePage={showCreatePage}
-                    showDetailsPage={showDetailsPage}
-                    onDetails={onDetails}/>
+                    showDetailsPage={showDetailsPage}/>
         })}
     </GameListWrapper>
   )
