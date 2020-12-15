@@ -39,7 +39,7 @@ export default function ScoreCard({
                                             scoreCardInputs={scoreCardInputs}
                                             updateDirtyInputs={updateDirtyInputs}
                                             handleChangeScoreInputs={handleChangeScoreInputs}
-                                            />
+                                        />
                             })
                         }
                     </AllPlayerScores> 
@@ -58,7 +58,7 @@ const Headline = styled.h3`
    text-transform: uppercase;
 `
 const ScoreOverview = styled.section`
-    margin: 0 auto;
+    margin: 20px auto;
     display: grid;
     grid-template-columns: 1fr 3fr;
     gap: 20px;

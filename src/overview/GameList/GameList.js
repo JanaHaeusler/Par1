@@ -7,17 +7,13 @@ GameList.propTypes = {
     onDelete: PropTypes.func.isRequired,
     onEdit: PropTypes.func.isRequired,
     onDetails: PropTypes.func.isRequired,
-    showCreatePage: PropTypes.func.isRequired,
-    showDetailsPage: PropTypes.func.isRequired,
 }
 
 export default function GameList({
   savedGameProfiles, 
   onDelete, 
   onEdit, 
-  onDetails, 
-  showCreatePage,
-  showDetailsPage}) {
+  onDetails }) {
 
   return(
     <GameListWrapper>
@@ -29,9 +25,7 @@ export default function GameList({
                     savedGameProfile={savedGameProfile}
                     onDelete={onDelete} 
                     onEdit={onEdit} 
-                    onDetails={onDetails}
-                    showCreatePage={showCreatePage}
-                    showDetailsPage={showDetailsPage}/>
+                    onDetails={onDetails}/>
         })}
     </GameListWrapper>
   )

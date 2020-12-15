@@ -118,7 +118,7 @@ export default function CreateForm({
             : 
 
             Object.keys(scoreCardInputs).length !== 0 &&
-            
+
             <FormScoreCard onSubmit={handleScoreCardSubmit}>
                 <ScoreCard 
                     scoreCardInputs={scoreCardInputs}
@@ -126,7 +126,7 @@ export default function CreateForm({
                     updateDirtyInputs={updateDirtyInputs}
                     handleScoreCardSubmit={handleScoreCardSubmit}
                 />
-                <Button main iconComponent={<CheckIconLight/>} text="Save" data-testid="button-save"/>
+                <Button main disabled={!isSaveButtonShown} iconComponent={<CheckIconLight/>} text="Save" data-testid="button-save"/>
             </FormScoreCard>
             }
         </FormsWrapper>
@@ -201,7 +201,6 @@ const Note = styled.span`
     color: var(--text-dark);
 `
 const FormScoreCard = styled.form`
-    margin: 40px 0 10px;
     display: grid;
     place-items: center;
 `

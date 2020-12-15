@@ -1,15 +1,16 @@
 import PropTypes from 'prop-types'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import { v4 as uuid } from 'uuid'
 import { BackIconDark } from '../../app/Icons/Icons'
 
 GameDetails.propTypes = {
     targetProfile: PropTypes.object.isRequired,
-    showOverviewPage: PropTypes.func.isRequired,
 }
 
-export default function GameDetails({targetProfile, showOverviewPage}) {
+export default function GameDetails({targetProfile}) {
 
+    const history = useHistory()
     const {location, date, players, winner, shots} = targetProfile
     const playersString = players.join(', ')
     
@@ -64,7 +65,7 @@ export default function GameDetails({targetProfile, showOverviewPage}) {
                     </AllPlayerScores> 
                 </ScoreOverview> 
             <ButtonWrapper>
-                <ButtonBackIcon onClick={showOverviewPage} data-testid="button-back"><BackIconDark/></ButtonBackIcon>
+                <ButtonBackIcon onClick={() => history.push('/')} data-testid="button-back"><BackIconDark/></ButtonBackIcon>
             </ButtonWrapper>
         </GameDetailsWrapper>
     )

@@ -1,3 +1,5 @@
+Game Details
+
 ```jsx
 <GameDetails />
 ```

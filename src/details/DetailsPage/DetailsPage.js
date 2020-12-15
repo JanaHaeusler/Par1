@@ -3,15 +3,13 @@ import GameDetails from '../GameDetails'
 
 DetailsPage.propTypes = {
     targetProfile: PropTypes.object.isRequired,
-    showOverviewPage: PropTypes.func.isRequired,
 }
 
-export default function DetailsPage({targetProfile, showOverviewPage}) {
+export default function DetailsPage({targetProfile}) {
 
     return (
         <GameDetails
         targetProfile={targetProfile}
-        showOverviewPage={showOverviewPage}
         />
     )
 }

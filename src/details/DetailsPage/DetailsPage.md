@@ -1,3 +1,5 @@
+Details Page
+
 ```jsx
 <DetailsPage />
 ```

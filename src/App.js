@@ -1,4 +1,4 @@
-import { Route, Switch, useHistory } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import AppFooter from './app/AppFooter'
 import AppHeader from './app/AppHeader'
@@ -6,6 +6,7 @@ import CreatePage from './create/CreatePage'
 import useForm from './create/useForm'
 import useGameData from './create/useGameData'
 import DetailsPage from './details/DetailsPage'
+import EditPage from './edit/EditPage'
 import OverviewPage from './overview/OverviewPage'
 
 function App() {
@@ -42,10 +43,7 @@ function App() {
                             createGameProfile,
                             addGameProfile,
                             editGameProfile,
-                            cancelEditModus,
-                            showOverviewPage})
-
-  const history = useHistory()
+                            cancelEditModus })
 
   return (
     <AppWrapper>
@@ -58,8 +56,6 @@ function App() {
                 deleteGameProfile={deleteGameProfile} 
                 prepareEditModus={prepareEditModus}
                 prepareDetailsPage={prepareDetailsPage}
-                showCreatePage={showCreatePage}
-                showDetailsPage={showDetailsPage}
             />
           </Route>
           <Route path="/create">
@@ -81,7 +77,22 @@ function App() {
           <Route path="/details">
             <DetailsPage 
                 targetProfile={targetProfile}
-                showOverviewPage={showOverviewPage}
+            />
+          </Route>
+          <Route path="/edit">
+            <EditPage 
+                formInputs={formInputs}
+                scoreCardInputs={scoreCardInputs}
+                isSaveButtonShown={isSaveButtonShown}
+                isEditFormShown={isEditFormShown}
+                isScoreCardShown={isScoreCardShown}
+                updateDirtyInputs={updateDirtyInputs}
+                handleChange={handleChange}
+                handleChangeScoreInputs={handleChangeScoreInputs}
+                showErrorMessage={showErrorMessage}
+                handleGameInfoSubmit={handleGameInfoSubmit}
+                handleScoreCardSubmit={handleScoreCardSubmit}
+                handleCancelEditModus={handleCancelEditModus}
             />
           </Route>
           <Route path="/*">
@@ -89,9 +100,7 @@ function App() {
                 savedGameProfiles={savedGameProfiles} 
                 deleteGameProfile={deleteGameProfile} 
                 prepareEditModus={prepareEditModus}
-                showCreatePage={showCreatePage}
-                showOverviewPage={showOverviewPage}
-                showDetailsPage={showDetailsPage}
+                prepareDetailsPage={prepareDetailsPage}
             />
           </Route>
         </Switch> 
@@ -99,18 +108,6 @@ function App() {
       <FooterStyled handleClick={resetForm}/>
     </AppWrapper>
   )
-
-  function showOverviewPage() {
-    history.push('/')
-  }
-
-  function showCreatePage() {
-    history.push('/create')
-  }
-
-  function showDetailsPage() {
-    history.push('/details')
-  }
 }
 
 export default App;

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import loadLocally from '../lib/loadLocally'
 import saveLocally from '../lib/saveLocally'
 import { validateIsCorrectDate, validateIsNotEmpty, validateShotsIsInRange } from './validators.services'
@@ -12,8 +13,9 @@ export default function useForm({
     createGameProfile,
     addGameProfile, 
     editGameProfile, 
-    cancelEditModus,
-    showOverviewPage}) {
+    cancelEditModus}) {
+    
+    const history = useHistory()
 
     const [formInputs, setFormInputs] = useState(loadLocally(STORAGE_KEY) ?? 
         {
@@ -174,5 +176,9 @@ export default function useForm({
             shots: false,  
         })
         isEditFormShown && cancelEditModus()
+    }
+
+    function showOverviewPage() {
+        history.push('/')
     }
 }

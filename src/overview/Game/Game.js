@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import Button from '../../app/Button'
 import { BinIconDark, CancelIconLight, DetailsIconDark, PencilIconDark } from '../../app/Icons/Icons'
@@ -9,18 +10,16 @@ Game.propTypes = {
     onDelete: PropTypes.func.isRequired,
     onEdit: PropTypes.func.isRequired,
     onDetails: PropTypes.func.isRequired,
-    showCreatePage: PropTypes.func.isRequired,
-    showDetailsPage: PropTypes.func.isRequired,
 }
 
 export default function Game({
     savedGameProfile, 
     onDelete, 
     onEdit, 
-    onDetails, 
-    showCreatePage, 
-    showDetailsPage}) {
- 
+    onDetails }) {
+
+    const history = useHistory()
+
     const [isSetToDelete, setIsSetToDelete] = useState(false)
     const {location, date, players, winner, shots, _id} = savedGameProfile
     const playerNames = players.join(', ')
@@ -63,12 +62,12 @@ export default function Game({
     )
 
     function handleEdit(id) {
-        showCreatePage()
+        history.push('/edit')
         onEdit(id)
     }
 
     function handleDetails(id) {
-        showDetailsPage()
+        history.push('/details')
         onDetails(id)
     }
 

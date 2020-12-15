@@ -7,17 +7,13 @@ OverviewPage.propTypes = {
     deleteGameProfile: PropTypes.func.isRequired,
     prepareEditModus: PropTypes.func.isRequired,
     prepareDetailsPage: PropTypes.func.isRequired,
-    showCreatePage: PropTypes.func.isRequired,
-    showDetailsPage: PropTypes.func.isRequired,
 }
 
 export default function OverviewPage({
     savedGameProfiles, 
     deleteGameProfile, 
     prepareEditModus, 
-    prepareDetailsPage, 
-    showCreatePage, 
-    showDetailsPage}) {
+    prepareDetailsPage }) {
 
     return (
         <>
@@ -26,9 +22,7 @@ export default function OverviewPage({
                 savedGameProfiles={savedGameProfiles} 
                 onDelete={deleteGameProfile} 
                 onEdit={prepareEditModus}
-                onDetails={prepareDetailsPage}
-                showCreatePage={showCreatePage}
-                showDetailsPage={showDetailsPage}/>
+                onDetails={prepareDetailsPage}/>
         </>
     )
 }

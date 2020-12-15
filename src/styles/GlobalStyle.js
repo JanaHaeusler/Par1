@@ -39,7 +39,7 @@ export default createGlobalStyle`
     }
 
     h3 {
-        margin: 10px;
+        margin: 20px;
         font-weight: 550;
     }
 
