@@ -1,5 +1,0 @@
-Game Details
-
-```jsx
-<GameDetails />
-```

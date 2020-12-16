@@ -4,16 +4,16 @@ import styled from 'styled-components/macro'
 import { v4 as uuid } from 'uuid'
 import { BackIconDark } from '../../app/Icons/Icons'
 
-GameDetails.propTypes = {
+DetailsPage.propTypes = {
     targetProfile: PropTypes.object.isRequired,
 }
 
-export default function GameDetails({targetProfile}) {
-
+export default function DetailsPage({targetProfile}) {
+    
     const history = useHistory()
     const {location, date, players, winner, shots} = targetProfile
     const playersString = players.join(', ')
-    
+
     return (
         <GameDetailsWrapper>
             <GameDetailsContent> 
@@ -70,7 +70,7 @@ export default function GameDetails({targetProfile}) {
         </GameDetailsWrapper>
     )
 }
-
+    
 const GameDetailsWrapper = styled.section`
     margin: 0 20px;
 `
