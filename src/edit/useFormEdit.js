@@ -2,30 +2,21 @@ import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import loadLocally from '../lib/loadLocally'
 import saveLocally from '../lib/saveLocally'
-import { validateIsCorrectDate, validateIsNotEmpty, validateShotsIsInRange } from './validators.services'
+import {
+    validateIsCorrectDate, 
+    validateIsNotEmpty, 
+    validateShotsIsInRange } from '../validators.services'
 
 const STORAGE_KEY = 'inputsKeyInfos'
 
-export default function useForm({
-    isEditFormShown, 
-    targetProfile, 
-    newGameProfile,
-    createGameProfile,
-    addGameProfile, 
-    editGameProfile, 
-    cancelEditModus, 
+export default function useFormEdit({
+    targetProfile,
+    editGameProfile,
     updateTargetProfile }) {
     
     const history = useHistory()
 
-    const [inputsKeyInfos, setInputsKeyInfos] = useState(loadLocally(STORAGE_KEY) ?? 
-        {
-            location: '',
-            date: '',
-            players: '',
-            winner: '',
-            shots: '',
-    })
+    const [inputsKeyInfos, setInputsKeyInfos] = useState(loadLocally(STORAGE_KEY) ?? targetProfile)
     const [inputsScores, setInputsScores] = useState({})
     
     const validInputs = {
@@ -48,9 +39,7 @@ export default function useForm({
     })
 
     useEffect(() => saveLocally(STORAGE_KEY, inputsKeyInfos), [inputsKeyInfos])
-    useEffect(() => setInputsScores(newGameProfile || targetProfile), [newGameProfile, targetProfile])
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => setInitialEditInputValues(), [targetProfile])
+    useEffect(() => setInputsScores(targetProfile), [targetProfile])
 
     return {
         inputsKeyInfos, 
@@ -62,11 +51,8 @@ export default function useForm({
         handleChangeScores,
         showErrorMessage,
         handleSubmitKeyInfos,
-        handleSubmitEditKeyInfos,
         handleSubmitScores,
-        handleSubmitEditScores,
         handleCancel,
-        resetForm,
     }
 
     function handleChangeKeyInfos(inputName, inputValue) {
@@ -121,39 +107,21 @@ export default function useForm({
 
     function handleSubmitKeyInfos(event) {
         event.preventDefault()
-        trimInputs(inputsKeyInfos)
-        createGameProfile(inputsKeyInfos)
-        resetForm()
-        setIsScoreCardShown(true)
-    }
-
-    function handleSubmitEditKeyInfos(event) {
-        event.preventDefault()
-        trimInputs(inputsKeyInfos)
-        updateTargetProfile(inputsKeyInfos, targetProfile)
-        resetForm()
+        trimInputsKeyInfos(inputsKeyInfos)
+        updateTargetProfile(inputsKeyInfos)
+        resetFormKeyInfos()
         setIsScoreCardShown(true)
     }
 
     function handleSubmitScores(event) {
         event.preventDefault()
-        trimInputs(inputsScores)
-        resetForm()    
-        setIsScoreCardShown(false)
-        showOverviewPage()
-        addGameProfile(inputsScores) 
-    }
-
-    function handleSubmitEditScores(event) {
-        event.preventDefault()
-        trimInputs(inputsScores)
         editGameProfile(inputsScores)
-        resetForm()    
+        resetFormScores() 
         setIsScoreCardShown(false)
         showOverviewPage()
     }
 
-    function trimInputs() {
+    function trimInputsKeyInfos() {
         setInputsKeyInfos({
             ...inputsKeyInfos,
             location: inputsKeyInfos.location.trim(),
@@ -163,23 +131,12 @@ export default function useForm({
         })
     }
 
-    function setInitialEditInputValues() {
-        setInputsKeyInfos({
-            location: targetProfile.location,
-            date: targetProfile.date,
-            players: targetProfile.players,
-            winner: targetProfile.winner,
-            shots: targetProfile.shots,
-            _id: targetProfile._id,
-        }) 
-    }
-
     function handleCancel() {
-        resetForm()
+        resetFormKeyInfos()
         showOverviewPage()
     }
 
-    function resetForm() {
+    function resetFormKeyInfos() {
         setInputsKeyInfos({
             location: '',
             date: '',
@@ -194,7 +151,10 @@ export default function useForm({
             winner: false,
             shots: false,  
         })
-        isEditFormShown && setInputsScores({}) && cancelEditModus()
+    }
+
+    function resetFormScores() {
+        setInputsScores({})
     }
 
     function showOverviewPage() {

@@ -3,8 +3,7 @@ import styled from 'styled-components/macro'
 import AppFooter from './app/AppFooter'
 import AppHeader from './app/AppHeader'
 import CreatePage from './create/CreatePage'
-import useForm from './create/useForm'
-import useGameData from './create/useGameData'
+import useGameData from './useGameData'
 import DetailsPage from './details/DetailsPage'
 import EditPage from './edit/EditPage'
 import OverviewPage from './overview/OverviewPage'
@@ -14,41 +13,14 @@ function App() {
   const { 
       targetProfile, 
       savedGameProfiles, 
-      isEditFormShown, 
-      newGameProfile,
       createGameProfile,
       addGameProfile, 
       deleteGameProfile, 
       editGameProfile, 
       prepareEditModus, 
-      cancelEditModus,
       prepareDetailsPage,
       updateTargetProfile } = useGameData()
   
-  const {
-      inputsKeyInfos, 
-      inputsScores,
-      isSaveButtonShown,
-      isScoreCardShown,
-      updateDirtyInputsKeyInfos,
-      handleChangeKeyInfos,
-      handleChangeScores,
-      showErrorMessage,
-      handleSubmitKeyInfos,
-      handleSubmitEditKeyInfos,
-      handleSubmitScores,
-      handleSubmitEditScores,
-      handleCancel,
-      resetForm } = useForm({
-                            targetProfile,
-                            isEditFormShown,
-                            newGameProfile,
-                            createGameProfile,
-                            addGameProfile,
-                            editGameProfile,
-                            cancelEditModus,
-                            updateTargetProfile })
-
   return (
     <AppWrapper>
       <HeaderStyled/>
@@ -64,17 +36,9 @@ function App() {
           </Route>
           <Route path="/create">
             <CreatePage 
-                inputsKeyInfos={inputsKeyInfos} 
-                inputsScores={inputsScores}
-                isSaveButtonShown={isSaveButtonShown}
-                isScoreCardShown={isScoreCardShown}
-                updateDirtyInputsKeyInfos={updateDirtyInputsKeyInfos}
-                handleChangeKeyInfos={handleChangeKeyInfos}
-                handleChangeScores={handleChangeScores}
-                showErrorMessage={showErrorMessage}
-                handleSubmitKeyInfos={handleSubmitKeyInfos}
-                handleSubmitScores={handleSubmitScores}
-                handleCancel={handleCancel}
+                targetProfile={targetProfile}
+                createGameProfile={createGameProfile}
+                addGameProfile={addGameProfile}
             />
           </Route>
           <Route path="/details">
@@ -84,17 +48,9 @@ function App() {
           </Route>
           <Route path="/edit">
             <EditPage 
-                inputsKeyInfos={inputsKeyInfos} 
-                inputsScores={inputsScores}
-                isSaveButtonShown={isSaveButtonShown}
-                isScoreCardShown={isScoreCardShown}
-                updateDirtyInputsKeyInfos={updateDirtyInputsKeyInfos}
-                handleChangeKeyInfos={handleChangeKeyInfos}
-                handleChangeScores={handleChangeScores}
-                showErrorMessage={showErrorMessage}
-                handleSubmitKeyInfos={handleSubmitEditKeyInfos}
-                handleSubmitScores={handleSubmitEditScores}
-                handleCancel={handleCancel}
+                targetProfile={targetProfile}
+                editGameProfile={editGameProfile}
+                updateTargetProfile={updateTargetProfile}
             />
           </Route>
           <Route path="/*">
@@ -107,7 +63,7 @@ function App() {
           </Route>
         </Switch> 
       </MainWrapper>
-      <FooterStyled handleClick={resetForm}/>
+      <FooterStyled handleClick={() => {}}/>
     </AppWrapper>
   )
 }

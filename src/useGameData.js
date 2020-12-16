@@ -1,39 +1,36 @@
 import { useEffect, useState } from 'react'
 import { v4 as uuid } from 'uuid'
-import loadLocally from '../lib/loadLocally'
-import saveLocally from '../lib/saveLocally'
+import loadLocally from './lib/loadLocally'
+import saveLocally from './lib/saveLocally'
 
 const STORAGE_KEY = 'gameProfiles'
 
 export default function useGameData() {
 
-    const [newGameProfile, setNewGameProfile] = useState({})
     const [savedGameProfiles, setSavedGameProfiles] = useState(loadLocally(STORAGE_KEY) ?? {
         byId: {},
         allIds: [],
     })
     const [targetProfile, setTargetProfile] = useState({})
-    const [isEditFormShown, setIsEditFormShown] = useState(false)
     
     useEffect(() => saveLocally(STORAGE_KEY, savedGameProfiles), [savedGameProfiles])
 
     return {
         targetProfile, 
         savedGameProfiles, 
-        isEditFormShown, 
-        newGameProfile,
         createGameProfile, 
         addGameProfile,
         deleteGameProfile, 
         editGameProfile, 
         prepareEditModus, 
-        cancelEditModus,
         prepareDetailsPage,
         updateTargetProfile,
     }
     
-    function createGameProfile(gameInfo) {
-        const playersArray = gameInfo.players.split(',').map((player) => player.trim()).filter(player => player)
+    function createGameProfile(keyInfos) {
+        const newId = uuid()
+        const playersArray = keyInfos.players.split(',').map((player) => player.trim()).filter(player => player)
+        const playersString = playersArray.join(', ')
         const playerScores = playersArray.reduce((acc, cur) => (
                 { ...acc, [cur]: { 
                                     hole1: '',
@@ -57,23 +54,24 @@ export default function useGameData() {
                                 } 
                 }), 
             {})
-        const newId = uuid()
-        setNewGameProfile({
-            ...gameInfo,
-            players: playersArray,
+        setTargetProfile({
+            ...keyInfos,
+            playersString: playersString,
+            playersArray: playersArray,
             scores: playerScores,
             _id: newId
         })
     }
 
-    function addGameProfile(scoreCardInfo) {
+    function addGameProfile(newGameProfile) {
         setSavedGameProfiles({
             byId: {
                 ...savedGameProfiles.byId,
-                [scoreCardInfo._id]: {...scoreCardInfo},
+                [newGameProfile._id]: {...newGameProfile},
             },
-            allIds: [scoreCardInfo._id, ...savedGameProfiles.allIds],
+            allIds: [newGameProfile._id, ...savedGameProfiles.allIds],
         })
+        setTargetProfile({})
     }
     
     function deleteGameProfile(targetId) {
@@ -85,38 +83,34 @@ export default function useGameData() {
         })
     }
     
-    function editGameProfile(gameProfile) {
-        const targetId = gameProfile._id
-        setSavedGameProfiles({
-            byId: {
-                ...savedGameProfiles.byId,
-                [targetId]: {...gameProfile},
-            },
-            allIds: [...savedGameProfiles.allIds],
+    function prepareEditModus(targetId) {
+        setTargetProfile(savedGameProfiles.byId[targetId])
+    }
+
+    function updateTargetProfile(editedTargetProfile) {
+        const playersArray = editedTargetProfile.playersString.split(',').map((player) => player.trim()).filter(player => player)
+        const playersString = playersArray.join(', ')
+        setTargetProfile({
+            ...editedTargetProfile,
+            playersString: playersString,
+            playersArray: playersArray,
         })
     }
     
-    function prepareEditModus(targetId) {
-        setIsEditFormShown(true)
-        setTargetProfile(savedGameProfiles.byId[targetId])
+    function editGameProfile(targetProfile) {
+        const targetId = targetProfile._id
+        setSavedGameProfiles({
+            byId: {
+                ...savedGameProfiles.byId,
+                [targetId]: {...targetProfile},
+            },
+            allIds: [...savedGameProfiles.allIds],
+        })
+        setTargetProfile({})
     }
     
-    function cancelEditModus() {
-        setIsEditFormShown(false)
-    }
-
     function prepareDetailsPage(targetId) {
         setTargetProfile(savedGameProfiles.byId[targetId])
     }
 
-    function updateTargetProfile(gameInfo, targetProfile) {
-        setTargetProfile({
-            ...targetProfile,
-            location: gameInfo.location,
-            date: gameInfo.date,
-            players: gameInfo.players,
-            winner: gameInfo.winner,
-            shots: gameInfo.shots,
-        })
-    }
 }

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import { v4 as uuid } from 'uuid'
-import { BackIconDark } from '../../app/Icons/Icons'
+import { BackIconDark } from '../app/Icons/Icons'
 
 DetailsPage.propTypes = {
     targetProfile: PropTypes.object.isRequired,

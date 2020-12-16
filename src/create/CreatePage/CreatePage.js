@@ -1,36 +1,37 @@
 import PropTypes from 'prop-types'
 import { useEffect } from 'react'
-import scrollUp from '../../lib/scrollUp'
 import Form from '../../app/Form'
+import scrollUp from '../../lib/scrollUp'
+import useFormCreate from '../useFormCreate'
 
 CreatePage.propTypes = {
-    inputsKeyInfos: PropTypes.object.isRequired,
-    inputsScores: PropTypes.object.isRequired,
-    isSaveButtonShown: PropTypes.bool,
-    isScoreCardShown: PropTypes.bool.isRequired,
-    updateDirtyInputsKeyInfos: PropTypes.func.isRequired,
-    handleChangeKeyInfos: PropTypes.func.isRequired,
-    handleChangeScores: PropTypes.func.isRequired,
-    showErrorMessage: PropTypes.func.isRequired,
-    handleSubmitKeyInfos: PropTypes.func.isRequired,
-    handleSubmitScores: PropTypes.func.isRequired,
-    handleCancel: PropTypes.func.isRequired,
+    targetProfile: PropTypes.object.isRequired,
+    createGameProfile: PropTypes.func.isRequired,
+    addGameProfile: PropTypes.func.isRequired,
 }
 
 export default function CreatePage({
-    inputsKeyInfos, 
-    inputsScores,
-    isSaveButtonShown,
-    isScoreCardShown,
-    updateDirtyInputsKeyInfos,
-    handleChangeKeyInfos,
-    handleChangeScores,
-    showErrorMessage,
-    handleSubmitKeyInfos,
-    handleSubmitScores,
-    handleCancel }) {
+    targetProfile,
+    createGameProfile,
+    addGameProfile }) {
    
     useEffect(() => scrollUp(), [])
+
+    const {
+        inputsKeyInfos, 
+        inputsScores,
+        isSaveButtonShown,
+        isScoreCardShown,
+        updateDirtyInputsKeyInfos,
+        handleChangeKeyInfos,
+        handleChangeScores,
+        showErrorMessage,
+        handleSubmitKeyInfos,
+        handleSubmitScores,
+        handleCancel } = useFormCreate({
+                            targetProfile,
+                            createGameProfile,
+                            addGameProfile })
     
     return (
             <Form 
