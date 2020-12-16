@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import { useEffect } from 'react'
-import scrollUp from '../../lib/scrollUp'
-import Form from '../../app/Form'
+import scrollUp from '../lib/scrollUp'
+import Form from '../app/Form'
 
-CreatePage.propTypes = {
+EditPage.propTypes = {
     inputsKeyInfos: PropTypes.object.isRequired,
     inputsScores: PropTypes.object.isRequired,
     isSaveButtonShown: PropTypes.bool,
@@ -17,7 +17,7 @@ CreatePage.propTypes = {
     handleCancel: PropTypes.func.isRequired,
 }
 
-export default function CreatePage({
+export default function EditPage({
     inputsKeyInfos, 
     inputsScores,
     isSaveButtonShown,

@@ -31,7 +31,7 @@ export default function SinglePlayerScore({
                             id={holeName + '-' + playerName}
                             value={scoreCardInputs.scores[playerName][holeName]}
                             onChange={(event) => {handleChangeScoreInputs(event.target.name, event.target.value)}}
-                            onBlur={() => updateDirtyInputs()}
+                            // onBlur={() => updateDirtyInputs()}
                             />
                         </label>
                     </SingleScoreInput>

@@ -29,6 +29,7 @@ export default function useGameData() {
         prepareEditModus, 
         cancelEditModus,
         prepareDetailsPage,
+        updateTargetProfile,
     }
     
     function createGameProfile(gameInfo) {
@@ -106,5 +107,16 @@ export default function useGameData() {
 
     function prepareDetailsPage(targetId) {
         setTargetProfile(savedGameProfiles.byId[targetId])
+    }
+
+    function updateTargetProfile(gameInfo, targetProfile) {
+        setTargetProfile({
+            ...targetProfile,
+            location: gameInfo.location,
+            date: gameInfo.date,
+            players: gameInfo.players,
+            winner: gameInfo.winner,
+            shots: gameInfo.shots,
+        })
     }
 }

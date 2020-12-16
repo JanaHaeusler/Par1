@@ -22,20 +22,23 @@ function App() {
       editGameProfile, 
       prepareEditModus, 
       cancelEditModus,
-      prepareDetailsPage } = useGameData()
+      prepareDetailsPage,
+      updateTargetProfile } = useGameData()
   
   const {
-      formInputs, 
-      scoreCardInputs,
+      inputsKeyInfos, 
+      inputsScores,
       isSaveButtonShown,
       isScoreCardShown,
-      updateDirtyInputs,
-      handleChange,
-      handleChangeScoreInputs,
+      updateDirtyInputsKeyInfos,
+      handleChangeKeyInfos,
+      handleChangeScores,
       showErrorMessage,
-      handleGameInfoSubmit,
-      handleScoreCardSubmit,
-      handleCancelEditModus,
+      handleSubmitKeyInfos,
+      handleSubmitEditKeyInfos,
+      handleSubmitScores,
+      handleSubmitEditScores,
+      handleCancel,
       resetForm } = useForm({
                             targetProfile,
                             isEditFormShown,
@@ -43,7 +46,8 @@ function App() {
                             createGameProfile,
                             addGameProfile,
                             editGameProfile,
-                            cancelEditModus })
+                            cancelEditModus,
+                            updateTargetProfile })
 
   return (
     <AppWrapper>
@@ -60,18 +64,17 @@ function App() {
           </Route>
           <Route path="/create">
             <CreatePage 
-                formInputs={formInputs}
-                scoreCardInputs={scoreCardInputs}
+                inputsKeyInfos={inputsKeyInfos} 
+                inputsScores={inputsScores}
                 isSaveButtonShown={isSaveButtonShown}
-                isEditFormShown={isEditFormShown}
                 isScoreCardShown={isScoreCardShown}
-                updateDirtyInputs={updateDirtyInputs}
-                handleChange={handleChange}
-                handleChangeScoreInputs={handleChangeScoreInputs}
+                updateDirtyInputsKeyInfos={updateDirtyInputsKeyInfos}
+                handleChangeKeyInfos={handleChangeKeyInfos}
+                handleChangeScores={handleChangeScores}
                 showErrorMessage={showErrorMessage}
-                handleGameInfoSubmit={handleGameInfoSubmit}
-                handleScoreCardSubmit={handleScoreCardSubmit}
-                handleCancelEditModus={handleCancelEditModus}
+                handleSubmitKeyInfos={handleSubmitKeyInfos}
+                handleSubmitScores={handleSubmitScores}
+                handleCancel={handleCancel}
             />
           </Route>
           <Route path="/details">
@@ -81,18 +84,17 @@ function App() {
           </Route>
           <Route path="/edit">
             <EditPage 
-                formInputs={formInputs}
-                scoreCardInputs={scoreCardInputs}
+                inputsKeyInfos={inputsKeyInfos} 
+                inputsScores={inputsScores}
                 isSaveButtonShown={isSaveButtonShown}
-                isEditFormShown={isEditFormShown}
                 isScoreCardShown={isScoreCardShown}
-                updateDirtyInputs={updateDirtyInputs}
-                handleChange={handleChange}
-                handleChangeScoreInputs={handleChangeScoreInputs}
+                updateDirtyInputsKeyInfos={updateDirtyInputsKeyInfos}
+                handleChangeKeyInfos={handleChangeKeyInfos}
+                handleChangeScores={handleChangeScores}
                 showErrorMessage={showErrorMessage}
-                handleGameInfoSubmit={handleGameInfoSubmit}
-                handleScoreCardSubmit={handleScoreCardSubmit}
-                handleCancelEditModus={handleCancelEditModus}
+                handleSubmitKeyInfos={handleSubmitEditKeyInfos}
+                handleSubmitScores={handleSubmitEditScores}
+                handleCancel={handleCancel}
             />
           </Route>
           <Route path="/*">

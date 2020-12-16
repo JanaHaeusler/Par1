@@ -1,0 +1,5 @@
+Edit Page
+
+```jsx
+<EditPage />
+```
