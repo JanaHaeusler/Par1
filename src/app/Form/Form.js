@@ -129,7 +129,7 @@ export default function Form({
                         }
                     </Legend> 
                     <ScoresAllPlayers>
-                        {inputsScores.players.map((player) => {
+                        {inputsScores.playersArray.map((player) => {
                             const newId = uuid()
                             const playerName = player    
                                 return (
@@ -140,17 +140,16 @@ export default function Form({
                                             const inputNumber = index + 1
                                             const holeName = 'hole' + inputNumber
                                                 return( 
-                                                    <SingleScoreInput key={newId} >
-                                                        <label>
+                                                        <SingleScore key={newId}>
                                                             <input 
                                                             type="number" 
                                                             name={holeName + '-' + playerName}
                                                             id={holeName + '-' + playerName}
                                                             value={inputsScores.scores[playerName][holeName]}
                                                             onChange={(event) => {handleChangeScores(event.target.name, event.target.value)}}
+                                                            // onBlur={() => updateDirtyInputs()}
                                                             />
-                                                        </label>
-                                                    </SingleScoreInput>
+                                                        </SingleScore>
                                                     )                         
                                             })
                                         }
@@ -284,9 +283,7 @@ const ScoreSinglePlayer = styled.div`
     align-items: center;
     min-width: 80px;
 `
-const SingleScoreInput = styled.div`
-    display: grid;
-    gap: 10px;
+const SingleScore = styled.label`
     
     input {
         padding: 0;

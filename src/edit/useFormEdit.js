@@ -22,7 +22,7 @@ export default function useFormEdit({
     const validInputs = {
         location: validateIsNotEmpty(inputsKeyInfos.location),
         date: validateIsCorrectDate(inputsKeyInfos.date),
-        players: validateIsNotEmpty(inputsKeyInfos.players),
+        players: validateIsNotEmpty(inputsKeyInfos.playersString),
         winner: validateIsNotEmpty(inputsKeyInfos.winner),
         shots: validateShotsIsInRange(inputsKeyInfos.shots),
     }
@@ -115,6 +115,7 @@ export default function useFormEdit({
 
     function handleSubmitScores(event) {
         event.preventDefault()
+        // trimInputs(inputsScores)
         editGameProfile(inputsScores)
         resetFormScores() 
         setIsScoreCardShown(false)

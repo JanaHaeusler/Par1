@@ -41,12 +41,12 @@ export default function DetailsPage({targetProfile}) {
                             })
                         }
                     </LegendHoles> 
-                    <AllPlayerScores>
+                    <ScoresAllPlayers>
                         {targetProfile.players.map((player) => {
                             const newId = uuid()
                             const playerName = player     
                                 return (
-                                    <SinglePlayerScores key={newId}>
+                                    <ScoreSinglePlayer key={newId}>
                                         <span>{playerName}</span>
                                         {new Array(18).fill().map((_, index) => {
                                             const newId = uuid()
@@ -59,10 +59,10 @@ export default function DetailsPage({targetProfile}) {
                                                 )                         
                                             })
                                         }
-                                    </SinglePlayerScores>
+                                    </ScoreSinglePlayer>
                                 )
                         })}
-                    </AllPlayerScores> 
+                    </ScoresAllPlayers> 
                 </ScoreOverview> 
             <ButtonWrapper>
                 <ButtonBackIcon onClick={() => history.push('/')} data-testid="button-back"><BackIconDark/></ButtonBackIcon>
@@ -127,7 +127,7 @@ const LegendHoles = styled.div`
         text-align: center;
     }
 `
-const AllPlayerScores = styled.div`
+const ScoresAllPlayers = styled.div`
     display: flex;
     overflow-y: auto;
     scrollbar-width: none;
@@ -136,7 +136,7 @@ const AllPlayerScores = styled.div`
         display: none;
     }
 `
-const SinglePlayerScores = styled.div`
+const ScoreSinglePlayer = styled.div`
     margin: 0 2px;
     padding-left: 1px;
     display: grid;

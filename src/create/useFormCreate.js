@@ -29,7 +29,7 @@ export default function useFormCreate({
     const validInputs = {
         location: validateIsNotEmpty(inputsKeyInfos.location),
         date: validateIsCorrectDate(inputsKeyInfos.date),
-        players: validateIsNotEmpty(inputsKeyInfos.players),
+        players: validateIsNotEmpty(inputsKeyInfos.playersString),
         winner: validateIsNotEmpty(inputsKeyInfos.winner),
         shots: validateShotsIsInRange(inputsKeyInfos.shots),
     }

@@ -21,8 +21,8 @@ export default function Game({
     const history = useHistory()
 
     const [isSetToDelete, setIsSetToDelete] = useState(false)
-    const {location, date, players, winner, shots, _id} = savedGameProfile
-    const playerNames = players.join(', ')
+    const {location, date, playersString, winner, shots, _id} = savedGameProfile
+    const playerNames = playersString
 
     return(
         <Card>
