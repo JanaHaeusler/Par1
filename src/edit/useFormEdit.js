@@ -1,13 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import loadLocally from '../lib/loadLocally'
-import saveLocally from '../lib/saveLocally'
 import {
     validateIsCorrectDate, 
     validateIsNotEmpty, 
-    validateShotsIsInRange } from '../validators.services'
-
-const STORAGE_KEY = 'inputsKeyInfos'
+    validateShotsIsInRange } from '../app/validators.services'
 
 export default function useFormEdit({
     targetProfile,
@@ -16,7 +12,7 @@ export default function useFormEdit({
     
     const history = useHistory()
 
-    const [inputsKeyInfos, setInputsKeyInfos] = useState(loadLocally(STORAGE_KEY) ?? targetProfile)
+    const [inputsKeyInfos, setInputsKeyInfos] = useState(targetProfile)
     const [inputsScores, setInputsScores] = useState({})
     
     const validInputs = {
@@ -38,7 +34,6 @@ export default function useFormEdit({
         shots: false,
     })
 
-    useEffect(() => saveLocally(STORAGE_KEY, inputsKeyInfos), [inputsKeyInfos])
     useEffect(() => setInputsScores(targetProfile), [targetProfile])
 
     return {
@@ -107,7 +102,6 @@ export default function useFormEdit({
 
     function handleSubmitKeyInfos(event) {
         event.preventDefault()
-        trimInputsKeyInfos(inputsKeyInfos)
         updateTargetProfile(inputsKeyInfos)
         resetFormKeyInfos()
         setIsScoreCardShown(true)
@@ -115,21 +109,10 @@ export default function useFormEdit({
 
     function handleSubmitScores(event) {
         event.preventDefault()
-        // trimInputs(inputsScores)
         editGameProfile(inputsScores)
         resetFormScores() 
         setIsScoreCardShown(false)
         showOverviewPage()
-    }
-
-    function trimInputsKeyInfos() {
-        setInputsKeyInfos({
-            ...inputsKeyInfos,
-            location: inputsKeyInfos.location.trim(),
-            players: inputsKeyInfos.players.trim(),
-            winner: inputsKeyInfos.winner.trim(),
-            shots: inputsKeyInfos.shots.trim(),
-        })
     }
 
     function handleCancel() {

@@ -1,5 +1,5 @@
 function validateIsNotEmpty(input) {
-    return  (input?.trim() !== '')
+    return (input?.trim() !== '')
 }
  
 function validateIsCorrectDate(date) {

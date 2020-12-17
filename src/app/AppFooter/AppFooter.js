@@ -1,16 +1,11 @@
 import styled from 'styled-components/macro'
-import PropTypes from 'prop-types'
 import Navigation from '../Navigation'
-
-AppFooter.propTypes = {
-  handleClick: PropTypes.func.isRequired
-}
 
 export default function AppFooter({handleClick, className}) {
 
   return (
     <FooterStyled className={className}>
-      <Navigation handleClick={handleClick}/>
+      <Navigation/>
     </FooterStyled>
   )
 }

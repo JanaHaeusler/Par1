@@ -3,7 +3,7 @@ import styled from 'styled-components/macro'
 import AppFooter from './app/AppFooter'
 import AppHeader from './app/AppHeader'
 import CreatePage from './create/CreatePage'
-import useGameData from './useGameData'
+import useGameData from './app/useGameData'
 import DetailsPage from './details/DetailsPage'
 import EditPage from './edit/EditPage'
 import OverviewPage from './overview/OverviewPage'
@@ -63,7 +63,7 @@ function App() {
           </Route>
         </Switch> 
       </MainWrapper>
-      <FooterStyled handleClick={() => {}}/>
+      <FooterStyled/>
     </AppWrapper>
   )
 }

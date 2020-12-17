@@ -5,9 +5,10 @@ import saveLocally from '../lib/saveLocally'
 import { 
     validateIsCorrectDate, 
     validateIsNotEmpty, 
-    validateShotsIsInRange } from '../validators.services'
+    validateShotsIsInRange } from '../app/validators.services'
 
-const STORAGE_KEY = 'inputsKeyInfos'
+const STORAGE_KEY_1 = 'inputsKeyInfos'
+const STORAGE_KEY_2 = 'inputsScores'
 
 export default function useFormCreate({
     targetProfile,
@@ -16,20 +17,20 @@ export default function useFormCreate({
     
     const history = useHistory()
 
-    const [inputsKeyInfos, setInputsKeyInfos] = useState(loadLocally(STORAGE_KEY) ?? 
+    const [inputsKeyInfos, setInputsKeyInfos] = useState(loadLocally(STORAGE_KEY_1) ?? 
         {
             location: '',
             date: '',
-            players: '',
+            playersString: '',
             winner: '',
             shots: '',
     })
-    const [inputsScores, setInputsScores] = useState({})
+    const [inputsScores, setInputsScores] = useState(loadLocally(STORAGE_KEY_2) ?? {})
     
     const validInputs = {
         location: validateIsNotEmpty(inputsKeyInfos.location),
         date: validateIsCorrectDate(inputsKeyInfos.date),
-        players: validateIsNotEmpty(inputsKeyInfos.playersString),
+        playersString: validateIsNotEmpty(inputsKeyInfos.playersString),
         winner: validateIsNotEmpty(inputsKeyInfos.winner),
         shots: validateShotsIsInRange(inputsKeyInfos.shots),
     }
@@ -40,12 +41,13 @@ export default function useFormCreate({
     const [dirtyInputs, setDirtyInputs] = useState({
         location: false,
         date: false,
-        players: false,
+        playersString: false,
         winner: false,
         shots: false,
     })
 
-    useEffect(() => saveLocally(STORAGE_KEY, inputsKeyInfos), [inputsKeyInfos])
+    useEffect(() => saveLocally(STORAGE_KEY_1, inputsKeyInfos), [inputsKeyInfos])
+    useEffect(() => saveLocally(STORAGE_KEY_2, inputsScores), [inputsScores])
     useEffect(() => setInputsScores(targetProfile), [targetProfile])
 
     return {
@@ -104,7 +106,7 @@ export default function useFormCreate({
         if (inputName === 'date') {
             return dirtyInputs[inputName] && !validInputs[inputName] && errorMessageDate
         }
-        if (inputName === 'players' || inputName === 'winner' ) {
+        if (inputName === 'playersString' || inputName === 'winner' ) {
             return dirtyInputs[inputName] && !validInputs[inputName] && errorMessagePlayersWinner
         }
         if (inputName === 'shots') {
@@ -114,7 +116,6 @@ export default function useFormCreate({
 
     function handleSubmitKeyInfos(event) {
         event.preventDefault()
-        trimInputsKeyInfos(inputsKeyInfos)
         createGameProfile(inputsKeyInfos)
         resetFormKeyInfos()
         setIsScoreCardShown(true)
@@ -122,25 +123,15 @@ export default function useFormCreate({
 
     function handleSubmitScores(event) {
         event.preventDefault()
-        // trimInputs(inputsScores)
         addGameProfile(inputsScores) 
         resetFormScores()    
         setIsScoreCardShown(false)
         showOverviewPage()
     }
 
-    function trimInputsKeyInfos() {
-        setInputsKeyInfos({
-            ...inputsKeyInfos,
-            location: inputsKeyInfos.location.trim(),
-            players: inputsKeyInfos.players.trim(),
-            winner: inputsKeyInfos.winner.trim(),
-            shots: inputsKeyInfos.shots.trim(),
-        })
-    }
-
     function handleCancel() {
         resetFormKeyInfos()
+        resetFormScores()
         showOverviewPage()
     }
 
@@ -148,14 +139,14 @@ export default function useFormCreate({
         setInputsKeyInfos({
             location: '',
             date: '',
-            players: '',
+            playersString: '',
             winner: '',
             shots:'',
         })
         setDirtyInputs({
             location: false,
             date: false,
-            players: false,
+            playersString: false,
             winner: false,
             shots: false,  
         })

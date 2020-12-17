@@ -11,8 +11,8 @@ DetailsPage.propTypes = {
 export default function DetailsPage({targetProfile}) {
     
     const history = useHistory()
-    const {location, date, players, winner, shots} = targetProfile
-    const playersString = players.join(', ')
+    const {location, date, playersString, winner, shots} = targetProfile
+    const players = playersString
 
     return (
         <GameDetailsWrapper>
@@ -21,7 +21,7 @@ export default function DetailsPage({targetProfile}) {
                 <Date>{date}</Date>
                 <PlayerWrapper>
                     <h4>Player(s)</h4>
-                    <span>{playersString}</span>
+                    <span>{players}</span>
                 </PlayerWrapper>
                 <WinnerWrapper>
                     <h4>Winner(s)</h4>
@@ -42,7 +42,7 @@ export default function DetailsPage({targetProfile}) {
                         }
                     </LegendHoles> 
                     <ScoresAllPlayers>
-                        {targetProfile.players.map((player) => {
+                        {targetProfile.playersArray.map((player) => {
                             const newId = uuid()
                             const playerName = player     
                                 return (

@@ -1,19 +1,14 @@
 import styled from 'styled-components/macro'
-import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 import {PlusIcon, HomeIcon} from '../Icons/Icons'
 
-Navigation.propTypes = {
-    handleClick: PropTypes.func.isRequired
-}
-
-export default function Navigation({handleClick}) {
+export default function Navigation() {
     return (
             <NavBar>
-                <NavLinkStyled exact to="/" onClick={handleClick} data-testid="button-home-page">
+                <NavLinkStyled exact to="/" data-testid="button-home-page">
                     <HomeIcon />
                 </NavLinkStyled>
-                <NavLinkStyled to="/create" onClick={handleClick} data-testid="button-form-page">
+                <NavLinkStyled to="/create" data-testid="button-form-page">
                     <PlusIcon />
                 </NavLinkStyled>
             </NavBar>

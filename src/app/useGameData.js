@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { v4 as uuid } from 'uuid'
-import loadLocally from './lib/loadLocally'
-import saveLocally from './lib/saveLocally'
+import loadLocally from '../lib/loadLocally'
+import saveLocally from '../lib/saveLocally'
 
 const STORAGE_KEY = 'gameProfiles'
 
@@ -29,7 +29,7 @@ export default function useGameData() {
     
     function createGameProfile(keyInfos) {
         const newId = uuid()
-        const playersArray = keyInfos.players.split(',').map((player) => player.trim()).filter(player => player)
+        const playersArray = keyInfos.playersString.split(',').map((player) => player.trim()).filter(player => player)
         const playersString = playersArray.join(', ')
         const playerScores = playersArray.reduce((acc, cur) => (
                 { ...acc, [cur]: { 
@@ -56,8 +56,8 @@ export default function useGameData() {
             {})
         setTargetProfile({
             ...keyInfos,
-            playersString: playersString,
-            playersArray: playersArray,
+            playersString,
+            playersArray,
             scores: playerScores,
             _id: newId
         })
@@ -92,8 +92,8 @@ export default function useGameData() {
         const playersString = playersArray.join(', ')
         setTargetProfile({
             ...editedTargetProfile,
-            playersString: playersString,
-            playersArray: playersArray,
+            playersString,
+            playersArray,
         })
     }
     

@@ -68,8 +68,8 @@ export default function Form({
                         Player(s)
                     <input 
                         type="text" 
-                        name="players"
-                        id="players"
+                        name="playersString"
+                        id="playersString"
                         placeholder="John, Jane"
                         value={inputsKeyInfos.playersString}
                         onChange={(event) => handleChangeKeyInfos(event.target.name, event.target.value)}
@@ -129,18 +129,18 @@ export default function Form({
                         }
                     </Legend> 
                     <ScoresAllPlayers>
-                        {inputsScores.playersArray.map((player) => {
-                            const newId = uuid()
-                            const playerName = player    
+                        {inputsScores.playersArray.map((player, index) => {
+                            const playerName = player
+                            const key = `singlePlayerInputs${index +1}`    
                                 return (
-                                    <ScoreSinglePlayer key={newId} >
+                                    <ScoreSinglePlayer key={key} >
                                         <span>{playerName}</span>
                                         {new Array(18).fill().map((_, index) => {
-                                            const newId = uuid()
                                             const inputNumber = index + 1
                                             const holeName = 'hole' + inputNumber
+                                            const key = `singleScoreInput${inputNumber}`
                                                 return( 
-                                                        <SingleScore key={newId}>
+                                                        <SingleScore key={key}>
                                                             <input 
                                                             type="number" 
                                                             name={holeName + '-' + playerName}

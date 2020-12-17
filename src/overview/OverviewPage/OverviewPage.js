@@ -14,7 +14,7 @@ export default function OverviewPage({
     deleteGameProfile, 
     prepareEditModus, 
     prepareDetailsPage }) {
-
+        
     return (
         <>
             <Headline>Your Games</Headline>
