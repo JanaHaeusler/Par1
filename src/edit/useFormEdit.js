@@ -18,7 +18,7 @@ export default function useFormEdit({
     const validInputs = {
         location: validateIsNotEmpty(inputsKeyInfos.location),
         date: validateIsCorrectDate(inputsKeyInfos.date),
-        players: validateIsNotEmpty(inputsKeyInfos.playersString),
+        playersString: validateIsNotEmpty(inputsKeyInfos.playersString),
         winner: validateIsNotEmpty(inputsKeyInfos.winner),
         shots: validateShotsIsInRange(inputsKeyInfos.shots),
     }
@@ -29,7 +29,7 @@ export default function useFormEdit({
     const [dirtyInputs, setDirtyInputs] = useState({
         location: false,
         date: false,
-        players: false,
+        playersString: false,
         winner: false,
         shots: false,
     })
@@ -80,23 +80,27 @@ export default function useFormEdit({
         })
     }
 
-    function showErrorMessage(inputField) {
+    function showErrorMessage(inputName) {
         const errorMessageLocation = `Please fill in location`
         const errorMessageDate = `Please choose a date`
-        const errorMessagePlayersWinner = `Please fill in at least one ${inputField}`
+        const errorMessagePlayers = `Please fill in at least one player`
+        const errorMessageWinner = `Please fill in at least one winner`
         const errorMessageShots = `Please fill in a number between 18 and 126`
 
-        if (inputField === 'location') {
-            return dirtyInputs[inputField] && !validInputs[inputField] && errorMessageLocation
+        if (inputName === 'location') {
+            return dirtyInputs[inputName] && !validInputs[inputName] && errorMessageLocation
         }
-        if (inputField === 'date') {
-            return dirtyInputs[inputField] && !validInputs[inputField] && errorMessageDate
+        if (inputName === 'date') {
+            return dirtyInputs[inputName] && !validInputs[inputName] && errorMessageDate
         }
-        if (inputField === 'players' || inputField === 'winner' ) {
-            return dirtyInputs[inputField] && !validInputs[inputField] && errorMessagePlayersWinner
+        if (inputName === 'playersString') {
+            return dirtyInputs[inputName] && !validInputs[inputName] && errorMessagePlayers
         }
-        if (inputField === 'shots') {
-            return dirtyInputs[inputField] && !validInputs[inputField] && errorMessageShots
+        if (inputName === 'winner' ) {
+            return dirtyInputs[inputName] && !validInputs[inputName] && errorMessageWinner
+        }
+        if (inputName === 'shots') {
+            return dirtyInputs[inputName] && !validInputs[inputName] && errorMessageShots
         }
     }
 
@@ -117,6 +121,7 @@ export default function useFormEdit({
 
     function handleCancel() {
         resetFormKeyInfos()
+        resetFormScores()
         showOverviewPage()
     }
 
@@ -124,14 +129,14 @@ export default function useFormEdit({
         setInputsKeyInfos({
             location: '',
             date: '',
-            players: '',
+            playersString: '',
             winner: '',
             shots:'',
         })
         setDirtyInputs({
             location: false,
             date: false,
-            players: false,
+            playersString: false,
             winner: false,
             shots: false,  
         })

@@ -97,7 +97,8 @@ export default function useFormCreate({
     function showErrorMessage(inputName) {
         const errorMessageLocation = `Please fill in location`
         const errorMessageDate = `Please choose a date`
-        const errorMessagePlayersWinner = `Please fill in at least one ${inputName}`
+        const errorMessagePlayers = `Please fill in at least one player`
+        const errorMessageWinner = `Please fill in at least one winner`
         const errorMessageShots = `Please fill in a number between 18 and 126`
 
         if (inputName === 'location') {
@@ -106,8 +107,11 @@ export default function useFormCreate({
         if (inputName === 'date') {
             return dirtyInputs[inputName] && !validInputs[inputName] && errorMessageDate
         }
-        if (inputName === 'playersString' || inputName === 'winner' ) {
-            return dirtyInputs[inputName] && !validInputs[inputName] && errorMessagePlayersWinner
+        if (inputName === 'playersString') {
+            return dirtyInputs[inputName] && !validInputs[inputName] && errorMessagePlayers
+        }
+        if (inputName === 'winner' ) {
+            return dirtyInputs[inputName] && !validInputs[inputName] && errorMessageWinner
         }
         if (inputName === 'shots') {
             return dirtyInputs[inputName] && !validInputs[inputName] && errorMessageShots

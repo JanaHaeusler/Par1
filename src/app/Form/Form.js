@@ -73,10 +73,10 @@ export default function Form({
                         placeholder="John, Jane"
                         value={inputsKeyInfos.playersString}
                         onChange={(event) => handleChangeKeyInfos(event.target.name, event.target.value)}
-                        onBlur={() => updateDirtyInputsKeyInfos('players')}
+                        onBlur={() => updateDirtyInputsKeyInfos('playersString')}
                     />
                     </label>
-                    <Note>{showErrorMessage('players')}</Note>
+                    <Note>{showErrorMessage('playersString')}</Note>
                     
                     <label>
                         Winner(s)
@@ -147,7 +147,6 @@ export default function Form({
                                                             id={holeName + '-' + playerName}
                                                             value={inputsScores.scores[playerName][holeName]}
                                                             onChange={(event) => {handleChangeScores(event.target.name, event.target.value)}}
-                                                            // onBlur={() => updateDirtyInputs()}
                                                             />
                                                         </SingleScore>
                                                     )                         
