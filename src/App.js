@@ -49,8 +49,8 @@ function App() {
           <Route path="/edit">
             <EditPage 
                 targetProfile={targetProfile}
-                editGameProfile={editGameProfile}
                 updateTargetProfile={updateTargetProfile}
+                editGameProfile={editGameProfile}
             />
           </Route>
           <Route path="/*">

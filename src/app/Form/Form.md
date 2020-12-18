@@ -1,5 +1,0 @@
-Form General
-
-```jsx
-<Form />
-```

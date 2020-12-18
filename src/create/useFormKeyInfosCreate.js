@@ -1,53 +1,57 @@
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import {
+import loadLocally from '../lib/loadLocally'
+import saveLocally from '../lib/saveLocally'
+import { 
     validateIsCorrectDate, 
     validateIsNotEmpty, 
     validateShotsIsInRange } from '../app/validators.services'
 
-export default function useFormEdit({
-    targetProfile,
-    editGameProfile,
-    updateTargetProfile }) {
+const STORAGE_KEY = 'inputsKeyInfosCreate'
+
+export default function useFormKeyInfosCreate({
+    createGameProfile,
+    updateVisibleForm }) {
     
     const history = useHistory()
 
-    const [inputsKeyInfos, setInputsKeyInfos] = useState(targetProfile)
-    const [inputsScores, setInputsScores] = useState({})
+    const [inputsKeyInfos, setInputsKeyInfos] = useState(loadLocally(STORAGE_KEY) ?? 
+        {
+            location: '',
+            date: '',
+            players: '',
+            winner: '',
+            shots: '',
+        }
+    )
     
     const validInputs = {
         location: validateIsNotEmpty(inputsKeyInfos.location),
         date: validateIsCorrectDate(inputsKeyInfos.date),
-        playersString: validateIsNotEmpty(inputsKeyInfos.playersString),
+        players: validateIsNotEmpty(inputsKeyInfos.players),
         winner: validateIsNotEmpty(inputsKeyInfos.winner),
         shots: validateShotsIsInRange(inputsKeyInfos.shots),
     }
-    const isSaveButtonShown = Object.values(validInputs).every(isValid => isValid)
-    
-    const [isScoreCardShown, setIsScoreCardShown] = useState(false)
+    const isSaveButtonShownKeyInfos = Object.values(validInputs).every(isValid => isValid)
     
     const [dirtyInputs, setDirtyInputs] = useState({
         location: false,
         date: false,
-        playersString: false,
+        players: false,
         winner: false,
         shots: false,
     })
 
-    useEffect(() => setInputsScores(targetProfile), [targetProfile])
+    useEffect(() => saveLocally(STORAGE_KEY, inputsKeyInfos), [inputsKeyInfos])
 
     return {
         inputsKeyInfos, 
-        inputsScores,
-        isSaveButtonShown,
-        isScoreCardShown,
+        isSaveButtonShownKeyInfos,
         updateDirtyInputsKeyInfos,
         handleChangeKeyInfos,
-        handleChangeScores,
-        showErrorMessage,
+        showErrorMessageKeyInfos,
         handleSubmitKeyInfos,
-        handleSubmitScores,
-        handleCancel,
+        handleCancelKeyInfos,
     }
 
     function handleChangeKeyInfos(inputName, inputValue) {
@@ -57,30 +61,14 @@ export default function useFormEdit({
         })
     }
 
-    function handleChangeScores(inputName, inputValue) {
-        const inputNameSplitted = inputName.split('-')
-        const holeName =  inputNameSplitted[0]
-        const playerName = inputNameSplitted[1]
-        setInputsScores({
-            ...inputsScores,
-            scores: {
-                ...inputsScores.scores, 
-                [playerName]: {
-                    ...inputsScores.scores[playerName], 
-                    [holeName]: inputValue
-                }
-            }
-        })
-    }
-
-    function updateDirtyInputsKeyInfos(input) {
+    function updateDirtyInputsKeyInfos(inputName) {
         setDirtyInputs({
             ...dirtyInputs,
-            [input]: true
+            [inputName]: true
         })
     }
 
-    function showErrorMessage(inputName) {
+    function showErrorMessageKeyInfos(inputName) {
         const errorMessageLocation = `Please fill in location`
         const errorMessageDate = `Please choose a date`
         const errorMessagePlayers = `Please fill in at least one player`
@@ -93,7 +81,7 @@ export default function useFormEdit({
         if (inputName === 'date') {
             return dirtyInputs[inputName] && !validInputs[inputName] && errorMessageDate
         }
-        if (inputName === 'playersString') {
+        if (inputName === 'players') {
             return dirtyInputs[inputName] && !validInputs[inputName] && errorMessagePlayers
         }
         if (inputName === 'winner' ) {
@@ -106,44 +94,31 @@ export default function useFormEdit({
 
     function handleSubmitKeyInfos(event) {
         event.preventDefault()
-        updateTargetProfile(inputsKeyInfos)
-        resetFormKeyInfos()
-        setIsScoreCardShown(true)
+        createGameProfile(inputsKeyInfos)
+        resetForm()
+        updateVisibleForm('scores')
     }
 
-    function handleSubmitScores(event) {
-        event.preventDefault()
-        editGameProfile(inputsScores)
-        resetFormScores() 
-        setIsScoreCardShown(false)
+    function handleCancelKeyInfos() {
+        resetForm()
         showOverviewPage()
     }
 
-    function handleCancel() {
-        resetFormKeyInfos()
-        resetFormScores()
-        showOverviewPage()
-    }
-
-    function resetFormKeyInfos() {
+    function resetForm() {
         setInputsKeyInfos({
             location: '',
             date: '',
-            playersString: '',
+            players: '',
             winner: '',
             shots:'',
         })
         setDirtyInputs({
             location: false,
             date: false,
-            playersString: false,
+            players: false,
             winner: false,
             shots: false,  
         })
-    }
-
-    function resetFormScores() {
-        setInputsScores({})
     }
 
     function showOverviewPage() {

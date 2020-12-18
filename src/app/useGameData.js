@@ -29,7 +29,7 @@ export default function useGameData() {
     
     function createGameProfile(keyInfos) {
         const newId = uuid()
-        const playersArray = keyInfos.playersString.split(',').map((player) => player.trim()).filter(player => player)
+        const playersArray = keyInfos.players.split(',').map((player) => player.trim()).filter(player => player)
         const playersString = playersArray.join(', ')
         const playerScores = playersArray.reduce((acc, cur) => (
                 { ...acc, [cur]: { 
@@ -55,7 +55,10 @@ export default function useGameData() {
                 }), 
             {})
         setTargetProfile({
-            ...keyInfos,
+            location: keyInfos.location,
+            date: keyInfos.date,
+            winner: keyInfos.winner,
+            shots: keyInfos.shots,
             playersString,
             playersArray,
             scores: playerScores,
@@ -71,7 +74,7 @@ export default function useGameData() {
             },
             allIds: [newGameProfile._id, ...savedGameProfiles.allIds],
         })
-        setTargetProfile({})
+        setTargetProfile(null)
     }
     
     function deleteGameProfile(targetId) {
@@ -87,13 +90,16 @@ export default function useGameData() {
         setTargetProfile(savedGameProfiles.byId[targetId])
     }
 
-    function updateTargetProfile(editedTargetProfile) {
-        const playersArray = editedTargetProfile.playersString.split(',').map((player) => player.trim()).filter(player => player)
-        const playersString = playersArray.join(', ')
+    function updateTargetProfile(editedGameInfos, targetProfile) {
+
+
         setTargetProfile({
-            ...editedTargetProfile,
-            playersString,
-            playersArray,
+            ...targetProfile,
+            location: editedGameInfos.location,
+            date: editedGameInfos.date,
+            playersString: editedGameInfos.players,
+            winner: editedGameInfos.winner,
+            shots: editedGameInfos.shots,
         })
     }
     

@@ -3,19 +3,19 @@ import { useEffect, useState } from 'react'
 import FormKeyInfos from '../../app/Form/FormKeyInfos'
 import FormScores from '../../app/Form/FormScores'
 import scrollUp from '../../lib/scrollUp'
-import useFormKeyInfosCreate from '../useFormKeyInfosCreate'
-import useFormScoresCreate from '../useFormScoresCreate'
+import useFormKeyInfosEdit from '../useFormKeyInfosEdit'
+import useFormScoresEdit from '../useFormScoresEdit'
 
-CreatePage.propTypes = {
+EditPage.propTypes = {
     targetProfile: PropTypes.object.isRequired,
-    createGameProfile: PropTypes.func.isRequired,
-    addGameProfile: PropTypes.func.isRequired,
+    updateTargetProfile: PropTypes.func.isRequired,
+    editGameProfile: PropTypes.func.isRequired,
 }
 
-export default function CreatePage({
+export default function EditPage({
     targetProfile,
-    createGameProfile,
-    addGameProfile }) {
+    updateTargetProfile,
+    editGameProfile }) {
    
     useEffect(() => scrollUp(), [])
 
@@ -26,8 +26,9 @@ export default function CreatePage({
         handleChangeKeyInfos,
         showErrorMessageKeyInfos,
         handleSubmitKeyInfos,
-        handleCancelKeyInfos } = useFormKeyInfosCreate({
-                                        createGameProfile,
+        handleCancelKeyInfos } = useFormKeyInfosEdit({
+                                        targetProfile,           
+                                        updateTargetProfile,
                                         updateVisibleForm })
     
     const {
@@ -37,9 +38,9 @@ export default function CreatePage({
         handleChangeScores,
         showErrorMessageScores,
         handleSubmitScores,
-        handleCancelScores } = useFormScoresCreate({
+        handleCancelScores } = useFormScoresEdit({
                                         targetProfile,
-                                        addGameProfile,
+                                        editGameProfile,
                                         updateVisibleForm })
 
     const [visibleForm, setVisibleForm] = useState('keyInfos')
@@ -57,9 +58,9 @@ export default function CreatePage({
                     handleCancel={handleCancelKeyInfos}
                 />
             }
-            {
+            { 
                 visibleForm === 'scores' && Object.keys(targetProfile).length !== 0 &&
-                <FormScores 
+                <FormScores
                     formInputs={inputsScores}
                     isSaveButtonShown={isSaveButtonShownScores}
                     updateDirtyInputs={updateDirtyInputsScores}
