@@ -2,13 +2,8 @@
 
 **Capstone project in the course of the web development bootcamp by neuefische**
 
-<section align="center">
-
 ![GitHub top language](https://img.shields.io/github/languages/top/JanaHaeusler/Par1?color=%23679FBE&style=plastic)
-
 ![GitHub last commit](https://img.shields.io/github/last-commit/JanaHaeusler/Par1?color=%2314254D&style=plastic)
-
-</section>
 
 ## Description
 
