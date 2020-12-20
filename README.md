@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+![header-logo](src/app/assets/README/par1_header.jpg)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Capstone project in the course of the web development bootcamp by neuefische**
 
-## Available Scripts
+<section align="center">
 
-In the project directory, you can run:
+![GitHub top language](https://img.shields.io/github/languages/top/JanaHaeusler/Par1?color=%23679FBE&style=plastic)
 
-### `npm start`
+![GitHub last commit](https://img.shields.io/github/last-commit/JanaHaeusler/Par1?color=%2314254D&style=plastic)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+</section>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Description
 
-### `npm test`
+### An app for ambitious minigolf players
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Par1 offers ambitious minigolf players a place where they can save their games with all important information. Thereby, game details of past games as well as the development steps of the players can be retrieved at any time.
 
-### `npm run build`
+## Main Feature
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Users can fill out a form that asks for all important game details such as location and date as well as who has played and won. Additionally, it keeps track of the scores of all players at all 18 holes. These Information are saved and can be retrieved at any time. Furthermore, game entries can be edited and deleted as well.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Motivation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+In the summer, my friends and I are often playing minigolf together - occasionally resulting in a little seasonal competition. But at the end it is very likely that we have lost track of all our games and scores. You could imagine how we discuss with a wink who had won.
+With my app, Par1, I would like to provide a space to save all these important game details and scores. Allowing us to have less discussions and more of a nice after game get-together.
 
-### `npm run eject`
+## Look & Feel
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![mockup](src/app/assets/README/par1_mock.jpg)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Demo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+A hosted version can be found here:
+[Par1](https://par1.vercel.app/)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Tech Stack
 
-## Learn More
+- React
+- React Hooks
+- React Router
+- Styled Components
+- PropTypes
+- Styleguidist
+- uuid
+- React Testing Library
+- Jest
+- Cypress
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Project setup
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone this repository
+2. Install all npm dependencies
 
-### Code Splitting
+   `$ npm install`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. To run the app in development mode
 
-### Analyzing the Bundle Size
+   `$ npm start`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   Then open http://localhost:3000 to view it in the browser
 
-### Making a Progressive Web App
+4. To run Styleguidist
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   `$ npm run styleguide`
 
-### Advanced Configuration
+5. To run unit and component tests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   `$ npm run test`
 
-### Deployment
+6. To run Cypress tests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   `$ npm run cypress`
 
-### `npm run build` fails to minify
+7. Create a build ready for deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   `$ npm run build`
+
+## License
+
+MIT © Jana Häusler
+
+---
+
+[neuefische](https://github.com/neuefisch), thank you a lot for this awesome experience, for all your support and for opening up this exciting world!

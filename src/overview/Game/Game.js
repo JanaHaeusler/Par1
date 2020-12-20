@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import {useState} from 'react'
-import {BinIconDark, PencilIconDark, CancelIconLight} from '../../app/Icons/Icons'
+import {BinIconDark, PencilIconDark, CancelIconLight} from '../../app/assets/Icons/Icons'
 import Button from '../../app/Button'
 
 Game.propTypes = {

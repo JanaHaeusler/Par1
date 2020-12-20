@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { LogoIcon } from '../Icons/Icons'
+import { LogoIcon } from '../assets/Icons/Icons'
 
 export default function Pennant() {
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
-import {PlusIcon, HomeIcon} from '../Icons/Icons'
+import {PlusIcon, HomeIcon} from '../assets/Icons/Icons'
 
 Navigation.propTypes = {
     handleClick: PropTypes.func.isRequired

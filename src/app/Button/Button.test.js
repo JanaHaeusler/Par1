@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import Button from './Button'
-import { CheckIconWhite } from '../Icons/Icons'
+import { CheckIconWhite } from '../assets/Icons/Icons'
 
 const testProps = {
     main: true,

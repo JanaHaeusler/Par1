@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
-import {CheckIconLight, CancelIconDark} from '../../app/Icons/Icons'
+import {CheckIconLight, CancelIconDark} from '../../app/assets/Icons/Icons'
 import Button from '../../app/Button'
 
 CreateForm.propTypes = {

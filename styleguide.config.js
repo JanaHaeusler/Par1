@@ -6,7 +6,7 @@ module.exports = {
       'src/create/**/[A-Z]*.js',
       'src/overview/**/[A-Z]*.js',
     ],
-    ignore: ['**/App.js', 'src/**/**/*.test.js', '**/GlobalStyle.js', 'src/app/Icons/Icons.js'],
+    ignore: ['**/App.js', 'src/**/**/*.test.js', '**/GlobalStyle.js', 'src/app/assets/Icons/Icons.js'],
     defaultExample: true,
     exampleMode: 'expand',
     usageMode: 'expand',
