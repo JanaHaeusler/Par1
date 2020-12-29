@@ -16,16 +16,18 @@ export default function useFormScoresEdit({
 
     const [inputsScores, setInputsScores] = useState(loadLocally(STORAGE_KEY) ?? targetProfile)
     
-    const validInputs = {}
+    const validInputs = inputsScores.playersArray && prepareInputValidation(inputsScores)
+    const hasAllValidInputs = validInputs && condenseValidInputs()
 
-    const isSaveButtonShownScores = Object.values(validInputs).every(isValid => isValid)
+    const isSaveButtonShownScores = hasAllValidInputs
     
-    const [dirtyInputs, setDirtyInputs] = useState({
-       
-    })
+    const [dirtyInputs, setDirtyInputs] = useState({})
+    const hasAllDirtyInputs = dirtyInputs && condenseDirtyInputs()
 
     useEffect(() => saveLocally(STORAGE_KEY, inputsScores), [inputsScores])
     useEffect(() => setInputsScores(targetProfile), [targetProfile])
+    useEffect(() => prepareInputValidation(targetProfile), [targetProfile])
+    useEffect(() => prepareDirtyInputs(targetProfile), [targetProfile])
 
     return {
         inputsScores, 
@@ -53,32 +55,101 @@ export default function useFormScoresEdit({
         })
     }
 
-    function updateDirtyInputsScores() {
-
+    function prepareInputValidation(inputsScores) {
+        const preparedInputs = inputsScores.playersArray?.reduce((acc, cur) => (
+           { ...acc, [cur]: { 
+                               hole1: validateScoreIsInRange(inputsScores.scores[cur].hole1),
+                               hole2: validateScoreIsInRange(inputsScores.scores[cur].hole2),
+                               hole3: validateScoreIsInRange(inputsScores.scores[cur].hole3),
+                               hole4: validateScoreIsInRange(inputsScores.scores[cur].hole4),
+                               hole5: validateScoreIsInRange(inputsScores.scores[cur].hole5),
+                               hole6: validateScoreIsInRange(inputsScores.scores[cur].hole6),
+                               hole7: validateScoreIsInRange(inputsScores.scores[cur].hole7),
+                               hole8: validateScoreIsInRange(inputsScores.scores[cur].hole8),
+                               hole9: validateScoreIsInRange(inputsScores.scores[cur].hole9),
+                               hole10: validateScoreIsInRange(inputsScores.scores[cur].hole10),
+                               hole11: validateScoreIsInRange(inputsScores.scores[cur].hole11),
+                               hole12: validateScoreIsInRange(inputsScores.scores[cur].hole12),
+                               hole13: validateScoreIsInRange(inputsScores.scores[cur].hole13),
+                               hole14: validateScoreIsInRange(inputsScores.scores[cur].hole14),
+                               hole15: validateScoreIsInRange(inputsScores.scores[cur].hole15),
+                               hole16: validateScoreIsInRange(inputsScores.scores[cur].hole16),
+                               hole17: validateScoreIsInRange(inputsScores.scores[cur].hole17),
+                               hole18: validateScoreIsInRange(inputsScores.scores[cur].hole18),
+                           } 
+           }), 
+       {})
+       return preparedInputs
     }
 
-    function showErrorMessageScores(inputName) {
-        const errorMessageLocation = `Please fill in location`
-        const errorMessageDate = `Please choose a date`
-        const errorMessagePlayers = `Please fill in at least one player`
-        const errorMessageWinner = `Please fill in at least one winner`
-        const errorMessageShots = `Please fill in a number between 18 and 126`
+    function condenseValidInputs() {
+       const allValidInputs = Object.values(validInputs)
+           .map( singlePlayerInputs => 
+                   Object.values(singlePlayerInputs))
+           .reduce( (acc, cur) => 
+                       [...acc, 
+                       ...cur]
+                   , [])
+       
+       return allValidInputs.every(isValid => isValid)
+    }
 
-        if (inputName === 'location') {
-            return dirtyInputs[inputName] && !validInputs[inputName] && errorMessageLocation
-        }
-        if (inputName === 'date') {
-            return dirtyInputs[inputName] && !validInputs[inputName] && errorMessageDate
-        }
-        if (inputName === 'players') {
-            return dirtyInputs[inputName] && !validInputs[inputName] && errorMessagePlayers
-        }
-        if (inputName === 'winner' ) {
-            return dirtyInputs[inputName] && !validInputs[inputName] && errorMessageWinner
-        }
-        if (inputName === 'shots') {
-            return dirtyInputs[inputName] && !validInputs[inputName] && errorMessageShots
-        }
+    function prepareDirtyInputs(newGameProfile) {
+        const dirtyInputs = newGameProfile.playersArray?.reduce((acc, cur) => (
+            { ...acc, [cur]: { 
+                                hole1: false,
+                                hole2: false,
+                                hole3: false,
+                                hole4: false,
+                                hole5: false,
+                                hole6: false,
+                                hole7: false,
+                                hole8: false,
+                                hole9: false,
+                                hole10: false,
+                                hole11: false,
+                                hole12: false,
+                                hole13: false,
+                                hole14: false,
+                                hole15: false,
+                                hole16: false,
+                                hole17: false,
+                                hole18: false,
+                            } 
+            }), 
+        {})
+        setDirtyInputs(dirtyInputs)
+    }
+
+    function updateDirtyInputsScores(inputName) {
+        const inputNameSplitted = inputName.split('-')
+        const holeName =  inputNameSplitted[0]
+        const playerName = inputNameSplitted[1]
+        setDirtyInputs({
+            ...dirtyInputs,
+            [playerName]: 
+                {
+                    ...dirtyInputs[playerName],
+                    [holeName]: true
+                }
+        })
+    }
+
+    function condenseDirtyInputs() {
+        const allDirtyInputs = Object.values(dirtyInputs)
+            .map( singlePlayerValues => 
+                    Object.values(singlePlayerValues))
+            .reduce( (acc, cur) => 
+                        [...acc, 
+                        ...cur]
+                    , [])
+
+        return allDirtyInputs.every(isValid => isValid)
+    }
+
+    function showErrorMessageScores() {
+        const errorMessage = `Please fill in numbers between 1 and 7`
+        return hasAllDirtyInputs && !hasAllValidInputs && errorMessage
     }
 
     function handleSubmitScores(event) {

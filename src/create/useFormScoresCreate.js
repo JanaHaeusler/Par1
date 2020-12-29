@@ -15,7 +15,7 @@ export default function useFormScoresCreate({
     const history = useHistory()
     
     const [inputsScores, setInputsScores] = useState(loadLocally(STORAGE_KEY) ?? newGameProfile)
-    
+
     const validInputs = inputsScores.playersArray && prepareInputValidation(inputsScores)
     const hasAllValidInputs = validInputs && condenseValidInputs()
     

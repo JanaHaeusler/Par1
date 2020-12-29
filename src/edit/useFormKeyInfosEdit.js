@@ -15,7 +15,6 @@ export default function useFormKeyInfosEdit({
     updateVisibleForm }) {
     
     const history = useHistory()
-
     const [inputsKeyInfos, setInputsKeyInfos] = useState(loadLocally(STORAGE_KEY) ?? 
         {
             location: targetProfile.location,
