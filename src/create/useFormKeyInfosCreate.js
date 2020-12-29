@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import {
+    validateIsCorrectDate,
+    validateIsNotEmpty,
+    validateShotsIsInRange
+} from '../app/validators.services'
 import loadLocally from '../lib/loadLocally'
+import removeLocally from '../lib/removeLocally'
 import saveLocally from '../lib/saveLocally'
-import { 
-    validateIsCorrectDate, 
-    validateIsNotEmpty, 
-    validateShotsIsInRange } from '../app/validators.services'
 
 const STORAGE_KEY = 'inputsKeyInfosCreate'
 
@@ -95,23 +97,18 @@ export default function useFormKeyInfosCreate({
     function handleSubmitKeyInfos(event) {
         event.preventDefault()
         createGameProfile(inputsKeyInfos)
-        resetForm()
+        resetDirtyInputs()
+        removeLocally(STORAGE_KEY)
         updateVisibleForm('scores')
     }
 
     function handleCancelKeyInfos() {
-        resetForm()
+        resetDirtyInputs()
+        removeLocally(STORAGE_KEY)
         showOverviewPage()
     }
 
-    function resetForm() {
-        setInputsKeyInfos({
-            location: '',
-            date: '',
-            players: '',
-            winner: '',
-            shots:'',
-        })
+    function resetDirtyInputs() {
         setDirtyInputs({
             location: false,
             date: false,

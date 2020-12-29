@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import loadLocally from '../lib/loadLocally'
-import saveLocally from '../lib/saveLocally'
 import {
-    validateScoreIsInRange } from '../app/validators.services'
+    validateScoreIsInRange
+} from '../app/validators.services'
+import loadLocally from '../lib/loadLocally'
+import removeLocally from '../lib/removeLocally'
+import saveLocally from '../lib/saveLocally'
 
 const STORAGE_KEY = 'inputsScoresEdit'
 
@@ -155,18 +157,19 @@ export default function useFormScoresEdit({
     function handleSubmitScores(event) {
         event.preventDefault()
         editGameProfile(inputsScores)
-        resetForm() 
+        resetDirtyInputs() 
+        removeLocally(STORAGE_KEY)
         updateVisibleForm('keyInfos')
         showOverviewPage()
     }
 
     function handleCancelScores() {
-        resetForm()
+        resetDirtyInputs()
+        removeLocally(STORAGE_KEY)
         showOverviewPage()
     }
 
-    function resetForm() {
-        setInputsScores(null)
+    function resetDirtyInputs() {
         setDirtyInputs({})
     }
 

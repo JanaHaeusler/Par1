@@ -93,8 +93,6 @@ export default function useGameData() {
     }
 
     function updateTargetProfile(editedGameInfos, targetProfile) {
-
-
         setTargetProfile({
             ...targetProfile,
             location: editedGameInfos.location,
@@ -120,5 +118,4 @@ export default function useGameData() {
     function prepareDetailsPage(targetId) {
         setTargetProfile(savedGameProfiles.byId[targetId])
     }
-
 }

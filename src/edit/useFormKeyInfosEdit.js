@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import {
+    validateIsCorrectDate,
+    validateIsNotEmpty,
+    validateShotsIsInRange
+} from '../app/validators.services'
 import loadLocally from '../lib/loadLocally'
+import removeLocally from '../lib/removeLocally'
 import saveLocally from '../lib/saveLocally'
-import { 
-    validateIsCorrectDate, 
-    validateIsNotEmpty, 
-    validateShotsIsInRange } from '../app/validators.services'
 
 const STORAGE_KEY = 'inputsKeyInfosEdit'
 
@@ -15,7 +17,8 @@ export default function useFormKeyInfosEdit({
     updateVisibleForm }) {
     
     const history = useHistory()
-    const [inputsKeyInfos, setInputsKeyInfos] = useState(loadLocally(STORAGE_KEY) ?? 
+
+    const [inputsKeyInfos, setInputsKeyInfos] = useState(loadLocally(STORAGE_KEY) ??
         {
             location: targetProfile.location,
             date: targetProfile.date,
@@ -24,7 +27,7 @@ export default function useFormKeyInfosEdit({
             shots: targetProfile.shots,
         }
     )
-    
+
     const validInputs = {
         location: validateIsNotEmpty(inputsKeyInfos.location),
         date: validateIsCorrectDate(inputsKeyInfos.date),
@@ -32,6 +35,7 @@ export default function useFormKeyInfosEdit({
         winner: validateIsNotEmpty(inputsKeyInfos.winner),
         shots: validateShotsIsInRange(inputsKeyInfos.shots),
     }
+    
     const isSaveButtonShownKeyInfos = Object.values(validInputs).every(isValid => isValid)
     
     const [dirtyInputs, setDirtyInputs] = useState({
@@ -43,7 +47,6 @@ export default function useFormKeyInfosEdit({
     })
 
     useEffect(() => saveLocally(STORAGE_KEY, inputsKeyInfos), [inputsKeyInfos])
-    useEffect(() => setInputsKeyInfos(targetProfile), [targetProfile])
 
     return {
         inputsKeyInfos, 
@@ -96,17 +99,18 @@ export default function useFormKeyInfosEdit({
     function handleSubmitKeyInfos(event) {
         event.preventDefault()
         updateTargetProfile(inputsKeyInfos, targetProfile)
-        resetForm()
+        resetDirtyInputs()
+        removeLocally(STORAGE_KEY)
         updateVisibleForm('scores')
     }
 
     function handleCancelKeyInfos() {
-        resetForm()
+        resetDirtyInputs()
+        removeLocally(STORAGE_KEY)
         showOverviewPage()
     }
 
-    function resetForm() {
-        setInputsKeyInfos({})
+    function resetDirtyInputs() {
         setDirtyInputs({
             location: false,
             date: false,
