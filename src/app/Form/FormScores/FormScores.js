@@ -54,6 +54,7 @@ export default function FormScores({
                                                         id={holeName + '-' + playerName}
                                                         value={formInputs.scores[playerName][holeName]}
                                                         onChange={(event) => {handleChange(event.target.name, event.target.value)}}
+                                                        onBlur={(event) => updateDirtyInputs(event.target.name)}
                                                         />
                                                     </SingleScore>
                                                 )                         
@@ -64,6 +65,7 @@ export default function FormScores({
                     })}
                 </ScoresAllPlayers> 
             </ScoreOverview> 
+            <Note>{showErrorMessage()}</Note>
             <ButtonWrapper>
                 <Button type="button" onClick={handleCancel} iconComponent={<CancelIconDark/>} text="Cancel" data-testid="button-cancel"/>
                 <Button main disabled={!isSaveButtonShown} iconComponent={<CheckIconLight/>} text="Save" data-testid="button-save"/>
@@ -154,6 +156,11 @@ const SingleScore = styled.label`
         color: var(--primary-dark);
         font-family: 'Montserrat', sans-serif;
     }
+`
+const Note = styled.span`
+    margin: 5px 0 10px;
+    font-size: 0.7rem;
+    color: var(--text-dark);
 `
 const ButtonWrapper = styled.div`
     display: flex;

@@ -7,13 +7,13 @@ import useFormKeyInfosCreate from '../useFormKeyInfosCreate'
 import useFormScoresCreate from '../useFormScoresCreate'
 
 CreatePage.propTypes = {
-    targetProfile: PropTypes.object.isRequired,
+    newGameProfile: PropTypes.object.isRequired,
     createGameProfile: PropTypes.func.isRequired,
     addGameProfile: PropTypes.func.isRequired,
 }
 
 export default function CreatePage({
-    targetProfile,
+    newGameProfile,
     createGameProfile,
     addGameProfile }) {
    
@@ -38,7 +38,7 @@ export default function CreatePage({
         showErrorMessageScores,
         handleSubmitScores,
         handleCancelScores } = useFormScoresCreate({
-                                        targetProfile,
+                                        newGameProfile,
                                         addGameProfile,
                                         updateVisibleForm })
 
@@ -46,7 +46,7 @@ export default function CreatePage({
 
     return (
         <>
-            { visibleForm === 'keyInfos' &&
+            {   visibleForm === 'keyInfos' &&
                 <FormKeyInfos 
                     formInputs={inputsKeyInfos} 
                     isSaveButtonShown={isSaveButtonShownKeyInfos}
@@ -57,8 +57,7 @@ export default function CreatePage({
                     handleCancel={handleCancelKeyInfos}
                 />
             }
-            {
-                visibleForm === 'scores' && Object.keys(targetProfile).length !== 0 &&
+            {   visibleForm === 'scores' && Object.keys(newGameProfile).length !== 0 &&
                 <FormScores 
                     formInputs={inputsScores}
                     isSaveButtonShown={isSaveButtonShownScores}

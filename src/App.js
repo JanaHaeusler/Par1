@@ -11,6 +11,7 @@ import OverviewPage from './overview/OverviewPage'
 function App() {
 
   const { 
+      newGameProfile,
       targetProfile, 
       savedGameProfiles, 
       createGameProfile,
@@ -36,7 +37,7 @@ function App() {
           </Route>
           <Route path="/create">
             <CreatePage 
-                targetProfile={targetProfile}
+                newGameProfile={newGameProfile}
                 createGameProfile={createGameProfile}
                 addGameProfile={addGameProfile}
             />

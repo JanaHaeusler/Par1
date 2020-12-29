@@ -11,11 +11,13 @@ export default function useGameData() {
         byId: {},
         allIds: [],
     })
+    const [newGameProfile, setNewGameProfile] = useState({})
     const [targetProfile, setTargetProfile] = useState({})
     
     useEffect(() => saveLocally(STORAGE_KEY, savedGameProfiles), [savedGameProfiles])
 
     return {
+        newGameProfile,
         targetProfile, 
         savedGameProfiles, 
         createGameProfile, 
@@ -54,7 +56,7 @@ export default function useGameData() {
                                 } 
                 }), 
             {})
-        setTargetProfile({
+        setNewGameProfile({
             location: keyInfos.location,
             date: keyInfos.date,
             winner: keyInfos.winner,
