@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CreatePage renders snapshot correctly 1`] = `
+exports[`EditPage renders snapshot correctly 1`] = `
 .c5 {
   padding: 7px;
   display: -webkit-box;
@@ -166,7 +166,7 @@ exports[`CreatePage renders snapshot correctly 1`] = `
         name="location"
         placeholder="Type location ..."
         type="text"
-        value=""
+        value="City Park"
       />
     </label>
     <span
@@ -178,7 +178,7 @@ exports[`CreatePage renders snapshot correctly 1`] = `
         id="date"
         name="date"
         type="date"
-        value=""
+        value="2020-12-24"
       />
     </label>
     <span
@@ -191,7 +191,7 @@ exports[`CreatePage renders snapshot correctly 1`] = `
         name="players"
         placeholder="John, Jane"
         type="text"
-        value=""
+        value="Sarah, Hannes"
       />
     </label>
     <span
@@ -204,7 +204,7 @@ exports[`CreatePage renders snapshot correctly 1`] = `
         name="winner"
         placeholder="Jane"
         type="text"
-        value=""
+        value="Sarah"
       />
     </label>
     <span
@@ -217,7 +217,7 @@ exports[`CreatePage renders snapshot correctly 1`] = `
         name="shots"
         placeholder="38"
         type="number"
-        value=""
+        value="28"
       />
     </label>
     <span
@@ -242,7 +242,6 @@ exports[`CreatePage renders snapshot correctly 1`] = `
     <button
       class="c7"
       data-testid="button-save"
-      disabled=""
     >
       <svg
         class="c8"

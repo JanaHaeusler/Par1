@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
 import Navigation from '../Navigation'
 
-export default function AppFooter({handleClick, className}) {
+export default function AppFooter({className}) {
 
   return (
     <FooterStyled className={className}>

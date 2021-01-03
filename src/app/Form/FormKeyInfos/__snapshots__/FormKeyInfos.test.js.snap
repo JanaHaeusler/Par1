@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CreatePage renders snapshot correctly 1`] = `
+exports[`FormKeyInfos renders snapshot correctly 1`] = `
 .c5 {
   padding: 7px;
   display: -webkit-box;

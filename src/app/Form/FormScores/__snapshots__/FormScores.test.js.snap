@@ -1,0 +1,707 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormScores renders snapshot correctly 1`] = `
+.c9 {
+  padding: 7px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  width: 80px;
+  height: 34px;
+  border-style: none;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px var(--primary-dark);
+  background-color: var(--text-light);
+  color: var(--secondary-dark);
+  font-size: 1rem;
+}
+
+.c9:disabled {
+  opacity: 50%;
+}
+
+.c11 {
+  padding: 7px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  width: 80px;
+  height: 34px;
+  border-style: none;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px var(--primary-dark);
+  background-color: var(--secondary-dark);
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+.c11:disabled {
+  opacity: 50%;
+}
+
+.c12 {
+  width: 30%;
+  stroke: var(--text-light);
+}
+
+.c10 {
+  stroke: var(--secondary-dark);
+}
+
+.c0 {
+  margin: 10px 20px;
+  padding: 10px;
+  display: grid;
+  place-items: center;
+  border-radius: 25px;
+  box-shadow: 0 0 10px var(--primary-medium);
+  background-color: var(--text-light);
+  color: var(--text-dark);
+  font-size: 1rem;
+}
+
+.c0 span {
+  font-family: 'Raleway',sans-serif;
+}
+
+.c0 input::-webkit-outer-spin-button,
+.c0 input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.c0 input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.c0 Button {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.c1 {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.c2 {
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+  width: 90%;
+}
+
+.c3 {
+  padding-right: 20px;
+  display: grid;
+  grid-template-rows: repeat(19,35px);
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-right: 1px solid var(--separator);
+}
+
+.c3 span {
+  width: 100%;
+  text-align: center;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-y: auto;
+  -webkit-scrollbar-width: none;
+  -moz-scrollbar-width: none;
+  -ms-scrollbar-width: none;
+  scrollbar-width: none;
+}
+
+.c4::-webkit-scrollbar {
+  display: none;
+}
+
+.c5 {
+  margin: 0 2px;
+  padding-left: 1px;
+  display: grid;
+  grid-template-rows: repeat(19,35px);
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  min-width: 80px;
+}
+
+.c6 input {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  border-style: none;
+  border-radius: 3px;
+  background-color: var(--separator);
+  color: var(--primary-dark);
+  font-family: 'Montserrat',sans-serif;
+}
+
+.c7 {
+  margin: 5px 0 10px;
+  font-size: 0.7rem;
+  color: var(--text-dark);
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+<form
+  class="c0"
+  data-testid="form"
+>
+  <h3
+    class="c1"
+  >
+    Score
+  </h3>
+  <section
+    class="c2"
+  >
+    <div
+      class="c3"
+    >
+      <span>
+        Holes
+      </span>
+      <span>
+        1
+      </span>
+      <span>
+        2
+      </span>
+      <span>
+        3
+      </span>
+      <span>
+        4
+      </span>
+      <span>
+        5
+      </span>
+      <span>
+        6
+      </span>
+      <span>
+        7
+      </span>
+      <span>
+        8
+      </span>
+      <span>
+        9
+      </span>
+      <span>
+        10
+      </span>
+      <span>
+        11
+      </span>
+      <span>
+        12
+      </span>
+      <span>
+        13
+      </span>
+      <span>
+        14
+      </span>
+      <span>
+        15
+      </span>
+      <span>
+        16
+      </span>
+      <span>
+        17
+      </span>
+      <span>
+        18
+      </span>
+    </div>
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      >
+        <span>
+          Sarah
+        </span>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole1-Sarah"
+            id="hole1-Sarah"
+            name="hole1-Sarah"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole2-Sarah"
+            id="hole2-Sarah"
+            name="hole2-Sarah"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole3-Sarah"
+            id="hole3-Sarah"
+            name="hole3-Sarah"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole4-Sarah"
+            id="hole4-Sarah"
+            name="hole4-Sarah"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole5-Sarah"
+            id="hole5-Sarah"
+            name="hole5-Sarah"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole6-Sarah"
+            id="hole6-Sarah"
+            name="hole6-Sarah"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole7-Sarah"
+            id="hole7-Sarah"
+            name="hole7-Sarah"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole8-Sarah"
+            id="hole8-Sarah"
+            name="hole8-Sarah"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole9-Sarah"
+            id="hole9-Sarah"
+            name="hole9-Sarah"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole10-Sarah"
+            id="hole10-Sarah"
+            name="hole10-Sarah"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole11-Sarah"
+            id="hole11-Sarah"
+            name="hole11-Sarah"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole12-Sarah"
+            id="hole12-Sarah"
+            name="hole12-Sarah"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole13-Sarah"
+            id="hole13-Sarah"
+            name="hole13-Sarah"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole14-Sarah"
+            id="hole14-Sarah"
+            name="hole14-Sarah"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole15-Sarah"
+            id="hole15-Sarah"
+            name="hole15-Sarah"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole16-Sarah"
+            id="hole16-Sarah"
+            name="hole16-Sarah"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole17-Sarah"
+            id="hole17-Sarah"
+            name="hole17-Sarah"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole18-Sarah"
+            id="hole18-Sarah"
+            name="hole18-Sarah"
+            type="number"
+            value=""
+          />
+        </label>
+      </div>
+      <div
+        class="c5"
+      >
+        <span>
+          Hannes
+        </span>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole1-Hannes"
+            id="hole1-Hannes"
+            name="hole1-Hannes"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole2-Hannes"
+            id="hole2-Hannes"
+            name="hole2-Hannes"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole3-Hannes"
+            id="hole3-Hannes"
+            name="hole3-Hannes"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole4-Hannes"
+            id="hole4-Hannes"
+            name="hole4-Hannes"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole5-Hannes"
+            id="hole5-Hannes"
+            name="hole5-Hannes"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole6-Hannes"
+            id="hole6-Hannes"
+            name="hole6-Hannes"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole7-Hannes"
+            id="hole7-Hannes"
+            name="hole7-Hannes"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole8-Hannes"
+            id="hole8-Hannes"
+            name="hole8-Hannes"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole9-Hannes"
+            id="hole9-Hannes"
+            name="hole9-Hannes"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole10-Hannes"
+            id="hole10-Hannes"
+            name="hole10-Hannes"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole11-Hannes"
+            id="hole11-Hannes"
+            name="hole11-Hannes"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole12-Hannes"
+            id="hole12-Hannes"
+            name="hole12-Hannes"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole13-Hannes"
+            id="hole13-Hannes"
+            name="hole13-Hannes"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole14-Hannes"
+            id="hole14-Hannes"
+            name="hole14-Hannes"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole15-Hannes"
+            id="hole15-Hannes"
+            name="hole15-Hannes"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole16-Hannes"
+            id="hole16-Hannes"
+            name="hole16-Hannes"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole17-Hannes"
+            id="hole17-Hannes"
+            name="hole17-Hannes"
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-label="score hole18-Hannes"
+            id="hole18-Hannes"
+            name="hole18-Hannes"
+            type="number"
+            value=""
+          />
+        </label>
+      </div>
+    </div>
+  </section>
+  <span
+    class="c7"
+  />
+  <div
+    class="c8"
+  >
+    <button
+      class="c9"
+      data-testid="button-cancel"
+      type="button"
+    >
+      <svg
+        class="c10"
+      >
+        cross.svg
+      </svg>
+      Cancel
+    </button>
+    <button
+      class="c11"
+      data-testid="button-save"
+      disabled=""
+    >
+      <svg
+        class="c12"
+      >
+        check.svg
+      </svg>
+      Save
+    </button>
+  </div>
+</form>
+`;

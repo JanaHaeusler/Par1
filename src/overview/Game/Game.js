@@ -47,7 +47,7 @@ export default function Game({
                     <ButtonWrapper>
                             <ButtonDeleteIcon onClick={() => setIsSetToDelete(true)} data-testid="button-set-delete"><BinIconDark/></ButtonDeleteIcon>
                             <ButtonEditIcon onClick={() => handleEdit(_id)} data-testid="button-edit"><PencilIconDark/></ButtonEditIcon>
-                            <ButtonDetailsIcon onClick={() => handleDetails(_id)} data-testid="button-info"><DetailsIconDark/></ButtonDetailsIcon>
+                            <ButtonDetailsIcon onClick={() => handleDetails(_id)} data-testid="button-details"><DetailsIconDark/></ButtonDetailsIcon>
                     </ButtonWrapper>
                 </>
             )}

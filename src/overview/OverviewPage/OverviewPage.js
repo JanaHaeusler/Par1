@@ -5,14 +5,14 @@ import GameList from '../GameList'
 OverviewPage.propTypes = {
     savedGameProfiles: PropTypes.object.isRequired,
     deleteGameProfile: PropTypes.func.isRequired,
-    prepareEditModus: PropTypes.func.isRequired,
+    prepareEditPage: PropTypes.func.isRequired,
     prepareDetailsPage: PropTypes.func.isRequired,
 }
 
 export default function OverviewPage({
     savedGameProfiles, 
     deleteGameProfile, 
-    prepareEditModus, 
+    prepareEditPage, 
     prepareDetailsPage }) {
         
     return (
@@ -21,7 +21,7 @@ export default function OverviewPage({
             <GameList 
                 savedGameProfiles={savedGameProfiles} 
                 onDelete={deleteGameProfile} 
-                onEdit={prepareEditModus}
+                onEdit={prepareEditPage}
                 onDetails={prepareDetailsPage}/>
         </>
     )

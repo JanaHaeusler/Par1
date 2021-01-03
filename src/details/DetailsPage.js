@@ -15,24 +15,24 @@ export default function DetailsPage({targetProfile}) {
     const players = playersString
 
     return (
-        <GameDetailsWrapper>
-            <GameDetailsContent> 
+        <GameDetailsCard>
+            <GameKeyInfos> 
                 <Location>{location}</Location>
                 <Date>{date}</Date>
-                <PlayerWrapper>
+                <Players>
                     <h4>Player(s)</h4>
                     <span>{players}</span>
-                </PlayerWrapper>
-                <WinnerWrapper>
+                </Players>
+                <Winner>
                     <h4>Winner(s)</h4>
                     <span>{winner}</span>
-                </WinnerWrapper>
-                <ShotsWrapper>
+                </Winner>
+                <Shots>
                     <h4>Total Shots</h4>
                     <span>{shots}</span>
-                </ShotsWrapper>
-            </GameDetailsContent>
-            <ScoreOverview>
+                </Shots>
+            </GameKeyInfos>
+            <GameScores>
                     <LegendHoles>
                         <span>Holes</span>
                         {new Array(18).fill().map((_, index) => {
@@ -42,16 +42,16 @@ export default function DetailsPage({targetProfile}) {
                         }
                     </LegendHoles> 
                     <ScoresAllPlayers>
-                        {targetProfile.playersArray.map((player) => {
+                        {targetProfile.playersArray?.map((player) => {
                             const newId = uuid()
                             const playerName = player     
                                 return (
-                                    <ScoreSinglePlayer key={newId}>
+                                    <ScoresSinglePlayer key={newId}>
                                         <span>{playerName}</span>
                                         {new Array(18).fill().map((_, index) => {
                                             const newId = uuid()
-                                            const inputNumber = index + 1
-                                            const holeName = 'hole' + inputNumber
+                                            const fieldNumber = index + 1
+                                            const holeName = 'hole' + fieldNumber
                                             return( 
                                                 <SingleScore key={newId} >
                                                     {targetProfile.scores[playerName][holeName]}
@@ -59,22 +59,22 @@ export default function DetailsPage({targetProfile}) {
                                                 )                         
                                             })
                                         }
-                                    </ScoreSinglePlayer>
+                                    </ScoresSinglePlayer>
                                 )
                         })}
                     </ScoresAllPlayers> 
-                </ScoreOverview> 
+                </GameScores> 
             <ButtonWrapper>
                 <ButtonBackIcon onClick={() => history.push('/')} data-testid="button-back"><BackIconDark/></ButtonBackIcon>
             </ButtonWrapper>
-        </GameDetailsWrapper>
+        </GameDetailsCard>
     )
 }
     
-const GameDetailsWrapper = styled.section`
+const GameDetailsCard = styled.section`
     margin: 0 20px;
 `
-const GameDetailsContent = styled.div`
+const GameKeyInfos = styled.div`
     padding: 20px;
     display: grid;
     grid-template-rows: repeat(4, auto);
@@ -95,19 +95,19 @@ const Location = styled.div`
     grid-row-start: 2; 
     text-transform: uppercase;
 `
-const PlayerWrapper = styled.div`
+const Players = styled.div`
     grid-column: 1 / 4;
     grid-row-start: 3;
 `
-const WinnerWrapper = styled.div`
+const Winner = styled.div`
     grid-column-start: 1;
     grid-row-start: 4;
 `
-const ShotsWrapper = styled.div`
+const Shots = styled.div`
     grid-column-start: 2;
     grid-row-start: 4;
 `
-const ScoreOverview = styled.section`
+const GameScores = styled.section`
     margin: 0 auto;
     padding: 20px;
     display: grid;
@@ -136,7 +136,7 @@ const ScoresAllPlayers = styled.div`
         display: none;
     }
 `
-const ScoreSinglePlayer = styled.div`
+const ScoresSinglePlayer = styled.div`
     margin: 0 2px;
     padding-left: 1px;
     display: grid;

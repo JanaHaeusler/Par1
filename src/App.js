@@ -18,7 +18,7 @@ function App() {
       addGameProfile, 
       deleteGameProfile, 
       editGameProfile, 
-      prepareEditModus, 
+      prepareEditPage, 
       prepareDetailsPage,
       updateTargetProfile } = useGameData()
   
@@ -31,7 +31,7 @@ function App() {
             <OverviewPage 
                 savedGameProfiles={savedGameProfiles} 
                 deleteGameProfile={deleteGameProfile} 
-                prepareEditModus={prepareEditModus}
+                prepareEditPage={prepareEditPage}
                 prepareDetailsPage={prepareDetailsPage}
             />
           </Route>
@@ -58,7 +58,7 @@ function App() {
             <OverviewPage 
                 savedGameProfiles={savedGameProfiles} 
                 deleteGameProfile={deleteGameProfile} 
-                prepareEditModus={prepareEditModus}
+                prepareEditPage={prepareEditPage}
                 prepareDetailsPage={prepareDetailsPage}
             />
           </Route>

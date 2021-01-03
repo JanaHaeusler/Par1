@@ -24,7 +24,7 @@ export default function useGameData() {
         addGameProfile,
         deleteGameProfile, 
         editGameProfile, 
-        prepareEditModus, 
+        prepareEditPage, 
         prepareDetailsPage,
         updateTargetProfile,
     }
@@ -88,7 +88,7 @@ export default function useGameData() {
         })
     }
     
-    function prepareEditModus(targetId) {
+    function prepareEditPage(targetId) {
         setTargetProfile(savedGameProfiles.byId[targetId])
     }
 

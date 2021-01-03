@@ -24,7 +24,7 @@ export default function FormScores({
     handleCancel}) {
 
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} data-testid="form">
             <Headline>Score</Headline>
             <ScoreOverview>
                 <Legend>
@@ -52,6 +52,7 @@ export default function FormScores({
                                                         type="number" 
                                                         name={holeName + '-' + playerName}
                                                         id={holeName + '-' + playerName}
+                                                        aria-label={'score ' + holeName + '-' + playerName}
                                                         value={formInputs.scores[playerName][holeName]}
                                                         onChange={(event) => {handleChange(event.target.name, event.target.value)}}
                                                         onBlur={(event) => updateDirtyInputs(event.target.name)}
@@ -145,7 +146,6 @@ const ScoreSinglePlayer = styled.div`
     min-width: 80px;
 `
 const SingleScore = styled.label`
-    
     input {
         padding: 0;
         width: 100%;
