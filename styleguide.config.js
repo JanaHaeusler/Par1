@@ -8,7 +8,6 @@ module.exports = {
     ],
     ignore: ['**/App.js', 'src/**/**/*.test.js', '**/GlobalStyle.js', 'src/app/Icons/Icons.js'],
     defaultExample: true,
-    exampleMode: 'expand',
     usageMode: 'expand',
     styleguideComponents: {
       Wrapper: path.join(__dirname, 'src/styles/StyleWrapper'),
