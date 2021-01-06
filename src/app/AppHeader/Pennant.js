@@ -2,16 +2,15 @@ import styled from 'styled-components/macro'
 import { LogoIcon } from '../Icons/Icons'
 
 export default function Pennant() {
-
   return (
-      <PennantStyled>
-        <LogoIconStyled/>
-      </PennantStyled>
+    <PennantWrapper>
+      <LogoIconStyled />
+    </PennantWrapper>
   )
 }
 
-const PennantStyled = styled.div`
-  display: flex; 
+const PennantWrapper = styled.div`
+  display: flex;
   justify-content: center;
   width: 60px;
   height: 60px;

@@ -1,5 +1,5 @@
 Navigation
 
 ```jsx
-<Navigation handleClick={() => {}} />
+<Navigation />
 ```

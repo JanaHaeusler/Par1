@@ -1,30 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Game renders correctly 1`] = `
+exports[`Game renders snapshot correctly 1`] = `
 .c9 {
-  margin-right: 3px;
-  fill: var(--secondary-dark);
+  stroke: var(--secondary-dark);
+}
+
+.c13 {
+  stroke: var(--secondary-dark);
 }
 
 .c11 {
-  margin-right: 3px;
-  fill: var(--secondary-dark);
+  stroke: var(--secondary-dark);
 }
 
 .c0 {
   margin: 0 20px;
-  padding: 10px;
-  box-shadow: 0 0 10px var(--primary-medium);
-  border-radius: 10px;
-  background-color: var(--text-light);
-  font-size: 0.9rem;
 }
 
 .c1 {
+  padding: 10px;
   display: grid;
   grid-template-rows: repeat(4,auto);
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
+  box-shadow: 0 0 10px var(--box-shadow-green);
+  border-radius: 25px 25px 0 0;
+  background-color: var(--text-light);
+  font-size: 0.9rem;
 }
 
 .c3 {
@@ -55,6 +57,7 @@ exports[`Game renders correctly 1`] = `
 }
 
 .c7 {
+  padding: 5px 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -68,28 +71,39 @@ exports[`Game renders correctly 1`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   width: 100%;
+  border-radius: 0 0 25px 25px;
+  background: var(--text-light-transparent);
 }
 
 .c8 {
+  margin: 5px;
+  padding: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin: 5px;
-  padding: 0;
-  width: 30px;
   border: none;
   background: none;
 }
 
 .c10 {
+  margin: 5px;
+  padding: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin: 20px 5px 5px 5px;
+  border: none;
+  background: none;
+}
+
+.c12 {
+  margin: 5px;
   padding: 0;
-  width: 30px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   border: none;
   background: none;
 }
@@ -103,7 +117,7 @@ exports[`Game renders correctly 1`] = `
     <div
       class="c2"
     >
-      Horner Racecourse
+      City Park
     </div>
     <div
       class="c3"
@@ -117,7 +131,7 @@ exports[`Game renders correctly 1`] = `
         Player(s)
       </h4>
       <span>
-        John, Jane
+        Sarah, Hannes
       </span>
     </div>
     <div
@@ -127,7 +141,7 @@ exports[`Game renders correctly 1`] = `
         Winner(s)
       </h4>
       <span>
-        Jane
+        Sarah
       </span>
     </div>
     <div
@@ -137,7 +151,7 @@ exports[`Game renders correctly 1`] = `
         Total Shots
       </h4>
       <span>
-        56
+        28
       </span>
     </div>
   </div>
@@ -162,6 +176,16 @@ exports[`Game renders correctly 1`] = `
         class="c11"
       >
         pencil.svg
+      </svg>
+    </button>
+    <button
+      class="c12"
+      data-testid="button-details"
+    >
+      <svg
+        class="c13"
+      >
+        details.svg
       </svg>
     </button>
   </div>
