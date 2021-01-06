@@ -1,23 +1,26 @@
 import styled from 'styled-components/macro'
-import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 import {PlusIcon, HomeIcon} from '../Icons/Icons'
+import removeLocally from '../../lib/removeLocally'
 
-Navigation.propTypes = {
-    handleClick: PropTypes.func.isRequired
-}
-
-export default function Navigation({handleClick}) {
+export default function Navigation() {
     return (
             <NavBar>
-                <NavLinkStyled exact to="/" onClick={handleClick} data-testid="button-home-page">
+                <NavLinkStyled exact to="/" onClick={emptyLocalStorage} data-testid="button-home-page">
                     <HomeIcon />
                 </NavLinkStyled>
-                <NavLinkStyled to="/create" onClick={handleClick} data-testid="button-form-page">
+                <NavLinkStyled to="/create" onClick={emptyLocalStorage} data-testid="button-form-page">
                     <PlusIcon />
                 </NavLinkStyled>
             </NavBar>
     )
+
+    function emptyLocalStorage() {
+        removeLocally('inputsKeyInfosCreate')
+        removeLocally('inputsScoresCreate')
+        removeLocally('inputsKeyInfosEdit')
+        removeLocally('inputsScoresEdit')
+    }
 }
 
 const NavBar = styled.nav`
@@ -27,7 +30,8 @@ const NavBar = styled.nav`
     width: 100%;
 `
 const NavLinkStyled = styled(NavLink)`
-    width: 25px;
+    width: 28px;
+    height: 28px;
     fill: var(--text-light);
     opacity: 40%;
     

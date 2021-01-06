@@ -1,49 +1,77 @@
 import PropTypes from 'prop-types'
-import { useEffect } from 'react'
-import CreateForm from '../CreateForm'
+import { useEffect, useState } from 'react'
+import FormKeyInfos from '../../app/Form/FormKeyInfos'
+import FormScores from '../../app/Form/FormScores'
 import scrollUp from '../../lib/scrollUp'
+import useFormKeyInfosCreate from '../useFormKeyInfosCreate'
+import useFormScoresCreate from '../useFormScoresCreate'
 
 CreatePage.propTypes = {
-    formInputs: PropTypes.object.isRequired,
-    isSaveButtonShown: PropTypes.bool.isRequired,
-    isEditFormShown: PropTypes.bool.isRequired,
-    updateDirtyInputs: PropTypes.func.isRequired,
-    handleChange: PropTypes.func.isRequired,
-    showErrorMessage: PropTypes.func.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
-    handleCancelEditModus: PropTypes.func.isRequired,
+    newGameProfile: PropTypes.object.isRequired,
+    createGameProfile: PropTypes.func.isRequired,
+    addGameProfile: PropTypes.func.isRequired,
 }
 
 export default function CreatePage({
-    formInputs, 
-    isSaveButtonShown,
-    isEditFormShown,
-    updateDirtyInputs,
-    handleChange,
-    showErrorMessage,
-    handleSubmit,
-    handleCancelEditModus}) {
+    newGameProfile,
+    createGameProfile,
+    addGameProfile }) {
    
     useEffect(() => scrollUp(), [])
 
+    const {
+        inputsKeyInfos, 
+        isSaveButtonShownKeyInfos,
+        updateDirtyInputsKeyInfos,
+        handleChangeKeyInfos,
+        showErrorMessageKeyInfos,
+        handleSubmitKeyInfos,
+        handleCancelKeyInfos } = useFormKeyInfosCreate({
+                                        createGameProfile,
+                                        updateVisibleForm })
+    
+    const {
+        inputsScores, 
+        isSaveButtonShownScores,
+        updateDirtyInputsScores,
+        handleChangeScores,
+        showErrorMessageScores,
+        handleSubmitScores,
+        handleCancelScores } = useFormScoresCreate({
+                                        newGameProfile,
+                                        addGameProfile,
+                                        updateVisibleForm })
+
+    const [visibleForm, setVisibleForm] = useState('keyInfos')
+
     return (
-        isEditFormShown ? 
-            <CreateForm 
-                formInputs={formInputs}
-                isSaveButtonShown={isSaveButtonShown}
-                isEditFormShown={isEditFormShown}
-                updateDirtyInputs={updateDirtyInputs}
-                handleChange={handleChange}
-                showErrorMessage={showErrorMessage}
-                handleSubmit={handleSubmit}
-                handleCancelEditModus={handleCancelEditModus}/>
-        : 
-            <CreateForm 
-                formInputs={formInputs}
-                isSaveButtonShown={isSaveButtonShown}
-                updateDirtyInputs={updateDirtyInputs}
-                handleChange={handleChange}
-                showErrorMessage={showErrorMessage}
-                handleSubmit={handleSubmit}/>
+        <>
+            {   visibleForm === 'keyInfos' &&
+                <FormKeyInfos 
+                    formInputs={inputsKeyInfos} 
+                    isSaveButtonShown={isSaveButtonShownKeyInfos}
+                    updateDirtyInputs={updateDirtyInputsKeyInfos}
+                    handleChange={handleChangeKeyInfos}
+                    showErrorMessage={showErrorMessageKeyInfos}
+                    handleSubmit={handleSubmitKeyInfos}
+                    handleCancel={handleCancelKeyInfos}
+                />
+            }
+            {   visibleForm === 'scores' && Object.keys(newGameProfile).length !== 0 &&
+                <FormScores 
+                    formInputs={inputsScores}
+                    isSaveButtonShown={isSaveButtonShownScores}
+                    updateDirtyInputs={updateDirtyInputsScores}
+                    handleChange={handleChangeScores}
+                    showErrorMessage={showErrorMessageScores}
+                    handleSubmit={handleSubmitScores}
+                    handleCancel={handleCancelScores}
+                />
+            }
+        </>
     )
+
+    function updateVisibleForm(formName) {
+        setVisibleForm(formName)
+    }
 }

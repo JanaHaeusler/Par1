@@ -19,7 +19,7 @@ const HeaderStyled = styled.header`
   max-width: 1240px;
   box-shadow: 0 0 10px var(--primary-dark);
   border-radius: 0 0 25px 3px;
-  background: var(--secondary-dark);
+  background: var(--gradient-dark);
 `
 const PennantStyled = styled.div`
   position: absolute;
