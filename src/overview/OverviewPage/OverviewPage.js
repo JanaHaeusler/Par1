@@ -1,24 +1,28 @@
-import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
+import styled from 'styled-components/macro'
 import GameList from '../GameList'
 
 OverviewPage.propTypes = {
     savedGameProfiles: PropTypes.object.isRequired,
     deleteGameProfile: PropTypes.func.isRequired,
-    prepareEditModus: PropTypes.func.isRequired,
-    showCreatePage: PropTypes.func.isRequired,
+    prepareEditPage: PropTypes.func.isRequired,
+    prepareDetailsPage: PropTypes.func.isRequired,
 }
 
-export default function OverviewPage({savedGameProfiles, deleteGameProfile, prepareEditModus, showCreatePage}) {
-
+export default function OverviewPage({
+    savedGameProfiles, 
+    deleteGameProfile, 
+    prepareEditPage, 
+    prepareDetailsPage }) {
+        
     return (
         <>
             <Headline>Your Games</Headline>
             <GameList 
                 savedGameProfiles={savedGameProfiles} 
                 onDelete={deleteGameProfile} 
-                onEdit={prepareEditModus}
-                showCreatePage={showCreatePage}/>
+                onEdit={prepareEditPage}
+                onDetails={prepareDetailsPage}/>
         </>
     )
 }

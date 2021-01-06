@@ -1,0 +1,260 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditPage renders snapshot correctly 1`] = `
+.c5 {
+  padding: 7px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  width: 80px;
+  height: 34px;
+  border-style: none;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px var(--primary-dark);
+  background-color: var(--text-light);
+  color: var(--secondary-dark);
+  font-size: 1rem;
+}
+
+.c5:disabled {
+  opacity: 50%;
+}
+
+.c7 {
+  padding: 7px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  width: 80px;
+  height: 34px;
+  border-style: none;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px var(--primary-dark);
+  background-color: var(--secondary-dark);
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+.c7:disabled {
+  opacity: 50%;
+}
+
+.c8 {
+  width: 30%;
+  stroke: var(--text-light);
+}
+
+.c6 {
+  stroke: var(--secondary-dark);
+}
+
+.c0 {
+  margin: 10px 20px;
+  padding: 10px;
+  display: grid;
+  place-items: center;
+  border-radius: 25px;
+  box-shadow: 0 0 10px var(--primary-medium);
+  background-color: var(--text-light);
+  color: var(--text-dark);
+  font-size: 1rem;
+}
+
+.c0 input::-webkit-outer-spin-button,
+.c0 input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.c0 input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.c0 Button {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.c1 {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.c2 {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: grid;
+  width: 100%;
+}
+
+.c2 label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-family: 'Raleway',sans-serif;
+}
+
+.c2 input {
+  display: block;
+  margin-top: 3px;
+  padding: 5px;
+  width: 100%;
+  border-style: none;
+  border-bottom: 1px solid var(--primary-dark);
+  color: var(--primary-dark);
+  font-family: 'Montserrat',sans-serif;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.c3 {
+  margin-top: 5px;
+  font-size: 0.7rem;
+  color: var(--text-dark);
+}
+
+.c3:last-child {
+  margin-bottom: 10px;
+}
+
+<form
+  class="c0"
+  data-testid="form"
+  novalidate=""
+>
+  <h3
+    class="c1"
+  >
+    Info
+  </h3>
+  <fieldset
+    class="c2"
+  >
+    <label>
+      Location
+      <input
+        id="location"
+        name="location"
+        placeholder="Type location ..."
+        type="text"
+        value="City Park"
+      />
+    </label>
+    <span
+      class="c3"
+    />
+    <label>
+      Date
+      <input
+        id="date"
+        name="date"
+        type="date"
+        value="2020-12-24"
+      />
+    </label>
+    <span
+      class="c3"
+    />
+    <label>
+      Player(s)
+      <input
+        id="players"
+        name="players"
+        placeholder="John, Jane"
+        type="text"
+        value="Sarah, Hannes"
+      />
+    </label>
+    <span
+      class="c3"
+    />
+    <label>
+      Winner(s)
+      <input
+        id="winner"
+        name="winner"
+        placeholder="Jane"
+        type="text"
+        value="Sarah"
+      />
+    </label>
+    <span
+      class="c3"
+    />
+    <label>
+      Total Shots Winner(s)
+      <input
+        id="shots"
+        name="shots"
+        placeholder="38"
+        type="number"
+        value="28"
+      />
+    </label>
+    <span
+      class="c3"
+    />
+  </fieldset>
+  <div
+    class="c4"
+  >
+    <button
+      class="c5"
+      data-testid="button-cancel"
+      type="button"
+    >
+      <svg
+        class="c6"
+      >
+        cross.svg
+      </svg>
+      Cancel
+    </button>
+    <button
+      class="c7"
+      data-testid="button-save"
+    >
+      <svg
+        class="c8"
+      >
+        check.svg
+      </svg>
+      Save
+    </button>
+  </div>
+  <span
+    class="c3"
+  >
+    *Please do not clear your browsers cache, in order to permanently save your game details
+  </span>
+</form>
+`;

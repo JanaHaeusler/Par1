@@ -1,5 +1,5 @@
 Footer
 
 ```jsx
-<AppFooter handleClick={() => {}} />
+<AppFooter />
 ```

@@ -1,4 +1,4 @@
-![header-logo](src/app/assets/README/par1_header.jpg)
+![header-logo](./README/par1_header.jpg)
 
 **Capstone project in the course of the web development bootcamp by neuefische**
 
@@ -22,7 +22,7 @@ With my app, Par1, I would like to provide a space to save all these important g
 
 ## Look & Feel
 
-![mockup](src/app/assets/README/par1_mock.jpg)
+![mockup](./README/par1_mock.jpg)
 
 ## Demo
 

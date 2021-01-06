@@ -4,13 +4,13 @@ import { LogoIcon } from '../assets/Icons/Icons'
 export default function Pennant() {
 
   return (
-      <PennantStyled>
+      <PennantWrapper>
         <LogoIconStyled/>
-      </PennantStyled>
+      </PennantWrapper>
   )
 }
 
-const PennantStyled = styled.div`
+const PennantWrapper = styled.div`
   display: flex; 
   justify-content: center;
   width: 60px;
