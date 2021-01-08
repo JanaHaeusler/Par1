@@ -51,9 +51,9 @@ export default function DetailsPage({ targetProfile }) {
                   const fieldNumber = index + 1
                   const holeName = 'hole' + fieldNumber
                   return (
-                    <SingleScore key={newId}>
+                    <span key={newId}>
                       {targetProfile.scores[playerName][holeName]}
-                    </SingleScore>
+                    </span>
                   )
                 })}
               </ScoresSinglePlayer>
@@ -85,22 +85,16 @@ const GameKeyInfos = styled.div`
   border-radius: 25px 25px 0 0;
   background-color: var(--light);
   font-size: 1rem;
-
-  span {
-    font-family: 'Raleway', sans-serif;
-  }
 `
 const Date = styled.div`
   grid-column-start: 2;
   grid-row-start: 1;
   justify-self: end;
-  font-family: 'Raleway', sans-serif;
 `
 const Location = styled.div`
   grid-column: 1 / 3;
   grid-row-start: 2;
   text-transform: uppercase;
-  font-family: 'Raleway', sans-serif;
 `
 const Players = styled.div`
   grid-column: 1 / 4;
@@ -129,15 +123,14 @@ const LegendHoles = styled.div`
   align-items: center;
   border-right: 1px solid var(--secondary-light);
 
-  span:first-child {
-    font-family: 'Montserrat', sans-serif;
-  }
-
   span {
     width: 100%;
     text-align: center;
-    font-family: 'Raleway', sans-serif;
     font-weight: 550;
+  }
+
+  span:first-child {
+    font-family: 'Montserrat', sans-serif;
   }
 `
 const ScoresAllPlayers = styled.div`
@@ -158,11 +151,9 @@ const ScoresSinglePlayer = styled.div`
   min-width: 80px;
 
   span:first-child {
+    font-family: 'Montserrat', sans-serif;
     font-weight: 550;
   }
-`
-const SingleScore = styled.span`
-  font-family: 'Raleway', sans-serif;
 `
 const ButtonWrapper = styled.div`
   padding: 5px 0;

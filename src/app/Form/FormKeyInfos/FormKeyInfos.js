@@ -136,7 +136,6 @@ const Form = styled.form`
   place-items: center;
   border-radius: 25px;
   background-color: var(--light);
-  font-family: 'Raleway', sans-serif;
   font-size: 1rem;
 
   input::-webkit-outer-spin-button,

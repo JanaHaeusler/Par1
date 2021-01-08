@@ -118,22 +118,16 @@ const SavedGameContent = styled.div`
   border-radius: 25px 25px 0 0;
   background-color: var(--light);
   font-size: 1rem;
-
-  span {
-    font-family: 'Raleway', sans-serif;
-  }
 `
 const Date = styled.div`
   grid-column-start: 2;
   grid-row-start: 1;
   justify-self: end;
-  font-family: 'Raleway', sans-serif;
 `
 const Location = styled.div`
   grid-column: 1 / 3;
   grid-row-start: 2;
   text-transform: uppercase;
-  font-family: 'Raleway', sans-serif;
 `
 const Player = styled.div`
   grid-column: 1 / 4;
@@ -193,8 +187,7 @@ const DeleteQuery = styled.div`
 
   span {
     text-align: center;
-    font-family: 'Raleway', sans-serif;
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 `
 const ButtonDelete = styled(Button)`

@@ -17,7 +17,7 @@ export default createGlobalStyle`
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Raleway', sans-serif;
         font-size: 112.5%;
         color: var(--secondary-dark);
     }
@@ -46,6 +46,7 @@ export default createGlobalStyle`
 
     h4 {
         margin: 0;
+        font-family: 'Montserrat', sans-serif;
         font-size: 0.9rem;
         font-weight: 550;
     }
