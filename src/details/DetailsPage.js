@@ -83,7 +83,7 @@ const GameKeyInfos = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
   border-radius: 25px 25px 0 0;
-  background-color: var(--text-light);
+  background-color: var(--light);
   font-size: 0.9rem;
 `
 const Date = styled.div`
@@ -114,14 +114,14 @@ const GameScores = styled.section`
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;
-  background-color: var(--text-light);
+  background-color: var(--light);
 `
 const LegendHoles = styled.div`
   padding-right: 20px;
   display: grid;
   grid-template-rows: repeat(19, 35px);
   align-items: center;
-  border-right: 1px solid var(--separator);
+  border-right: 1px solid var(--secondary-light);
 
   span {
     width: 100%;
@@ -156,7 +156,7 @@ const ButtonWrapper = styled.div`
   align-items: baseline;
   width: 100%;
   border-radius: 0 0 25px 25px;
-  background: var(--text-light-transparent);
+  background: var(--light-transparent);
 `
 const ButtonBackIcon = styled.button`
   margin: 5px;

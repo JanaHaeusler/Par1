@@ -25,7 +25,7 @@ export default function FormScores({
 }) {
   return (
     <Form onSubmit={handleSubmit} data-testid="form">
-      <Headline>Score</Headline>
+      <h3>Score</h3>
       <ScoreOverview>
         <Legend>
           <span>Holes</span>
@@ -93,8 +93,7 @@ const Form = styled.form`
   display: grid;
   place-items: center;
   border-radius: 25px;
-  background-color: var(--text-light);
-  color: var(--text-dark);
+  background-color: var(--light);
   font-size: 1rem;
 
   span {
@@ -116,10 +115,6 @@ const Form = styled.form`
     margin-bottom: 5px;
   }
 `
-const Headline = styled.h3`
-  text-align: center;
-  text-transform: uppercase;
-`
 const ScoreOverview = styled.section`
   margin: 20px auto;
   display: grid;
@@ -132,7 +127,7 @@ const Legend = styled.div`
   display: grid;
   grid-template-rows: repeat(19, 35px);
   align-items: center;
-  border-right: 1px solid var(--separator);
+  border-right: 1px solid var(--secondary-light);
 
   span {
     width: 100%;
@@ -163,15 +158,14 @@ const SingleScore = styled.label`
     height: 100%;
     border-style: none;
     border-radius: 3px;
-    background-color: var(--separator);
-    color: var(--primary-dark);
+    background-color: var(--secondary-light);
+    color: var(--secondary-medium);
     font-family: 'Montserrat', sans-serif;
   }
 `
 const Note = styled.span`
   margin: 5px 0 10px;
   font-size: 0.7rem;
-  color: var(--text-dark);
 `
 const ButtonWrapper = styled.div`
   display: flex;

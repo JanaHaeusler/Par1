@@ -16,9 +16,9 @@ const HeaderStyled = styled.header`
   position: relative;
   height: 50px;
   max-width: 1240px;
-  box-shadow: 0 0 5px var(--primary-dark);
+  box-shadow: 0 0 5px var(--secondary-medium);
   border-radius: 0 0 25px 3px;
-  background: var(--gradient-dark);
+  background: var(--primary-gradient);
 `
 const PennantStyled = styled.div`
   position: absolute;

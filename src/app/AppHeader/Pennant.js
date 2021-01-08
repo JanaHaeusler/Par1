@@ -14,12 +14,12 @@ const PennantWrapper = styled.div`
   justify-content: center;
   width: 60px;
   height: 60px;
-  box-shadow: 0 0 5px var(--primary-dark);
+  box-shadow: 0 0 5px var(--secondary-medium);
   border-radius: 0 0 50px 50px;
-  background-color: var(--text-light);
+  background-color: var(--light);
 `
 const LogoIconStyled = styled(LogoIcon)`
   margin-top: 10px;
   width: 30px;
-  fill: var(--secondary-dark);
+  fill: var(--primary);
 `

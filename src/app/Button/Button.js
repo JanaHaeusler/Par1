@@ -10,11 +10,10 @@ const ButtonStyled = styled.button`
   height: 34px;
   border-style: none;
   border-radius: 5px;
-  box-shadow: 2px 2px 8px var(--primary-dark-transparent);
+  box-shadow: 2px 2px 8px var(--secondary-medium-transparent);
   background-color: ${(props) =>
-    props.main ? 'var(--secondary-dark)' : 'var(--text-light)'};
-  color: ${(props) =>
-    props.main ? 'var(--text-light)' : 'var(--secondary-dark)'};
+    props.main ? 'var(--primary)' : 'var(--light)'};
+  color: ${(props) => (props.main ? 'var(--light)' : 'var(--primary)')};
   font-size: 1rem;
 
   &:disabled {

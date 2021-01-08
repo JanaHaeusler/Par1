@@ -24,7 +24,7 @@ export default function FormKeyInfos({
 }) {
   return (
     <Form noValidate onSubmit={handleSubmit} data-testid="form">
-      <Headline>Info</Headline>
+      <h3>Info</h3>
       <KeyInfos>
         <label>
           Location
@@ -135,8 +135,7 @@ const Form = styled.form`
   display: grid;
   place-items: center;
   border-radius: 25px;
-  background-color: var(--text-light);
-  color: var(--text-dark);
+  background-color: var(--light);
   font-size: 1rem;
 
   input::-webkit-outer-spin-button,
@@ -153,10 +152,6 @@ const Form = styled.form`
     margin-top: 15px;
     margin-bottom: 5px;
   }
-`
-const Headline = styled.h3`
-  text-align: center;
-  text-transform: uppercase;
 `
 const KeyInfos = styled.fieldset`
   margin: 0;
@@ -177,8 +172,8 @@ const KeyInfos = styled.fieldset`
     padding: 5px;
     width: 100%;
     border-style: none;
-    border-bottom: 1px solid var(--primary-dark);
-    color: var(--primary-dark);
+    border-bottom: 1px solid var(--secondary-medium);
+    color: var(--secondary-medium);
     font-family: 'Montserrat', sans-serif;
   }
 `
@@ -191,7 +186,6 @@ const ButtonWrapper = styled.div`
 const Note = styled.span`
   margin-top: 5px;
   font-size: 0.7rem;
-  color: var(--text-dark);
 
   :last-child {
     margin-bottom: 10px;

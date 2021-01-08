@@ -113,7 +113,7 @@ const SavedGameContent = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
   border-radius: 25px 25px 0 0;
-  background-color: var(--text-light);
+  background-color: var(--light);
   font-size: 0.9rem;
 `
 const Date = styled.div`
@@ -145,7 +145,7 @@ const ButtonWrapper = styled.div`
   align-items: baseline;
   width: 100%;
   border-radius: 0 0 25px 25px;
-  background: var(--text-light-transparent);
+  background: var(--light-transparent);
 `
 const ButtonDeleteIcon = styled.button`
   margin: 5px;
@@ -176,12 +176,12 @@ const DeleteField = styled.div`
   gap: 10px 20px;
   place-items: center;
   border-radius: 25px;
-  background-color: var(--text-light);
+  background-color: var(--light);
 
   span {
     grid-column: 1 / 3;
     text-align: center;
-    color: var(--secondary-dark);
+    color: var(--primary);
     font-weight: 800;
   }
 `

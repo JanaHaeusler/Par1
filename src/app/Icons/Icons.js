@@ -10,26 +10,26 @@ import { ReactComponent as PencilIcon } from './assets/pencil.svg'
 import { ReactComponent as PlusIcon } from './assets/plus.svg'
 
 const BackIconDark = styled(BackIcon)`
-  stroke: var(--secondary-dark);
+  stroke: var(--primary);
 `
 const BinIconDark = styled(BinIcon)`
-  stroke: var(--secondary-dark);
+  stroke: var(--primary);
 `
 const CheckIconLight = styled(CheckIcon)`
   width: 30%;
-  stroke: var(--text-light);
+  stroke: var(--light);
 `
 const CancelIconDark = styled(CrossIcon)`
-  stroke: var(--secondary-dark);
+  stroke: var(--primary);
 `
 const CancelIconLight = styled(CrossIcon)`
-  stroke: var(--text-light);
+  stroke: var(--light);
 `
 const DetailsIconDark = styled(DetailsIcon)`
-  stroke: var(--secondary-dark);
+  stroke: var(--primary);
 `
 const PencilIconDark = styled(PencilIcon)`
-  stroke: var(--secondary-dark);
+  stroke: var(--primary);
 `
 
 export {

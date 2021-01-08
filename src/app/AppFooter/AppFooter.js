@@ -16,7 +16,7 @@ const FooterStyled = styled.footer`
   align-items: center;
   height: 50px;
   max-width: 1240px;
-  box-shadow: 0 0 5px var(--primary-dark);
+  box-shadow: 0 0 5px var(--secondary-medium);
   border-radius: 25px 25px 0 0;
-  background: var(--gradient-dark);
+  background: var(--primary-gradient);
 `
