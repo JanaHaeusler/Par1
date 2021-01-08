@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { v4 as uuid } from 'uuid'
-import loadLocally from '../lib/loadLocally'
-import saveLocally from '../lib/saveLocally'
+import { saveLocally, loadLocally } from '../lib/localStorage'
 
 const STORAGE_KEY = 'gameProfiles'
 

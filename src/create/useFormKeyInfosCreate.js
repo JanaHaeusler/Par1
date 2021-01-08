@@ -5,9 +5,7 @@ import {
   validateIsNotEmpty,
   validateShotsIsInRange,
 } from '../app/validators.services'
-import loadLocally from '../lib/loadLocally'
-import removeLocally from '../lib/removeLocally'
-import saveLocally from '../lib/saveLocally'
+import { saveLocally, loadLocally, removeLocally } from '../lib/localStorage'
 
 const STORAGE_KEY = 'inputsKeyInfosCreate'
 
