@@ -136,6 +136,7 @@ const Form = styled.form`
   place-items: center;
   border-radius: 25px;
   background-color: var(--light);
+  font-family: 'Raleway', sans-serif;
   font-size: 1rem;
 
   input::-webkit-outer-spin-button,
@@ -163,7 +164,6 @@ const KeyInfos = styled.fieldset`
   label {
     margin-top: 10px;
     margin-bottom: 5px;
-    font-family: 'Raleway', sans-serif;
   }
 
   input {

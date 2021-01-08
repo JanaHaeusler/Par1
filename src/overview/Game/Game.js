@@ -34,20 +34,20 @@ export default function Game({
       {isSetToDelete || (
         <>
           <SavedGameContent>
-            <Location>{location}</Location>
             <Date>{date}</Date>
-            <PlayerWrapper>
+            <Location>{location}</Location>
+            <Player>
               <h4>Player(s)</h4>
               <span>{playerNames}</span>
-            </PlayerWrapper>
-            <WinnerWrapper>
+            </Player>
+            <Winner>
               <h4>Winner(s)</h4>
               <span>{winner}</span>
-            </WinnerWrapper>
-            <ShotsWrapper>
+            </Winner>
+            <Shots>
               <h4>Total Shots</h4>
               <span>{shots}</span>
-            </ShotsWrapper>
+            </Shots>
           </SavedGameContent>
           <ButtonWrapper>
             <ButtonDeleteIcon
@@ -73,7 +73,10 @@ export default function Game({
       )}
       {isSetToDelete && (
         <DeleteField>
-          <span>Do you want to delete this game?</span>
+          <DeleteQuery>
+            <span>Do you really want to</span>
+            <span>delete this game?</span>
+          </DeleteQuery>
           <ButtonDelete
             onClick={() => onDelete(_id)}
             iconComponent={<BinIconDark />}
@@ -114,27 +117,33 @@ const SavedGameContent = styled.div`
   grid-gap: 10px;
   border-radius: 25px 25px 0 0;
   background-color: var(--light);
-  font-size: 0.9rem;
+  font-size: 1rem;
+
+  span {
+    font-family: 'Raleway', sans-serif;
+  }
 `
 const Date = styled.div`
   grid-column-start: 2;
   grid-row-start: 1;
   justify-self: end;
+  font-family: 'Raleway', sans-serif;
 `
 const Location = styled.div`
   grid-column: 1 / 3;
   grid-row-start: 2;
   text-transform: uppercase;
+  font-family: 'Raleway', sans-serif;
 `
-const PlayerWrapper = styled.div`
+const Player = styled.div`
   grid-column: 1 / 4;
   grid-row-start: 3;
 `
-const WinnerWrapper = styled.div`
+const Winner = styled.div`
   grid-column-start: 1;
   grid-row-start: 4;
 `
-const ShotsWrapper = styled.div`
+const Shots = styled.div`
   grid-column-start: 2;
   grid-row-start: 4;
 `
@@ -169,20 +178,23 @@ const ButtonDetailsIcon = styled.button`
   background: none;
 `
 const DeleteField = styled.div`
-  padding: 10px;
+  padding: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 10px 20px;
+  gap: 20px 20px;
   place-items: center;
   border-radius: 25px;
   background-color: var(--light);
+`
+const DeleteQuery = styled.div`
+  display: grid;
+  grid-column: 1 / 3;
 
   span {
-    grid-column: 1 / 3;
     text-align: center;
-    color: var(--primary);
-    font-weight: 800;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.9rem;
   }
 `
 const ButtonDelete = styled(Button)`

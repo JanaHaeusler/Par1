@@ -14,6 +14,7 @@ const ButtonStyled = styled.button`
   background-color: ${(props) =>
     props.main ? 'var(--primary)' : 'var(--light)'};
   color: ${(props) => (props.main ? 'var(--light)' : 'var(--primary)')};
+  font-family: 'Raleway', sans-serif;
   font-size: 1rem;
 
   &:disabled {

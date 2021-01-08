@@ -94,11 +94,8 @@ const Form = styled.form`
   place-items: center;
   border-radius: 25px;
   background-color: var(--light);
+  font-family: 'Raleway', sans-serif;
   font-size: 1rem;
-
-  span {
-    font-family: 'Raleway', sans-serif;
-  }
 
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
@@ -116,7 +113,7 @@ const Form = styled.form`
   }
 `
 const ScoreOverview = styled.section`
-  margin: 20px auto;
+  margin: 10px auto 20px;
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;
@@ -132,6 +129,7 @@ const Legend = styled.div`
   span {
     width: 100%;
     text-align: center;
+    font-weight: 550;
   }
 `
 const ScoresAllPlayers = styled.div`
@@ -150,21 +148,26 @@ const ScoreSinglePlayer = styled.div`
   grid-template-rows: repeat(19, 35px);
   align-items: center;
   min-width: 80px;
+
+  span:first-child {
+    font-weight: 550;
+  }
 `
 const SingleScore = styled.label`
   input {
-    padding: 0;
+    padding: 5px;
     width: 100%;
     height: 100%;
     border-style: none;
     border-radius: 3px;
     background-color: var(--secondary-light);
     color: var(--secondary-medium);
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
   }
 `
 const Note = styled.span`
-  margin: 5px 0 10px;
+  margin-top: 5px;
   font-size: 0.7rem;
 `
 const ButtonWrapper = styled.div`

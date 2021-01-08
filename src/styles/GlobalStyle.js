@@ -46,6 +46,7 @@ export default createGlobalStyle`
 
     h4 {
         margin: 0;
+        font-size: 0.9rem;
         font-weight: 550;
     }
 `

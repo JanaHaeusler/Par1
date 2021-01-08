@@ -16,8 +16,8 @@ export default function DetailsPage({ targetProfile }) {
   return (
     <GameDetailsCard>
       <GameKeyInfos>
-        <Location>{location}</Location>
         <Date>{date}</Date>
+        <Location>{location}</Location>
         <Players>
           <h4>Player(s)</h4>
           <span>{players}</span>
@@ -84,17 +84,23 @@ const GameKeyInfos = styled.div`
   grid-gap: 10px;
   border-radius: 25px 25px 0 0;
   background-color: var(--light);
-  font-size: 0.9rem;
+  font-size: 1rem;
+
+  span {
+    font-family: 'Raleway', sans-serif;
+  }
 `
 const Date = styled.div`
   grid-column-start: 2;
   grid-row-start: 1;
   justify-self: end;
+  font-family: 'Raleway', sans-serif;
 `
 const Location = styled.div`
   grid-column: 1 / 3;
   grid-row-start: 2;
   text-transform: uppercase;
+  font-family: 'Raleway', sans-serif;
 `
 const Players = styled.div`
   grid-column: 1 / 4;
@@ -110,7 +116,7 @@ const Shots = styled.div`
 `
 const GameScores = styled.section`
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px 20px;
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;
@@ -123,9 +129,15 @@ const LegendHoles = styled.div`
   align-items: center;
   border-right: 1px solid var(--secondary-light);
 
+  span:first-child {
+    font-family: 'Montserrat', sans-serif;
+  }
+
   span {
     width: 100%;
     text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 550;
   }
 `
 const ScoresAllPlayers = styled.div`
@@ -144,10 +156,13 @@ const ScoresSinglePlayer = styled.div`
   grid-template-rows: repeat(19, 35px);
   align-items: center;
   min-width: 80px;
+
+  span:first-child {
+    font-weight: 550;
+  }
 `
-const SingleScore = styled.div`
-  display: grid;
-  gap: 10px;
+const SingleScore = styled.span`
+  font-family: 'Raleway', sans-serif;
 `
 const ButtonWrapper = styled.div`
   padding: 5px 0;
