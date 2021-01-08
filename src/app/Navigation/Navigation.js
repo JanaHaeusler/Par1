@@ -1,7 +1,7 @@
-import styled from 'styled-components/macro'
 import { NavLink } from 'react-router-dom'
-import { PlusIcon, HomeIcon } from '../Icons/Icons'
+import styled from 'styled-components/macro'
 import removeLocally from '../../lib/removeLocally'
+import { HomeIcon, PlusIcon } from '../Icons/Icons'
 
 export default function Navigation() {
   return (

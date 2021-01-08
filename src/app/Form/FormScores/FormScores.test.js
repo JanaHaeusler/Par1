@@ -3,77 +3,76 @@ import user from '@testing-library/user-event'
 import FormScores from './FormScores'
 
 const testProps = {
-    formInputs: {
-        location: 'City Park',
-        date: '2020-12-24',
-        winner: 'Sarah',
-        shots: '28',
-        playersString: 'Sarah, Hannes',
-        playersArray: ['Sarah', 'Hannes'],
-        scores: {
-          Sarah: {
-            hole1: '',
-            hole2: '',
-            hole3: '',
-            hole4: '',
-            hole5: '',
-            hole6: '',
-            hole7: '',
-            hole8: '',
-            hole9: '',
-            hole10: '',
-            hole11: '',
-            hole12: '',
-            hole13: '',
-            hole14: '',
-            hole15: '',
-            hole16: '',
-            hole17: '',
-            hole18: '',
-          },
-          Hannes: {
-            hole1: '',
-            hole2: '',
-            hole3: '',
-            hole4: '',
-            hole5: '',
-            hole6: '',
-            hole7: '',
-            hole8: '',
-            hole9: '',
-            hole10: '',
-            hole11: '',
-            hole12: '',
-            hole13: '',
-            hole14: '',
-            hole15: '',
-            hole16: '',
-            hole17: '',
-            hole18: '',
-          },
-        },
-        _id: '1',
+  formInputs: {
+    location: 'City Park',
+    date: '2020-12-24',
+    winner: 'Sarah',
+    shots: '28',
+    playersString: 'Sarah, Hannes',
+    playersArray: ['Sarah', 'Hannes'],
+    scores: {
+      Sarah: {
+        hole1: '',
+        hole2: '',
+        hole3: '',
+        hole4: '',
+        hole5: '',
+        hole6: '',
+        hole7: '',
+        hole8: '',
+        hole9: '',
+        hole10: '',
+        hole11: '',
+        hole12: '',
+        hole13: '',
+        hole14: '',
+        hole15: '',
+        hole16: '',
+        hole17: '',
+        hole18: '',
       },
-    isSaveButtonShown: false,
-    updateDirtyInputs: jest.fn(),
-    handleChange: jest.fn(),
-    showErrorMessage: jest.fn(),
-    handleSubmit: jest.fn(),
-    handleCancel: jest.fn(),
+      Hannes: {
+        hole1: '',
+        hole2: '',
+        hole3: '',
+        hole4: '',
+        hole5: '',
+        hole6: '',
+        hole7: '',
+        hole8: '',
+        hole9: '',
+        hole10: '',
+        hole11: '',
+        hole12: '',
+        hole13: '',
+        hole14: '',
+        hole15: '',
+        hole16: '',
+        hole17: '',
+        hole18: '',
+      },
+    },
+    _id: '1',
+  },
+  isSaveButtonShown: false,
+  updateDirtyInputs: jest.fn(),
+  handleChange: jest.fn(),
+  showErrorMessage: jest.fn(),
+  handleSubmit: jest.fn(),
+  handleCancel: jest.fn(),
 }
 
 describe('FormScores', () => {
-
-    beforeEach(() => {
-        Object.defineProperty(window, "localStorage", {
-            value: {
-            getItem: jest.fn(() => null),
-            setItem: jest.fn(() => null)
-            },
-            writable: true
-        })
+  beforeEach(() => {
+    Object.defineProperty(window, 'localStorage', {
+      value: {
+        getItem: jest.fn(() => null),
+        setItem: jest.fn(() => null),
+      },
+      writable: true,
     })
-  
+  })
+
   it('renders snapshot correctly', () => {
     const { container } = render(<FormScores {...testProps} />)
     expect(container.firstChild).toMatchSnapshot()
@@ -86,19 +85,19 @@ describe('FormScores', () => {
   })
 
   it('has disabled save button', () => {
-    const { getByTestId} = render(<FormScores {...testProps} />)
+    const { getByTestId } = render(<FormScores {...testProps} />)
     expect(getByTestId('button-save')).toBeDisabled()
   })
 
   it('has enabled save button', () => {
-    const props = {...testProps, isSaveButtonShown: true}
-    const { getByTestId} = render(<FormScores {...props} />)
+    const props = { ...testProps, isSaveButtonShown: true }
+    const { getByTestId } = render(<FormScores {...props} />)
     expect(getByTestId('button-save')).toBeEnabled()
   })
 
   it('calls updateDirtyInputsMock on blur event', () => {
     const updateDirtyInputsMock = jest.fn()
-    const props = {...testProps, updateDirtyInputs: updateDirtyInputsMock}
+    const props = { ...testProps, updateDirtyInputs: updateDirtyInputsMock }
     const { getByLabelText } = render(<FormScores {...props} />)
     const RandomTestInput = getByLabelText('score hole1-Sarah')
     fireEvent.blur(RandomTestInput)
@@ -107,7 +106,7 @@ describe('FormScores', () => {
 
   it('calls handleChangeMock on change event', () => {
     const handleChangeMock = jest.fn()
-    const props = {...testProps, handleChange: handleChangeMock}
+    const props = { ...testProps, handleChange: handleChangeMock }
     const { getByLabelText } = render(<FormScores {...props} />)
     const RandomTestInput = getByLabelText('score hole16-Hannes')
     fireEvent.change(RandomTestInput, { target: { value: '5' } })
@@ -117,14 +116,18 @@ describe('FormScores', () => {
 
   it('calls showErrorMessageMock', () => {
     const showErrorMessageMock = jest.fn()
-    const props = {...testProps, showErrorMessage: showErrorMessageMock}
+    const props = { ...testProps, showErrorMessage: showErrorMessageMock }
     render(<FormScores {...props} />)
     expect(showErrorMessageMock).toHaveBeenCalledTimes(1)
   })
 
   it('calls handleSubmitMock on submitting the form', () => {
     const handleSubmitMock = jest.fn()
-    const props = {...testProps, isSaveButtonShown: true, handleSubmit: handleSubmitMock}
+    const props = {
+      ...testProps,
+      isSaveButtonShown: true,
+      handleSubmit: handleSubmitMock,
+    }
     const { getByTestId } = render(<FormScores {...props} />)
     const Form = getByTestId('form')
     fireEvent.submit(Form)
@@ -133,7 +136,11 @@ describe('FormScores', () => {
 
   it('calls handleCancelMock on clicking cancel button', () => {
     const handleCancelMock = jest.fn()
-    const props = {...testProps, isSaveButtonShown: true, handleCancel: handleCancelMock}
+    const props = {
+      ...testProps,
+      isSaveButtonShown: true,
+      handleCancel: handleCancelMock,
+    }
     const { getByTestId } = render(<FormScores {...props} />)
     user.click(getByTestId('button-cancel'))
     expect(handleCancelMock).toHaveBeenCalled()

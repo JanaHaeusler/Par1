@@ -115,30 +115,29 @@ const testProps = {
 }
 
 describe('GameList', () => {
-  
-    it('renders snapshot correctly', () => {
-        const { container } = render(<GameList {...testProps}/>)
-        expect(container.firstChild).toMatchSnapshot()
-    })
+  it('renders snapshot correctly', () => {
+    const { container } = render(<GameList {...testProps} />)
+    expect(container.firstChild).toMatchSnapshot()
+  })
 
-    it('renders correctly', () => {
-      const { getByText, getAllByTestId } = render(<GameList {...testProps}/>)
+  it('renders correctly', () => {
+    const { getByText, getAllByTestId } = render(<GameList {...testProps} />)
 
-      expect(getByText('City Park')).toBeInTheDocument()
-      expect(getByText('2020-12-24')).toBeInTheDocument()
-      expect(getByText('Sarah, Hannes')).toBeInTheDocument()
-      expect(getByText('Sarah')).toBeInTheDocument()
-      expect(getByText('28')).toBeInTheDocument()
-      
-      expect(getByText('Horner Racecourse')).toBeInTheDocument()
-      expect(getByText('2020-12-31')).toBeInTheDocument()
-      expect(getByText('Fritz, Hugo')).toBeInTheDocument()
-      expect(getByText('Fritz')).toBeInTheDocument()
-      expect(getByText('35')).toBeInTheDocument()
+    expect(getByText('City Park')).toBeInTheDocument()
+    expect(getByText('2020-12-24')).toBeInTheDocument()
+    expect(getByText('Sarah, Hannes')).toBeInTheDocument()
+    expect(getByText('Sarah')).toBeInTheDocument()
+    expect(getByText('28')).toBeInTheDocument()
 
-      const ButtonsDelete = getAllByTestId('button-set-delete')
-      expect(ButtonsDelete).toHaveLength(2)
-      const ButtonsEdit = getAllByTestId('button-edit')
-      expect(ButtonsEdit).toHaveLength(2)
-    })
+    expect(getByText('Horner Racecourse')).toBeInTheDocument()
+    expect(getByText('2020-12-31')).toBeInTheDocument()
+    expect(getByText('Fritz, Hugo')).toBeInTheDocument()
+    expect(getByText('Fritz')).toBeInTheDocument()
+    expect(getByText('35')).toBeInTheDocument()
+
+    const ButtonsDelete = getAllByTestId('button-set-delete')
+    expect(ButtonsDelete).toHaveLength(2)
+    const ButtonsEdit = getAllByTestId('button-edit')
+    expect(ButtonsEdit).toHaveLength(2)
+  })
 })

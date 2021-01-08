@@ -58,8 +58,8 @@ const testProps = {
 }
 
 describe('CreatePage', () => {
-    it('renders snapshot correctly', () => {
-        const { container } = render(<CreatePage {...testProps}/>)
-        expect(container.firstChild).toMatchSnapshot()
-    })
+  it('renders snapshot correctly', () => {
+    const { container } = render(<CreatePage {...testProps} />)
+    expect(container.firstChild).toMatchSnapshot()
+  })
 })

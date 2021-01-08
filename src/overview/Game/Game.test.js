@@ -60,7 +60,6 @@ const testProps = {
 }
 
 describe('Game', () => {
-  
   it('renders snapshot correctly', () => {
     const { container } = render(<Game {...testProps} />)
     expect(container.firstChild).toMatchSnapshot()

@@ -2,74 +2,72 @@ import { Route, Switch } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import AppFooter from './app/AppFooter'
 import AppHeader from './app/AppHeader'
-import CreatePage from './create/CreatePage'
 import useGameData from './app/useGameData'
+import CreatePage from './create/CreatePage'
 import DetailsPage from './details/DetailsPage'
 import EditPage from './edit/EditPage'
 import OverviewPage from './overview/OverviewPage'
 
 function App() {
+  const {
+    newGameProfile,
+    targetProfile,
+    savedGameProfiles,
+    createGameProfile,
+    addGameProfile,
+    deleteGameProfile,
+    editGameProfile,
+    prepareEditPage,
+    prepareDetailsPage,
+    updateTargetProfile,
+  } = useGameData()
 
-  const { 
-      newGameProfile,
-      targetProfile, 
-      savedGameProfiles, 
-      createGameProfile,
-      addGameProfile, 
-      deleteGameProfile, 
-      editGameProfile, 
-      prepareEditPage, 
-      prepareDetailsPage,
-      updateTargetProfile } = useGameData()
-  
   return (
     <AppWrapper>
-      <HeaderStyled/>
+      <HeaderStyled />
       <MainWrapper>
-        <Switch>  
+        <Switch>
           <Route exact path="/">
-            <OverviewPage 
-                savedGameProfiles={savedGameProfiles} 
-                deleteGameProfile={deleteGameProfile} 
-                prepareEditPage={prepareEditPage}
-                prepareDetailsPage={prepareDetailsPage}
+            <OverviewPage
+              savedGameProfiles={savedGameProfiles}
+              deleteGameProfile={deleteGameProfile}
+              prepareEditPage={prepareEditPage}
+              prepareDetailsPage={prepareDetailsPage}
             />
           </Route>
           <Route path="/create">
-            <CreatePage 
-                newGameProfile={newGameProfile}
-                createGameProfile={createGameProfile}
-                addGameProfile={addGameProfile}
+            <CreatePage
+              newGameProfile={newGameProfile}
+              createGameProfile={createGameProfile}
+              addGameProfile={addGameProfile}
             />
           </Route>
           <Route path="/details">
-            <DetailsPage 
-                targetProfile={targetProfile}
-            />
+            <DetailsPage targetProfile={targetProfile} />
           </Route>
           <Route path="/edit">
-            <EditPage 
-                targetProfile={targetProfile}
-                updateTargetProfile={updateTargetProfile}
-                editGameProfile={editGameProfile}
+            <EditPage
+              targetProfile={targetProfile}
+              updateTargetProfile={updateTargetProfile}
+              editGameProfile={editGameProfile}
             />
           </Route>
           <Route path="/*">
-            <OverviewPage 
-                savedGameProfiles={savedGameProfiles} 
-                deleteGameProfile={deleteGameProfile} 
-                prepareEditPage={prepareEditPage}
-                prepareDetailsPage={prepareDetailsPage}
+            <OverviewPage
+              savedGameProfiles={savedGameProfiles}
+              deleteGameProfile={deleteGameProfile}
+              prepareEditPage={prepareEditPage}
+              prepareDetailsPage={prepareDetailsPage}
             />
           </Route>
-        </Switch> 
+        </Switch>
       </MainWrapper>
-      <FooterStyled/>
+      <FooterStyled />
     </AppWrapper>
   )
 }
 
-export default App;
+export default App
 
 const AppWrapper = styled.div`
   margin: 0 auto;
@@ -87,7 +85,7 @@ const HeaderStyled = styled(AppHeader)`
 const MainWrapper = styled.main`
   padding: 70px 10px 60px 10px;
   scrollbar-width: none;
-  
+
   &::-webkit-scrollbar {
     display: none;
   }

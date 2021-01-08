@@ -115,8 +115,8 @@ const testProps = {
 }
 
 describe('OverviewPage', () => {
-    it('renders snapshot correctly', () => {
-        const { container } = render(<OverviewPage {...testProps}/>)
-        expect(container.firstChild).toMatchSnapshot()
-    })
+  it('renders snapshot correctly', () => {
+    const { container } = render(<OverviewPage {...testProps} />)
+    expect(container.firstChild).toMatchSnapshot()
+  })
 })

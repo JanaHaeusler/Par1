@@ -1,12 +1,11 @@
 import styled from 'styled-components/macro'
 import Pennant from './Pennant'
 
-export default function AppHeader({className}) {
-
+export default function AppHeader({ className }) {
   return (
     <HeaderStyled className={className}>
       <PennantStyled>
-        <Pennant/>
+        <Pennant />
       </PennantStyled>
     </HeaderStyled>
   )

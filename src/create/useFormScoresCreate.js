@@ -22,7 +22,7 @@ export default function useFormScoresCreate({
     inputsScores.playersArray && prepareInputValidation(inputsScores)
   const hasAllValidInputs = validInputs && condenseValidInputs()
 
-  const isSaveButtonShownScores = hasAllValidInputs
+  const isSaveButtonShownScores = hasAllValidInputs || false
 
   const [dirtyInputs, setDirtyInputs] = useState({})
   const hasAllDirtyInputs = dirtyInputs && condenseDirtyInputs()

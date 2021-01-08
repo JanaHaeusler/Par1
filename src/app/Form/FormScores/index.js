@@ -1,1 +1,1 @@
-export { default } from './FormScores';
+export { default } from './FormScores'
