@@ -112,7 +112,6 @@ const SavedGameContent = styled.div`
   grid-template-rows: repeat(4, auto);
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
-  box-shadow: 0 0 10px var(--box-shadow-green);
   border-radius: 25px 25px 0 0;
   background-color: var(--text-light);
   font-size: 0.9rem;

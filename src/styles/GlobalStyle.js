@@ -28,6 +28,7 @@ export default createGlobalStyle`
         --text-light-transparent: #ffffffBF;
         --primary-medium: #90A4AE;
         --primary-dark: #62757F;
+        --primary-dark-transparent: #62757F;
         --secondary-dark: #004871;
         --separator: #f8f8f8;
         --gradient-dark: linear-gradient(90deg, #000428 0%, #004871 100%);

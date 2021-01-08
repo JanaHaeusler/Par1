@@ -1,12 +1,11 @@
 import styled from 'styled-components/macro'
 import Pennant from './Pennant'
 
-export default function AppHeader({className}) {
-
+export default function AppHeader({ className }) {
   return (
     <HeaderStyled className={className}>
       <PennantStyled>
-        <Pennant/>
+        <Pennant />
       </PennantStyled>
     </HeaderStyled>
   )
@@ -17,7 +16,7 @@ const HeaderStyled = styled.header`
   position: relative;
   height: 50px;
   max-width: 1240px;
-  box-shadow: 0 0 10px var(--primary-dark);
+  box-shadow: 0 0 5px var(--primary-dark);
   border-radius: 0 0 25px 3px;
   background: var(--gradient-dark);
 `
