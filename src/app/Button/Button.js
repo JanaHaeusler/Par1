@@ -1,12 +1,12 @@
-import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
+import styled from 'styled-components/macro'
 
 const ButtonStyled = styled.button`
   padding: 7px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 80px;
+  width: 85px;
   height: 34px;
   border-style: none;
   border-radius: 5px;
@@ -16,6 +16,7 @@ const ButtonStyled = styled.button`
   color: ${(props) => (props.main ? 'var(--light)' : 'var(--primary)')};
   font-family: 'Raleway', sans-serif;
   font-size: 1rem;
+  font-weight: 550;
 
   &:disabled {
     opacity: 50%;

@@ -4,10 +4,11 @@ import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import Button from '../../app/Button'
 import {
-  BinIconDark,
-  CancelIconLight,
-  DetailsIconDark,
-  PencilIconDark,
+  BinIconPrimary,
+  BinIconPrimaryText,
+  CancelIconLightText,
+  DetailsIconPrimary,
+  PencilIconPrimary,
 } from '../../app/Icons/Icons'
 
 Game.propTypes = {
@@ -54,19 +55,19 @@ export default function Game({
               onClick={() => setIsSetToDelete(true)}
               data-testid="button-set-delete"
             >
-              <BinIconDark />
+              <BinIconPrimary />
             </ButtonDeleteIcon>
             <ButtonEditIcon
               onClick={() => handleEdit(_id)}
               data-testid="button-edit"
             >
-              <PencilIconDark />
+              <PencilIconPrimary />
             </ButtonEditIcon>
             <ButtonDetailsIcon
               onClick={() => handleDetails(_id)}
               data-testid="button-details"
             >
-              <DetailsIconDark />
+              <DetailsIconPrimary />
             </ButtonDetailsIcon>
           </ButtonWrapper>
         </>
@@ -79,14 +80,14 @@ export default function Game({
           </DeleteQuery>
           <ButtonDelete
             onClick={() => onDelete(_id)}
-            iconComponent={<BinIconDark />}
+            iconComponent={<BinIconPrimaryText />}
             text="Delete"
             data-testid="button-delete"
           />
           <ButtonCancel
             main
             onClick={() => setIsSetToDelete(false)}
-            iconComponent={<CancelIconLight />}
+            iconComponent={<CancelIconLightText />}
             text="Cancel"
             data-testid="button-cancel"
           />

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import Button from '../../Button'
-import { CancelIconDark, CheckIconLight } from '../../Icons/Icons'
+import { CancelIconPrimaryText, CheckIconLightText } from '../../Icons/Icons'
 
 FormKeyInfos.propTypes = {
   formInputs: PropTypes.object.isRequired,
@@ -109,14 +109,14 @@ export default function FormKeyInfos({
         <Button
           type="button"
           onClick={handleCancel}
-          iconComponent={<CancelIconDark />}
+          iconComponent={<CancelIconPrimaryText />}
           text="Cancel"
           data-testid="button-cancel"
         />
         <Button
           main
           disabled={!isSaveButtonShown}
-          iconComponent={<CheckIconLight />}
+          iconComponent={<CheckIconLightText />}
           text="Save"
           data-testid="button-save"
         />

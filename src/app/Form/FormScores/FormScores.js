@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import { v4 as uuid } from 'uuid'
 import Button from '../../Button'
-import { CancelIconDark, CheckIconLight } from '../../Icons/Icons'
+import { CancelIconPrimaryText, CheckIconLightText } from '../../Icons/Icons'
 
 FormScores.propTypes = {
   formInputs: PropTypes.object.isRequired,
@@ -71,14 +71,14 @@ export default function FormScores({
         <Button
           type="button"
           onClick={handleCancel}
-          iconComponent={<CancelIconDark />}
+          iconComponent={<CancelIconPrimaryText />}
           text="Cancel"
           data-testid="button-cancel"
         />
         <Button
           main
           disabled={!isSaveButtonShown}
-          iconComponent={<CheckIconLight />}
+          iconComponent={<CheckIconLightText />}
           text="Save"
           data-testid="button-save"
         />
@@ -142,7 +142,6 @@ const ScoresAllPlayers = styled.div`
 `
 const ScoreSinglePlayer = styled.div`
   margin: 0 2px;
-  padding-left: 1px;
   display: grid;
   grid-template-rows: repeat(19, 35px);
   align-items: center;
@@ -154,7 +153,7 @@ const ScoreSinglePlayer = styled.div`
 `
 const SingleScore = styled.label`
   input {
-    padding: 5px;
+    padding: 5px 10px 5px;
     width: 100%;
     height: 100%;
     border-style: none;

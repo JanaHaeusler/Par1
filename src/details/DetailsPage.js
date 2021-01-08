@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import { v4 as uuid } from 'uuid'
-import { BackIconDark } from '../app/Icons/Icons'
+import { BackIconPrimary } from '../app/Icons/Icons'
 
 DetailsPage.propTypes = {
   targetProfile: PropTypes.object.isRequired,
@@ -66,7 +66,7 @@ export default function DetailsPage({ targetProfile }) {
           onClick={() => history.push('/')}
           data-testid="button-back"
         >
-          <BackIconDark />
+          <BackIconPrimary />
         </ButtonBackIcon>
       </ButtonWrapper>
     </GameDetailsCard>
