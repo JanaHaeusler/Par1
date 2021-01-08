@@ -15,13 +15,6 @@ const BackIconDark = styled(BackIcon)`
 const BinIconDark = styled(BinIcon)`
   stroke: var(--secondary-dark);
 `
-const BinIconLight = styled(BinIcon)`
-  stroke: var(--text-light);
-`
-const CheckIconDark = styled(CheckIcon)`
-  width: 30%;
-  stroke: var(--secondary-dark);
-`
 const CheckIconLight = styled(CheckIcon)`
   width: 30%;
   stroke: var(--text-light);
@@ -38,21 +31,15 @@ const DetailsIconDark = styled(DetailsIcon)`
 const PencilIconDark = styled(PencilIcon)`
   stroke: var(--secondary-dark);
 `
-const PencilIconLight = styled(PencilIcon)`
-  stroke: var(--text-light);
-`
 
 export {
   BackIconDark,
   BinIconDark,
-  BinIconLight,
-  CheckIconDark,
   CheckIconLight,
   CancelIconDark,
   CancelIconLight,
   DetailsIconDark,
   PencilIconDark,
-  PencilIconLight,
   HomeIcon,
   PlusIcon,
   LogoIcon,

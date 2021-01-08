@@ -26,6 +26,6 @@ import { CheckIconLight } from '../assets/Icons/Icons'
 Enabled Button
 
 ```jsx
-import { CheckIconDark } from '../assets/Icons/Icons'
-;<Button onClick={() => {}} iconComponent={<CheckIconDark />} text="Save" />
+import { CancelIconDark } from '../assets/Icons/Icons'
+;<Button onClick={() => {}} iconComponent={<CancelIconDark />} text="Cancel" />
 ```
