@@ -84,7 +84,7 @@ exports[`FormKeyInfos renders snapshot correctly 1`] = `
   margin: 0;
 }
 
-.c0 input[type=number] {
+.c0 input[type='number'] {
   -moz-appearance: textfield;
 }
 

@@ -16,6 +16,7 @@ const testProps = {
   showErrorMessage: jest.fn(),
   handleSubmit: jest.fn(),
   handleCancel: jest.fn(),
+  setDisabledState: jest.fn(),
 }
 
 describe('FormKeyInfos', () => {
@@ -103,11 +104,20 @@ describe('FormKeyInfos', () => {
     const handleCancelMock = jest.fn()
     const props = {
       ...testProps,
-      isSaveButtonShown: true,
       handleCancel: handleCancelMock,
     }
     const { getByTestId } = render(<FormKeyInfos {...props} />)
     user.click(getByTestId('button-cancel'))
     expect(handleCancelMock).toHaveBeenCalled()
+  })
+
+  it('calls setDisabledStateMock when rendered', () => {
+    const setDisabledStateMock = jest.fn()
+    const props = {
+      ...testProps,
+      setDisabledState: setDisabledStateMock,
+    }
+    render(<FormKeyInfos {...props} />)
+    expect(setDisabledStateMock).toHaveBeenCalledTimes(1)
   })
 })
