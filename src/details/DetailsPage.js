@@ -14,53 +14,55 @@ export default function DetailsPage({ targetProfile }) {
   const players = playersString
 
   return (
-    <GameDetailsCard>
-      <GameKeyInfos>
-        <Date>{date}</Date>
-        <Location>{location}</Location>
-        <Players>
-          <h4>Player(s)</h4>
-          <span>{players}</span>
-        </Players>
-        <Winner>
-          <h4>Winner(s)</h4>
-          <span>{winner}</span>
-        </Winner>
-        <Shots>
-          <h4>Total Shots</h4>
-          <span>{shots}</span>
-        </Shots>
-      </GameKeyInfos>
-      <GameScores>
-        <LegendHoles>
-          <span>Holes</span>
-          {new Array(18).fill().map((_, index) => {
-            const newId = uuid()
-            return <span key={newId}>{index + 1}</span>
-          })}
-        </LegendHoles>
-        <ScoresAllPlayers>
-          {targetProfile.playersArray?.map((player) => {
-            const newId = uuid()
-            const playerName = player
-            return (
-              <ScoresSinglePlayer key={newId}>
-                <span>{playerName}</span>
-                {new Array(18).fill().map((_, index) => {
-                  const newId = uuid()
-                  const fieldNumber = index + 1
-                  const holeName = 'hole' + fieldNumber
-                  return (
-                    <span key={newId}>
-                      {targetProfile.scores[playerName][holeName]}
-                    </span>
-                  )
-                })}
-              </ScoresSinglePlayer>
-            )
-          })}
-        </ScoresAllPlayers>
-      </GameScores>
+    <DetailsCardWrapper>
+      <GameDetailsWrapper>
+        <GameKeyInfos>
+          <Date>{date}</Date>
+          <Location>{location}</Location>
+          <Players>
+            <h4>Player(s)</h4>
+            <span>{players}</span>
+          </Players>
+          <Winner>
+            <h4>Winner(s)</h4>
+            <span>{winner}</span>
+          </Winner>
+          <Shots>
+            <h4>Total Shots</h4>
+            <span>{shots}</span>
+          </Shots>
+        </GameKeyInfos>
+        <GameScores>
+          <Legend>
+            <span>Holes</span>
+            {new Array(18).fill().map((_, index) => {
+              const newId = uuid()
+              return <span key={newId}>{index + 1}</span>
+            })}
+          </Legend>
+          <ScoresAllPlayers>
+            {targetProfile.playersArray?.map((player) => {
+              const newId = uuid()
+              const playerName = player
+              return (
+                <ScoreSinglePlayer key={newId}>
+                  <span>{playerName}</span>
+                  {new Array(18).fill().map((_, index) => {
+                    const newId = uuid()
+                    const fieldNumber = index + 1
+                    const holeName = 'hole' + fieldNumber
+                    return (
+                      <span key={newId}>
+                        {targetProfile.scores[playerName][holeName]}
+                      </span>
+                    )
+                  })}
+                </ScoreSinglePlayer>
+              )
+            })}
+          </ScoresAllPlayers>
+        </GameScores>
+      </GameDetailsWrapper>
       <ButtonWrapper>
         <ButtonBackIcon
           onClick={() => history.push('/')}
@@ -69,22 +71,24 @@ export default function DetailsPage({ targetProfile }) {
           <BackIconPrimary />
         </ButtonBackIcon>
       </ButtonWrapper>
-    </GameDetailsCard>
+    </DetailsCardWrapper>
   )
 }
 
-const GameDetailsCard = styled.section`
+const DetailsCardWrapper = styled.div`
   margin: 0 20px;
 `
-const GameKeyInfos = styled.div`
+const GameDetailsWrapper = styled.div`
+  border-radius: 25px 25px 0 0;
+  background-color: var(--light);
+  font-size: 1rem;
+`
+const GameKeyInfos = styled.section`
   padding: 20px;
   display: grid;
   grid-template-rows: repeat(4, auto);
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
-  border-radius: 25px 25px 0 0;
-  background-color: var(--light);
-  font-size: 1rem;
 `
 const Date = styled.div`
   grid-column-start: 2;
@@ -114,9 +118,9 @@ const GameScores = styled.section`
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;
-  background-color: var(--light);
+  max-width: 90%;
 `
-const LegendHoles = styled.div`
+const Legend = styled.div`
   padding-right: 20px;
   display: grid;
   grid-template-rows: repeat(19, 35px);
@@ -124,7 +128,6 @@ const LegendHoles = styled.div`
   border-right: 1px solid var(--secondary-light);
 
   span {
-    width: 100%;
     text-align: center;
     font-weight: 550;
   }
@@ -142,9 +145,8 @@ const ScoresAllPlayers = styled.div`
     display: none;
   }
 `
-const ScoresSinglePlayer = styled.div`
+const ScoreSinglePlayer = styled.div`
   margin: 0 2px;
-  padding-left: 1px;
   display: grid;
   grid-template-rows: repeat(19, 35px);
   align-items: center;

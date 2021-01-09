@@ -26,7 +26,7 @@ export default function FormScores({
   return (
     <Form onSubmit={handleSubmit} data-testid="form">
       <h3>Score</h3>
-      <ScoreOverview>
+      <GameScores>
         <Legend>
           <span>Holes</span>
           {new Array(18).fill().map((_, index) => {
@@ -65,7 +65,7 @@ export default function FormScores({
             )
           })}
         </ScoresAllPlayers>
-      </ScoreOverview>
+      </GameScores>
       <Note>{showErrorMessage()}</Note>
       <ButtonWrapper>
         <Button
@@ -111,12 +111,12 @@ const Form = styled.form`
     margin-bottom: 5px;
   }
 `
-const ScoreOverview = styled.section`
+const GameScores = styled.section`
   margin: 10px auto 20px;
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;
-  width: 90%;
+  max-width: 90%;
 `
 const Legend = styled.div`
   padding-right: 20px;
@@ -126,7 +126,6 @@ const Legend = styled.div`
   border-right: 1px solid var(--secondary-light);
 
   span {
-    width: 100%;
     text-align: center;
     font-weight: 550;
   }
