@@ -32,7 +32,7 @@ export default function FormKeyInfos({
             type="text"
             name="location"
             id="location"
-            placeholder="Type location ..."
+            placeholder="Name of location ..."
             value={formInputs.location}
             onChange={(event) =>
               handleChange(event.target.name, event.target.value)
@@ -63,7 +63,7 @@ export default function FormKeyInfos({
             type="text"
             name="players"
             id="players"
-            placeholder="John, Jane"
+            placeholder="John, Jane, ..."
             value={formInputs.players}
             onChange={(event) =>
               handleChange(event.target.name, event.target.value)
@@ -174,6 +174,11 @@ const KeyInfos = styled.fieldset`
     border-bottom: 1px solid var(--secondary-medium);
     color: var(--secondary-medium);
     font-family: 'Montserrat', sans-serif;
+  }
+
+  input::placeholder {
+    font-style: italic;
+    opacity: 0.8;
   }
 `
 const ButtonWrapper = styled.div`
