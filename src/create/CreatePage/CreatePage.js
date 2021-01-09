@@ -27,6 +27,7 @@ export default function CreatePage({
     showErrorMessageKeyInfos,
     handleSubmitKeyInfos,
     handleCancelKeyInfos,
+    setDisabledState,
   } = useFormKeyInfosCreate({
     createGameProfile,
     updateVisibleForm,
@@ -59,6 +60,7 @@ export default function CreatePage({
           showErrorMessage={showErrorMessageKeyInfos}
           handleSubmit={handleSubmitKeyInfos}
           handleCancel={handleCancelKeyInfos}
+          setDisabledState={setDisabledState}
         />
       )}
       {visibleForm === 'scores' && Object.keys(newGameProfile).length !== 0 && (

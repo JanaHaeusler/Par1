@@ -11,6 +11,7 @@ FormKeyInfos.propTypes = {
   showErrorMessage: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleCancel: PropTypes.func.isRequired,
+  setDisabledState: PropTypes.func.isRequired,
 }
 
 export default function FormKeyInfos({
@@ -21,6 +22,7 @@ export default function FormKeyInfos({
   showErrorMessage,
   handleSubmit,
   handleCancel,
+  setDisabledState,
 }) {
   return (
     <Form noValidate onSubmit={handleSubmit} data-testid="form">
@@ -60,6 +62,7 @@ export default function FormKeyInfos({
         <label>
           Player(s)
           <input
+            disabled={setDisabledState()}
             type="text"
             name="players"
             id="players"
