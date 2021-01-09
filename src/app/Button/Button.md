@@ -16,8 +16,8 @@ Disabled Main Button
 import { CheckIconLight } from '../assets/Icons/Icons'
 ;<Button
   main
-  onClick={() => {}}
   disabled
+  onClick={() => {}}
   iconComponent={<CheckIconLight />}
   text="Save"
 />

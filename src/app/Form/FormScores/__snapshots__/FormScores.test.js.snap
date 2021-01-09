@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FormScores renders snapshot correctly 1`] = `
-.c9 {
+.c8 {
   padding: 7px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -15,55 +15,61 @@ exports[`FormScores renders snapshot correctly 1`] = `
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
-  width: 80px;
+  width: 85px;
   height: 34px;
   border-style: none;
   border-radius: 5px;
-  box-shadow: 3px 3px 10px var(--primary-dark);
-  background-color: var(--text-light);
-  color: var(--secondary-dark);
+  box-shadow: 2px 2px 8px var(--secondary-medium-transparent);
+  background-color: var(--light);
+  color: var(--primary);
+  font-family: 'Raleway',sans-serif;
   font-size: 1rem;
+  font-weight: 550;
 }
 
-.c9:disabled {
+.c8:disabled {
   opacity: 50%;
-}
-
-.c11 {
-  padding: 7px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: space-evenly;
-  -webkit-justify-content: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly;
-  width: 80px;
-  height: 34px;
-  border-style: none;
-  border-radius: 5px;
-  box-shadow: 3px 3px 10px var(--primary-dark);
-  background-color: var(--secondary-dark);
-  color: var(--text-light);
-  font-size: 1rem;
-}
-
-.c11:disabled {
-  opacity: 50%;
-}
-
-.c12 {
-  width: 30%;
-  stroke: var(--text-light);
 }
 
 .c10 {
-  stroke: var(--secondary-dark);
+  padding: 7px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  width: 85px;
+  height: 34px;
+  border-style: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 8px var(--secondary-medium-transparent);
+  background-color: var(--primary);
+  color: var(--light);
+  font-family: 'Raleway',sans-serif;
+  font-size: 1rem;
+  font-weight: 550;
+}
+
+.c10:disabled {
+  opacity: 50%;
+}
+
+.c9 {
+  margin-right: 3px;
+  stroke: var(--primary);
+}
+
+.c11 {
+  margin-right: 3px;
+  width: 25%;
+  stroke: var(--light);
 }
 
 .c0 {
@@ -72,14 +78,8 @@ exports[`FormScores renders snapshot correctly 1`] = `
   display: grid;
   place-items: center;
   border-radius: 25px;
-  box-shadow: 0 0 10px var(--primary-medium);
-  background-color: var(--text-light);
-  color: var(--text-dark);
+  background-color: var(--light);
   font-size: 1rem;
-}
-
-.c0 span {
-  font-family: 'Raleway',sans-serif;
 }
 
 .c0 input::-webkit-outer-spin-button,
@@ -88,7 +88,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
   margin: 0;
 }
 
-.c0 input[type=number] {
+.c0 input[type='number'] {
   -moz-appearance: textfield;
 }
 
@@ -98,19 +98,14 @@ exports[`FormScores renders snapshot correctly 1`] = `
 }
 
 .c1 {
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.c2 {
-  margin: 20px auto;
+  margin: 10px auto 20px;
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;
-  width: 90%;
+  max-width: 90%;
 }
 
-.c3 {
+.c2 {
   padding-right: 20px;
   display: grid;
   grid-template-rows: repeat(19,35px);
@@ -118,15 +113,15 @@ exports[`FormScores renders snapshot correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-right: 1px solid var(--separator);
+  border-right: 1px solid var(--secondary-light);
 }
 
-.c3 span {
-  width: 100%;
+.c2 span {
   text-align: center;
+  font-weight: 550;
 }
 
-.c4 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -138,13 +133,12 @@ exports[`FormScores renders snapshot correctly 1`] = `
   scrollbar-width: none;
 }
 
-.c4::-webkit-scrollbar {
+.c3::-webkit-scrollbar {
   display: none;
 }
 
-.c5 {
+.c4 {
   margin: 0 2px;
-  padding-left: 1px;
   display: grid;
   grid-template-rows: repeat(19,35px);
   -webkit-align-items: center;
@@ -154,24 +148,28 @@ exports[`FormScores renders snapshot correctly 1`] = `
   min-width: 80px;
 }
 
-.c6 input {
-  padding: 0;
+.c4 span:first-child {
+  font-weight: 550;
+}
+
+.c5 input {
+  padding: 5px 10px 5px;
   width: 100%;
   height: 100%;
   border-style: none;
   border-radius: 3px;
-  background-color: var(--separator);
-  color: var(--primary-dark);
-  font-family: 'Montserrat',sans-serif;
+  background-color: var(--secondary-light);
+  color: var(--secondary-medium);
+  font-family: 'Raleway',sans-serif;
+  font-size: 1rem;
+}
+
+.c6 {
+  margin-top: 5px;
+  font-size: 0.7rem;
 }
 
 .c7 {
-  margin: 5px 0 10px;
-  font-size: 0.7rem;
-  color: var(--text-dark);
-}
-
-.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -188,16 +186,14 @@ exports[`FormScores renders snapshot correctly 1`] = `
   class="c0"
   data-testid="form"
 >
-  <h3
-    class="c1"
-  >
+  <h3>
     Score
   </h3>
   <section
-    class="c2"
+    class="c1"
   >
     <div
-      class="c3"
+      class="c2"
     >
       <span>
         Holes
@@ -258,16 +254,16 @@ exports[`FormScores renders snapshot correctly 1`] = `
       </span>
     </div>
     <div
-      class="c4"
+      class="c3"
     >
       <div
-        class="c5"
+        class="c4"
       >
         <span>
           Sarah
         </span>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole1-Sarah"
@@ -278,7 +274,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole2-Sarah"
@@ -289,7 +285,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole3-Sarah"
@@ -300,7 +296,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole4-Sarah"
@@ -311,7 +307,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole5-Sarah"
@@ -322,7 +318,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole6-Sarah"
@@ -333,7 +329,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole7-Sarah"
@@ -344,7 +340,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole8-Sarah"
@@ -355,7 +351,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole9-Sarah"
@@ -366,7 +362,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole10-Sarah"
@@ -377,7 +373,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole11-Sarah"
@@ -388,7 +384,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole12-Sarah"
@@ -399,7 +395,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole13-Sarah"
@@ -410,7 +406,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole14-Sarah"
@@ -421,7 +417,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole15-Sarah"
@@ -432,7 +428,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole16-Sarah"
@@ -443,7 +439,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole17-Sarah"
@@ -454,7 +450,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole18-Sarah"
@@ -466,13 +462,13 @@ exports[`FormScores renders snapshot correctly 1`] = `
         </label>
       </div>
       <div
-        class="c5"
+        class="c4"
       >
         <span>
           Hannes
         </span>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole1-Hannes"
@@ -483,7 +479,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole2-Hannes"
@@ -494,7 +490,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole3-Hannes"
@@ -505,7 +501,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole4-Hannes"
@@ -516,7 +512,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole5-Hannes"
@@ -527,7 +523,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole6-Hannes"
@@ -538,7 +534,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole7-Hannes"
@@ -549,7 +545,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole8-Hannes"
@@ -560,7 +556,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole9-Hannes"
@@ -571,7 +567,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole10-Hannes"
@@ -582,7 +578,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole11-Hannes"
@@ -593,7 +589,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole12-Hannes"
@@ -604,7 +600,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole13-Hannes"
@@ -615,7 +611,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole14-Hannes"
@@ -626,7 +622,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole15-Hannes"
@@ -637,7 +633,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole16-Hannes"
@@ -648,7 +644,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole17-Hannes"
@@ -659,7 +655,7 @@ exports[`FormScores renders snapshot correctly 1`] = `
           />
         </label>
         <label
-          class="c6"
+          class="c5"
         >
           <input
             aria-label="score hole18-Hannes"
@@ -673,30 +669,30 @@ exports[`FormScores renders snapshot correctly 1`] = `
     </div>
   </section>
   <span
-    class="c7"
+    class="c6"
   />
   <div
-    class="c8"
+    class="c7"
   >
     <button
-      class="c9"
+      class="c8"
       data-testid="button-cancel"
       type="button"
     >
       <svg
-        class="c10"
+        class="c9"
       >
         cross.svg
       </svg>
       Cancel
     </button>
     <button
-      class="c11"
+      class="c10"
       data-testid="button-save"
       disabled=""
     >
       <svg
-        class="c12"
+        class="c11"
       >
         check.svg
       </svg>

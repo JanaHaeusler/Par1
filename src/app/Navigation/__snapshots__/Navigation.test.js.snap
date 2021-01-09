@@ -20,7 +20,7 @@ exports[`Navigation renders correctly 1`] = `
 .c1 {
   width: 28px;
   height: 28px;
-  fill: var(--text-light);
+  fill: var(--light);
   opacity: 40%;
 }
 

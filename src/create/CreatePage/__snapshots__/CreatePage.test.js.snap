@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CreatePage renders snapshot correctly 1`] = `
-.c5 {
+.c4 {
   padding: 7px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -15,55 +15,61 @@ exports[`CreatePage renders snapshot correctly 1`] = `
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
-  width: 80px;
+  width: 85px;
   height: 34px;
   border-style: none;
   border-radius: 5px;
-  box-shadow: 3px 3px 10px var(--primary-dark);
-  background-color: var(--text-light);
-  color: var(--secondary-dark);
+  box-shadow: 2px 2px 8px var(--secondary-medium-transparent);
+  background-color: var(--light);
+  color: var(--primary);
+  font-family: 'Raleway',sans-serif;
   font-size: 1rem;
+  font-weight: 550;
 }
 
-.c5:disabled {
+.c4:disabled {
   opacity: 50%;
-}
-
-.c7 {
-  padding: 7px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: space-evenly;
-  -webkit-justify-content: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly;
-  width: 80px;
-  height: 34px;
-  border-style: none;
-  border-radius: 5px;
-  box-shadow: 3px 3px 10px var(--primary-dark);
-  background-color: var(--secondary-dark);
-  color: var(--text-light);
-  font-size: 1rem;
-}
-
-.c7:disabled {
-  opacity: 50%;
-}
-
-.c8 {
-  width: 30%;
-  stroke: var(--text-light);
 }
 
 .c6 {
-  stroke: var(--secondary-dark);
+  padding: 7px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  width: 85px;
+  height: 34px;
+  border-style: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 8px var(--secondary-medium-transparent);
+  background-color: var(--primary);
+  color: var(--light);
+  font-family: 'Raleway',sans-serif;
+  font-size: 1rem;
+  font-weight: 550;
+}
+
+.c6:disabled {
+  opacity: 50%;
+}
+
+.c5 {
+  margin-right: 3px;
+  stroke: var(--primary);
+}
+
+.c7 {
+  margin-right: 3px;
+  width: 25%;
+  stroke: var(--light);
 }
 
 .c0 {
@@ -72,9 +78,7 @@ exports[`CreatePage renders snapshot correctly 1`] = `
   display: grid;
   place-items: center;
   border-radius: 25px;
-  box-shadow: 0 0 10px var(--primary-medium);
-  background-color: var(--text-light);
-  color: var(--text-dark);
+  background-color: var(--light);
   font-size: 1rem;
 }
 
@@ -84,7 +88,7 @@ exports[`CreatePage renders snapshot correctly 1`] = `
   margin: 0;
 }
 
-.c0 input[type=number] {
+.c0 input[type='number'] {
   -moz-appearance: textfield;
 }
 
@@ -94,11 +98,6 @@ exports[`CreatePage renders snapshot correctly 1`] = `
 }
 
 .c1 {
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.c2 {
   margin: 0;
   padding: 0;
   border: none;
@@ -106,24 +105,43 @@ exports[`CreatePage renders snapshot correctly 1`] = `
   width: 100%;
 }
 
-.c2 label {
+.c1 label {
   margin-top: 10px;
   margin-bottom: 5px;
-  font-family: 'Raleway',sans-serif;
 }
 
-.c2 input {
+.c1 input {
   display: block;
   margin-top: 3px;
   padding: 5px;
   width: 100%;
   border-style: none;
-  border-bottom: 1px solid var(--primary-dark);
-  color: var(--primary-dark);
+  border-bottom: 1px solid var(--secondary-medium);
+  color: var(--secondary-medium);
   font-family: 'Montserrat',sans-serif;
 }
 
-.c4 {
+.c1 input::-webkit-input-placeholder {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.c1 input::-moz-placeholder {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.c1 input:-ms-input-placeholder {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.c1 input::placeholder {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -136,13 +154,12 @@ exports[`CreatePage renders snapshot correctly 1`] = `
   width: 100%;
 }
 
-.c3 {
+.c2 {
   margin-top: 5px;
   font-size: 0.7rem;
-  color: var(--text-dark);
 }
 
-.c3:last-child {
+.c2:last-child {
   margin-bottom: 10px;
 }
 
@@ -151,26 +168,24 @@ exports[`CreatePage renders snapshot correctly 1`] = `
   data-testid="form"
   novalidate=""
 >
-  <h3
-    class="c1"
-  >
+  <h3>
     Info
   </h3>
   <fieldset
-    class="c2"
+    class="c1"
   >
     <label>
       Location
       <input
         id="location"
         name="location"
-        placeholder="Type location ..."
+        placeholder="Name of location ..."
         type="text"
         value=""
       />
     </label>
     <span
-      class="c3"
+      class="c2"
     />
     <label>
       Date
@@ -182,20 +197,20 @@ exports[`CreatePage renders snapshot correctly 1`] = `
       />
     </label>
     <span
-      class="c3"
+      class="c2"
     />
     <label>
       Player(s)
       <input
         id="players"
         name="players"
-        placeholder="John, Jane"
+        placeholder="John, Jane, ..."
         type="text"
         value=""
       />
     </label>
     <span
-      class="c3"
+      class="c2"
     />
     <label>
       Winner(s)
@@ -208,7 +223,7 @@ exports[`CreatePage renders snapshot correctly 1`] = `
       />
     </label>
     <span
-      class="c3"
+      class="c2"
     />
     <label>
       Total Shots Winner(s)
@@ -221,31 +236,31 @@ exports[`CreatePage renders snapshot correctly 1`] = `
       />
     </label>
     <span
-      class="c3"
+      class="c2"
     />
   </fieldset>
   <div
-    class="c4"
+    class="c3"
   >
     <button
-      class="c5"
+      class="c4"
       data-testid="button-cancel"
       type="button"
     >
       <svg
-        class="c6"
+        class="c5"
       >
         cross.svg
       </svg>
       Cancel
     </button>
     <button
-      class="c7"
+      class="c6"
       data-testid="button-save"
       disabled=""
     >
       <svg
-        class="c8"
+        class="c7"
       >
         check.svg
       </svg>
@@ -253,7 +268,7 @@ exports[`CreatePage renders snapshot correctly 1`] = `
     </button>
   </div>
   <span
-    class="c3"
+    class="c2"
   >
     *Please do not clear your browsers cache, in order to permanently save your game details
   </span>

@@ -20,7 +20,7 @@ exports[`AppFooter renders correctly 1`] = `
 .c2 {
   width: 28px;
   height: 28px;
-  fill: var(--text-light);
+  fill: var(--light);
   opacity: 40%;
 }
 
@@ -44,9 +44,9 @@ exports[`AppFooter renders correctly 1`] = `
   align-items: center;
   height: 50px;
   max-width: 1240px;
-  box-shadow: 0 0 10px var(--primary-dark);
+  box-shadow: 0 0 5px var(--secondary-medium);
   border-radius: 25px 25px 0 0;
-  background: var(--gradient-dark);
+  background: var(--primary-gradient);
 }
 
 <footer
