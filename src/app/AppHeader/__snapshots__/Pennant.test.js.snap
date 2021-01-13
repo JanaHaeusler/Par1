@@ -2,6 +2,8 @@
 
 exports[`Pennant renders correctly 1`] = `
 .c0 {
+  height: 60px;
+  width: 60px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -10,16 +12,14 @@ exports[`Pennant renders correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
   box-shadow: 0 0 5px var(--secondary-medium);
   border-radius: 0 0 50px 50px;
   background-color: var(--light);
 }
 
 .c1 {
-  margin-top: 10px;
   width: 30px;
+  margin-top: 10px;
   fill: var(--primary);
 }
 

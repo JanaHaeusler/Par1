@@ -5,11 +5,11 @@ exports[`Game renders snapshot correctly 1`] = `
   stroke: var(--primary);
 }
 
-.c13 {
+.c11 {
   stroke: var(--primary);
 }
 
-.c11 {
+.c10 {
   stroke: var(--primary);
 }
 
@@ -20,8 +20,8 @@ exports[`Game renders snapshot correctly 1`] = `
 .c1 {
   padding: 10px;
   display: grid;
-  grid-template-rows: repeat(4,auto);
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4,auto);
   grid-gap: 10px;
   border-radius: 25px 25px 0 0;
   background-color: var(--light);
@@ -56,20 +56,20 @@ exports[`Game renders snapshot correctly 1`] = `
 }
 
 .c7 {
+  width: 100%;
   padding: 5px 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-  -webkit-justify-content: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  width: 100%;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
   border-radius: 0 0 25px 25px;
   background: var(--light-transparent);
 }
@@ -85,29 +85,7 @@ exports[`Game renders snapshot correctly 1`] = `
   background: none;
 }
 
-.c10 {
-  margin: 5px;
-  padding: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  border: none;
-  background: none;
-}
-
-.c12 {
-  margin: 5px;
-  padding: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  border: none;
-  background: none;
-}
-
-<section
+<div
   class="c0"
 >
   <div
@@ -168,25 +146,25 @@ exports[`Game renders snapshot correctly 1`] = `
       </svg>
     </button>
     <button
-      class="c10"
+      class="c8"
       data-testid="button-edit"
     >
       <svg
-        class="c11"
+        class="c10"
       >
         pencil.svg
       </svg>
     </button>
     <button
-      class="c12"
+      class="c8"
       data-testid="button-details"
     >
       <svg
-        class="c13"
+        class="c11"
       >
         details.svg
       </svg>
     </button>
   </div>
-</section>
+</div>
 `;

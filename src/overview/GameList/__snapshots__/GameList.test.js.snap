@@ -5,11 +5,11 @@ exports[`GameList renders snapshot correctly 1`] = `
   stroke: var(--primary);
 }
 
-.c14 {
+.c12 {
   stroke: var(--primary);
 }
 
-.c12 {
+.c11 {
   stroke: var(--primary);
 }
 
@@ -20,8 +20,8 @@ exports[`GameList renders snapshot correctly 1`] = `
 .c2 {
   padding: 10px;
   display: grid;
-  grid-template-rows: repeat(4,auto);
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4,auto);
   grid-gap: 10px;
   border-radius: 25px 25px 0 0;
   background-color: var(--light);
@@ -56,47 +56,25 @@ exports[`GameList renders snapshot correctly 1`] = `
 }
 
 .c8 {
+  width: 100%;
   padding: 5px 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-  -webkit-justify-content: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  width: 100%;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
   border-radius: 0 0 25px 25px;
   background: var(--light-transparent);
 }
 
 .c9 {
-  margin: 5px;
-  padding: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  border: none;
-  background: none;
-}
-
-.c11 {
-  margin: 5px;
-  padding: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  border: none;
-  background: none;
-}
-
-.c13 {
   margin: 5px;
   padding: 0;
   display: -webkit-box;
@@ -115,7 +93,7 @@ exports[`GameList renders snapshot correctly 1`] = `
 <div
   class="c0"
 >
-  <section
+  <div
     class="c1"
   >
     <div
@@ -176,28 +154,28 @@ exports[`GameList renders snapshot correctly 1`] = `
         </svg>
       </button>
       <button
-        class="c11"
+        class="c9"
         data-testid="button-edit"
       >
         <svg
-          class="c12"
+          class="c11"
         >
           pencil.svg
         </svg>
       </button>
       <button
-        class="c13"
+        class="c9"
         data-testid="button-details"
       >
         <svg
-          class="c14"
+          class="c12"
         >
           details.svg
         </svg>
       </button>
     </div>
-  </section>
-  <section
+  </div>
+  <div
     class="c1"
   >
     <div
@@ -258,26 +236,26 @@ exports[`GameList renders snapshot correctly 1`] = `
         </svg>
       </button>
       <button
-        class="c11"
+        class="c9"
         data-testid="button-edit"
       >
         <svg
-          class="c12"
+          class="c11"
         >
           pencil.svg
         </svg>
       </button>
       <button
-        class="c13"
+        class="c9"
         data-testid="button-details"
       >
         <svg
-          class="c14"
+          class="c12"
         >
           details.svg
         </svg>
       </button>
     </div>
-  </section>
+  </div>
 </div>
 `;

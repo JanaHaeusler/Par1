@@ -2,6 +2,8 @@
 
 exports[`FormKeyInfos renders snapshot correctly 1`] = `
 .c4 {
+  height: 34px;
+  width: 85px;
   padding: 7px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -15,11 +17,9 @@ exports[`FormKeyInfos renders snapshot correctly 1`] = `
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
-  width: 85px;
-  height: 34px;
-  border-style: none;
-  border-radius: 5px;
   box-shadow: 2px 2px 8px var(--secondary-medium-transparent);
+  border-radius: 5px;
+  border-style: none;
   background-color: var(--light);
   color: var(--primary);
   font-family: 'Raleway',sans-serif;
@@ -32,6 +32,8 @@ exports[`FormKeyInfos renders snapshot correctly 1`] = `
 }
 
 .c6 {
+  height: 34px;
+  width: 85px;
   padding: 7px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -45,11 +47,9 @@ exports[`FormKeyInfos renders snapshot correctly 1`] = `
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
-  width: 85px;
-  height: 34px;
-  border-style: none;
-  border-radius: 5px;
   box-shadow: 2px 2px 8px var(--secondary-medium-transparent);
+  border-radius: 5px;
+  border-style: none;
   background-color: var(--primary);
   color: var(--light);
   font-family: 'Raleway',sans-serif;
@@ -98,11 +98,11 @@ exports[`FormKeyInfos renders snapshot correctly 1`] = `
 }
 
 .c1 {
+  width: 100%;
   margin: 0;
   padding: 0;
-  border: none;
   display: grid;
-  width: 100%;
+  border: none;
 }
 
 .c1 label {
@@ -111,10 +111,10 @@ exports[`FormKeyInfos renders snapshot correctly 1`] = `
 }
 
 .c1 input {
-  display: block;
+  width: 100%;
   margin-top: 3px;
   padding: 5px;
-  width: 100%;
+  display: block;
   border-style: none;
   border-bottom: 1px solid var(--secondary-medium);
   color: var(--secondary-medium);
@@ -142,6 +142,8 @@ exports[`FormKeyInfos renders snapshot correctly 1`] = `
 }
 
 .c3 {
+  width: 100%;
+  margin-bottom: 10px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -150,8 +152,6 @@ exports[`FormKeyInfos renders snapshot correctly 1`] = `
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
-  margin-bottom: 10px;
-  width: 100%;
 }
 
 .c2 {

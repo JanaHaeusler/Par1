@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DetailsPage renders snapshot correctly 1`] = `
-.c14 {
+.c13 {
   stroke: var(--primary);
 }
 
@@ -18,8 +18,8 @@ exports[`DetailsPage renders snapshot correctly 1`] = `
 .c2 {
   padding: 20px;
   display: grid;
-  grid-template-rows: repeat(4,auto);
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4,auto);
   grid-gap: 10px;
 }
 
@@ -51,12 +51,12 @@ exports[`DetailsPage renders snapshot correctly 1`] = `
 }
 
 .c8 {
+  max-width: 90%;
   margin: 0 auto;
   padding: 10px 20px;
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;
-  max-width: 90%;
 }
 
 .c9 {
@@ -96,6 +96,7 @@ exports[`DetailsPage renders snapshot correctly 1`] = `
 }
 
 .c11 {
+  min-width: 80px;
   margin: 0 2px;
   display: grid;
   grid-template-rows: repeat(19,35px);
@@ -103,7 +104,6 @@ exports[`DetailsPage renders snapshot correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  min-width: 80px;
 }
 
 .c11 span:first-child {
@@ -112,33 +112,23 @@ exports[`DetailsPage renders snapshot correctly 1`] = `
 }
 
 .c12 {
+  width: 100%;
   padding: 5px 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-  -webkit-justify-content: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  width: 100%;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  border: none;
   border-radius: 0 0 25px 25px;
   background: var(--light-transparent);
-}
-
-.c13 {
-  margin: 5px;
-  padding: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  border: none;
-  background: none;
 }
 
 <div
@@ -383,19 +373,15 @@ exports[`DetailsPage renders snapshot correctly 1`] = `
       </div>
     </section>
   </div>
-  <div
+  <button
     class="c12"
+    data-testid="button-back"
   >
-    <button
+    <svg
       class="c13"
-      data-testid="button-back"
     >
-      <svg
-        class="c14"
-      >
-        arrow-left.svg
-      </svg>
-    </button>
-  </div>
+      arrow-left.svg
+    </svg>
+  </button>
 </div>
 `;

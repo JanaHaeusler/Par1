@@ -2,6 +2,8 @@
 
 exports[`AppHeader renders correctly 1`] = `
 .c2 {
+  height: 60px;
+  width: 60px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -10,24 +12,22 @@ exports[`AppHeader renders correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
   box-shadow: 0 0 5px var(--secondary-medium);
   border-radius: 0 0 50px 50px;
   background-color: var(--light);
 }
 
 .c3 {
-  margin-top: 10px;
   width: 30px;
+  margin-top: 10px;
   fill: var(--primary);
 }
 
 .c0 {
-  margin: 0 auto;
   position: relative;
   height: 50px;
   max-width: 1240px;
+  margin: 0 auto;
   box-shadow: 0 0 5px var(--secondary-medium);
   border-radius: 0 0 25px 3px;
   background: var(--primary-gradient);
