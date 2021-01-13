@@ -10,8 +10,16 @@ DetailsPage.propTypes = {
 
 export default function DetailsPage({ targetProfile }) {
   const history = useHistory()
-  const { location, date, playersString, winner, shots } = targetProfile
+  const {
+    location,
+    date,
+    playersString,
+    winner,
+    shots,
+    playersArray,
+  } = targetProfile
   const players = playersString
+  const hasOnePlayer = playersArray?.length < 2
 
   return (
     <DetailsPageWrapper>
@@ -32,7 +40,7 @@ export default function DetailsPage({ targetProfile }) {
             <span>{shots}</span>
           </Shots>
         </GameKeyInfos>
-        <GameScores>
+        <GameScores hasOnePlayer={hasOnePlayer}>
           <Legend>
             <span>Holes</span>
             {new Array(18).fill().map((_, index) => {
@@ -111,18 +119,18 @@ const Shots = styled.div`
   grid-row-start: 4;
 `
 const GameScores = styled.section`
-  max-width: 90%;
+  width: ${(props) => (props.hasOnePlayer ? '70%' : '90%')};
   margin: 0 auto;
   padding: 10px 20px;
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: ${(props) =>
+    props.hasOnePlayer ? '80px 80px' : '1fr 3fr'};
   gap: 20px;
 `
 const Legend = styled.div`
   padding-right: 20px;
   display: grid;
   grid-template-rows: repeat(19, 35px);
-  align-items: center;
   border-right: 1px solid var(--secondary-light);
 
   span {
@@ -148,7 +156,6 @@ const ScoreSinglePlayer = styled.div`
   margin: 0 2px;
   display: grid;
   grid-template-rows: repeat(19, 35px);
-  align-items: center;
 
   span:first-child {
     font-family: 'Montserrat', sans-serif;

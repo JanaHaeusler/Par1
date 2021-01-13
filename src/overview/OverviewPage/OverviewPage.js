@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types'
+import { useEffect } from 'react'
 import styled from 'styled-components/macro'
+import scrollUp from '../../lib/scrollUp'
 import GameList from '../GameList'
 
 OverviewPage.propTypes = {
@@ -15,6 +17,8 @@ export default function OverviewPage({
   prepareEditPage,
   prepareDetailsPage,
 }) {
+  useEffect(() => scrollUp(), [])
+
   return (
     <>
       <Headline>Your Games</Headline>
