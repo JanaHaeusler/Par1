@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
-const ButtonStyled = styled.button`
+const ButtonWrapper = styled.button`
+  height: 34px;
+  width: 85px;
   padding: 7px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 85px;
-  height: 34px;
-  border-style: none;
-  border-radius: 5px;
   box-shadow: 2px 2px 8px var(--secondary-medium-transparent);
+  border-radius: 5px;
+  border-style: none;
   background-color: ${(props) =>
     props.main ? 'var(--primary)' : 'var(--light)'};
   color: ${(props) => (props.main ? 'var(--light)' : 'var(--primary)')};
@@ -23,10 +23,10 @@ const ButtonStyled = styled.button`
   }
 `
 const Button = ({ iconComponent, text, ...props }) => (
-  <ButtonStyled {...props}>
+  <ButtonWrapper {...props}>
     {iconComponent}
     {text}
-  </ButtonStyled>
+  </ButtonWrapper>
 )
 
 Button.propTypes = {

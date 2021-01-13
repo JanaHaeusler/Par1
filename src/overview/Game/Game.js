@@ -25,13 +25,12 @@ export default function Game({
   onDetails,
 }) {
   const history = useHistory()
-
   const [isSetToDelete, setIsSetToDelete] = useState(false)
   const { location, date, playersString, winner, shots, _id } = savedGameProfile
   const playerNames = playersString
 
   return (
-    <Card>
+    <GameWrapper>
       {isSetToDelete || (
         <>
           <SavedGameContent>
@@ -51,24 +50,24 @@ export default function Game({
             </Shots>
           </SavedGameContent>
           <ButtonWrapper>
-            <ButtonDeleteIcon
+            <ButtonIcon
               onClick={() => setIsSetToDelete(true)}
               data-testid="button-set-delete"
             >
               <BinIconPrimary />
-            </ButtonDeleteIcon>
-            <ButtonEditIcon
+            </ButtonIcon>
+            <ButtonIcon
               onClick={() => handleEdit(_id)}
               data-testid="button-edit"
             >
               <PencilIconPrimary />
-            </ButtonEditIcon>
-            <ButtonDetailsIcon
+            </ButtonIcon>
+            <ButtonIcon
               onClick={() => handleDetails(_id)}
               data-testid="button-details"
             >
               <DetailsIconPrimary />
-            </ButtonDetailsIcon>
+            </ButtonIcon>
           </ButtonWrapper>
         </>
       )}
@@ -93,7 +92,7 @@ export default function Game({
           />
         </DeleteField>
       )}
-    </Card>
+    </GameWrapper>
   )
 
   function handleEdit(id) {
@@ -107,14 +106,14 @@ export default function Game({
   }
 }
 
-const Card = styled.section`
+const GameWrapper = styled.div`
   margin: 0 20px;
 `
 const SavedGameContent = styled.div`
   padding: 10px;
   display: grid;
-  grid-template-rows: repeat(4, auto);
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4, auto);
   grid-gap: 10px;
   border-radius: 25px 25px 0 0;
   background-color: var(--light);
@@ -143,29 +142,15 @@ const Shots = styled.div`
   grid-row-start: 4;
 `
 const ButtonWrapper = styled.div`
+  width: 100%;
   padding: 5px 0;
   display: flex;
-  justify-content: space-evenly;
   align-items: baseline;
-  width: 100%;
+  justify-content: space-evenly;
   border-radius: 0 0 25px 25px;
   background: var(--light-transparent);
 `
-const ButtonDeleteIcon = styled.button`
-  margin: 5px;
-  padding: 0;
-  display: flex;
-  border: none;
-  background: none;
-`
-const ButtonEditIcon = styled.button`
-  margin: 5px;
-  padding: 0;
-  display: flex;
-  border: none;
-  background: none;
-`
-const ButtonDetailsIcon = styled.button`
+const ButtonIcon = styled.button`
   margin: 5px;
   padding: 0;
   display: flex;

@@ -154,11 +154,11 @@ const Form = styled.form`
   }
 `
 const KeyInfos = styled.fieldset`
+  width: 100%;
   margin: 0;
   padding: 0;
-  border: none;
   display: grid;
-  width: 100%;
+  border: none;
 
   label {
     margin-top: 10px;
@@ -166,10 +166,10 @@ const KeyInfos = styled.fieldset`
   }
 
   input {
-    display: block;
+    width: 100%;
     margin-top: 3px;
     padding: 5px;
-    width: 100%;
+    display: block;
     border-style: none;
     border-bottom: 1px solid var(--secondary-medium);
     color: var(--secondary-medium);
@@ -182,10 +182,10 @@ const KeyInfos = styled.fieldset`
   }
 `
 const ButtonWrapper = styled.div`
+  width: 100%;
+  margin-bottom: 10px;
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 10px;
-  width: 100%;
 `
 const Note = styled.span`
   margin-top: 5px;

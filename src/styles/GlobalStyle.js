@@ -34,6 +34,8 @@ export default createGlobalStyle`
     }
 
     h1 {
+        text-align: center;
+        text-transform: uppercase;
         font-size: 2rem;
     }
 

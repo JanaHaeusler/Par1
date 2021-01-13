@@ -6,21 +6,21 @@ import removeLocally from '../../lib/removeLocally'
 export default function Navigation() {
   return (
     <NavBar>
-      <NavLinkStyled
+      <NavigationLink
         exact
         to="/"
         onClick={emptyLocalStorage}
         data-testid="button-home-page"
       >
         <HomeIcon />
-      </NavLinkStyled>
-      <NavLinkStyled
+      </NavigationLink>
+      <NavigationLink
         to="/create"
         onClick={emptyLocalStorage}
         data-testid="button-form-page"
       >
         <PlusIcon />
-      </NavLinkStyled>
+      </NavigationLink>
     </NavBar>
   )
 
@@ -33,14 +33,14 @@ export default function Navigation() {
 }
 
 const NavBar = styled.nav`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 `
-const NavLinkStyled = styled(NavLink)`
-  width: 28px;
+const NavigationLink = styled(NavLink)`
   height: 28px;
+  width: 28px;
   fill: var(--light);
   opacity: 40%;
 

@@ -112,11 +112,11 @@ const Form = styled.form`
   }
 `
 const GameScores = styled.section`
+  max-width: 90%;
   margin: 10px auto 20px;
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;
-  max-width: 90%;
 `
 const Legend = styled.div`
   padding-right: 20px;
@@ -140,11 +140,11 @@ const ScoresAllPlayers = styled.div`
   }
 `
 const ScoreSinglePlayer = styled.div`
+  min-width: 80px;
   margin: 0 2px;
   display: grid;
   grid-template-rows: repeat(19, 35px);
   align-items: center;
-  min-width: 80px;
 
   span:first-child {
     font-weight: 550;
@@ -152,11 +152,11 @@ const ScoreSinglePlayer = styled.div`
 `
 const SingleScore = styled.label`
   input {
-    padding: 5px 10px 5px;
-    width: 100%;
     height: 100%;
-    border-style: none;
+    width: 100%;
+    padding: 5px 10px 5px;
     border-radius: 3px;
+    border-style: none;
     background-color: var(--secondary-light);
     color: var(--secondary-medium);
     font-family: 'Raleway', sans-serif;
@@ -168,8 +168,8 @@ const Note = styled.span`
   font-size: 0.7rem;
 `
 const ButtonWrapper = styled.div`
+  width: 100%;
+  margin-bottom: 10px;
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 10px;
-  width: 100%;
 `

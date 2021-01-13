@@ -30,17 +30,15 @@ export default function OverviewPage({
 
 const Headline = styled.h1`
   margin: 0 0 15px 0;
-  text-align: center;
-  text-transform: uppercase;
   color: var(--light);
 
   &::after {
+    height: 2px;
+    width: 120px;
     margin: 8px auto 30px;
     display: block;
-    width: 120px;
-    height: 2px;
-    content: '';
-    background-color: var(--light);
     align-content: center;
+    background-color: var(--light);
+    content: '';
   }
 `

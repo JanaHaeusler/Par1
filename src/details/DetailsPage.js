@@ -14,8 +14,8 @@ export default function DetailsPage({ targetProfile }) {
   const players = playersString
 
   return (
-    <DetailsCardWrapper>
-      <GameDetailsWrapper>
+    <DetailsPageWrapper>
+      <AllGameDetails>
         <GameKeyInfos>
           <Date>{date}</Date>
           <Location>{location}</Location>
@@ -62,23 +62,21 @@ export default function DetailsPage({ targetProfile }) {
             })}
           </ScoresAllPlayers>
         </GameScores>
-      </GameDetailsWrapper>
-      <ButtonWrapper>
-        <ButtonBackIcon
-          onClick={() => history.push('/')}
-          data-testid="button-back"
-        >
-          <BackIconPrimary />
-        </ButtonBackIcon>
-      </ButtonWrapper>
-    </DetailsCardWrapper>
+      </AllGameDetails>
+      <ButtonBackIcon
+        onClick={() => history.push('/')}
+        data-testid="button-back"
+      >
+        <BackIconPrimary />
+      </ButtonBackIcon>
+    </DetailsPageWrapper>
   )
 }
 
-const DetailsCardWrapper = styled.div`
+const DetailsPageWrapper = styled.div`
   margin: 0 20px;
 `
-const GameDetailsWrapper = styled.div`
+const AllGameDetails = styled.div`
   border-radius: 25px 25px 0 0;
   background-color: var(--light);
   font-size: 1rem;
@@ -86,8 +84,8 @@ const GameDetailsWrapper = styled.div`
 const GameKeyInfos = styled.section`
   padding: 20px;
   display: grid;
-  grid-template-rows: repeat(4, auto);
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4, auto);
   grid-gap: 10px;
 `
 const Date = styled.div`
@@ -113,12 +111,12 @@ const Shots = styled.div`
   grid-row-start: 4;
 `
 const GameScores = styled.section`
+  max-width: 90%;
   margin: 0 auto;
   padding: 10px 20px;
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;
-  max-width: 90%;
 `
 const Legend = styled.div`
   padding-right: 20px;
@@ -146,30 +144,24 @@ const ScoresAllPlayers = styled.div`
   }
 `
 const ScoreSinglePlayer = styled.div`
+  min-width: 80px;
   margin: 0 2px;
   display: grid;
   grid-template-rows: repeat(19, 35px);
   align-items: center;
-  min-width: 80px;
 
   span:first-child {
     font-family: 'Montserrat', sans-serif;
     font-weight: 550;
   }
 `
-const ButtonWrapper = styled.div`
+const ButtonBackIcon = styled.button`
+  width: 100%;
   padding: 5px 0;
   display: flex;
-  justify-content: space-evenly;
   align-items: baseline;
-  width: 100%;
+  justify-content: space-evenly;
+  border: none;
   border-radius: 0 0 25px 25px;
   background: var(--light-transparent);
-`
-const ButtonBackIcon = styled.button`
-  margin: 5px;
-  padding: 0;
-  display: flex;
-  border: none;
-  background: none;
 `
