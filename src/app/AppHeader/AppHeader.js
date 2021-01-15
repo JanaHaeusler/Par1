@@ -3,24 +3,24 @@ import Pennant from './Pennant'
 
 export default function AppHeader({ className }) {
   return (
-    <HeaderStyled className={className}>
-      <PennantStyled>
+    <Header className={className}>
+      <PennantWrapper>
         <Pennant />
-      </PennantStyled>
-    </HeaderStyled>
+      </PennantWrapper>
+    </Header>
   )
 }
 
-const HeaderStyled = styled.header`
-  margin: 0 auto;
+const Header = styled.header`
   position: relative;
   height: 50px;
   max-width: 1240px;
-  box-shadow: 0 0 10px var(--primary-dark);
+  margin: 0 auto;
+  box-shadow: var(--shadow-dark);
   border-radius: 0 0 25px 3px;
-  background: var(--gradient-dark);
+  background: var(--primary-gradient);
 `
-const PennantStyled = styled.div`
+const PennantWrapper = styled.div`
   position: absolute;
   top: 0;
   left: 28px;

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import Button from '../../Button'
-import { CancelIconDark, CheckIconLight } from '../../Icons/Icons'
+import { CancelIconPrimaryText, CheckIconLightText } from '../../Icons/Icons'
 
 FormKeyInfos.propTypes = {
   formInputs: PropTypes.object.isRequired,
@@ -26,7 +26,7 @@ export default function FormKeyInfos({
 }) {
   return (
     <Form noValidate onSubmit={handleSubmit} data-testid="form">
-      <Headline>Info</Headline>
+      <h3>Info</h3>
       <KeyInfos>
         <label>
           Location
@@ -34,7 +34,7 @@ export default function FormKeyInfos({
             type="text"
             name="location"
             id="location"
-            placeholder="Type location ..."
+            placeholder="Name of location ..."
             value={formInputs.location}
             onChange={(event) =>
               handleChange(event.target.name, event.target.value)
@@ -66,7 +66,7 @@ export default function FormKeyInfos({
             type="text"
             name="players"
             id="players"
-            placeholder="John, Jane"
+            placeholder="John, Jane, ..."
             value={formInputs.players}
             onChange={(event) =>
               handleChange(event.target.name, event.target.value)
@@ -112,14 +112,14 @@ export default function FormKeyInfos({
         <Button
           type="button"
           onClick={handleCancel}
-          iconComponent={<CancelIconDark />}
+          iconComponent={<CancelIconPrimaryText />}
           text="Cancel"
           data-testid="button-cancel"
         />
         <Button
           main
           disabled={!isSaveButtonShown}
-          iconComponent={<CheckIconLight />}
+          iconComponent={<CheckIconLightText />}
           text="Save"
           data-testid="button-save"
         />
@@ -138,9 +138,7 @@ const Form = styled.form`
   display: grid;
   place-items: center;
   border-radius: 25px;
-  box-shadow: 0 0 10px var(--primary-medium);
-  background-color: var(--text-light);
-  color: var(--text-dark);
+  background-color: var(--white);
   font-size: 1rem;
 
   input::-webkit-outer-spin-button,
@@ -158,44 +156,44 @@ const Form = styled.form`
     margin-bottom: 5px;
   }
 `
-const Headline = styled.h3`
-  text-align: center;
-  text-transform: uppercase;
-`
 const KeyInfos = styled.fieldset`
+  width: 100%;
   margin: 0;
   padding: 0;
-  border: none;
   display: grid;
-  width: 100%;
+  border: none;
 
   label {
     margin-top: 10px;
     margin-bottom: 5px;
-    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
   }
 
   input {
-    display: block;
+    width: 100%;
     margin-top: 3px;
     padding: 5px;
-    width: 100%;
+    display: block;
     border-style: none;
-    border-bottom: 1px solid var(--primary-dark);
-    color: var(--primary-dark);
+    border-bottom: var(--border-dark);
+    color: var(--secondary-medium);
     font-family: 'Montserrat', sans-serif;
+  }
+
+  input::placeholder {
+    font-style: italic;
+    opacity: 0.8;
   }
 `
 const ButtonWrapper = styled.div`
+  width: 100%;
+  margin-bottom: 10px;
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 10px;
-  width: 100%;
 `
 const Note = styled.span`
   margin-top: 5px;
   font-size: 0.7rem;
-  color: var(--text-dark);
 
   :last-child {
     margin-bottom: 10px;

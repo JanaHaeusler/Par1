@@ -1,20 +1,27 @@
 import { render } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { CheckIconWhite } from '../assets/Icons/Icons'
+import { CheckIconLightText } from '../Icons/Icons'
 import Button from './Button'
+
+const TestIcon = JSON.stringify(CheckIconLightText)
 
 const testProps = {
   main: true,
   disabled: false,
   onClick: jest.fn(),
-  iconComponent: CheckIconWhite,
+  iconComponent: TestIcon,
   text: 'Test Text',
 }
 
 describe('Button', () => {
+  it('renders correctly', () => {
+    const { container } = render(<Button {...testProps} />)
+    expect(container).toMatchSnapshot()
+  })
+
   it('shows the right text', () => {
     const { getByText } = render(<Button {...testProps} />)
-    expect(getByText('Test Text')).toBeInTheDocument()
+    expect(getByText(/Test Text/)).toBeInTheDocument()
   })
 
   it('is disabled', () => {

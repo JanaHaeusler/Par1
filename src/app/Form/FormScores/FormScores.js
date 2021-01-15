@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import { v4 as uuid } from 'uuid'
 import Button from '../../Button'
-import { CancelIconDark, CheckIconLight } from '../../Icons/Icons'
+import { CancelIconPrimaryText, CheckIconLightText } from '../../Icons/Icons'
 
 FormScores.propTypes = {
   formInputs: PropTypes.object.isRequired,
@@ -25,8 +25,8 @@ export default function FormScores({
 }) {
   return (
     <Form onSubmit={handleSubmit} data-testid="form">
-      <Headline>Score</Headline>
-      <ScoreOverview>
+      <h3>Score</h3>
+      <GameScores>
         <Legend>
           <span>Holes</span>
           {new Array(18).fill().map((_, index) => {
@@ -65,20 +65,20 @@ export default function FormScores({
             )
           })}
         </ScoresAllPlayers>
-      </ScoreOverview>
+      </GameScores>
       <Note>{showErrorMessage()}</Note>
       <ButtonWrapper>
         <Button
           type="button"
           onClick={handleCancel}
-          iconComponent={<CancelIconDark />}
+          iconComponent={<CancelIconPrimaryText />}
           text="Cancel"
           data-testid="button-cancel"
         />
         <Button
           main
           disabled={!isSaveButtonShown}
-          iconComponent={<CheckIconLight />}
+          iconComponent={<CheckIconLightText />}
           text="Save"
           data-testid="button-save"
         />
@@ -93,14 +93,8 @@ const Form = styled.form`
   display: grid;
   place-items: center;
   border-radius: 25px;
-  box-shadow: 0 0 10px var(--primary-medium);
-  background-color: var(--text-light);
-  color: var(--text-dark);
+  background-color: var(--white);
   font-size: 1rem;
-
-  span {
-    font-family: 'Raleway', sans-serif;
-  }
 
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
@@ -117,27 +111,23 @@ const Form = styled.form`
     margin-bottom: 5px;
   }
 `
-const Headline = styled.h3`
-  text-align: center;
-  text-transform: uppercase;
-`
-const ScoreOverview = styled.section`
-  margin: 20px auto;
+const GameScores = styled.section`
+  max-width: 90%;
+  margin: 10px auto 20px;
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;
-  width: 90%;
 `
 const Legend = styled.div`
   padding-right: 20px;
   display: grid;
   grid-template-rows: repeat(19, 35px);
   align-items: center;
-  border-right: 1px solid var(--separator);
+  border-right: var(--border-light);
 
   span {
-    width: 100%;
     text-align: center;
+    font-weight: 600;
   }
 `
 const ScoresAllPlayers = styled.div`
@@ -150,33 +140,36 @@ const ScoresAllPlayers = styled.div`
   }
 `
 const ScoreSinglePlayer = styled.div`
+  min-width: 80px;
   margin: 0 2px;
-  padding-left: 1px;
   display: grid;
   grid-template-rows: repeat(19, 35px);
   align-items: center;
-  min-width: 80px;
+
+  span:first-child {
+    font-weight: 600;
+  }
 `
 const SingleScore = styled.label`
   input {
-    padding: 0;
-    width: 100%;
     height: 100%;
-    border-style: none;
+    width: 100%;
+    padding: 5px 10px 5px;
     border-radius: 3px;
-    background-color: var(--separator);
-    color: var(--primary-dark);
-    font-family: 'Montserrat', sans-serif;
+    border-style: none;
+    background-color: var(--secondary-light);
+    color: var(--secondary-medium);
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
   }
 `
 const Note = styled.span`
-  margin: 5px 0 10px;
+  margin-top: 5px;
   font-size: 0.7rem;
-  color: var(--text-dark);
 `
 const ButtonWrapper = styled.div`
+  width: 100%;
+  margin-bottom: 10px;
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 10px;
-  width: 100%;
 `

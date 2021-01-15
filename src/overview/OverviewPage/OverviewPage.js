@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types'
+import { useEffect } from 'react'
 import styled from 'styled-components/macro'
+import scrollUp from '../../lib/scrollUp'
 import GameList from '../GameList'
 
 OverviewPage.propTypes = {
@@ -15,6 +17,8 @@ export default function OverviewPage({
   prepareEditPage,
   prepareDetailsPage,
 }) {
+  useEffect(() => scrollUp(), [])
+
   return (
     <>
       <Headline>Your Games</Headline>
@@ -30,17 +34,15 @@ export default function OverviewPage({
 
 const Headline = styled.h1`
   margin: 0 0 15px 0;
-  text-align: center;
-  text-transform: uppercase;
-  color: var(--text-light);
+  color: var(--white);
 
   &::after {
+    height: 2px;
+    width: 120px;
     margin: 8px auto 30px;
     display: block;
-    width: 120px;
-    height: 2px;
-    content: '';
-    background-color: var(--text-light);
     align-content: center;
+    background-color: var(--white);
+    content: '';
   }
 `

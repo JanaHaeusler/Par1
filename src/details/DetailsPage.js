@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import { v4 as uuid } from 'uuid'
-import { BackIconDark } from '../app/Icons/Icons'
+import { BackIconPrimary } from '../app/Icons/Icons'
 
 DetailsPage.propTypes = {
   targetProfile: PropTypes.object.isRequired,
@@ -10,82 +10,91 @@ DetailsPage.propTypes = {
 
 export default function DetailsPage({ targetProfile }) {
   const history = useHistory()
-  const { location, date, playersString, winner, shots } = targetProfile
+  const {
+    location,
+    date,
+    playersString,
+    winner,
+    shots,
+    playersArray,
+  } = targetProfile
   const players = playersString
+  const hasOnePlayer = playersArray?.length < 2
 
   return (
-    <GameDetailsCard>
-      <GameKeyInfos>
-        <Location>{location}</Location>
-        <Date>{date}</Date>
-        <Players>
-          <h4>Player(s)</h4>
-          <span>{players}</span>
-        </Players>
-        <Winner>
-          <h4>Winner(s)</h4>
-          <span>{winner}</span>
-        </Winner>
-        <Shots>
-          <h4>Total Shots</h4>
-          <span>{shots}</span>
-        </Shots>
-      </GameKeyInfos>
-      <GameScores>
-        <LegendHoles>
-          <span>Holes</span>
-          {new Array(18).fill().map((_, index) => {
-            const newId = uuid()
-            return <span key={newId}>{index + 1}</span>
-          })}
-        </LegendHoles>
-        <ScoresAllPlayers>
-          {targetProfile.playersArray?.map((player) => {
-            const newId = uuid()
-            const playerName = player
-            return (
-              <ScoresSinglePlayer key={newId}>
-                <span>{playerName}</span>
-                {new Array(18).fill().map((_, index) => {
-                  const newId = uuid()
-                  const fieldNumber = index + 1
-                  const holeName = 'hole' + fieldNumber
-                  return (
-                    <SingleScore key={newId}>
-                      {targetProfile.scores[playerName][holeName]}
-                    </SingleScore>
-                  )
-                })}
-              </ScoresSinglePlayer>
-            )
-          })}
-        </ScoresAllPlayers>
-      </GameScores>
-      <ButtonWrapper>
-        <ButtonBackIcon
-          onClick={() => history.push('/')}
-          data-testid="button-back"
-        >
-          <BackIconDark />
-        </ButtonBackIcon>
-      </ButtonWrapper>
-    </GameDetailsCard>
+    <DetailsPageWrapper>
+      <AllGameDetails>
+        <GameKeyInfos>
+          <Date>{date}</Date>
+          <Location>{location}</Location>
+          <Players>
+            <h4>Player(s)</h4>
+            <span>{players}</span>
+          </Players>
+          <Winner>
+            <h4>Winner(s)</h4>
+            <span>{winner}</span>
+          </Winner>
+          <Shots>
+            <h4>Total Shots</h4>
+            <span>{shots}</span>
+          </Shots>
+        </GameKeyInfos>
+        <GameScores hasOnePlayer={hasOnePlayer}>
+          <Legend>
+            <span>Holes</span>
+            {new Array(18).fill().map((_, index) => {
+              const newId = uuid()
+              return <span key={newId}>{index + 1}</span>
+            })}
+          </Legend>
+          <ScoresAllPlayers>
+            {targetProfile.playersArray?.map((player) => {
+              const newId = uuid()
+              const playerName = player
+              return (
+                <ScoreSinglePlayer key={newId}>
+                  <span>{playerName}</span>
+                  {new Array(18).fill().map((_, index) => {
+                    const newId = uuid()
+                    const fieldNumber = index + 1
+                    const holeName = 'hole' + fieldNumber
+                    return (
+                      <span key={newId}>
+                        {targetProfile.scores[playerName][holeName]}
+                      </span>
+                    )
+                  })}
+                </ScoreSinglePlayer>
+              )
+            })}
+          </ScoresAllPlayers>
+        </GameScores>
+      </AllGameDetails>
+      <ButtonBackIcon
+        onClick={() => history.push('/')}
+        data-testid="button-back"
+      >
+        <BackIconPrimary />
+      </ButtonBackIcon>
+    </DetailsPageWrapper>
   )
 }
 
-const GameDetailsCard = styled.section`
+const DetailsPageWrapper = styled.div`
   margin: 0 20px;
 `
-const GameKeyInfos = styled.div`
+const AllGameDetails = styled.div`
+  border-radius: 25px 25px 0 0;
+  background-color: var(--white);
+  font-size: 1rem;
+`
+const GameKeyInfos = styled.section`
   padding: 20px;
   display: grid;
-  grid-template-rows: repeat(4, auto);
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4, auto);
   grid-gap: 10px;
-  box-shadow: 0 0 10px var(--box-shadow-green);
-  border-radius: 25px 25px 0 0;
-  background-color: var(--text-light);
-  font-size: 0.9rem;
 `
 const Date = styled.div`
   grid-column-start: 2;
@@ -110,23 +119,27 @@ const Shots = styled.div`
   grid-row-start: 4;
 `
 const GameScores = styled.section`
+  width: ${(props) => (props.hasOnePlayer ? '70%' : '90%')};
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px 20px;
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: ${(props) =>
+    props.hasOnePlayer ? '80px 80px' : '1fr 3fr'};
   gap: 20px;
-  background-color: var(--text-light);
 `
-const LegendHoles = styled.div`
+const Legend = styled.div`
   padding-right: 20px;
   display: grid;
   grid-template-rows: repeat(19, 35px);
-  align-items: center;
-  border-right: 1px solid var(--separator);
+  border-right: var(--border-light);
 
   span {
-    width: 100%;
     text-align: center;
+    font-weight: 600;
+  }
+
+  span:first-child {
+    font-family: 'Montserrat', sans-serif;
   }
 `
 const ScoresAllPlayers = styled.div`
@@ -138,31 +151,24 @@ const ScoresAllPlayers = styled.div`
     display: none;
   }
 `
-const ScoresSinglePlayer = styled.div`
+const ScoreSinglePlayer = styled.div`
+  min-width: 80px;
   margin: 0 2px;
-  padding-left: 1px;
   display: grid;
   grid-template-rows: repeat(19, 35px);
-  align-items: center;
-  min-width: 80px;
-`
-const SingleScore = styled.div`
-  display: grid;
-  gap: 10px;
-`
-const ButtonWrapper = styled.div`
-  padding: 5px 0;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: baseline;
-  width: 100%;
-  border-radius: 0 0 25px 25px;
-  background: var(--text-light-transparent);
+
+  span:first-child {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
 `
 const ButtonBackIcon = styled.button`
-  margin: 5px;
-  padding: 0;
+  width: 100%;
+  padding: 5px 0;
   display: flex;
+  align-items: baseline;
+  justify-content: space-evenly;
   border: none;
-  background: none;
+  border-radius: 0 0 25px 25px;
+  background: var(--white-transparent);
 `

@@ -24,8 +24,8 @@ function App() {
 
   return (
     <AppWrapper>
-      <HeaderStyled />
-      <MainWrapper>
+      <Header />
+      <Main>
         <Switch>
           <Route exact path="/">
             <OverviewPage
@@ -61,8 +61,8 @@ function App() {
             />
           </Route>
         </Switch>
-      </MainWrapper>
-      <FooterStyled />
+      </Main>
+      <Footer />
     </AppWrapper>
   )
 }
@@ -70,27 +70,27 @@ function App() {
 export default App
 
 const AppWrapper = styled.div`
-  margin: 0 auto;
   height: 100vh;
   width: 100vw;
   max-width: 600px;
+  margin: 0 auto;
 `
-const HeaderStyled = styled(AppHeader)`
+const Header = styled(AppHeader)`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 10;
 `
-const MainWrapper = styled.main`
-  padding: 70px 10px 60px 10px;
+const Main = styled.main`
+  padding: 70px 10px 60px;
   scrollbar-width: none;
 
   &::-webkit-scrollbar {
     display: none;
   }
 `
-const FooterStyled = styled(AppFooter)`
+const Footer = styled(AppFooter)`
   position: fixed;
   bottom: 0;
   left: 0;

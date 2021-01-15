@@ -3,21 +3,19 @@
 exports[`OverviewPage renders snapshot correctly 1`] = `
 .c0 {
   margin: 0 0 15px 0;
-  text-align: center;
-  text-transform: uppercase;
-  color: var(--text-light);
+  color: var(--white);
 }
 
 .c0::after {
+  height: 2px;
+  width: 120px;
   margin: 8px auto 30px;
   display: block;
-  width: 120px;
-  height: 2px;
-  content: '';
-  background-color: var(--text-light);
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
+  background-color: var(--white);
+  content: '';
 }
 
 <h1

@@ -92,7 +92,8 @@ describe('Game', () => {
   it('renders delete field', () => {
     const { getByText, getByTestId } = render(<Game {...testProps} />)
     user.click(getByTestId('button-set-delete'))
-    expect(getByText('Do you want to delete this game?')).toBeInTheDocument()
+    expect(getByText('Do you really want to')).toBeInTheDocument()
+    expect(getByText('delete this game?')).toBeInTheDocument()
     expect(getByTestId('button-delete')).toBeInTheDocument()
     expect(getByTestId('button-cancel')).toBeInTheDocument()
   })
