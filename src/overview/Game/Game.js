@@ -4,10 +4,11 @@ import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import Button from '../../app/Button'
 import {
-  BinIconDark,
-  CancelIconLight,
-  DetailsIconDark,
-  PencilIconDark,
+  BinIconPrimary,
+  BinIconPrimaryText,
+  CancelIconLightText,
+  DetailsIconPrimary,
+  PencilIconPrimary,
 } from '../../app/Icons/Icons'
 
 Game.propTypes = {
@@ -24,72 +25,74 @@ export default function Game({
   onDetails,
 }) {
   const history = useHistory()
-
   const [isSetToDelete, setIsSetToDelete] = useState(false)
   const { location, date, playersString, winner, shots, _id } = savedGameProfile
   const playerNames = playersString
 
   return (
-    <Card>
+    <GameWrapper>
       {isSetToDelete || (
         <>
           <SavedGameContent>
-            <Location>{location}</Location>
             <Date>{date}</Date>
-            <PlayerWrapper>
+            <Location>{location}</Location>
+            <Player>
               <h4>Player(s)</h4>
               <span>{playerNames}</span>
-            </PlayerWrapper>
-            <WinnerWrapper>
+            </Player>
+            <Winner>
               <h4>Winner(s)</h4>
               <span>{winner}</span>
-            </WinnerWrapper>
-            <ShotsWrapper>
+            </Winner>
+            <Shots>
               <h4>Total Shots</h4>
               <span>{shots}</span>
-            </ShotsWrapper>
+            </Shots>
           </SavedGameContent>
           <ButtonWrapper>
-            <ButtonDeleteIcon
+            <ButtonIcon
               onClick={() => setIsSetToDelete(true)}
               data-testid="button-set-delete"
             >
-              <BinIconDark />
-            </ButtonDeleteIcon>
-            <ButtonEditIcon
+              <BinIconPrimary />
+            </ButtonIcon>
+            <ButtonIcon
               onClick={() => handleEdit(_id)}
               data-testid="button-edit"
             >
-              <PencilIconDark />
-            </ButtonEditIcon>
-            <ButtonDetailsIcon
+              <PencilIconPrimary />
+            </ButtonIcon>
+            <ButtonIcon
               onClick={() => handleDetails(_id)}
               data-testid="button-details"
             >
-              <DetailsIconDark />
-            </ButtonDetailsIcon>
+              <DetailsIconPrimary />
+            </ButtonIcon>
           </ButtonWrapper>
         </>
       )}
       {isSetToDelete && (
         <DeleteField>
-          <span>Do you want to delete this game?</span>
+          <DeleteQuery>
+            <span>Do you really want to</span>
+            <span>delete this game?</span>
+          </DeleteQuery>
           <ButtonDelete
             onClick={() => onDelete(_id)}
-            iconComponent={<BinIconDark />}
+            iconComponent={<BinIconPrimaryText />}
             text="Delete"
             data-testid="button-delete"
           />
           <ButtonCancel
             main
             onClick={() => setIsSetToDelete(false)}
-            iconComponent={<CancelIconLight />}
+            iconComponent={<CancelIconLightText />}
             text="Cancel"
             data-testid="button-cancel"
           />
         </DeleteField>
       )}
-    </Card>
+    </GameWrapper>
   )
 
   function handleEdit(id) {
@@ -103,19 +106,18 @@ export default function Game({
   }
 }
 
-const Card = styled.section`
+const GameWrapper = styled.div`
   margin: 0 20px;
 `
 const SavedGameContent = styled.div`
   padding: 10px;
   display: grid;
-  grid-template-rows: repeat(4, auto);
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4, auto);
   grid-gap: 10px;
-  box-shadow: 0 0 10px var(--box-shadow-green);
   border-radius: 25px 25px 0 0;
-  background-color: var(--text-light);
-  font-size: 0.9rem;
+  background-color: var(--white);
+  font-size: 1rem;
 `
 const Date = styled.div`
   grid-column-start: 2;
@@ -127,42 +129,28 @@ const Location = styled.div`
   grid-row-start: 2;
   text-transform: uppercase;
 `
-const PlayerWrapper = styled.div`
+const Player = styled.div`
   grid-column: 1 / 4;
   grid-row-start: 3;
 `
-const WinnerWrapper = styled.div`
+const Winner = styled.div`
   grid-column-start: 1;
   grid-row-start: 4;
 `
-const ShotsWrapper = styled.div`
+const Shots = styled.div`
   grid-column-start: 2;
   grid-row-start: 4;
 `
 const ButtonWrapper = styled.div`
+  width: 100%;
   padding: 5px 0;
   display: flex;
-  justify-content: space-evenly;
   align-items: baseline;
-  width: 100%;
+  justify-content: space-evenly;
   border-radius: 0 0 25px 25px;
-  background: var(--text-light-transparent);
+  background: var(--white-transparent);
 `
-const ButtonDeleteIcon = styled.button`
-  margin: 5px;
-  padding: 0;
-  display: flex;
-  border: none;
-  background: none;
-`
-const ButtonEditIcon = styled.button`
-  margin: 5px;
-  padding: 0;
-  display: flex;
-  border: none;
-  background: none;
-`
-const ButtonDetailsIcon = styled.button`
+const ButtonIcon = styled.button`
   margin: 5px;
   padding: 0;
   display: flex;
@@ -170,20 +158,22 @@ const ButtonDetailsIcon = styled.button`
   background: none;
 `
 const DeleteField = styled.div`
-  padding: 10px;
+  padding: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 10px 20px;
+  gap: 20px 20px;
   place-items: center;
   border-radius: 25px;
-  background-color: var(--text-light);
+  background-color: var(--white);
+`
+const DeleteQuery = styled.div`
+  display: grid;
+  grid-column: 1 / 3;
 
   span {
-    grid-column: 1 / 3;
     text-align: center;
-    color: var(--secondary-dark);
-    font-weight: 800;
+    font-size: 1rem;
   }
 `
 const ButtonDelete = styled(Button)`

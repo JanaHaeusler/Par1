@@ -3,56 +3,51 @@ import { ReactComponent as BackIcon } from './assets/arrow-left.svg'
 import { ReactComponent as BinIcon } from './assets/bin.svg'
 import { ReactComponent as CheckIcon } from './assets/check.svg'
 import { ReactComponent as CrossIcon } from './assets/cross.svg'
-import { ReactComponent as HomeIcon } from './assets/home.svg'
 import { ReactComponent as DetailsIcon } from './assets/details.svg'
 import { ReactComponent as LogoIcon } from './assets/golf-logo.svg'
+import { ReactComponent as HomeIcon } from './assets/home.svg'
 import { ReactComponent as PencilIcon } from './assets/pencil.svg'
 import { ReactComponent as PlusIcon } from './assets/plus.svg'
 
-const BackIconDark = styled(BackIcon)`
-  stroke: var(--secondary-dark);
+const BackIconPrimary = styled(BackIcon)`
+  stroke: var(--primary);
 `
-const BinIconDark = styled(BinIcon)`
-  stroke: var(--secondary-dark);
+const BinIconPrimary = styled(BinIcon)`
+  stroke: var(--primary);
 `
-const BinIconLight = styled(BinIcon)`
-  stroke: var(--text-light);
+const BinIconPrimaryText = styled(BinIcon)`
+  margin-right: 3px;
+  stroke: var(--primary);
 `
-const CheckIconDark = styled(CheckIcon)`
-  width: 30%;
-  stroke: var(--secondary-dark);
+const CancelIconLightText = styled(CrossIcon)`
+  margin-right: 3px;
+  stroke: var(--white);
 `
-const CheckIconLight = styled(CheckIcon)`
-  width: 30%;
-  stroke: var(--text-light);
+const CancelIconPrimaryText = styled(CrossIcon)`
+  margin-right: 3px;
+  stroke: var(--primary);
 `
-const CancelIconDark = styled(CrossIcon)`
-  stroke: var(--secondary-dark);
+const CheckIconLightText = styled(CheckIcon)`
+  margin-right: 3px;
+  width: 25%;
+  stroke: var(--white);
 `
-const CancelIconLight = styled(CrossIcon)`
-  stroke: var(--text-light);
+const DetailsIconPrimary = styled(DetailsIcon)`
+  stroke: var(--primary);
 `
-const DetailsIconDark = styled(DetailsIcon)`
-  stroke: var(--secondary-dark);
-`
-const PencilIconDark = styled(PencilIcon)`
-  stroke: var(--secondary-dark);
-`
-const PencilIconLight = styled(PencilIcon)`
-  stroke: var(--text-light);
+const PencilIconPrimary = styled(PencilIcon)`
+  stroke: var(--primary);
 `
 
 export {
-  BackIconDark,
-  BinIconDark,
-  BinIconLight,
-  CheckIconDark,
-  CheckIconLight,
-  CancelIconDark,
-  CancelIconLight,
-  DetailsIconDark,
-  PencilIconDark,
-  PencilIconLight,
+  BackIconPrimary,
+  BinIconPrimary,
+  BinIconPrimaryText,
+  CancelIconLightText,
+  CancelIconPrimaryText,
+  CheckIconLightText,
+  DetailsIconPrimary,
+  PencilIconPrimary,
   HomeIcon,
   PlusIcon,
   LogoIcon,
