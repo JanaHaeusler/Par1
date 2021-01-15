@@ -1,11 +1,11 @@
 Enabled Main Button
 
 ```jsx
-import { CheckIconLight } from '../assets/Icons/Icons'
+import { CheckIconLightText } from '../Icons/Icons'
 ;<Button
   main
   onClick={() => {}}
-  iconComponent={<CheckIconLight />}
+  iconComponent=<CheckIconLightText />
   text="Save"
 />
 ```
@@ -13,12 +13,12 @@ import { CheckIconLight } from '../assets/Icons/Icons'
 Disabled Main Button
 
 ```jsx
-import { CheckIconLight } from '../assets/Icons/Icons'
+import { CheckIconLightText } from '../Icons/Icons'
 ;<Button
   main
   disabled
   onClick={() => {}}
-  iconComponent={<CheckIconLight />}
+  iconComponent=<CheckIconLightText />
   text="Save"
 />
 ```
@@ -26,6 +26,10 @@ import { CheckIconLight } from '../assets/Icons/Icons'
 Enabled Button
 
 ```jsx
-import { CancelIconDark } from '../assets/Icons/Icons'
-;<Button onClick={() => {}} iconComponent={<CancelIconDark />} text="Cancel" />
+import { CancelIconPrimaryText } from '../Icons/Icons'
+;<Button
+  onClick={() => {}}
+  iconComponent=<CancelIconPrimaryText />
+  text="Cancel"
+/>
 ```

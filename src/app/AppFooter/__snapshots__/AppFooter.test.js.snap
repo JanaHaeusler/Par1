@@ -20,7 +20,7 @@ exports[`AppFooter renders correctly 1`] = `
 .c2 {
   height: 28px;
   width: 28px;
-  fill: var(--light);
+  fill: var(--white);
   opacity: 40%;
 }
 
@@ -44,7 +44,7 @@ exports[`AppFooter renders correctly 1`] = `
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
-  box-shadow: 0 0 5px var(--secondary-medium);
+  box-shadow: var(--shadow-dark);
   border-radius: 25px 25px 0 0;
   background: var(--primary-gradient);
 }

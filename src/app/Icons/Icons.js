@@ -21,7 +21,7 @@ const BinIconPrimaryText = styled(BinIcon)`
 `
 const CancelIconLightText = styled(CrossIcon)`
   margin-right: 3px;
-  stroke: var(--light);
+  stroke: var(--white);
 `
 const CancelIconPrimaryText = styled(CrossIcon)`
   margin-right: 3px;
@@ -30,7 +30,7 @@ const CancelIconPrimaryText = styled(CrossIcon)`
 const CheckIconLightText = styled(CheckIcon)`
   margin-right: 3px;
   width: 25%;
-  stroke: var(--light);
+  stroke: var(--white);
 `
 const DetailsIconPrimary = styled(DetailsIcon)`
   stroke: var(--primary);

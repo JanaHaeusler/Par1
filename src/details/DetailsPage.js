@@ -86,7 +86,7 @@ const DetailsPageWrapper = styled.div`
 `
 const AllGameDetails = styled.div`
   border-radius: 25px 25px 0 0;
-  background-color: var(--light);
+  background-color: var(--white);
   font-size: 1rem;
 `
 const GameKeyInfos = styled.section`
@@ -131,11 +131,11 @@ const Legend = styled.div`
   padding-right: 20px;
   display: grid;
   grid-template-rows: repeat(19, 35px);
-  border-right: 1px solid var(--secondary-light);
+  border-right: var(--border-light);
 
   span {
     text-align: center;
-    font-weight: 550;
+    font-weight: 600;
   }
 
   span:first-child {
@@ -159,7 +159,7 @@ const ScoreSinglePlayer = styled.div`
 
   span:first-child {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 550;
+    font-weight: 600;
   }
 `
 const ButtonBackIcon = styled.button`
@@ -170,5 +170,5 @@ const ButtonBackIcon = styled.button`
   justify-content: space-evenly;
   border: none;
   border-radius: 0 0 25px 25px;
-  background: var(--light-transparent);
+  background: var(--white-transparent);
 `

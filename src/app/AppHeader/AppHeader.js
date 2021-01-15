@@ -16,7 +16,7 @@ const Header = styled.header`
   height: 50px;
   max-width: 1240px;
   margin: 0 auto;
-  box-shadow: 0 0 5px var(--secondary-medium);
+  box-shadow: var(--shadow-dark);
   border-radius: 0 0 25px 3px;
   background: var(--primary-gradient);
 `

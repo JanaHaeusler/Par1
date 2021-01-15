@@ -16,7 +16,7 @@ const Footer = styled.footer`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  box-shadow: 0 0 5px var(--secondary-medium);
+  box-shadow: var(--shadow-dark);
   border-radius: 25px 25px 0 0;
   background: var(--primary-gradient);
 `

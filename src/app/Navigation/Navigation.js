@@ -41,7 +41,7 @@ const NavBar = styled.nav`
 const NavigationLink = styled(NavLink)`
   height: 28px;
   width: 28px;
-  fill: var(--light);
+  fill: var(--white);
   opacity: 40%;
 
   &.active {

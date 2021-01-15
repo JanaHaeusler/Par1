@@ -93,7 +93,7 @@ const Form = styled.form`
   display: grid;
   place-items: center;
   border-radius: 25px;
-  background-color: var(--light);
+  background-color: var(--white);
   font-size: 1rem;
 
   input::-webkit-outer-spin-button,
@@ -123,11 +123,11 @@ const Legend = styled.div`
   display: grid;
   grid-template-rows: repeat(19, 35px);
   align-items: center;
-  border-right: 1px solid var(--secondary-light);
+  border-right: var(--border-light);
 
   span {
     text-align: center;
-    font-weight: 550;
+    font-weight: 600;
   }
 `
 const ScoresAllPlayers = styled.div`
@@ -147,7 +147,7 @@ const ScoreSinglePlayer = styled.div`
   align-items: center;
 
   span:first-child {
-    font-weight: 550;
+    font-weight: 600;
   }
 `
 const SingleScore = styled.label`

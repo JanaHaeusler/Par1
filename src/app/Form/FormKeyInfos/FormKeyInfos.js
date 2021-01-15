@@ -135,7 +135,7 @@ const Form = styled.form`
   display: grid;
   place-items: center;
   border-radius: 25px;
-  background-color: var(--light);
+  background-color: var(--white);
   font-size: 1rem;
 
   input::-webkit-outer-spin-button,
@@ -163,6 +163,7 @@ const KeyInfos = styled.fieldset`
   label {
     margin-top: 10px;
     margin-bottom: 5px;
+    font-weight: 500;
   }
 
   input {
@@ -171,7 +172,7 @@ const KeyInfos = styled.fieldset`
     padding: 5px;
     display: block;
     border-style: none;
-    border-bottom: 1px solid var(--secondary-medium);
+    border-bottom: var(--border-dark);
     color: var(--secondary-medium);
     font-family: 'Montserrat', sans-serif;
   }

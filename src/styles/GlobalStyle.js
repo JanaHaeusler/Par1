@@ -12,13 +12,14 @@ export default createGlobalStyle`
         height: 100vh;
         width: 100vw;
         background: url(${Background}) no-repeat center center fixed;
-        background-color: var(--light);
+        background-color: var(--white);
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
         font-family: 'Raleway', sans-serif;
         font-size: 112.5%;
+        font-weight: 400;
         color: var(--secondary-dark);
     }
 
@@ -29,27 +30,32 @@ export default createGlobalStyle`
         --secondary-medium: #62757f;
         --secondary-medium-transparent: #62757fa1;
         --secondary-dark: #414143;
-        --light: #ffffff;
-        --light-transparent: #ffffffBF;
+        --white: #ffffff;
+        --white-transparent: #ffffffBF;
+        --border-light: 1px solid var(--secondary-light);
+        --border-dark: 1px solid var(--secondary-medium);
+        --shadow-light: 2px 2px 8px var(--secondary-medium-transparent);
+        --shadow-dark: 0 0 5px var(--secondary-medium);
     }
 
     h1 {
         text-align: center;
         text-transform: uppercase;
         font-size: 2rem;
+        font-weight: 600;
     }
 
     h3 {
         margin: 20px;
         text-align: center;
         text-transform: uppercase;
-        font-weight: 550;
+        font-weight: 600;
     }
 
     h4 {
         margin: 0;
         font-family: 'Montserrat', sans-serif;
         font-size: 0.9rem;
-        font-weight: 550;
+        font-weight: 600;
     }
 `

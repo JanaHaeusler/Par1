@@ -12,9 +12,9 @@ exports[`Pennant renders correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  box-shadow: 0 0 5px var(--secondary-medium);
+  box-shadow: var(--shadow-dark);
   border-radius: 0 0 50px 50px;
-  background-color: var(--light);
+  background-color: var(--white);
 }
 
 .c1 {

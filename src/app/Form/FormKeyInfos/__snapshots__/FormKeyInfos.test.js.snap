@@ -17,14 +17,14 @@ exports[`FormKeyInfos renders snapshot correctly 1`] = `
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
-  box-shadow: 2px 2px 8px var(--secondary-medium-transparent);
+  box-shadow: var(--shadow-light);
   border-radius: 5px;
   border-style: none;
-  background-color: var(--light);
+  background-color: var(--white);
   color: var(--primary);
   font-family: 'Raleway',sans-serif;
   font-size: 1rem;
-  font-weight: 550;
+  font-weight: 500;
 }
 
 .c4:disabled {
@@ -47,14 +47,14 @@ exports[`FormKeyInfos renders snapshot correctly 1`] = `
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
-  box-shadow: 2px 2px 8px var(--secondary-medium-transparent);
+  box-shadow: var(--shadow-light);
   border-radius: 5px;
   border-style: none;
   background-color: var(--primary);
-  color: var(--light);
+  color: var(--white);
   font-family: 'Raleway',sans-serif;
   font-size: 1rem;
-  font-weight: 550;
+  font-weight: 500;
 }
 
 .c6:disabled {
@@ -69,7 +69,7 @@ exports[`FormKeyInfos renders snapshot correctly 1`] = `
 .c7 {
   margin-right: 3px;
   width: 25%;
-  stroke: var(--light);
+  stroke: var(--white);
 }
 
 .c0 {
@@ -78,7 +78,7 @@ exports[`FormKeyInfos renders snapshot correctly 1`] = `
   display: grid;
   place-items: center;
   border-radius: 25px;
-  background-color: var(--light);
+  background-color: var(--white);
   font-size: 1rem;
 }
 
@@ -108,6 +108,7 @@ exports[`FormKeyInfos renders snapshot correctly 1`] = `
 .c1 label {
   margin-top: 10px;
   margin-bottom: 5px;
+  font-weight: 500;
 }
 
 .c1 input {
@@ -116,7 +117,7 @@ exports[`FormKeyInfos renders snapshot correctly 1`] = `
   padding: 5px;
   display: block;
   border-style: none;
-  border-bottom: 1px solid var(--secondary-medium);
+  border-bottom: var(--border-dark);
   color: var(--secondary-medium);
   font-family: 'Montserrat',sans-serif;
 }

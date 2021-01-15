@@ -11,7 +11,7 @@ exports[`DetailsPage renders snapshot correctly 1`] = `
 
 .c1 {
   border-radius: 25px 25px 0 0;
-  background-color: var(--light);
+  background-color: var(--white);
   font-size: 1rem;
 }
 
@@ -51,7 +51,7 @@ exports[`DetailsPage renders snapshot correctly 1`] = `
 }
 
 .c8 {
-  max-width: 90%;
+  width: 90%;
   margin: 0 auto;
   padding: 10px 20px;
   display: grid;
@@ -63,16 +63,12 @@ exports[`DetailsPage renders snapshot correctly 1`] = `
   padding-right: 20px;
   display: grid;
   grid-template-rows: repeat(19,35px);
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-right: 1px solid var(--secondary-light);
+  border-right: var(--border-light);
 }
 
 .c9 span {
   text-align: center;
-  font-weight: 550;
+  font-weight: 600;
 }
 
 .c9 span:first-child {
@@ -100,15 +96,11 @@ exports[`DetailsPage renders snapshot correctly 1`] = `
   margin: 0 2px;
   display: grid;
   grid-template-rows: repeat(19,35px);
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c11 span:first-child {
   font-family: 'Montserrat',sans-serif;
-  font-weight: 550;
+  font-weight: 600;
 }
 
 .c12 {
@@ -128,7 +120,7 @@ exports[`DetailsPage renders snapshot correctly 1`] = `
   justify-content: space-evenly;
   border: none;
   border-radius: 0 0 25px 25px;
-  background: var(--light-transparent);
+  background: var(--white-transparent);
 }
 
 <div

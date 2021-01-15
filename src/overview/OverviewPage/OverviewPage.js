@@ -34,7 +34,7 @@ export default function OverviewPage({
 
 const Headline = styled.h1`
   margin: 0 0 15px 0;
-  color: var(--light);
+  color: var(--white);
 
   &::after {
     height: 2px;
@@ -42,7 +42,7 @@ const Headline = styled.h1`
     margin: 8px auto 30px;
     display: block;
     align-content: center;
-    background-color: var(--light);
+    background-color: var(--white);
     content: '';
   }
 `
