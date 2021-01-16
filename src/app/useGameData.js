@@ -84,7 +84,6 @@ export default function useGameData() {
       },
       allIds: [newGameProfile._id, ...savedGameProfiles.allIds],
     })
-    setTargetProfile(null)
   }
 
   function deleteGameProfile(targetId) {

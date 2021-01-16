@@ -27,7 +27,7 @@ export default function EditPage({
     showErrorMessageKeyInfos,
     handleSubmitKeyInfos,
     handleCancelKeyInfos,
-    setDisabledState,
+    changeDisabledToTrue,
   } = useFormKeyInfosEdit({
     targetProfile,
     updateTargetProfile,
@@ -61,7 +61,7 @@ export default function EditPage({
           showErrorMessage={showErrorMessageKeyInfos}
           handleSubmit={handleSubmitKeyInfos}
           handleCancel={handleCancelKeyInfos}
-          setDisabledState={setDisabledState}
+          changeDisabledModus={changeDisabledToTrue}
         />
       )}
       {visibleForm === 'scores' && Object.keys(targetProfile).length !== 0 && (

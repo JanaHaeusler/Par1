@@ -84,7 +84,7 @@ export default function Game({
             data-testid="button-delete"
           />
           <ButtonCancel
-            main
+            isMain
             onClick={() => setIsSetToDelete(false)}
             iconComponent={<CancelIconLightText />}
             text="Cancel"

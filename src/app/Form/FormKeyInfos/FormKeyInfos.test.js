@@ -16,7 +16,7 @@ const testProps = {
   showErrorMessage: jest.fn(),
   handleSubmit: jest.fn(),
   handleCancel: jest.fn(),
-  setDisabledState: jest.fn(),
+  changeDisabledModus: jest.fn(),
 }
 
 describe('FormKeyInfos', () => {
@@ -112,12 +112,12 @@ describe('FormKeyInfos', () => {
   })
 
   it('calls setDisabledStateMock when rendered', () => {
-    const setDisabledStateMock = jest.fn()
+    const changeDisabledModusMock = jest.fn()
     const props = {
       ...testProps,
-      setDisabledState: setDisabledStateMock,
+      changeDisabledModus: changeDisabledModusMock,
     }
     render(<FormKeyInfos {...props} />)
-    expect(setDisabledStateMock).toHaveBeenCalledTimes(1)
+    expect(changeDisabledModusMock).toHaveBeenCalledTimes(1)
   })
 })

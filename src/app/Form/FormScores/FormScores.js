@@ -76,7 +76,7 @@ export default function FormScores({
           data-testid="button-cancel"
         />
         <Button
-          main
+          isMain
           disabled={!isSaveButtonShown}
           iconComponent={<CheckIconLightText />}
           text="Save"

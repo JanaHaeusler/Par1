@@ -6,7 +6,7 @@ import Button from './Button'
 const TestIcon = JSON.stringify(CheckIconLightText)
 
 const testProps = {
-  main: true,
+  isMain: true,
   disabled: false,
   onClick: jest.fn(),
   iconComponent: TestIcon,
@@ -32,10 +32,10 @@ describe('Button', () => {
   })
 
   it('is not main button', () => {
-    const props = { ...testProps, main: false }
+    const props = { ...testProps, isMain: false }
     const { getByRole } = render(<Button {...props} />)
     const button = getByRole('button')
-    expect(button).not.toHaveAttribute('main')
+    expect(button).not.toHaveAttribute('isMain')
   })
 
   it('calls onClickMock on click', () => {

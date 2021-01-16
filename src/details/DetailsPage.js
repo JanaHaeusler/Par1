@@ -131,6 +131,7 @@ const Legend = styled.div`
   padding-right: 20px;
   display: grid;
   grid-template-rows: repeat(19, 35px);
+  align-items: center;
   border-right: var(--border-light);
 
   span {
@@ -156,6 +157,7 @@ const ScoreSinglePlayer = styled.div`
   margin: 0 2px;
   display: grid;
   grid-template-rows: repeat(19, 35px);
+  align-items: center;
 
   span:first-child {
     font-family: 'Montserrat', sans-serif;
@@ -165,9 +167,6 @@ const ScoreSinglePlayer = styled.div`
 const ButtonBackIcon = styled.button`
   width: 100%;
   padding: 5px 0;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-evenly;
   border: none;
   border-radius: 0 0 25px 25px;
   background: var(--white-transparent);

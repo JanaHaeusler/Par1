@@ -56,7 +56,7 @@ export default function useFormKeyInfosEdit({
     showErrorMessageKeyInfos,
     handleSubmitKeyInfos,
     handleCancelKeyInfos,
-    setDisabledState,
+    changeDisabledToTrue,
   }
 
   function handleChangeKeyInfos(inputName, inputValue) {
@@ -137,7 +137,7 @@ export default function useFormKeyInfosEdit({
     history.push('/')
   }
 
-  function setDisabledState() {
+  function changeDisabledToTrue() {
     return true
   }
 }

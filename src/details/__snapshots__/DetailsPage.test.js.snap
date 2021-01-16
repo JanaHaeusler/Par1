@@ -106,18 +106,6 @@ exports[`DetailsPage renders snapshot correctly 1`] = `
 .c12 {
   width: 100%;
   padding: 5px 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  -webkit-box-pack: space-evenly;
-  -webkit-justify-content: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly;
   border: none;
   border-radius: 0 0 25px 25px;
   background: var(--white-transparent);

@@ -15,6 +15,6 @@ Form Key Infos
   showErrorMessage={() => {}}
   handleSubmit={() => {}}
   handleCancel={() => {}}
-  setDisabledState={() => {}}
+  changeDisabledModus={() => {}}
 />
 ```
