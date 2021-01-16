@@ -3,7 +3,7 @@ Enabled Main Button
 ```jsx
 import { CheckIconLightText } from '../Icons/Icons'
 ;<Button
-  main
+  isMain
   onClick={() => {}}
   iconComponent=<CheckIconLightText />
   text="Save"
@@ -15,7 +15,7 @@ Disabled Main Button
 ```jsx
 import { CheckIconLightText } from '../Icons/Icons'
 ;<Button
-  main
+  isMain
   disabled
   onClick={() => {}}
   iconComponent=<CheckIconLightText />

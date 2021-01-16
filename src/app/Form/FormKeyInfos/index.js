@@ -1,1 +1,1 @@
-export { default } from './FormKeyInfos';
+export { default } from './FormKeyInfos'

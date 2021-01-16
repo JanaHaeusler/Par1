@@ -3,9 +3,9 @@ import GlobalStyle from './GlobalStyle'
 
 export default function StyleWrapper({ children }) {
   return (
-      <Router>
-        <GlobalStyle />
-        {children}
-      </Router>
+    <Router>
+      <GlobalStyle />
+      {children}
+    </Router>
   )
 }

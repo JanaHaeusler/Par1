@@ -203,6 +203,7 @@ exports[`EditPage renders snapshot correctly 1`] = `
     <label>
       Player(s)
       <input
+        disabled=""
         id="players"
         name="players"
         placeholder="John, Jane, ..."

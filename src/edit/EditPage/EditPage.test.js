@@ -58,8 +58,8 @@ const testProps = {
 }
 
 describe('EditPage', () => {
-    it('renders snapshot correctly', () => {
-        const { container } = render(<EditPage {...testProps}/>)
-        expect(container.firstChild).toMatchSnapshot()
-    })
+  it('renders snapshot correctly', () => {
+    const { container } = render(<EditPage {...testProps} />)
+    expect(container.firstChild).toMatchSnapshot()
+  })
 })

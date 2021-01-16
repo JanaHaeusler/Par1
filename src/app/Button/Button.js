@@ -12,8 +12,8 @@ const ButtonStyled = styled.button`
   border-radius: 5px;
   border-style: none;
   background-color: ${(props) =>
-    props.main ? 'var(--primary)' : 'var(--white)'};
-  color: ${(props) => (props.main ? 'var(--white)' : 'var(--primary)')};
+    props.isMain ? 'var(--primary)' : 'var(--white)'};
+  color: ${(props) => (props.isMain ? 'var(--white)' : 'var(--primary)')};
   font-family: 'Raleway', sans-serif;
   font-size: 1rem;
   font-weight: 500;
@@ -30,7 +30,7 @@ const Button = ({ iconComponent, text, ...props }) => (
 )
 
 Button.propTypes = {
-  main: PropTypes.bool,
+  isMain: PropTypes.bool,
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
   iconComponent: PropTypes.node.isRequired,

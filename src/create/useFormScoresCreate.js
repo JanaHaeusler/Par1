@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { validateScoreIsInRange } from '../app/validators.services'
-import loadLocally from '../lib/loadLocally'
-import removeLocally from '../lib/removeLocally'
-import saveLocally from '../lib/saveLocally'
+import { saveLocally, loadLocally, removeLocally } from '../lib/localStorage'
 
 const STORAGE_KEY = 'inputsScoresCreate'
 
@@ -22,7 +20,7 @@ export default function useFormScoresCreate({
     inputsScores.playersArray && prepareInputValidation(inputsScores)
   const hasAllValidInputs = validInputs && condenseValidInputs()
 
-  const isSaveButtonShownScores = hasAllValidInputs
+  const isSaveButtonShownScores = hasAllValidInputs || false
 
   const [dirtyInputs, setDirtyInputs] = useState({})
   const hasAllDirtyInputs = dirtyInputs && condenseDirtyInputs()
