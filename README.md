@@ -37,7 +37,6 @@ A hosted version can be found here:
 - Styled Components
 - PropTypes
 - Styleguidist
-- uuid
 - React Testing Library
 - Jest
 - Cypress
